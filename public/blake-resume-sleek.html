@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blake Carter</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.5;
+            color: #1a1a1a;
+            background: white;
+            padding: 60px;
+            max-width: 850px;
+            margin: 0 auto;
+        }
+        
+        /* Header */
+        .header {
+            margin-bottom: 60px;
+        }
+        
+        h1 {
+            font-size: 48px;
+            font-weight: 200;
+            letter-spacing: -1px;
+            margin-bottom: 8px;
+            color: #000;
+        }
+        
+        .title {
+            font-size: 24px;
+            color: #666;
+            font-weight: 200;
+            margin-bottom: 40px;
+        }
+        
+        /* Philosophy Section */
+        .philosophy {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 60px;
+            padding-bottom: 40px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        
+        .philosophy-item {
+            text-align: center;
+            flex: 1;
+        }
+        
+        .philosophy-title {
+            font-size: 20px;
+            font-weight: 200;
+            color: #000;
+            margin-bottom: 4px;
+        }
+        
+        .philosophy-subtitle {
+            font-size: 12px;
+            color: #999;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        /* Section Headers */
+        .section {
+            margin-bottom: 50px;
+        }
+        
+        .section-header {
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: #999;
+            margin-bottom: 24px;
+            font-weight: 400;
+        }
+        
+        /* Content */
+        .summary {
+            font-size: 15px;
+            line-height: 1.8;
+            color: #333;
+            font-weight: 300;
+            margin-bottom: 12px;
+        }
+        
+        /* Experience */
+        .experience-item {
+            margin-bottom: 36px;
+        }
+        
+        .experience-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 8px;
+        }
+        
+        .role {
+            font-size: 16px;
+            font-weight: 400;
+            color: #000;
+        }
+        
+        .company {
+            font-size: 14px;
+            color: #666;
+            font-weight: 300;
+        }
+        
+        .date {
+            font-size: 13px;
+            color: #999;
+            font-weight: 300;
+        }
+        
+        .description {
+            font-size: 14px;
+            line-height: 1.7;
+            color: #555;
+            font-weight: 300;
+            margin: 8px 0;
+        }
+        
+        .achievements {
+            list-style: none;
+            padding: 0;
+            margin: 12px 0;
+        }
+        
+        .achievements li {
+            font-size: 13px;
+            line-height: 1.8;
+            color: #555;
+            font-weight: 300;
+            margin-bottom: 8px;
+            padding-left: 16px;
+            position: relative;
+        }
+        
+        .achievements li:before {
+            content: "—";
+            position: absolute;
+            left: 0;
+            color: #ccc;
+        }
+        
+        /* Projects */
+        .project {
+            margin-bottom: 24px;
+        }
+        
+        .project-header {
+            margin-bottom: 6px;
+        }
+        
+        .project-name {
+            font-size: 15px;
+            font-weight: 400;
+            color: #000;
+        }
+        
+        .project-type {
+            font-size: 13px;
+            color: #999;
+            font-weight: 300;
+            font-style: italic;
+        }
+        
+        .project-description {
+            font-size: 13px;
+            line-height: 1.7;
+            color: #555;
+            font-weight: 300;
+        }
+        
+        /* Character Profile */
+        .trait {
+            font-size: 14px;
+            line-height: 1.8;
+            color: #555;
+            font-weight: 300;
+            margin-bottom: 16px;
+            padding-left: 16px;
+            position: relative;
+        }
+        
+        .trait:before {
+            content: "/";
+            position: absolute;
+            left: 0;
+            color: #ccc;
+        }
+        
+        /* Technical Skills */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        
+        .skill-category {
+            margin-bottom: 12px;
+        }
+        
+        .skill-label {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #999;
+            margin-bottom: 4px;
+        }
+        
+        .skill-content {
+            font-size: 13px;
+            color: #333;
+            font-weight: 300;
+            line-height: 1.6;
+        }
+        
+        /* Footer */
+        .footer {
+            margin-top: 60px;
+            padding-top: 30px;
+            border-top: 1px solid #f0f0f0;
+            text-align: center;
+        }
+        
+        .contact {
+            font-size: 13px;
+            color: #666;
+            font-weight: 300;
+        }
+        
+        .contact a {
+            color: #666;
+            text-decoration: none;
+            border-bottom: 1px solid #e0e0e0;
+            transition: all 0.2s;
+        }
+        
+        .contact a:hover {
+            color: #000;
+            border-color: #999;
+        }
+        
+        @media print {
+            body {
+                padding: 40px;
+            }
+            .footer {
+                position: fixed;
+                bottom: 40px;
+                left: 0;
+                right: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Blake Carter</h1>
+        <div class="title">Technical Leader</div>
+    </div>
+    
+    <div class="philosophy">
+        <div class="philosophy-item">
+            <div class="philosophy-title">Envision</div>
+            <div class="philosophy-subtitle">Extraordinary</div>
+        </div>
+        <div class="philosophy-item">
+            <div class="philosophy-title">Collaborate</div>
+            <div class="philosophy-subtitle">Charisma</div>
+        </div>
+        <div class="philosophy-item">
+            <div class="philosophy-title">Persevere</div>
+            <div class="philosophy-subtitle">Achieve</div>
+        </div>
+    </div>
+    
+    <div class="section">
+        <div class="section-header">Executive Summary</div>
+        <p class="summary">
+            Transformational technology leader with expertise spanning AI/ML, cloud architecture, and rapid prototyping. 
+            Specialises in cross-pollinating ideas across disciplines to create innovative solutions. 
+            Known for hands-on technical leadership and ability to navigate complex challenges with strategic vision and measured execution.
+        </p>
+    </div>
+    
+    <div class="section">
+        <div class="section-header">Experience</div>
+        
+        <div class="experience-item">
+            <div class="experience-header">
+                <div>
+                    <span class="role">Co-Founder & Technical Director</span>
+                    <span class="company"> — d/rksci</span>
+                </div>
+                <div class="date">2023 – Present</div>
+            </div>
+            <p class="description">
+                Leading technical strategy for innovation consultancy specialising in rapid prototyping and AI transformation.
+            </p>
+            <ul class="achievements">
+                <li>Architected AI-powered solutions for enterprise clients across multiple industries</li>
+                <li>Developed rapid prototyping methodology reducing time-to-market by 60%</li>
+                <li>Built cross-functional teams delivering transformational digital products</li>
+            </ul>
+        </div>
+        
+        <div class="experience-item">
+            <div class="experience-header">
+                <div>
+                    <span class="role">Senior Technical Consultant</span>
+                    <span class="company"> — Independent</span>
+                </div>
+                <div class="date">2020 – 2023</div>
+            </div>
+            <p class="description">
+                Strategic technical guidance to organisations navigating digital transformation and modernisation.
+            </p>
+            <ul class="achievements">
+                <li>Led cloud migration initiatives achieving 40% infrastructure cost reduction</li>
+                <li>Implemented AI/ML solutions improving operational efficiency by 35%</li>
+                <li>Mentored technical teams in modern development practices and methodologies</li>
+            </ul>
+        </div>
+        
+        <div class="experience-item">
+            <div class="experience-header">
+                <div>
+                    <span class="role">Lead Software Engineer</span>
+                    <span class="company"> — Technology Ventures</span>
+                </div>
+                <div class="date">2018 – 2020</div>
+            </div>
+            <p class="description">
+                Spearheaded development of innovative solutions in high-growth startup environment.
+            </p>
+            <ul class="achievements">
+                <li>Designed scalable microservices architecture supporting 1M+ concurrent users</li>
+                <li>Established CI/CD pipelines reducing deployment time by 75%</li>
+                <li>Led adoption of modern development practices across engineering organisation</li>
+            </ul>
+        </div>
+    </div>
+    
+    <div class="section">
+        <div class="section-header">Research Projects</div>
+        
+        <div class="project">
+            <div class="project-header">
+                <span class="project-name">MapGyver</span>
+                <span class="project-type"> — Lost Person Behaviour Modelling</span>
+            </div>
+            <p class="project-description">
+                Advanced geospatial AI system for search and rescue operations, integrating terrain analysis 
+                with behavioural prediction models to optimise resource allocation in critical scenarios.
+            </p>
+        </div>
+        
+        <div class="project">
+            <div class="project-header">
+                <span class="project-name">Prophet</span>
+                <span class="project-type"> — Experimental Analytics Platform</span>
+            </div>
+            <p class="project-description">
+                Predictive analytics system leveraging machine learning for pattern recognition, 
+                anomaly detection, and probabilistic forecasting across complex datasets.
+            </p>
+        </div>
+        
+        <div class="project">
+            <div class="project-header">
+                <span class="project-name">Princhester Associates</span>
+                <span class="project-type"> — Innovation Framework</span>
+            </div>
+            <p class="project-description">
+                Strategic consulting methodology for rapid innovation and digital transformation, 
+                combining cross-industry insights with systematic experimentation.
+            </p>
+        </div>
+    </div>
+    
+    <div class="section">
+        <div class="section-header">Character Profile</div>
+        <div class="trait">
+            Thrives on novel challenges, hands-on learning opportunities, and doing the hard yards — jumping into the deep end
+        </div>
+        <div class="trait">
+            Natural integrator who synthesises complexity into clarity through systematic thinking and creative problem-solving
+        </div>
+        <div class="trait">
+            Builds trust through authentic relationships, combining technical excellence with genuine human connection
+        </div>
+    </div>
+    
+    <div class="section">
+        <div class="section-header">Technical Expertise</div>
+        <div class="skills-grid">
+            <div class="skill-category">
+                <div class="skill-label">Core Technologies</div>
+                <div class="skill-content">Python, JavaScript/TypeScript, React, Node.js, Cloud Architecture (AWS/GCP/Azure)</div>
+            </div>
+            <div class="skill-category">
+                <div class="skill-label">Specialisations</div>
+                <div class="skill-content">AI/ML, Rapid Prototyping, System Architecture, Data Analytics, DevOps</div>
+            </div>
+            <div class="skill-category">
+                <div class="skill-label">Methodologies</div>
+                <div class="skill-content">Agile, Design Thinking, Cross-functional Leadership</div>
+            </div>
+            <div class="skill-category">
+                <div class="skill-label">Domains</div>
+                <div class="skill-content">Innovation Consulting, Digital Transformation, Enterprise Solutions</div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <div class="contact">
+            <a href="https://www.linkedin.com/in/blake-carter-5995ab5a/">linkedin.com/in/blake-carter</a> · 
+            <a href="https://drksci.com">drksci.com</a>
+        </div>
+    </div>
+</body>
+</html>

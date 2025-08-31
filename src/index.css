@@ -1,0 +1,440 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+/* Force Source Serif Pro for cover letter paragraphs */
+.serif-cover-letter {
+  font-family: 'Source Serif 4', serif !important;
+  font-weight: 300 !important;
+}
+
+/* Kodachrome-style filter for gallery images */
+.kodachrome-filter {
+  filter: contrast(1.1) saturate(1.2) sepia(0.15) hue-rotate(-5deg) brightness(1.05);
+  transition: filter 0.3s ease;
+}
+
+.kodachrome-filter:hover {
+  filter: contrast(1.15) saturate(1.3) sepia(0.1) hue-rotate(-5deg) brightness(1.08);
+}
+
+/* Company badge style for links with favicons */
+.company-badge {
+  display: inline-flex !important;
+  align-items: center !important;
+  padding: 1px 4px !important;
+  background: rgba(55, 65, 81, 0.2) !important;
+  border: 1px solid rgba(75, 85, 99, 0.05) !important;
+  border-radius: 4px !important;
+  transition: all 0.2s ease !important;
+  vertical-align: baseline !important;
+  margin: 0 2px !important;
+  text-decoration: none !important;
+  color: inherit !important;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif !important;
+  font-weight: 400 !important;
+  font-style: normal !important;
+  letter-spacing: 0.01em !important;
+}
+
+.company-badge img {
+  filter: grayscale(100%) !important;
+  transition: filter 0.2s ease !important;
+}
+
+.company-badge:hover {
+  background: rgba(55, 65, 81, 0.35) !important;
+  border-color: rgba(75, 85, 99, 0.15) !important;
+  color: inherit !important;
+}
+
+.company-badge:hover img {
+  filter: grayscale(0%) !important;
+}
+
+/* Enhanced Mobile Responsiveness */
+@media (max-width: 768px) {
+  /* Clean body styling */
+  body {
+    background: #000;
+    overflow-x: hidden;
+  }
+
+  /* Mobile Navigation */
+  .desktop-nav {
+    display: none !important;
+  }
+  
+  .mobile-nav {
+    display: flex !important;
+  }
+  
+  .mobile-menu-button {
+    display: block !important;
+  }
+  
+  /* Hero title - full screen impact */
+  .hero-title {
+    font-size: 3rem !important;
+    padding: 0 1rem;
+    line-height: 1.3 !important;
+    font-weight: 200 !important;
+    margin: 0 !important;
+    letter-spacing: 0.02em !important;
+  }
+  
+  /* Team grid - minimal spacing */
+  .team-grid {
+    flex-direction: column !important;
+    padding: 0 !important;
+    gap: 4rem !important;
+  }
+  
+  /* Team section - clean spacing */
+  #team {
+    padding-top: 5rem !important;
+    padding-bottom: 5rem !important;
+  }
+  
+  #team h2 {
+    font-size: 1.25rem !important;
+    font-weight: 300 !important;
+    letter-spacing: 0.2em !important;
+    margin-bottom: 5rem !important;
+  }
+  
+  /* About grid - minimal design */
+  .about-grid {
+    grid-template-columns: 1fr !important;
+    gap: 2.5rem !important;
+    padding: 0 1.5rem;
+  }
+  
+  /* Container - tighter padding */
+  .container {
+    padding: 0 1.5rem;
+  }
+  
+  /* Services section - cleaner spacing */
+  .services-section {
+    padding-top: 5rem !important;
+    padding-bottom: 5rem !important;
+  }
+  
+  .service-title {
+    font-size: 1.5rem !important;
+    font-weight: 300 !important;
+  }
+  
+  .project-link {
+    padding-top: 1.5rem !important;
+    padding-bottom: 1.5rem !important;
+    border-top: 1px solid #1a1a1a;
+  }
+  
+  .project-link p {
+    font-size: 0.875rem !important;
+    line-height: 1.5 !important;
+  }
+  
+  /* Contact section - minimal */
+  #contact {
+    padding-top: 5rem !important;
+    padding-bottom: 5rem !important;
+  }
+  
+  /* Contact email - cleaner */
+  .contact-title {
+    font-size: 1.5rem !important;
+    font-weight: 300 !important;
+    word-break: break-word;
+  }
+  
+  /* We Are section - minimal headers */
+  #about h2 {
+    font-size: 1rem !important;
+    font-weight: 300 !important;
+    letter-spacing: 0.2em !important;
+    margin-bottom: 2.5rem !important;
+  }
+  
+  #about h3 {
+    font-size: 1.125rem !important;
+    font-weight: 400 !important;
+  }
+  
+  #about p {
+    font-size: 0.875rem !important;
+    line-height: 1.6 !important;
+    opacity: 0.8;
+  }
+  
+  /* Hero section - full screen minimal */
+  #hero {
+    min-height: 100vh !important;
+    padding-bottom: 0;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: flex-start !important;
+  }
+  
+  /* Logo container on mobile */
+  #hero > div:first-child {
+    padding-top: 1rem !important;
+    padding-bottom: 0 !important;
+    flex-shrink: 0;
+  }
+  
+  /* Hero text container - use 90% of remaining space */
+  #hero > div:nth-child(2) {
+    flex: 1 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    min-height: calc(90vh - 100px) !important;
+    padding: 0 1rem !important;
+  }
+  
+  /* We ARE section follows immediately */
+  #hero > div:nth-child(3) {
+    flex-shrink: 0;
+  }
+  
+  /* Logo - much smaller for minimal look */
+  .logo-display {
+    max-width: 80px !important;
+  }
+  
+  /* Team avatars - consistent sizing */
+  .team-grid > div,
+  .team-grid > div > div {
+    max-width: 220px !important;
+    width: 220px !important;
+  }
+  
+  /* Minimal animations */
+  .animated-item {
+    animation-duration: 0.6s !important;
+  }
+  
+  /* Service badges - minimal style */
+  .project-link span {
+    font-size: 0.625rem !important;
+    padding: 0.125rem 0.5rem !important;
+    background: #0a0a0a !important;
+    border: 1px solid #1a1a1a !important;
+  }
+
+  /* Blake Collaborator Mobile Optimizations */
+  .blake-title {
+    font-size: 2.5rem !important;
+    line-height: 1.4 !important;
+    margin-bottom: 1.5rem !important;
+    letter-spacing: 0.02em !important;
+  }
+  
+  .blake-subtitle {
+    font-size: 1.25rem !important;
+    line-height: 1.5 !important;
+    margin-bottom: 2.5rem !important;
+  }
+  
+  .blake-section {
+    margin-bottom: 2rem !important;
+    padding: 0 1rem !important;
+  }
+  
+  .blake-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1rem !important;
+  }
+  
+  /* Keep navigation horizontal on mobile */
+  .blake-nav-buttons {
+    flex-direction: row !important;
+    gap: 0.25rem !important;
+  }
+  
+  .blake-nav-button {
+    font-size: 0.75rem !important;
+    padding: 0.5rem 0.75rem !important;
+  }
+
+  /* Improved Touch Targets */
+  .team-grid a,
+  .team-grid button {
+    min-width: 44px !important;
+    min-height: 44px !important;
+  }
+
+  /* Enhanced Modal */
+  .mobile-modal-close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: rgba(0, 0, 0, 0.8);
+    border: 1px solid #333;
+    color: white;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 10;
+  }
+
+  /* Better Typography Hierarchy */
+  h1 { 
+    font-size: 2rem !important; 
+    line-height: 1.4 !important;
+    margin-bottom: 1.5rem !important;
+  }
+  h2 { 
+    font-size: 1.5rem !important;
+    line-height: 1.4 !important;
+    margin-bottom: 1.25rem !important;
+  }
+  h3 { 
+    font-size: 1.25rem !important;
+    line-height: 1.4 !important;
+    margin-bottom: 1rem !important;
+  }
+  
+  p, .text-content {
+    font-size: 1rem !important;
+    line-height: 1.6 !important;
+  }
+  
+  /* Fix thin font spacing on mobile */
+  .font-thin {
+    letter-spacing: 0.02em !important;
+    line-height: 1.4 !important;
+  }
+  
+  /* Detail pages mobile optimization */
+  .detail-hero-title {
+    font-size: clamp(2rem, 5vw, 3rem) !important;
+  }
+  
+  .detail-hero-subtitle {
+    font-size: clamp(1.125rem, 3vw, 1.5rem) !important;
+  }
+  
+  /* Portfolio/Miskatonics header mobile fix */
+  .portfolio-header {
+    padding-top: 1.5rem !important;
+    padding-bottom: 1rem !important;
+    flex-wrap: wrap !important;
+    gap: 1rem !important;
+  }
+  
+  .portfolio-nav {
+    font-size: 0.875rem !important;
+    gap: 1rem !important;
+  }
+  
+  /* Miskatonics blurb mobile fix */
+  .miskatonics-blurb {
+    font-size: 1rem !important;
+    line-height: 1.4 !important;
+    padding: 0 1rem !important;
+  }
+
+  /* Improved Spacing */
+  .container {
+    padding: 0 1rem !important;
+  }
+  
+  .section-spacing {
+    padding-top: 3rem !important;
+    padding-bottom: 3rem !important;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Extra small screens */
+  .hero-title {
+    font-size: 2rem !important;
+  }
+  
+  .blake-title {
+    font-size: 2rem !important;
+  }
+  
+  .container {
+    padding: 0 0.75rem !important;
+  }
+}
+
+/* Landscape phone optimization */
+@media (max-width: 896px) and (orientation: landscape) {
+  .hero-title {
+    font-size: 2.5rem !important;
+  }
+  
+  .team-grid {
+    gap: 3rem !important;
+  }
+}
+
+/* Enhanced touch targets */
+@media (max-width: 768px) {
+  button, a, [role="button"] {
+    min-width: 44px;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Reduce tap delay */
+  * {
+    touch-action: manipulation;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Even smaller screens */
+  .hero-title {
+    font-size: 2.5rem !important;
+  }
+  
+  .logo-display {
+    max-width: 70px !important;
+  }
+  
+  .team-section {
+    margin: 3rem 0 !important;
+  }
+  
+  /* Team avatars maintain reasonable size */
+  .team-grid > div {
+    max-width: 250px !important;
+  }
+  
+  /* Services section */
+  .service-title {
+    font-size: 1.5rem !important;
+  }
+  
+  /* Contact email */
+  .contact-title {
+    font-size: 1.5rem !important;
+  }
+}

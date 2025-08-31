@@ -1,0 +1,204 @@
+%%PDF-1.4
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+
+2 0 obj
+<< /Type /Pages /Kids [3 0 R] /Count 1 >>
+endobj
+
+3 0 obj
+<<
+  /Type /Page
+  /Parent 2 0 R
+  /Resources <<
+    /Font <<
+      /F1 << /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+      /F2 << /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold >>
+      /F3 << /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Oblique >>
+    >>
+  >>
+  /MediaBox [0 0 612 792]
+  /Contents 4 0 R
+>>
+endobj
+
+4 0 obj
+<< /Length 4800 >>
+stream
+BT
+% Header
+/F1 32 Tf
+50 740 Td
+(Blake Carter) Tj
+0 -30 Td
+/F1 16 Tf
+(Technical Leader) Tj
+
+% Philosophy
+0 -35 Td
+/F2 12 Tf
+50 0 Td
+(Envision) Tj
+130 0 Td
+(Collaborate) Tj
+130 0 Td
+(Persevere) Tj
+-360 -14 Td
+/F1 9 Tf
+50 0 Td
+(EXTRAORDINARY) Tj
+130 0 Td
+(CHARISMA) Tj
+130 0 Td
+(ACHIEVE) Tj
+-310 0 Td
+
+% Executive Summary
+0 -30 Td
+/F2 8 Tf
+(EXECUTIVE SUMMARY) Tj
+0 -14 Td
+/F1 10 Tf
+(Transformational technology leader with expertise spanning AI/ML, cloud architecture, and) Tj
+0 -12 Td
+(rapid prototyping. Specialises in cross-pollinating ideas across disciplines to create) Tj
+0 -12 Td
+(innovative solutions. Known for hands-on technical leadership and strategic vision.) Tj
+
+% Experience
+0 -28 Td
+/F2 8 Tf
+(EXPERIENCE) Tj
+0 -16 Td
+
+/F2 11 Tf
+(Co-Founder & Technical Director) Tj
+/F1 10 Tf
+( - d/rksci) Tj
+250 0 Td
+/F3 9 Tf
+(2023 - Present) Tj
+-250 -12 Td
+/F1 9.5 Tf
+(Leading technical strategy for innovation consultancy specialising in rapid prototyping.) Tj
+0 -11 Td
+( * Architected AI-powered solutions for enterprise clients) Tj
+0 -10 Td
+( * Developed rapid prototyping methodology reducing time-to-market by 60%) Tj
+0 -10 Td
+( * Built cross-functional teams delivering transformational products) Tj
+
+0 -20 Td
+/F2 11 Tf
+(Senior Technical Consultant) Tj
+/F1 10 Tf
+( - Independent) Tj
+250 0 Td
+/F3 9 Tf
+(2020 - 2023) Tj
+-250 -12 Td
+/F1 9.5 Tf
+(Strategic technical guidance to organisations navigating digital transformation.) Tj
+0 -11 Td
+( * Led cloud migration achieving 40% cost reduction) Tj
+0 -10 Td
+( * Implemented AI/ML solutions improving efficiency by 35%) Tj
+0 -10 Td
+( * Mentored teams in modern development practices) Tj
+
+0 -20 Td
+/F2 11 Tf
+(Lead Software Engineer) Tj
+/F1 10 Tf
+( - Technology Ventures) Tj
+250 0 Td
+/F3 9 Tf
+(2018 - 2020) Tj
+-250 -12 Td
+/F1 9.5 Tf
+(Spearheaded development of innovative solutions in high-growth environment.) Tj
+0 -11 Td
+( * Designed scalable microservices supporting 1M+ users) Tj
+0 -10 Td
+( * Established CI/CD pipelines reducing deployment by 75%) Tj
+0 -10 Td
+( * Led adoption of modern practices across organisation) Tj
+
+% Research Projects
+0 -28 Td
+/F2 8 Tf
+(RESEARCH PROJECTS) Tj
+0 -16 Td
+
+/F2 10 Tf
+(MapGyver) Tj
+/F3 9 Tf
+( - Lost Person Behaviour Modelling) Tj
+0 -11 Td
+/F1 9 Tf
+(Advanced geospatial AI for search and rescue operations.) Tj
+0 -14 Td
+
+/F2 10 Tf
+(Prophet) Tj
+/F3 9 Tf
+( - Experimental Analytics Platform) Tj
+0 -11 Td
+/F1 9 Tf
+(Predictive analytics leveraging ML for pattern recognition.) Tj
+0 -14 Td
+
+/F2 10 Tf
+(Princhester Associates) Tj
+/F3 9 Tf
+( - Innovation Framework) Tj
+0 -11 Td
+/F1 9 Tf
+(Strategic consulting methodology for rapid innovation.) Tj
+
+% Character Profile
+0 -28 Td
+/F2 8 Tf
+(CHARACTER PROFILE) Tj
+0 -14 Td
+/F1 9.5 Tf
+(/ Thrives on novel challenges and hands-on learning) Tj
+0 -11 Td
+(/ Natural integrator synthesising complexity into clarity) Tj
+0 -11 Td
+(/ Builds trust through authentic relationships and excellence) Tj
+
+% Technical Expertise
+0 -28 Td
+/F2 8 Tf
+(TECHNICAL EXPERTISE) Tj
+0 -14 Td
+/F1 9.5 Tf
+(Core: Python, JavaScript/TypeScript, React, Node.js, Cloud (AWS/GCP/Azure)) Tj
+0 -11 Td
+(Specialisations: AI/ML, Rapid Prototyping, System Architecture, Data Analytics) Tj
+0 -11 Td
+(Methodologies: Agile, Design Thinking, Cross-functional Leadership) Tj
+
+% Contact
+0 -30 Td
+/F1 9 Tf
+(linkedin.com/in/blake-carter  |  drksci.com) Tj
+
+ET
+endstream
+endobj
+
+xref
+0 5
+0000000000 65535 f 
+0000000015 00000 n 
+0000000074 00000 n 
+0000000131 00000 n 
+0000000390 00000 n 
+trailer
+<< /Size 5 /Root 1 0 R >>
+startxref
+5291
+%%EOF

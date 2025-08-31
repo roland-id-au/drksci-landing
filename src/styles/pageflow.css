@@ -1,0 +1,58 @@
+/* Page Flow Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes expand {
+  from {
+    width: 0;
+  }
+  to {
+    width: 8rem; /* 128px */
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 1s ease-out forwards;
+}
+
+.animate-expand {
+  animation: expand 1s ease-out 0.3s forwards;
+  width: 0;
+}
+
+/* Smooth scroll behavior */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Page sections with viewport constraints */
+section[id] {
+  scroll-margin-top: 80px;
+}
+
+/* Add subtle page breaks for print */
+@media print {
+  section[id] {
+    page-break-before: always;
+  }
+}
+
+/* Fade in content on scroll */
+.fade-on-scroll {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.fade-on-scroll.visible {
+  opacity: 1;
+  transform: translateY(0);
+}

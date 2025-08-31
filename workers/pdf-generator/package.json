@@ -1,0 +1,17 @@
+{
+  "name": "drksci-pdf-generator",
+  "version": "1.0.0",
+  "description": "PDF generator worker for drksci.com",
+  "main": "src/index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy"
+  },
+  "dependencies": {
+    "jspdf": "^2.5.1"
+  },
+  "devDependencies": {
+    "wrangler": "^3.0.0"
+  }
+}

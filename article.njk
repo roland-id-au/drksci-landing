@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>{{ title }} | drksci</title>
+  <meta name="description" content="{{ title }} - drksci article">
+  <meta property="og:title" content="{{ title }} | drksci">
+  <meta property="og:description" content="{{ title }} - drksci article">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="drksci">
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "{{ title }}",
+      "publisher": {
+        "@type": "Organization",
+        "name": "drksci"
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="/index.css">
+</head>
+<body>
+  <main>
+    <article>
+      <h1>{{ title }}</h1>
+      <div class="article-content">
+        {{ content | safe }}
+      </div>
+    </article>
+    <section id="comments">
+      <!-- Comments and collaboration will be loaded here by JS -->
+    </section>
+    <section id="collab"></section>
+  </main>
+  <script src="/comments.js" defer></script>
+  <script>
+    window.SUPABASE_URL = '{{ supabase_url | safe }}';
+    window.SUPABASE_ANON_KEY = '{{ supabase_anon_key | safe }}';
+    window.ARTICLE_ID = '{{ title | safe }}';
+  </script>
+  <script src="/collab.js" defer></script>
+</body>
+</html> 

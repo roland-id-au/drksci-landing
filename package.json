@@ -1,0 +1,68 @@
+{
+  "name": "drksci-landing",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.1",
+    "@mui/material": "^7.2.0",
+    "@supabase/supabase-js": "^2.50.3",
+    "cra-template-pwa": "2.0.0",
+    "favicons": "^7.2.0",
+    "html2canvas": "^1.4.1",
+    "jspdf": "^3.0.1",
+    "marked": "^16.0.0",
+    "mermaid": "^11.10.1",
+    "nunjucks": "^3.2.4",
+    "playwright": "^1.53.2",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "react-helmet": "^6.1.0",
+    "react-router-dom": "^7.8.0",
+    "react-scripts": "5.0.1",
+    "web-vitals": "^5.0.3"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "npm run generate-pdf-versions && react-scripts build && npm run copy-pdfs",
+    "build:fast": "react-scripts build",
+    "build:custom": "npm run build:articles && npm run build:favicons && npm run build:homepage",
+    "build:articles": "node publish-articles.js",
+    "build:favicons": "node generate-favicons.js",
+    "build:homepage": "node build-homepage.js",
+    "generate-pdfs": "node scripts/generate-pdfs.js",
+    "generate-pdf-versions": "node scripts/generate-pdf-versions.js",
+    "copy-pdfs": "cp -r public/pdfs build/ 2>/dev/null || mkdir -p build/pdfs",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "deploy": "npm run build && npx wrangler pages deploy build --project-name drksci-landing",
+    "preview": "npm run build && npx wrangler pages dev build",
+    "cf:login": "npx wrangler login",
+    "cf:whoami": "npx wrangler whoami",
+    "cf:project": "npx wrangler pages project create drksci-landing"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.21",
+    "postcss": "^8.5.6",
+    "puppeteer": "^24.17.0",
+    "tailwindcss": "^3.4.17"
+  }
+}

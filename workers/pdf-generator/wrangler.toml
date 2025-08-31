@@ -1,0 +1,7 @@
+name = "drksci-pdf-generator"
+main = "src/index.js"
+compatibility_date = "2024-01-01"
+
+routes = [
+  { pattern = "*drksci.com/api/generate-pdf*", zone_name = "drksci.com" }
+]

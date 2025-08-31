@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en" class="bg-gray-900">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>d/rksci Logo Showcase</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@700&display=swap" rel="stylesheet">
+    <style>
+        /* Custom base styles */
+        body {
+            font-family: 'Exo 2', sans-serif;
+        }
+        /* Custom class to ensure consistent aspect ratio for logos */
+        .logo-aspect {
+            aspect-ratio: 98 / 30;
+        }
+        .square-logo-aspect {
+            aspect-ratio: 1 / 1; /* Correct square aspect ratio */
+        }
+    </style>
+</head>
+<body class="bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100 antialiased">
+
+    <!-- SVG Definitions will be dynamically injected here by JavaScript -->
+    <svg width="0" height="0" style="position:absolute; bottom: 100%;">
+        <defs id="dynamic-defs">
+            <!-- Grayscale Filter Definition -->
+            <filter id="grayscale">
+                <feColorMatrix type="matrix" values="0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0"/>
+            </filter>
+            <!-- Static ClipPath for the Square Logo's bottom-right triangle -->
+            <clipPath id="clip-triangle-bottom-right">
+                <polygon points="100,0 100,100 0,100" />
+            </clipPath>
+            <!-- Gradient for the fade-out mask -->
+            <linearGradient id="fade-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="60%" stop-color="white" stop-opacity="1"/>
+                <stop offset="100%" stop-color="white" stop-opacity="0"/>
+            </linearGradient>
+            <!-- Mask that uses the fade-out gradient -->
+            <mask id="fade-to-bottom-right-mask">
+                <rect width="100" height="100" fill="url(#fade-gradient)" />
+            </mask>
+        </defs>
+    </svg>
+
+    <!-- Main Container -->
+    <div class="container mx-auto p-4 sm:p-6 lg:p-8">
+        <header class="text-center mb-12">
+            <h1 class="text-4xl sm:text-5xl font-bold text-gray-800 dark:text-white">d/rksci Logo Showcase</h1>
+            <p class="mt-4 text-lg text-gray-600 dark:text-gray-400">Brand logo variations, color palettes, and usage examples.</p>
+        </header>
+
+        <!-- Main grid for logo palettes -->
+        <div id="logo-grid" class="grid grid-cols-1 gap-8">
+            <!-- Logo palette sections will be injected here -->
+        </div>
+    </div>
+
+    <script>
+    // --- DATA CONFIGURATION ---
+    // Centralized configuration for all color palettes.
+    const palettes = {
+        primary: {
+            name: 'Primary Palette',
+            dark: {
+                textColor: '#EAEAEA',
+                colors: ['#FF0000', '#00FF00', '#00BFFF'],
+                trailOpacity: 0.6,
+                squareBgColor: '#111827',
+                squareInvertedBgColor: '#FFFFFF' // Inverted color for the top-left segment
+            },
+            light: {
+                textColor: '#050505',
+                colors: ['#FF0000', '#00FF00', '#00BFFF'],
+                trailOpacity: 0.7,
+                squareBgColor: '#FFFFFF',
+                squareInvertedBgColor: '#050505' // Inverted color for the top-left segment
+            }
+        },
+        vaporwave1: {
+            name: 'Vapourwave 1',
+            dark: {
+                textColor: '#EAEAEA',
+                colors: ['#FF00FF', '#00FFFF', '#6400FF'],
+                trailOpacity: 0.6,
+                squareBgColor: '#111827',
+                squareInvertedBgColor: '#FFFFFF'
+            },
+            light: {
+                textColor: '#050505',
+                colors: ['#FF00FF', '#00FFFF', '#6400FF'],
+                trailOpacity: 0.7,
+                squareBgColor: '#FFFFFF',
+                squareInvertedBgColor: '#050505'
+            }
+        },
+        vaporwave2: {
+            name: 'Vapourwave 2',
+            dark: {
+                textColor: '#EAEAEA',
+                colors: ['#0000FF', '#FF69B4', '#FFFF00'],
+                trailOpacity: 0.6,
+                squareBgColor: '#111827',
+                squareInvertedBgColor: '#FFFFFF'
+            },
+            light: {
+                textColor: '#050505',
+                colors: ['#0000C8', '#C8508C', '#C8C800'],
+                trailOpacity: 0.7,
+                squareBgColor: '#FFFFFF',
+                squareInvertedBgColor: '#050505'
+            }
+        },
+        glitch: {
+            name: 'Glitch',
+            dark: {
+                textColor: '#EAEAEA',
+                colors: ['#FE2C55', '#24F6F8', '#EAEAEA'], // Red, Cyan, White
+                trailOpacity: 0.6,
+                squareBgColor: '#111827',
+                squareInvertedBgColor: '#FFFFFF'
+            },
+            light: {
+                textColor: '#050505',
+                colors: ['#FE2C55', '#24F6F8', '#050505'], // Red, Cyan, Black
+                trailOpacity: 0.7,
+                squareBgColor: '#FFFFFF',
+                squareInvertedBgColor: '#050505'
+            }
+        }
+    };
+
+    /**
+     * Dynamically generates and injects all necessary SVG <defs> (gradients)
+     * into the DOM.
+     * @param {object} palettesConfig - The main configuration object for palettes.
+     */
+    function createGradientDefs(palettesConfig) {
+        const defsContainer = document.getElementById('dynamic-defs');
+        let defsHTML = '';
+
+        for (const paletteKey in palettesConfig) {
+            ['light', 'dark'].forEach(theme => {
+                const config = palettesConfig[paletteKey][theme];
+                const [c1, c2, c3] = config.colors;
+                const idPrefix = `${paletteKey}-${theme}`;
+
+                // Gradient for the main logo slash
+                defsHTML += `
+                    <linearGradient id="slash-${idPrefix}" x1="0%" y1="0%" x2="0%" y2="100%">
+                        <stop offset="33%" stop-color="${c1}" /><stop offset="33%" stop-color="${c2}" />
+                        <stop offset="66%" stop-color="${c2}" /><stop offset="66%" stop-color="${c3}" />
+                    </linearGradient>`;
+                
+                // Gradients for the main logo color trails
+                defsHTML += `
+                    <linearGradient id="trail1-${idPrefix}" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" stop-color="${c1}" stop-opacity="0.4" /><stop offset="100%" stop-color="${c1}" stop-opacity="0.1" />
+                    </linearGradient>
+                    <linearGradient id="trail2-${idPrefix}" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" stop-color="${c2}" stop-opacity="0.4" /><stop offset="100%" stop-color="${c2}" stop-opacity="0.1" />
+                    </linearGradient>
+                    <linearGradient id="trail3-${idPrefix}" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" stop-color="${c3}" stop-opacity="0.4" /><stop offset="100%" stop-color="${c3}" stop-opacity="0.1" />
+                    </linearGradient>`;
+            });
+        }
+        defsContainer.innerHTML += defsHTML;
+    }
+
+    /**
+     * Generates the SVG markup for the full d/rksci logo.
+     * @param {object} config - The specific color/theme configuration.
+     * @param {string} idPrefix - The unique ID prefix for gradients.
+     * @returns {string} The complete SVG string.
+     */
+    function getLogoSVG(config, idPrefix) {
+        const [c1, c2, c3] = config.colors;
+        return `
+            <svg viewBox="0 5 98 25" xmlns="http://www.w3.org/2000/svg" class="w-full h-auto logo-aspect">
+                <g transform="translate(-2, 0)">
+                    <g class="color-trail-group">
+                        <path d="M 30 9 L 27.67 14.33 L 30 14.33 L 30 9 Z" fill="${c1}" opacity="${config.trailOpacity}"/>
+                        <path d="M 27.67 14.33 L 25.34 19.66 L 30 19.66 L 30 14.33 Z" fill="${c2}" opacity="${config.trailOpacity}"/>
+                        <path d="M 25.34 19.66 L 23 25 L 30 25 L 30 19.66 Z" fill="${c3}" opacity="${config.trailOpacity}"/>
+                        <path d="M 30 9 L 30 14.33 L 52.67 14.33 L 55 9 Z" fill="url(#trail1-${idPrefix})"/>
+                        <path d="M 30 14.33 L 30 19.66 L 52.67 19.66 L 55 14.33 Z" fill="url(#trail2-${idPrefix})"/>
+                        <path d="M 30 19.66 L 30 25 L 52.67 25 L 55 19.66 Z" fill="url(#trail3-${idPrefix})"/>
+                    </g>
+                    <text x="2" y="25" font-family="'Exo 2', sans-serif" font-size="28" font-weight="700" fill="${config.textColor}">d</text>
+                    <text x="32" y="25" font-family="'Exo 2', sans-serif" font-size="28" font-weight="700" fill="${config.textColor}">rksci</text>
+                    <path d="M23 25 L 18 25 L 25 9 L 30 9 Z" fill="url(#slash-${idPrefix})" />
+                </g>
+            </svg>
+        `;
+    }
+
+    /**
+     * Generates the SVG markup for the new, diagonally-sliced square icon with a gradient fade.
+     * @param {object} config - The specific color/theme configuration.
+     * @returns {string} The complete SVG string.
+     */
+    function getSquareLogoSVG(config) {
+        const [c1, c2, c3] = config.colors;
+        return `
+            <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="w-full h-auto square-logo-aspect">
+                <!-- Top-left triangle with the INVERTED background color -->
+                <polygon points="0,0 100,0 0,100" fill="${config.squareInvertedBgColor}" />
+
+                <!-- A group for the bottom-right triangle, which will be clipped and masked -->
+                <g clip-path="url(#clip-triangle-bottom-right)" mask="url(#fade-to-bottom-right-mask)">
+                    <!-- The three horizontal color bands that fill the entire square before being clipped -->
+                    <rect x="0" y="0" width="100" height="33.33" fill="${c1}" />
+                    <rect x="0" y="33.33" width="100" height="33.33" fill="${c2}" />
+                    <rect x="0" y="66.66" width="100" height="33.34" fill="${c3}" />
+                </g>
+            </svg>
+        `;
+    }
+    
+    /**
+     * Renders all logo variations into the main grid.
+     * @param {object} palettesConfig - The main configuration object for palettes.
+     */
+    function renderLogos(palettesConfig) {
+        const grid = document.getElementById('logo-grid');
+        let gridHTML = '';
+
+        for (const paletteKey in palettesConfig) {
+            const palette = palettesConfig[paletteKey];
+            const darkIdPrefix = `${paletteKey}-dark`;
+            const lightIdPrefix = `${paletteKey}-light`;
+
+            gridHTML += `
+                <div class="bg-white dark:bg-gray-800/50 rounded-2xl shadow-lg overflow-hidden border border-gray-200 dark:border-gray-700">
+                    <h3 class="text-2xl font-bold text-center p-6 bg-gray-50 dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700">${palette.name}</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2">
+                        <!-- Dark Theme Column -->
+                        <div class="p-6 bg-gray-900">
+                            <h4 class="font-bold text-lg mb-6 text-center text-white">On Dark Background</h4>
+                            <div class="space-y-8">
+                                <!-- Full Logo -->
+                                <div>
+                                    <p class="text-sm text-center mb-2 text-gray-400">Full Logo</p>
+                                    <div class="max-w-[200px] mx-auto p-2 border border-dashed rounded-md border-gray-600">${getLogoSVG(palette.dark, darkIdPrefix)}</div>
+                                </div>
+                                <!-- Grayscale -->
+                                <div>
+                                    <p class="text-sm text-center mb-2 text-gray-400">Grayscale</p>
+                                    <div class="max-w-[200px] mx-auto p-2 border border-dashed rounded-md border-gray-600" style="filter: url(#grayscale);">${getLogoSVG(palette.dark, darkIdPrefix)}</div>
+                                </div>
+                                <!-- Square Logo -->
+                                <div>
+                                    <p class="text-sm text-center mb-2 text-gray-400">Square Logo</p>
+                                    <div class="w-16 h-16 mx-auto p-1 border border-dashed rounded-md border-gray-600">${getSquareLogoSVG(palette.dark)}</div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Light Theme Column -->
+                        <div class="p-6 bg-white border-t md:border-t-0 md:border-l border-gray-200 dark:border-gray-700">
+                             <h4 class="font-bold text-lg mb-6 text-center text-gray-900">On Light Background</h4>
+                             <div class="space-y-8">
+                                <!-- Full Logo -->
+                                <div>
+                                    <p class="text-sm text-center mb-2 text-gray-500">Full Logo</p>
+                                    <div class="max-w-[200px] mx-auto p-2 border border-dashed rounded-md border-gray-300">${getLogoSVG(palette.light, lightIdPrefix)}</div>
+                                </div>
+                                <!-- Grayscale -->
+                                <div>
+                                    <p class="text-sm text-center mb-2 text-gray-500">Grayscale</p>
+                                    <div class="max-w-[200px] mx-auto p-2 border border-dashed rounded-md border-gray-300" style="filter: url(#grayscale);">${getLogoSVG(palette.light, lightIdPrefix)}</div>
+                                </div>
+                                <!-- Square Logo -->
+                                <div>
+                                    <p class="text-sm text-center mb-2 text-gray-500">Square Logo</p>
+                                    <div class="w-16 h-16 mx-auto p-1 border border-dashed rounded-md border-gray-300">${getSquareLogoSVG(palette.light)}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+        grid.innerHTML = gridHTML;
+    }
+
+    // --- INITIALIZATION ---
+    // Wait for the DOM to be fully loaded before running scripts.
+    document.addEventListener('DOMContentLoaded', () => {
+        // 1. Create all necessary SVG gradient definitions.
+        createGradientDefs(palettes);
+        // 2. Render all logos into the grid.
+        renderLogos(palettes);
+    });
+    </script>
+
+</body>
+</html>

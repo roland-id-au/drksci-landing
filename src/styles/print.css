@@ -1,0 +1,270 @@
+/* Print Styles for Blake's Resume */
+@media print {
+  /* Reset and base styles */
+  * {
+    color: black !important;
+    background: white !important;
+    box-shadow: none !important;
+  }
+  
+  body {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 11pt;
+    line-height: 1.4;
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Hide elements not needed in print */
+  header.sticky,
+  .print-hide,
+  svg,
+  video,
+  button,
+  a[href^="http"]:after,
+  nav {
+    display: none !important;
+  }
+  
+  /* Main container */
+  .min-h-screen {
+    min-height: auto !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+  
+  .max-w-5xl {
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0.5in !important;
+  }
+  
+  /* Title and headers */
+  h1.blake-title {
+    font-size: 28pt !important;
+    font-weight: 300 !important;
+    margin-bottom: 8pt !important;
+    page-break-after: avoid;
+  }
+  
+  .blake-subtitle {
+    font-size: 18pt !important;
+    font-weight: 300 !important;
+    color: #666 !important;
+    margin-bottom: 24pt !important;
+  }
+  
+  /* Section headers */
+  h2 {
+    font-size: 10pt !important;
+    text-transform: uppercase !important;
+    letter-spacing: 2pt !important;
+    color: #666 !important;
+    margin-top: 18pt !important;
+    margin-bottom: 12pt !important;
+    page-break-after: avoid;
+  }
+  
+  /* Philosophy section */
+  .philosophy-grid {
+    display: flex !important;
+    justify-content: space-between !important;
+    margin-bottom: 24pt !important;
+    page-break-inside: avoid;
+  }
+  
+  .philosophy-grid > div {
+    text-align: center !important;
+    flex: 1 !important;
+  }
+  
+  .philosophy-grid h3 {
+    font-size: 14pt !important;
+    font-weight: 400 !important;
+    margin-bottom: 4pt !important;
+  }
+  
+  .philosophy-grid p {
+    font-size: 9pt !important;
+    text-transform: uppercase !important;
+    color: #999 !important;
+  }
+  
+  /* Text content */
+  p, li {
+    font-size: 11pt !important;
+    line-height: 1.5 !important;
+    color: #333 !important;
+    margin-bottom: 8pt !important;
+  }
+  
+  /* Experience items */
+  .experience-item {
+    page-break-inside: avoid;
+    margin-bottom: 16pt !important;
+  }
+  
+  .experience-header {
+    display: flex !important;
+    justify-content: space-between !important;
+    margin-bottom: 6pt !important;
+  }
+  
+  .experience-title {
+    font-size: 12pt !important;
+    font-weight: 600 !important;
+  }
+  
+  .experience-company {
+    font-size: 11pt !important;
+    color: #666 !important;
+  }
+  
+  .experience-date {
+    font-size: 10pt !important;
+    color: #999 !important;
+  }
+  
+  /* Lists */
+  ul {
+    margin: 8pt 0 !important;
+    padding-left: 20pt !important;
+  }
+  
+  ul li {
+    margin-bottom: 4pt !important;
+    page-break-inside: avoid;
+  }
+  
+  /* Projects */
+  .project-link {
+    page-break-inside: avoid;
+    display: block !important;
+    margin-bottom: 12pt !important;
+  }
+  
+  .project-link span:first-child {
+    font-size: 12pt !important;
+    font-weight: 600 !important;
+  }
+  
+  .project-link span:last-child {
+    font-size: 10pt !important;
+    color: #666 !important;
+    font-style: italic !important;
+  }
+  
+  .project-description {
+    font-size: 10pt !important;
+    color: #555 !important;
+    margin-top: 4pt !important;
+  }
+  
+  /* Character traits */
+  .character-trait {
+    page-break-inside: avoid;
+    margin-bottom: 8pt !important;
+    padding-left: 12pt !important;
+  }
+  
+  .character-trait:before {
+    content: "• " !important;
+    margin-left: -12pt !important;
+  }
+  
+  /* Links - show URL in print */
+  a {
+    color: #333 !important;
+    text-decoration: none !important;
+  }
+  
+  /* Page breaks */
+  section {
+    page-break-inside: avoid;
+  }
+  
+  #profile {
+    page-break-after: auto;
+  }
+  
+  #resume {
+    page-break-before: always;
+  }
+  
+  /* Footer */
+  .print-footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    text-align: center;
+    font-size: 9pt;
+    color: #999;
+    padding: 12pt;
+  }
+  
+  /* Ensure proper margins */
+  @page {
+    margin: 0.5in 0.5in 0.75in 0.5in;
+    size: letter;
+  }
+  
+  /* Icons should be hidden */
+  .w-16, .w-20, .h-16, .h-20 {
+    display: none !important;
+  }
+  
+  /* Borders and dividers */
+  .border-b {
+    border-bottom: 1pt solid #e0e0e0 !important;
+    padding-bottom: 12pt !important;
+    margin-bottom: 12pt !important;
+  }
+  
+  /* Grid adjustments */
+  .grid {
+    display: block !important;
+  }
+  
+  .grid > div {
+    page-break-inside: avoid;
+  }
+  
+  /* Skills section */
+  .skills-grid {
+    columns: 2;
+    column-gap: 24pt;
+  }
+  
+  .skill-category {
+    break-inside: avoid;
+    margin-bottom: 12pt;
+  }
+  
+  /* Responsive text adjustments */
+  .text-xs, .text-sm {
+    font-size: 9pt !important;
+  }
+  
+  .text-base, .text-lg {
+    font-size: 11pt !important;
+  }
+  
+  .text-xl, .text-2xl {
+    font-size: 14pt !important;
+  }
+  
+  .text-3xl, .text-4xl {
+    font-size: 18pt !important;
+  }
+  
+  .text-5xl, .text-6xl, .text-7xl {
+    font-size: 24pt !important;
+  }
+  
+  /* Remove animations and transitions */
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
