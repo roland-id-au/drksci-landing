@@ -1415,44 +1415,320 @@ Blake Carter`,
                 </div>
               </div>
 
-              {/* App Workflow */}
+              {/* App Screens */}
               <div className="mb-12">
-                <h4 className="text-2xl text-white font-extralight mb-6">Field Reporting Workflow</h4>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                  <div className="text-center">
-                    <div className="bg-emerald-500/20 border border-emerald-500/30 rounded-lg p-6 mb-4">
-                      <div className="w-16 h-16 bg-emerald-500/30 rounded-full mx-auto flex items-center justify-center mb-4">
-                        <svg className="w-8 h-8 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"/>
-                        </svg>
-                      </div>
+                <h4 className="text-2xl text-white font-extralight mb-6">Mobile App Screens</h4>
+                <p className="text-gray-300 text-base mb-8">Field reporting application for hazard identification and risk assessment</p>
+                
+                <div className="flex flex-wrap gap-8 justify-center">
+                  {/* Step 1: Check Screen */}
+                  <div className="text-center flex-shrink-0" style={{ width: '300px' }}>
+                    <div className="bg-slate-900/30 border border-slate-700/30 rounded-lg p-4 mb-6">
                       <h5 className="text-xl font-semibold text-white mb-2">Check</h5>
                       <p className="text-gray-300 text-sm">Instant hazard detection and safety status</p>
                     </div>
-                  </div>
-                  
-                  <div className="text-center">
-                    <div className="bg-blue-500/20 border border-blue-500/30 rounded-lg p-6 mb-4">
-                      <div className="w-16 h-16 bg-blue-500/30 rounded-full mx-auto flex items-center justify-center mb-4">
-                        <svg className="w-8 h-8 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/>
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"/>
-                        </svg>
+                    
+                    {/* Phone Mockup */}
+                    <div className="relative mx-auto" style={{ width: '280px', height: '560px' }}>
+                      {/* Phone Frame */}
+                      <div className="absolute inset-0 bg-gray-800 rounded-[2.5rem] border-8 border-gray-700 shadow-2xl">
+                        {/* Camera */}
+                        <div className="absolute top-6 left-1/2 transform -translate-x-1/2 w-3 h-3 bg-gray-600 rounded-full"></div>
+                        
+                        {/* Screen */}
+                        <div className="absolute top-12 left-4 right-4 bottom-4 bg-emerald-500 rounded-[2rem] overflow-hidden">
+                          <div className="flex flex-col items-center justify-center px-6 py-8 h-full relative z-10">
+                            <div className="text-center space-y-6">
+                              {/* Status Icon */}
+                              <div className="w-20 h-20 bg-white/20 rounded-full mx-auto flex items-center justify-center">
+                                <svg className="w-12 h-12 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"/>
+                                </svg>
+                              </div>
+                              
+                              {/* Status Message */}
+                              <div className="space-y-3">
+                                <h6 className="text-xl font-light text-white">No known hazards nearby</h6>
+                                <div className="space-y-1">
+                                  <p className="text-white/80 text-xs">Checked 500m ±20m</p>
+                                  <p className="text-white/80 text-xs">2 hours ago</p>
+                                </div>
+                              </div>
+                              
+                              {/* Action Button */}
+                              <div className="pt-6">
+                                <div className="bg-black text-white py-3 px-4 rounded-lg text-xs font-medium">
+                                  Report a Hazard
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
                       </div>
-                      <h5 className="text-xl font-semibold text-white mb-2">Capture</h5>
-                      <p className="text-gray-300 text-sm">GPS-tagged photo evidence collection</p>
                     </div>
                   </div>
                   
-                  <div className="text-center">
-                    <div className="bg-purple-500/20 border border-purple-500/30 rounded-lg p-6 mb-4">
-                      <div className="w-16 h-16 bg-purple-500/30 rounded-full mx-auto flex items-center justify-center mb-4">
-                        <svg className="w-8 h-8 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/>
-                        </svg>
+                  {/* Step 2: Capture Screen */}
+                  <div className="text-center flex-shrink-0" style={{ width: '300px' }}>
+                    <div className="bg-slate-900/30 border border-slate-700/30 rounded-lg p-4 mb-6">
+                      <h5 className="text-xl font-semibold text-white mb-2">Capture</h5>
+                      <p className="text-gray-300 text-sm">GPS-tagged photo evidence collection</p>
+                    </div>
+                    
+                    {/* Phone Mockup */}
+                    <div className="relative mx-auto" style={{ width: '280px', height: '560px' }}>
+                      {/* Phone Frame */}
+                      <div className="absolute inset-0 bg-gray-800 rounded-[2.5rem] border-8 border-gray-700 shadow-2xl">
+                        {/* Camera */}
+                        <div className="absolute top-6 left-1/2 transform -translate-x-1/2 w-3 h-3 bg-gray-600 rounded-full"></div>
+                        
+                        {/* Screen */}
+                        <div className="absolute top-12 left-4 right-4 bottom-4 bg-gray-900 rounded-[2rem] overflow-hidden relative">
+                          {/* Camera Background */}
+                          <div className="absolute inset-0 bg-gradient-to-br from-green-900/40 via-gray-800 to-gray-900"></div>
+                          
+                          {/* Safety Warning */}
+                          <div className="absolute top-4 left-4 right-4 z-20">
+                            <div className="bg-black/80 px-4 py-2 rounded-full">
+                              <div className="text-yellow-300 text-xs font-bold text-center">
+                                ⚠️ STAY OUT, STAY ALIVE ⚠️
+                              </div>
+                            </div>
+                          </div>
+                          
+                          {/* Camera Crosshair */}
+                          <div className="absolute inset-0 flex items-center justify-center">
+                            <div className="w-32 h-32 border-2 border-white/50 rounded-lg">
+                              <div className="absolute top-0 left-1/2 w-px h-4 bg-white/50 transform -translate-x-1/2"></div>
+                              <div className="absolute bottom-0 left-1/2 w-px h-4 bg-white/50 transform -translate-x-1/2"></div>
+                              <div className="absolute top-1/2 left-0 w-4 h-px bg-white/50 transform -translate-y-1/2"></div>
+                              <div className="absolute top-1/2 right-0 w-4 h-px bg-white/50 transform -translate-y-1/2"></div>
+                            </div>
+                          </div>
+                          
+                          {/* Capture Button */}
+                          <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2">
+                            <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center">
+                              <div className="w-12 h-12 bg-gray-300 rounded-full"></div>
+                            </div>
+                          </div>
+                        </div>
                       </div>
+                    </div>
+                  </div>
+                  
+                  {/* Step 3: Submit Screen */}
+                  <div className="text-center flex-shrink-0" style={{ width: '300px' }}>
+                    <div className="bg-slate-900/30 border border-slate-700/30 rounded-lg p-4 mb-6">
                       <h5 className="text-xl font-semibold text-white mb-2">Submit</h5>
                       <p className="text-gray-300 text-sm">Automated priority assessment and routing</p>
+                    </div>
+                    
+                    {/* Phone Mockup */}
+                    <div className="relative mx-auto" style={{ width: '280px', height: '560px' }}>
+                      {/* Phone Frame */}
+                      <div className="absolute inset-0 bg-gray-800 rounded-[2.5rem] border-8 border-gray-700 shadow-2xl">
+                        {/* Camera */}
+                        <div className="absolute top-6 left-1/2 transform -translate-x-1/2 w-3 h-3 bg-gray-600 rounded-full"></div>
+                        
+                        {/* Screen */}
+                        <div className="absolute top-12 left-4 right-4 bottom-4 bg-slate-800 rounded-[2rem] overflow-hidden">
+                          <div className="p-6 h-full flex flex-col">
+                            {/* Header */}
+                            <div className="text-center mb-6">
+                              <h6 className="text-white text-sm font-medium mb-2">Risk Assessment</h6>
+                              <p className="text-gray-400 text-xs">How dangerous is this hazard?</p>
+                            </div>
+                            
+                            {/* Risk Levels */}
+                            <div className="flex-1 space-y-3">
+                              <div className="bg-green-700/20 border border-green-500/30 rounded-lg p-3">
+                                <div className="text-center">
+                                  <div className="text-sm mb-1">🟢</div>
+                                  <div className="text-green-300 text-xs font-semibold">Low Risk</div>
+                                  <div className="text-gray-400 text-xs">Minor hazard</div>
+                                </div>
+                              </div>
+                              <div className="bg-yellow-700/20 border border-yellow-500/30 rounded-lg p-3">
+                                <div className="text-center">
+                                  <div className="text-sm mb-1">🟡</div>
+                                  <div className="text-yellow-300 text-xs font-semibold">Medium Risk</div>
+                                  <div className="text-gray-400 text-xs">Potential injury</div>
+                                </div>
+                              </div>
+                              <div className="bg-red-700/20 border border-red-500/30 rounded-lg p-3">
+                                <div className="text-center">
+                                  <div className="text-sm mb-1">🔴</div>
+                                  <div className="text-red-300 text-xs font-semibold">High Risk</div>
+                                  <div className="text-gray-400 text-xs">Immediate danger</div>
+                                </div>
+                              </div>
+                            </div>
+                            
+                            {/* Submit Button */}
+                            <div className="pt-4">
+                              <div className="bg-gradient-to-r from-cyan-500 to-cyan-600 text-white py-3 rounded-lg text-xs font-semibold text-center">
+                                Submit Report
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Dashboard Section */}
+              <div className="mb-12">
+                <h4 className="text-2xl text-white font-extralight mb-6">AMLP Staff Dashboard</h4>
+                <p className="text-gray-300 text-base mb-8">Real-time hazard monitoring and regulatory oversight for Queensland's abandoned mine program staff</p>
+                
+                {/* Browser Mockup */}
+                <div className="w-full border border-gray-700/40 bg-gradient-to-br from-gray-800/30 to-gray-900/40 shadow-2xl rounded-lg overflow-hidden" style={{ height: '500px' }}>
+                  {/* Browser Header */}
+                  <div className="bg-gray-800/50 px-4 py-2 border-b border-gray-700/30">
+                    <div className="flex items-center space-x-2">
+                      <div className="flex space-x-1">
+                        <div className="w-3 h-3 bg-red-500 rounded-full"></div>
+                        <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
+                        <div className="w-3 h-3 bg-green-500 rounded-full"></div>
+                      </div>
+                      <div className="flex-1 bg-gray-700/50 rounded px-3 py-1 text-white text-xs">
+                        dashboard.amlpcanary.qld.gov.au
+                      </div>
+                    </div>
+                  </div>
+                  
+                  {/* Dashboard Content */}
+                  <div className="bg-gradient-to-br from-slate-800/50 to-slate-900/40 p-6 h-full">
+                    <div className="grid grid-cols-12 gap-4 h-full">
+                      
+                      {/* Left Side - Stats & Event List */}
+                      <div className="col-span-5 space-y-4">
+                        {/* Stats Grid */}
+                        <div className="grid grid-cols-3 gap-3">
+                          <div className="bg-slate-900/40 rounded-lg p-3 text-center border border-slate-700/30">
+                            <div className="text-red-400 text-xl font-light">12</div>
+                            <div className="text-gray-400 text-xs uppercase tracking-wider">Critical</div>
+                          </div>
+                          <div className="bg-slate-900/40 rounded-lg p-3 text-center border border-slate-700/30">
+                            <div className="text-amber-400 text-xl font-light">24</div>
+                            <div className="text-gray-400 text-xs uppercase tracking-wider">Pending</div>
+                          </div>
+                          <div className="bg-slate-900/40 rounded-lg p-3 text-center border border-slate-700/30">
+                            <div className="text-emerald-400 text-xl font-light">143</div>
+                            <div className="text-gray-400 text-xs uppercase tracking-wider">Controlled</div>
+                          </div>
+                        </div>
+                        
+                        {/* Active Events Header */}
+                        <div className="flex items-center justify-between">
+                          <h5 className="text-white text-sm font-medium">Active Events</h5>
+                          <div className="flex items-center space-x-2">
+                            <div className="w-2 h-2 bg-red-500 rounded-full animate-pulse"></div>
+                            <span className="text-gray-400 text-xs">Live Feed</span>
+                          </div>
+                        </div>
+                        
+                        {/* Event List */}
+                        <div className="space-y-2 overflow-y-auto" style={{ maxHeight: '300px' }}>
+                          {/* Priority Event */}
+                          <div className="bg-red-900/30 border border-red-600/40 rounded-lg p-3">
+                            <div className="flex items-start justify-between">
+                              <div className="flex items-start space-x-2">
+                                <div className="px-1.5 py-0.5 bg-red-500 text-white text-xs font-bold rounded">P1</div>
+                                <div>
+                                  <div className="text-white text-sm font-medium">#AML-2024-0847</div>
+                                  <div className="text-red-300 text-xs">Acid Mine Drainage</div>
+                                  <div className="text-gray-400 text-xs">Mount Morgan • 2 min ago</div>
+                                </div>
+                              </div>
+                              <div className="text-red-400 text-xs">LIVE</div>
+                            </div>
+                          </div>
+                          
+                          {/* Other Events */}
+                          <div className="bg-slate-900/30 border border-slate-700/40 rounded-lg p-3">
+                            <div className="flex items-start justify-between">
+                              <div className="flex items-start space-x-2">
+                                <div className="px-1.5 py-0.5 bg-red-500 text-white text-xs font-bold rounded">P1</div>
+                                <div>
+                                  <div className="text-white text-sm">#AML-2024-0846</div>
+                                  <div className="text-orange-300 text-xs">Shaft Collapse</div>
+                                  <div className="text-gray-400 text-xs">Irvinebank • 8 min ago</div>
+                                </div>
+                              </div>
+                              <div className="text-orange-400 text-xs">ACTIVE</div>
+                            </div>
+                          </div>
+                          
+                          <div className="bg-slate-900/30 border border-slate-700/40 rounded-lg p-3">
+                            <div className="flex items-start justify-between">
+                              <div className="flex items-start space-x-2">
+                                <div className="px-1.5 py-0.5 bg-orange-500 text-white text-xs font-bold rounded">P2</div>
+                                <div>
+                                  <div className="text-white text-sm">#AML-2024-0845</div>
+                                  <div className="text-yellow-300 text-xs">Water Contamination</div>
+                                  <div className="text-gray-400 text-xs">Drake • 15 min ago</div>
+                                </div>
+                              </div>
+                              <div className="text-yellow-400 text-xs">PENDING</div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      
+                      {/* Right Side - Map View */}
+                      <div className="col-span-7">
+                        <div className="bg-slate-900/40 border border-slate-700/30 rounded-lg h-full relative overflow-hidden">
+                          {/* Map Header */}
+                          <div className="absolute top-4 left-4 right-4 z-10">
+                            <div className="flex items-center justify-between">
+                              <h5 className="text-white text-sm font-medium">Queensland Hazard Map</h5>
+                              <div className="bg-black/50 px-3 py-1 rounded text-white text-xs">
+                                Live: 179 sites monitored
+                              </div>
+                            </div>
+                          </div>
+                          
+                          {/* Map Background */}
+                          <div className="absolute inset-0 bg-gradient-to-br from-green-900/20 via-slate-800 to-slate-900">
+                            {/* Simulated map with hazard markers */}
+                            <div className="absolute inset-4 rounded">
+                              {/* Priority markers */}
+                              <div className="absolute top-12 left-20 w-3 h-3 bg-red-500 rounded-full animate-pulse border-2 border-white"></div>
+                              <div className="absolute top-24 right-16 w-3 h-3 bg-red-500 rounded-full animate-pulse border-2 border-white"></div>
+                              <div className="absolute bottom-20 left-12 w-2 h-2 bg-orange-500 rounded-full border border-white"></div>
+                              <div className="absolute bottom-32 right-24 w-2 h-2 bg-yellow-500 rounded-full border border-white"></div>
+                              <div className="absolute top-16 right-32 w-1.5 h-1.5 bg-green-500 rounded-full"></div>
+                              <div className="absolute bottom-16 left-32 w-1.5 h-1.5 bg-green-500 rounded-full"></div>
+                              
+                              {/* Legend */}
+                              <div className="absolute bottom-4 right-4 bg-black/60 rounded p-3">
+                                <div className="space-y-1">
+                                  <div className="flex items-center space-x-2">
+                                    <div className="w-2 h-2 bg-red-500 rounded-full"></div>
+                                    <span className="text-white text-xs">Critical (P1)</span>
+                                  </div>
+                                  <div className="flex items-center space-x-2">
+                                    <div className="w-2 h-2 bg-orange-500 rounded-full"></div>
+                                    <span className="text-white text-xs">High (P2)</span>
+                                  </div>
+                                  <div className="flex items-center space-x-2">
+                                    <div className="w-2 h-2 bg-yellow-500 rounded-full"></div>
+                                    <span className="text-white text-xs">Medium (P3)</span>
+                                  </div>
+                                  <div className="flex items-center space-x-2">
+                                    <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                                    <span className="text-white text-xs">Controlled</span>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
