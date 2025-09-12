@@ -49,6 +49,7 @@ const CandidateApplication = () => {
     'vision-areas': 'Scope',
     'vision-context': 'Context',
     'program-evolution': 'Program Evolution',
+    'canary-app': 'Canary App',
     'executive-summary': 'Summary',
     'experience': 'Experience',
     'competencies': 'Competencies',
@@ -308,7 +309,6 @@ Blake Carter`,
       const sections = [
         'cover-letter',
         'vision-statement',
-        'canary-app',
         'resume',
         'reflection'
       ];
@@ -320,6 +320,7 @@ Blake Carter`,
         'vision-areas',
         'vision-context',
         'program-evolution',
+        'canary-app',
         'executive-summary',
         'experience',
         'competencies',
@@ -354,7 +355,7 @@ Blake Carter`,
       if (currentSection === 'vision-statement') {
         relevantSubsections = ['background-vision', 'strategic-pillars', 'vision-areas'];
       } else if (currentSection === 'vision-statement') {
-        relevantSubsections = ['vision-context', 'program-evolution'];
+        relevantSubsections = ['vision-context', 'program-evolution', 'canary-app'];
       } else if (currentSection === 'resume') {
         relevantSubsections = ['executive-summary', 'experience', 'competencies', 'education'];
       }
@@ -653,17 +654,15 @@ Blake Carter`,
                     >
                       Program Evolution
                     </button>
+                    <button
+                      onClick={() => document.getElementById('canary-app').scrollIntoView({ behavior: 'smooth' })}
+                      className={`block w-full text-left text-xs transition-colors pl-4 ${
+                        activeSubsection === 'canary-app' ? 'text-gray-100' : (activeSection === 'vision-statement' ? 'text-gray-400' : 'text-gray-500 hover:text-gray-300')
+                      }`}
+                    >
+                      Canary App
+                    </button>
                   </div>
-                </div>
-                <div className={`rounded transition-all py-1 px-2 ${activeSection === 'canary-app' ? 'bg-gray-700/30 border-l-2 border-white' : 'bg-transparent'}`}>
-                  <button
-                    onClick={() => document.getElementById('canary-app').scrollIntoView({ behavior: 'smooth' })}
-                    className={`block w-full text-left text-sm py-2 px-2 transition-all ${
-                      activeSection === 'canary-app' ? 'text-white font-medium' : 'text-gray-300 hover:text-white'
-                    }`}
-                  >
-                    Canary App
-                  </button>
                 </div>
                 <div className={`rounded transition-all py-1 px-2 ${activeSection === 'resume' ? 'bg-gray-700/30 border-l-2 border-white' : 'bg-transparent'}`}>
                   <button
@@ -1265,17 +1264,13 @@ Blake Carter`,
                 </p>
               </div>
             </div>
-          </section>
-
-          {/* Canary App Section */}
-          <section id="canary-app" className="relative min-h-screen flex flex-col justify-center py-20">
-            <div className="mb-8">
-              <h2 className="text-3xl font-light text-gray-400 tracking-widest mb-4 px-4 sm:px-8">CANARY APP</h2>
-            </div>
-            
-            <div className="max-w-6xl px-4 sm:px-8">
-              <div className="mb-8">
-                <h3 className="text-4xl text-white font-extralight mb-6" style={{ fontFamily: 'Manrope, sans-serif' }}>Digital hazard intelligence for Queensland's abandoned mine program</h3>
+              
+              {/* Canary App Subsection */}
+              <div id="canary-app" className="mt-16">
+                <h3 className="text-2xl font-light text-gray-400 tracking-wider mb-6">Canary App</h3>
+                
+                <div className="mb-8">
+                  <h4 className="text-4xl text-white font-extralight mb-6" style={{ fontFamily: 'Manrope, sans-serif' }}>Digital hazard intelligence for Queensland's abandoned mine program</h4>
                 <p className="text-lg text-gray-300 mb-6 leading-relaxed max-w-4xl">
                   What if every abandoned mine hazard was managed through the proper risk framework? Industry operators and staff identify hazards with GPS precision, AMLP staff assess priority levels with photo evidence, and control measures are implemented with full regulatory compliance—all starting with a field report.
                 </p>
@@ -1362,6 +1357,64 @@ Blake Carter`,
                 </div>
               </div>
 
+              {/* User Stories */}
+              <div className="mb-12">
+                <h4 className="text-2xl text-white font-extralight mb-6">User Stories</h4>
+                <p className="text-gray-300 text-base mb-6">How different professionals use Canary for hazard reporting in the field</p>
+                
+                <div className="grid lg:grid-cols-3 gap-6 mb-8">
+                  {/* Exploration Driller */}
+                  <div className="bg-gradient-to-br from-cyan-900/20 via-slate-800/50 to-slate-900/50 rounded-lg p-4 border border-cyan-500/20 hover:border-cyan-400/30 transition-all duration-300">
+                    <div className="flex items-center space-x-3 mb-3">
+                      <div className="w-8 h-8 bg-cyan-500/20 rounded-lg flex items-center justify-center">
+                        <svg className="w-4 h-4 text-cyan-400" fill="currentColor" viewBox="0 0 24 24">
+                          <path d="M12 2C8.13 2 5 5.13 5 9c0 1.74.5 3.37 1.41 4.84.95 1.54 2.2 2.86 3.16 4.4.47.75.43 1.76.43 1.76s-.04-1.01.43-1.76c.96-1.54 2.21-2.86 3.16-4.4C14.5 12.37 15 10.74 15 9c0-3.87-3.13-7-7-7zm0 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2z"/>
+                        </svg>
+                      </div>
+                      <div>
+                        <h5 className="text-cyan-300 font-medium text-sm">Exploration Driller</h5>
+                        <p className="text-gray-400 text-xs">Remote operations</p>
+                      </div>
+                    </div>
+                    <p className="text-gray-300 text-sm leading-relaxed">"I photograph old shafts and unstable ground to keep my crew safe. The app works offline in remote areas."</p>
+                  </div>
+                  
+                  {/* Environmental Scientist */}
+                  <div className="bg-gradient-to-br from-green-900/20 via-slate-800/50 to-slate-900/50 rounded-lg p-4 border border-green-500/20 hover:border-green-400/30 transition-all duration-300">
+                    <div className="flex items-center space-x-3 mb-3">
+                      <div className="w-8 h-8 bg-green-500/20 rounded-lg flex items-center justify-center">
+                        <svg className="w-4 h-4 text-green-400" fill="currentColor" viewBox="0 0 24 24">
+                          <path d="M12 2C9.79 2 8 3.79 8 6s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4zm0 6c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2z"/>
+                          <path d="M8 12c-2.76 0-5 2.24-5 5 0 1.66 1.34 3 3 3h8c1.66 0 3-1.34 3-3 0-2.76-2.24-5-5-5H8z" opacity="0.7"/>
+                        </svg>
+                      </div>
+                      <div>
+                        <h5 className="text-green-300 font-medium text-sm">Environmental Scientist</h5>
+                        <p className="text-gray-400 text-xs">Site assessment</p>
+                      </div>
+                    </div>
+                    <p className="text-gray-300 text-sm leading-relaxed">"I collect standardized reports with precise GPS data and photos for regulatory compliance assessments."</p>
+                  </div>
+                  
+                  {/* Park Ranger */}
+                  <div className="bg-gradient-to-br from-yellow-900/20 via-slate-800/50 to-slate-900/50 rounded-lg p-4 border border-yellow-500/20 hover:border-yellow-400/30 transition-all duration-300">
+                    <div className="flex items-center space-x-3 mb-3">
+                      <div className="w-8 h-8 bg-yellow-500/20 rounded-lg flex items-center justify-center">
+                        <svg className="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 24 24">
+                          <path d="M12 2l-1.09 8.26C10.73 11.17 10 12 10 13c0 1.1.9 2 2 2s2-.9 2-2c0-1-.73-1.83-.91-2.74L12 2z"/>
+                          <path d="M4 10c0 1.1.9 2 2 2h2v6c0 2.21 1.79 4 4 4s4-1.79 4-4v-6h2c1.1 0 2-.9 2-2 0-1.1-.9-2-2-2H6c-1.1 0-2 .9-2 2z" fill="none"/>
+                        </svg>
+                      </div>
+                      <div>
+                        <h5 className="text-yellow-300 font-medium text-sm">Park Ranger</h5>
+                        <p className="text-gray-400 text-xs">Public safety</p>
+                      </div>
+                    </div>
+                    <p className="text-gray-300 text-sm leading-relaxed">"I guide visitors to safely report hazards from a distance, coordinating area closures and emergency responses."</p>
+                  </div>
+                </div>
+              </div>
+
               {/* App Workflow */}
               <div className="mb-12">
                 <h4 className="text-2xl text-white font-extralight mb-6">Field Reporting Workflow</h4>
@@ -1419,6 +1472,7 @@ Blake Carter`,
                     </p>
                   </div>
                 </div>
+              </div>
               </div>
             </div>
           </section>
