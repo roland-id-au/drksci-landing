@@ -1473,7 +1473,6 @@ Blake Carter`,
                   </div>
                 </div>
               </div>
-              </div>
             </div>
           </section>
 
