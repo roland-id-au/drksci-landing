@@ -1431,12 +1431,12 @@ Blake Carter`,
                     {/* Phone Mockup */}
                     <div className="relative mx-auto" style={{ width: '200px', height: '400px' }}>
                       {/* Phone Frame */}
-                      <div className="absolute inset-0 bg-slate-800/50 rounded-[2rem] border-4 border-slate-700/40 shadow-xl backdrop-blur-sm">
+                      <div className="absolute inset-0 bg-slate-900/50 rounded-3xl border-2 border-slate-700/30 shadow-lg">
                         {/* Camera */}
-                        <div className="absolute top-4 left-1/2 transform -translate-x-1/2 w-2 h-2 bg-slate-600/50 rounded-full"></div>
+                        <div className="absolute top-3 left-1/2 transform -translate-x-1/2 w-2 h-2 bg-slate-600/60 rounded-full"></div>
                         
                         {/* Screen */}
-                        <div className="absolute top-8 left-3 right-3 bottom-3 bg-emerald-500/90 rounded-[1.5rem] overflow-hidden border border-emerald-400/20">
+                        <div className="absolute top-6 left-3 right-3 bottom-3 bg-emerald-500/90 rounded-2xl overflow-hidden border border-slate-600/20">
                           <div className="flex flex-col items-center justify-center px-4 py-6 h-full relative z-10">
                             <div className="text-center space-y-4">
                               {/* Status Icon */}
@@ -1478,12 +1478,12 @@ Blake Carter`,
                     {/* Phone Mockup */}
                     <div className="relative mx-auto" style={{ width: '200px', height: '400px' }}>
                       {/* Phone Frame */}
-                      <div className="absolute inset-0 bg-slate-800/50 rounded-[2rem] border-4 border-slate-700/40 shadow-xl backdrop-blur-sm">
+                      <div className="absolute inset-0 bg-slate-900/50 rounded-3xl border-2 border-slate-700/30 shadow-lg">
                         {/* Camera */}
-                        <div className="absolute top-4 left-1/2 transform -translate-x-1/2 w-2 h-2 bg-slate-600/50 rounded-full"></div>
+                        <div className="absolute top-3 left-1/2 transform -translate-x-1/2 w-2 h-2 bg-slate-600/60 rounded-full"></div>
                         
                         {/* Screen */}
-                        <div className="absolute top-8 left-3 right-3 bottom-3 bg-gray-900/90 rounded-[1.5rem] overflow-hidden relative border border-gray-700/20">
+                        <div className="absolute top-6 left-3 right-3 bottom-3 bg-gray-900/90 rounded-2xl overflow-hidden relative border border-slate-600/20">
                           {/* Camera Background */}
                           <div className="absolute inset-0 bg-gradient-to-br from-green-900/40 via-gray-800 to-gray-900"></div>
                           
@@ -1527,12 +1527,12 @@ Blake Carter`,
                     {/* Phone Mockup */}
                     <div className="relative mx-auto" style={{ width: '200px', height: '400px' }}>
                       {/* Phone Frame */}
-                      <div className="absolute inset-0 bg-slate-800/50 rounded-[2rem] border-4 border-slate-700/40 shadow-xl backdrop-blur-sm">
+                      <div className="absolute inset-0 bg-slate-900/50 rounded-3xl border-2 border-slate-700/30 shadow-lg">
                         {/* Camera */}
-                        <div className="absolute top-4 left-1/2 transform -translate-x-1/2 w-2 h-2 bg-slate-600/50 rounded-full"></div>
+                        <div className="absolute top-3 left-1/2 transform -translate-x-1/2 w-2 h-2 bg-slate-600/60 rounded-full"></div>
                         
                         {/* Screen */}
-                        <div className="absolute top-8 left-3 right-3 bottom-3 bg-slate-800/90 rounded-[1.5rem] overflow-hidden border border-slate-700/20">
+                        <div className="absolute top-6 left-3 right-3 bottom-3 bg-slate-800/90 rounded-2xl overflow-hidden border border-slate-600/20">
                           <div className="p-4 h-full flex flex-col">
                             {/* Header */}
                             <div className="text-center mb-3">
