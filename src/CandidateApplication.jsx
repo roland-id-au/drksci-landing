@@ -6,7 +6,6 @@ import { blakeProfileData } from './data/blakeProfile';
 import { ExecutiveSummary, ProfessionalExperience, CoreCompetencies, Education } from './components/ProfileComponents';
 import PdfVersion from './components/PdfVersion';
 import mermaid from 'mermaid';
-import './styles/print.css';
 import './styles/pageflow.css';
 
 // Candidate Presentation Page - For Hiring Managers/Recruiters
@@ -172,25 +171,25 @@ const CandidateApplication = () => {
           experience: [
             {
               title: 'Founder',
-              company: <a href="https://drksci.com" target="_blank" rel="noopener noreferrer" className="company-badge"><img src="/assets/drksci-favicon.svg" className="inline w-3 h-3 mr-1" alt="" />d/rksci</a>,
+              company: <a href="https://drksci.com" target="_blank" rel="noopener noreferrer" className="company-badge"><img src="/assets/brand/drksci-favicon.svg" className="inline w-3 h-3 mr-1" alt="" />d/rksci</a>,
               period: 'Aug 2024 - Present',
               description: 'Innovation laboratory exploring AI, data science, and practical business applications. Created MapGyver (AI-powered lost person modelling), rained.cloud (100+ years weather data preservation)'
             },
             {
               title: 'Chief Executive Officer',
-              company: <><a href="https://www.valueprosoftware.com" target="_blank" rel="noopener noreferrer" className="company-badge"><img src="/assets/valuepro-favicon.png" className="inline w-3 h-3 mr-1" alt="" />ValuePRO Software</a> (<a href="https://omegro.com" target="_blank" rel="noopener noreferrer" className="company-badge"><img src="/assets/omegro-favicon.png" className="inline w-3 h-3 mr-1" alt="" />Omegro</a>, an operating group of <a href="https://www.csisoftware.com" target="_blank" rel="noopener noreferrer" className="company-badge"><img src="/assets/constellation-favicon.ico" className="inline w-3 h-3 mr-1" alt="" />Constellation Software</a>)</>,
+              company: <><a href="https://www.valueprosoftware.com" target="_blank" rel="noopener noreferrer" className="company-badge"><img src="/assets/brand/valuepro-favicon.png" className="inline w-3 h-3 mr-1" alt="" />ValuePRO Software</a> (<a href="https://omegro.com" target="_blank" rel="noopener noreferrer" className="company-badge"><img src="/assets/brand/omegro-favicon.png" className="inline w-3 h-3 mr-1" alt="" />Omegro</a>, an operating group of <a href="https://www.csisoftware.com" target="_blank" rel="noopener noreferrer" className="company-badge"><img src="/assets/brand/constellation-favicon.ico" className="inline w-3 h-3 mr-1" alt="" />Constellation Software</a>)</>,
               period: 'Jan 2022 - Aug 2024',
               description: 'Led strategic transformation and platform modernisation. Achieved eNPS 8.5-9.5, maintained SaaS rule of 40, replatformed 450k+ LOC core product in under 12 months'
             },
             {
               title: 'Operations Manager',
-              company: <><a href="https://www.valueprosoftware.com" target="_blank" rel="noopener noreferrer" className="company-badge"><img src="/assets/valuepro-favicon.png" className="inline w-3 h-3 mr-1" alt="" />ValuePRO Software</a> (<a href="https://omegro.com" target="_blank" rel="noopener noreferrer" className="company-badge"><img src="/assets/omegro-favicon.png" className="inline w-3 h-3 mr-1" alt="" />Omegro</a>)</>,
+              company: <><a href="https://www.valueprosoftware.com" target="_blank" rel="noopener noreferrer" className="company-badge"><img src="/assets/brand/valuepro-favicon.png" className="inline w-3 h-3 mr-1" alt="" />ValuePRO Software</a> (<a href="https://omegro.com" target="_blank" rel="noopener noreferrer" className="company-badge"><img src="/assets/brand/omegro-favicon.png" className="inline w-3 h-3 mr-1" alt="" />Omegro</a>)</>,
               period: 'Jan 2017 - Jan 2022',
               description: 'Managed development teams and ran comprehensive GRC program. Maintained ISO27001/9001 certification with zero audit findings for 5+ years'
             },
             {
               title: 'Senior Software Architect',
-              company: <><a href="https://www.valueprosoftware.com" target="_blank" rel="noopener noreferrer" className="company-badge"><img src="/assets/valuepro-favicon.png" className="inline w-3 h-3 mr-1" alt="" />ValuePRO Software</a> (<a href="https://omegro.com" target="_blank" rel="noopener noreferrer" className="company-badge"><img src="/assets/omegro-favicon.png" className="inline w-3 h-3 mr-1" alt="" />Omegro</a>)</>,
+              company: <><a href="https://www.valueprosoftware.com" target="_blank" rel="noopener noreferrer" className="company-badge"><img src="/assets/brand/valuepro-favicon.png" className="inline w-3 h-3 mr-1" alt="" />ValuePRO Software</a> (<a href="https://omegro.com" target="_blank" rel="noopener noreferrer" className="company-badge"><img src="/assets/brand/omegro-favicon.png" className="inline w-3 h-3 mr-1" alt="" />Omegro</a>)</>,
               period: 'Apr 2016 - Jan 2017',
               description: 'Spearheaded platform modernisation, established CI/CD pipelines, managed 100:2 consolidation of divergent codebases'
             }
@@ -309,7 +308,7 @@ Blake Carter`,
       const sections = [
         'cover-letter',
         'vision-statement',
-        'vision-statement',
+        'canary-app',
         'resume',
         'reflection'
       ];
@@ -656,6 +655,16 @@ Blake Carter`,
                     </button>
                   </div>
                 </div>
+                <div className={`rounded transition-all py-1 px-2 ${activeSection === 'canary-app' ? 'bg-gray-700/30 border-l-2 border-white' : 'bg-transparent'}`}>
+                  <button
+                    onClick={() => document.getElementById('canary-app').scrollIntoView({ behavior: 'smooth' })}
+                    className={`block w-full text-left text-sm py-2 px-2 transition-all ${
+                      activeSection === 'canary-app' ? 'text-white font-medium' : 'text-gray-300 hover:text-white'
+                    }`}
+                  >
+                    Canary App
+                  </button>
+                </div>
                 <div className={`rounded transition-all py-1 px-2 ${activeSection === 'resume' ? 'bg-gray-700/30 border-l-2 border-white' : 'bg-transparent'}`}>
                   <button
                     onClick={() => document.getElementById('resume').scrollIntoView({ behavior: 'smooth' })}
@@ -842,7 +851,7 @@ Blake Carter`,
                 <h3 className="text-base font-light mb-12 text-white tracking-[0.3em] uppercase px-4 sm:px-8">Leadership</h3>
                 <div className="px-4 sm:px-8">
                   <p className="text-lg leading-relaxed mb-4 text-gray-300 serif-cover-letter">
-                    My progression from Senior Software Architect to Operations Manager to CEO at <a href="https://www.valueprosoftware.com" target="_blank" rel="noopener noreferrer" className="company-badge"><img src="/assets/valuepro-favicon.png" className="inline w-3 h-3 mr-1" alt="" />ValuePRO Software</a> demonstrates the capabilities essential for this role. As Operations Manager, I led multidisciplinary teams while running comprehensive GRC programs across the Secure Controls Framework, Essential Eight, IRAP assessments, and ISO27001/9001 certifications, achieving zero audit findings across 5+ years.
+                    My progression from Senior Software Architect to Operations Manager to CEO at <a href="https://www.valueprosoftware.com" target="_blank" rel="noopener noreferrer" className="company-badge"><img src="/assets/brand/valuepro-favicon.png" className="inline w-3 h-3 mr-1" alt="" />ValuePRO Software</a> demonstrates the capabilities essential for this role. As Operations Manager, I led multidisciplinary teams while running comprehensive GRC programs across the Secure Controls Framework, Essential Eight, IRAP assessments, and ISO27001/9001 certifications, achieving zero audit findings across 5+ years.
                   </p>
                   <p className="text-lg leading-relaxed text-gray-300 serif-cover-letter">
                     As CEO, I successfully revitalised complex software portfolios during organisational restructuring, achieving exceptional performance metrics including eNPS of 8.5–9.5. This GRC expertise and transformation experience directly translates to implementing the Risk and Prioritisation Framework for Abandoned Mines and leading the Asset Management transformation project.
@@ -855,7 +864,7 @@ Blake Carter`,
                 <h3 className="text-base font-light mb-12 text-white tracking-[0.3em] uppercase px-4 sm:px-8">Innovation</h3>
                 <div className="px-4 sm:px-8">
                   <p className="text-lg leading-relaxed text-gray-300 serif-cover-letter">
-                    Through founding <a href="https://drksci.com" target="_blank" rel="noopener noreferrer" className="company-badge"><img src="/assets/drksci-favicon.svg" className="inline w-3 h-3 mr-1" alt="" />d/rksci</a> as an innovation laboratory, I've developed expertise in applying emerging technologies to complex challenges, including AI-powered terrain analysis and historical data preservation platforms. My technical architecture background provides the foundation needed to modernise spatial and analytical data systems while establishing operational frameworks that support sustained programme growth.
+                    Through founding <a href="https://drksci.com" target="_blank" rel="noopener noreferrer" className="company-badge"><img src="/assets/brand/drksci-favicon.svg" className="inline w-3 h-3 mr-1" alt="" />d/rksci</a> as an innovation laboratory, I've developed expertise in applying emerging technologies to complex challenges, including AI-powered terrain analysis and historical data preservation platforms. My technical architecture background provides the foundation needed to modernise spatial and analytical data systems while establishing operational frameworks that support sustained programme growth.
                   </p>
                 </div>
               </div>
@@ -927,7 +936,7 @@ Blake Carter`,
                   </p>
                   <div className="mt-4">
                     <img 
-                      src="/assets/blake-signature.png" 
+                      src="/assets/personnel/blake-signature.png" 
                       alt="Blake Carter Signature"
                       className="h-20 opacity-90"
                       style={{ 
@@ -958,7 +967,7 @@ Blake Carter`,
                   Twenty years ago, I descended into my first abandoned mine shaft. What began as adventure became passion, then discipline, and now—opportunity to serve. Hundreds of sites later, I've witnessed firsthand both the hidden dangers and untapped potential beneath Queensland's surface.
                 </p>
                 <p className="text-lg leading-relaxed mb-4 text-gray-300 serif-cover-letter">
-                  As CEO of <a href="https://www.valueprosoftware.com" target="_blank" rel="noopener noreferrer" className="company-badge"><img src="/assets/valuepro-favicon.png" className="inline w-3 h-3 mr-1" alt="" />ValuePRO Software</a>, I learned to transform complex legacy systems into productive assets. But it's underground, navigating forgotten workings and documenting forgotten histories, where I discovered my true calling: turning liabilities into legacies.
+                  As CEO of <a href="https://www.valueprosoftware.com" target="_blank" rel="noopener noreferrer" className="company-badge"><img src="/assets/brand/valuepro-favicon.png" className="inline w-3 h-3 mr-1" alt="" />ValuePRO Software</a>, I learned to transform complex legacy systems into productive assets. But it's underground, navigating forgotten workings and documenting forgotten histories, where I discovered my true calling: turning liabilities into legacies.
                 </p>
                 <p className="text-lg leading-relaxed text-gray-300 serif-cover-letter">
                   Queensland's abandoned mines aren't just safety challenges—they're sleeping assets waiting for the right vision. My external perspective, unencumbered by "how we've always done it," combined with deep technical leadership and genuine domain passion, positions me to evolve the AMLP from reactive hazard management toward proactive transformation that balances safety, heritage, and opportunity.
@@ -1258,6 +1267,162 @@ Blake Carter`,
             </div>
           </section>
 
+          {/* Canary App Section */}
+          <section id="canary-app" className="relative min-h-screen flex flex-col justify-center py-20">
+            <div className="mb-8">
+              <h2 className="text-3xl font-light text-gray-400 tracking-widest mb-4 px-4 sm:px-8">CANARY APP</h2>
+            </div>
+            
+            <div className="max-w-6xl px-4 sm:px-8">
+              <div className="mb-8">
+                <h3 className="text-4xl text-white font-extralight mb-6" style={{ fontFamily: 'Manrope, sans-serif' }}>Digital hazard intelligence for Queensland's abandoned mine program</h3>
+                <p className="text-lg text-gray-300 mb-6 leading-relaxed max-w-4xl">
+                  What if every abandoned mine hazard was managed through the proper risk framework? Industry operators and staff identify hazards with GPS precision, AMLP staff assess priority levels with photo evidence, and control measures are implemented with full regulatory compliance—all starting with a field report.
+                </p>
+              </div>
+
+              {/* Three Key Features */}
+              <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
+                {/* Industry Partnership */}
+                <div className="bg-slate-900/30 border border-slate-700/30 rounded-lg p-6">
+                  <h4 className="text-lg text-gray-400 font-extralight mb-3">Industry Partnership</h4>
+                  <p className="text-sm text-gray-500 font-extralight mb-4">Collaborative approach leveraging private sector expertise</p>
+                  <div className="space-y-2 text-sm">
+                    <div className="flex items-center">
+                      <svg className="w-3 h-3 mr-3 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5"/>
+                      </svg>
+                      <div className="text-gray-600 font-extralight">Cross-industry knowledge sharing</div>
+                    </div>
+                    <div className="flex items-center">
+                      <svg className="w-3 h-3 mr-3 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5"/>
+                      </svg>
+                      <div className="text-gray-600 font-extralight">Streamlined contractor workflows</div>
+                    </div>
+                    <div className="flex items-center">
+                      <svg className="w-3 h-3 mr-3 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5"/>
+                      </svg>
+                      <div className="text-gray-600 font-extralight">Integrated remediation planning</div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Data Driven Decisions */}
+                <div className="bg-slate-900/30 border border-slate-700/30 rounded-lg p-6">
+                  <h4 className="text-lg text-gray-400 font-extralight mb-3">Data Driven Decisions</h4>
+                  <p className="text-sm text-gray-500 font-extralight mb-4">Accurate reports and forecasting for informed stakeholder decisions</p>
+                  <div className="space-y-2 text-sm">
+                    <div className="flex items-center">
+                      <svg className="w-3 h-3 mr-3 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5"/>
+                      </svg>
+                      <div className="text-gray-600 font-extralight">Evidence-based site prioritization</div>
+                    </div>
+                    <div className="flex items-center">
+                      <svg className="w-3 h-3 mr-3 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5"/>
+                      </svg>
+                      <div className="text-gray-600 font-extralight">Real-time hazard trends</div>
+                    </div>
+                    <div className="flex items-center">
+                      <svg className="w-3 h-3 mr-3 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5"/>
+                      </svg>
+                      <div className="text-gray-600 font-extralight">Cost-impact analysis</div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Public Safety First */}
+                <div className="bg-slate-900/30 border border-slate-700/30 rounded-lg p-6">
+                  <h4 className="text-lg text-gray-400 font-extralight mb-3">Public Safety First</h4>
+                  <p className="text-sm text-gray-500 font-extralight mb-4">Proactive community protection and rapid response systems</p>
+                  <div className="space-y-2 text-sm">
+                    <div className="flex items-center">
+                      <svg className="w-3 h-3 mr-3 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5"/>
+                      </svg>
+                      <div className="text-gray-600 font-extralight">Immediate threat assessment</div>
+                    </div>
+                    <div className="flex items-center">
+                      <svg className="w-3 h-3 mr-3 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5"/>
+                      </svg>
+                      <div className="text-gray-600 font-extralight">Automated community notifications</div>
+                    </div>
+                    <div className="flex items-center">
+                      <svg className="w-3 h-3 mr-3 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5"/>
+                      </svg>
+                      <div className="text-gray-600 font-extralight">Coordinated emergency protocols</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* App Workflow */}
+              <div className="mb-12">
+                <h4 className="text-2xl text-white font-extralight mb-6">Field Reporting Workflow</h4>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                  <div className="text-center">
+                    <div className="bg-emerald-500/20 border border-emerald-500/30 rounded-lg p-6 mb-4">
+                      <div className="w-16 h-16 bg-emerald-500/30 rounded-full mx-auto flex items-center justify-center mb-4">
+                        <svg className="w-8 h-8 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"/>
+                        </svg>
+                      </div>
+                      <h5 className="text-xl font-semibold text-white mb-2">Check</h5>
+                      <p className="text-gray-300 text-sm">Instant hazard detection and safety status</p>
+                    </div>
+                  </div>
+                  
+                  <div className="text-center">
+                    <div className="bg-blue-500/20 border border-blue-500/30 rounded-lg p-6 mb-4">
+                      <div className="w-16 h-16 bg-blue-500/30 rounded-full mx-auto flex items-center justify-center mb-4">
+                        <svg className="w-8 h-8 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/>
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"/>
+                        </svg>
+                      </div>
+                      <h5 className="text-xl font-semibold text-white mb-2">Capture</h5>
+                      <p className="text-gray-300 text-sm">GPS-tagged photo evidence collection</p>
+                    </div>
+                  </div>
+                  
+                  <div className="text-center">
+                    <div className="bg-purple-500/20 border border-purple-500/30 rounded-lg p-6 mb-4">
+                      <div className="w-16 h-16 bg-purple-500/30 rounded-full mx-auto flex items-center justify-center mb-4">
+                        <svg className="w-8 h-8 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/>
+                        </svg>
+                      </div>
+                      <h5 className="text-xl font-semibold text-white mb-2">Submit</h5>
+                      <p className="text-gray-300 text-sm">Automated priority assessment and routing</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="bg-blue-500/10 border border-blue-500/30 rounded-lg p-6">
+                <div className="flex items-start space-x-4">
+                  <div className="bg-blue-500/20 p-3 rounded-lg flex-shrink-0">
+                    <svg className="w-6 h-6 text-blue-300" viewBox="0 0 20 20" fill="currentColor">
+                      <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                    </svg>
+                  </div>
+                  <div>
+                    <h5 className="text-lg font-semibold text-blue-300 mb-2">Proof of Concept</h5>
+                    <p className="text-sm text-blue-200">
+                      This mobile application concept demonstrates how digital tools can transform abandoned mine hazard reporting from reactive incident response to proactive risk management, enabling systematic documentation and evidence-based prioritization across Queensland's extensive inventory.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
           {/* Resume Section */}
           <section id="resume" className="relative min-h-screen flex flex-col justify-center py-20">
             <div className="mb-8">
@@ -1294,28 +1459,28 @@ Blake Carter`,
               </div>
               <div className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-2 mb-12">
                 {[
-                  { thumb: '/assets/homage/thumbs/calgoa-qld.jpg', full: '/assets/homage/calgoa-qld.jpg', name: 'Calgoa, QLD' },
-                  { thumb: '/assets/homage/thumbs/carbonate-hill-nm-1.jpg', full: '/assets/homage/carbonate-hill-nm-1.jpg', name: 'Carbonate Hill, NM' },
-                  { thumb: '/assets/homage/thumbs/carbonate-hill-nm-2.jpg', full: '/assets/homage/carbonate-hill-nm-2.jpg', name: 'Carbonate Hill, NM' },
-                  { thumb: '/assets/homage/thumbs/carbonate-hill-nm-3.jpg', full: '/assets/homage/carbonate-hill-nm-3.jpg', name: 'Carbonate Hill, NM' },
-                  { thumb: '/assets/homage/thumbs/carbonate-hill-nm-4.jpg', full: '/assets/homage/carbonate-hill-nm-4.jpg', name: 'Carbonate Hill, NM' },
-                  { thumb: '/assets/homage/thumbs/drake-nsw-1.jpg', full: '/assets/homage/drake-nsw-1.jpg', name: 'Drake, NSW' },
-                  { thumb: '/assets/homage/thumbs/drake-nsw-2.jpg', full: '/assets/homage/drake-nsw-2.jpg', name: 'Drake, NSW' },
-                  { thumb: '/assets/homage/thumbs/irvinebank-qld-1.jpg', full: '/assets/homage/irvinebank-qld-1.jpg', name: 'Irvinebank, QLD' },
-                  { thumb: '/assets/homage/thumbs/irvinebank-qld-2.jpg', full: '/assets/homage/irvinebank-qld-2.jpg', name: 'Irvinebank, QLD' },
-                  { thumb: '/assets/homage/thumbs/leadville-co-1.jpg', full: '/assets/homage/leadville-co-1.jpg', name: 'Leadville, CO' },
-                  { thumb: '/assets/homage/thumbs/leadville-co-2.jpg', full: '/assets/homage/leadville-co-2.jpg', name: 'Leadville, CO' },
-                  { thumb: '/assets/homage/thumbs/luina-tas.jpg', full: '/assets/homage/luina-tas.jpg', name: 'Luina, TAS' },
-                  { thumb: '/assets/homage/thumbs/nunya-qld-1.jpg', full: '/assets/homage/nunya-qld-1.jpg', name: 'Nunya, QLD' },
-                  { thumb: '/assets/homage/thumbs/nunya-qld-2.jpg', full: '/assets/homage/nunya-qld-2.jpg', name: 'Nunya, QLD' },
-                  { thumb: '/assets/homage/thumbs/nunya-qld-3.jpg', full: '/assets/homage/nunya-qld-3.jpg', name: 'Nunya, QLD' },
-                  { thumb: '/assets/homage/thumbs/rosarden-tas-1.jpg', full: '/assets/homage/rosarden-tas-1.jpg', name: 'Rosarden, TAS' },
-                  { thumb: '/assets/homage/thumbs/rosarden-tas-2.jpg', full: '/assets/homage/rosarden-tas-2.jpg', name: 'Rosarden, TAS' },
-                  { thumb: '/assets/homage/thumbs/svalbard-dk.jpg', full: '/assets/homage/svalbard-dk.jpg', name: 'Svalbard, DK' },
-                  { thumb: '/assets/homage/thumbs/tombstone-az-1.jpg', full: '/assets/homage/tombstone-az-1.jpg', name: 'Tombstone, AZ' },
-                  { thumb: '/assets/homage/thumbs/tombstone-az-2.jpg', full: '/assets/homage/tombstone-az-2.jpg', name: 'Tombstone, AZ' },
-                  { thumb: '/assets/homage/thumbs/virginia-city-nv-1.jpg', full: '/assets/homage/virginia-city-nv-1.jpg', name: 'Virginia City, NV' },
-                  { thumb: '/assets/homage/thumbs/virginia-city-nv-2.jpg', full: '/assets/homage/virginia-city-nv-2.jpg', name: 'Virginia City, NV' },
+                  { thumb: '/assets/personnel/application-gallery/thumbs/calgoa-qld.jpg', full: '/assets/personnel/application-gallery/calgoa-qld.jpg', name: 'Calgoa, QLD' },
+                  { thumb: '/assets/personnel/application-gallery/thumbs/carbonate-hill-nm-1.jpg', full: '/assets/personnel/application-gallery/carbonate-hill-nm-1.jpg', name: 'Carbonate Hill, NM' },
+                  { thumb: '/assets/personnel/application-gallery/thumbs/carbonate-hill-nm-2.jpg', full: '/assets/personnel/application-gallery/carbonate-hill-nm-2.jpg', name: 'Carbonate Hill, NM' },
+                  { thumb: '/assets/personnel/application-gallery/thumbs/carbonate-hill-nm-3.jpg', full: '/assets/personnel/application-gallery/carbonate-hill-nm-3.jpg', name: 'Carbonate Hill, NM' },
+                  { thumb: '/assets/personnel/application-gallery/thumbs/carbonate-hill-nm-4.jpg', full: '/assets/personnel/application-gallery/carbonate-hill-nm-4.jpg', name: 'Carbonate Hill, NM' },
+                  { thumb: '/assets/personnel/application-gallery/thumbs/drake-nsw-1.jpg', full: '/assets/personnel/application-gallery/drake-nsw-1.jpg', name: 'Drake, NSW' },
+                  { thumb: '/assets/personnel/application-gallery/thumbs/drake-nsw-2.jpg', full: '/assets/personnel/application-gallery/drake-nsw-2.jpg', name: 'Drake, NSW' },
+                  { thumb: '/assets/personnel/application-gallery/thumbs/irvinebank-qld-1.jpg', full: '/assets/personnel/application-gallery/irvinebank-qld-1.jpg', name: 'Irvinebank, QLD' },
+                  { thumb: '/assets/personnel/application-gallery/thumbs/irvinebank-qld-2.jpg', full: '/assets/personnel/application-gallery/irvinebank-qld-2.jpg', name: 'Irvinebank, QLD' },
+                  { thumb: '/assets/personnel/application-gallery/thumbs/leadville-co-1.jpg', full: '/assets/personnel/application-gallery/leadville-co-1.jpg', name: 'Leadville, CO' },
+                  { thumb: '/assets/personnel/application-gallery/thumbs/leadville-co-2.jpg', full: '/assets/personnel/application-gallery/leadville-co-2.jpg', name: 'Leadville, CO' },
+                  { thumb: '/assets/personnel/application-gallery/thumbs/luina-tas.jpg', full: '/assets/personnel/application-gallery/luina-tas.jpg', name: 'Luina, TAS' },
+                  { thumb: '/assets/personnel/application-gallery/thumbs/nunya-qld-1.jpg', full: '/assets/personnel/application-gallery/nunya-qld-1.jpg', name: 'Nunya, QLD' },
+                  { thumb: '/assets/personnel/application-gallery/thumbs/nunya-qld-2.jpg', full: '/assets/personnel/application-gallery/nunya-qld-2.jpg', name: 'Nunya, QLD' },
+                  { thumb: '/assets/personnel/application-gallery/thumbs/nunya-qld-3.jpg', full: '/assets/personnel/application-gallery/nunya-qld-3.jpg', name: 'Nunya, QLD' },
+                  { thumb: '/assets/personnel/application-gallery/thumbs/rosarden-tas-1.jpg', full: '/assets/personnel/application-gallery/rosarden-tas-1.jpg', name: 'Rosarden, TAS' },
+                  { thumb: '/assets/personnel/application-gallery/thumbs/rosarden-tas-2.jpg', full: '/assets/personnel/application-gallery/rosarden-tas-2.jpg', name: 'Rosarden, TAS' },
+                  { thumb: '/assets/personnel/application-gallery/thumbs/svalbard-dk.jpg', full: '/assets/personnel/application-gallery/svalbard-dk.jpg', name: 'Svalbard, DK' },
+                  { thumb: '/assets/personnel/application-gallery/thumbs/tombstone-az-1.jpg', full: '/assets/personnel/application-gallery/tombstone-az-1.jpg', name: 'Tombstone, AZ' },
+                  { thumb: '/assets/personnel/application-gallery/thumbs/tombstone-az-2.jpg', full: '/assets/personnel/application-gallery/tombstone-az-2.jpg', name: 'Tombstone, AZ' },
+                  { thumb: '/assets/personnel/application-gallery/thumbs/virginia-city-nv-1.jpg', full: '/assets/personnel/application-gallery/virginia-city-nv-1.jpg', name: 'Virginia City, NV' },
+                  { thumb: '/assets/personnel/application-gallery/thumbs/virginia-city-nv-2.jpg', full: '/assets/personnel/application-gallery/virginia-city-nv-2.jpg', name: 'Virginia City, NV' },
                 ].map((image, idx) => (
                   <div key={idx} className="text-center">
                     <div 
@@ -1364,11 +1529,11 @@ Blake Carter`,
               {/* Grandfathers Photos */}
               <div className="flex gap-4 mt-8 justify-start flex-wrap">
                 {[
-                  { thumb: '/assets/homage/thumbs/oliver.jpg?v=2', full: '/assets/homage/oliver.jpg?v=2', name: 'Oliver Carter, Searching for Lasseter\'s Reef c.a. 1970s' },
-                  { thumb: '/assets/homage/thumbs/oliver-tanami.jpg?v=1', full: '/assets/homage/oliver-tanami.jpg?v=1', name: 'Oliver Carter, Tanami Desert' },
-                  { thumb: '/assets/homage/thumbs/oliver-heap-leach.jpg?v=1', full: '/assets/homage/oliver-heap-leach.jpg?v=1', name: 'Oliver Carter, Heap Leaching Operation' },
-                  { thumb: '/assets/homage/thumbs/oliver-cyaniding-for-gold.jpg?v=1', full: '/assets/homage/oliver-cyaniding-for-gold.jpg?v=1', name: 'Oliver Carter, Gold Cyanidation Process' },
-                  { thumb: '/assets/homage/thumbs/keith.jpg?v=2', full: '/assets/homage/keith.jpg?v=2', name: 'Keith Hughes, Exploration Geologist, Northern Territory' },
+                  { thumb: '/assets/personnel/application-gallery/thumbs/oliver.jpg?v=2', full: '/assets/personnel/application-gallery/oliver.jpg?v=2', name: 'Oliver Carter, Searching for Lasseter\'s Reef c.a. 1970s' },
+                  { thumb: '/assets/personnel/application-gallery/thumbs/oliver-tanami.jpg?v=1', full: '/assets/personnel/application-gallery/oliver-tanami.jpg?v=1', name: 'Oliver Carter, Tanami Desert' },
+                  { thumb: '/assets/personnel/application-gallery/thumbs/oliver-heap-leach.jpg?v=1', full: '/assets/personnel/application-gallery/oliver-heap-leach.jpg?v=1', name: 'Oliver Carter, Heap Leaching Operation' },
+                  { thumb: '/assets/personnel/application-gallery/thumbs/oliver-cyaniding-for-gold.jpg?v=1', full: '/assets/personnel/application-gallery/oliver-cyaniding-for-gold.jpg?v=1', name: 'Oliver Carter, Gold Cyanidation Process' },
+                  { thumb: '/assets/personnel/application-gallery/thumbs/keith.jpg?v=2', full: '/assets/personnel/application-gallery/keith.jpg?v=2', name: 'Keith Hughes, Exploration Geologist, Northern Territory' },
                 ].map((image, idx) => (
                   <div key={idx} className="text-center" style={{ width: '120px' }}>
                     <div 
