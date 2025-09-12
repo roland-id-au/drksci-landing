@@ -1437,28 +1437,31 @@ Blake Carter`,
                         
                         {/* Screen */}
                         <div className="absolute top-6 left-3 right-3 bottom-3 bg-emerald-500/90 rounded-2xl overflow-hidden border border-slate-600/20">
-                          <div className="flex flex-col items-center justify-center px-4 py-6 h-full relative z-10">
-                            <div className="text-center space-y-4">
+                          <div className="flex flex-col items-center justify-center px-6 py-8 h-full relative z-10">
+                            <div className="text-center space-y-6">
                               {/* Status Icon */}
-                              <div className="w-12 h-12 bg-white/20 rounded-full mx-auto flex items-center justify-center">
-                                <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <div className="w-20 h-20 bg-white/20 rounded-full mx-auto flex items-center justify-center">
+                                <svg className="w-12 h-12 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"/>
                                 </svg>
                               </div>
                               
                               {/* Status Message */}
-                              <div className="space-y-2">
-                                <h6 className="text-sm font-light text-white">No known hazards nearby</h6>
+                              <div className="space-y-3">
+                                <h6 className="text-2xl font-light text-white">No known hazards nearby</h6>
                                 <div className="space-y-1">
-                                  <p className="text-white/80 text-xs">Checked 500m ±20m</p>
-                                  <p className="text-white/80 text-xs">2 hours ago</p>
+                                  <p className="text-white/80 text-sm">Checked 500m ±20m</p>
+                                  <p className="text-white/80 text-sm">2 hours ago</p>
                                 </div>
                               </div>
                               
                               {/* Action Button */}
-                              <div className="pt-3">
-                                <div className="bg-black/80 text-white py-2 px-3 rounded-md text-xs font-medium">
+                              <div className="pt-8">
+                                <button className="w-full bg-black text-white py-4 px-6 rounded-xl font-medium">
                                   Report a Hazard
+                                </button>
+                                <div className="mt-6">
+                                  <a href="#" className="text-white/70 text-xs">Get in touch with us</a>
                                 </div>
                               </div>
                             </div>
@@ -1487,30 +1490,37 @@ Blake Carter`,
                           {/* Camera Background */}
                           <div className="absolute inset-0 bg-gradient-to-br from-green-900/40 via-gray-800 to-gray-900"></div>
                           
-                          {/* Safety Warning */}
-                          <div className="absolute top-2 left-2 right-2 z-20">
-                            <div className="bg-black/80 px-2 py-1 rounded-full">
-                              <div className="text-yellow-300 text-xs font-bold text-center">
-                                ⚠️ STAY OUT, STAY ALIVE ⚠️
+                          {/* Safety Warning Badge */}
+                          <div className="pt-4 px-4 z-20 relative">
+                            <div className="text-center">
+                              <div className="relative inline-flex items-center bg-black px-8 py-2 rounded-full mb-2">
+                                <span className="text-yellow-300 text-lg uppercase font-bold" style={{fontFamily: 'Impact, Arial Black, sans-serif', textShadow: '3px 3px 0px rgba(0,0,0,1), -2px -2px 0px rgba(0,0,0,1), 2px -2px 0px rgba(0,0,0,1), -2px 2px 0px rgba(0,0,0,1), 0px 0px 8px rgba(255,0,0,0.5)', letterSpacing: '0.5px'}}>STAY OUT, STAY ALIVE</span>
+                                <span className="absolute left-2 top-1/2 transform -translate-y-1/2 text-lg animate-pulse" style={{color: '#eab308'}}>☠️</span>
+                                <span className="absolute right-2 top-1/2 transform -translate-y-1/2 text-lg animate-pulse" style={{color: '#eab308'}}>☠️</span>
+                              </div>
+                            </div>
+                          </div>
+
+                          {/* Camera Interface */}
+                          <div className="flex flex-col relative z-10 h-full px-4 pb-16">
+                            {/* Camera viewport */}
+                            <div className="flex-1 flex items-center justify-center relative">
+                              {/* Video will be displayed here */}
+                            </div>
+                            
+                            {/* Camera controls */}
+                            <div className="flex justify-center items-center pb-4 mt-8">
+                              <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center">
+                                <div className="w-12 h-12 bg-white border-2 border-gray-300 rounded-full"></div>
                               </div>
                             </div>
                           </div>
                           
-                          {/* Camera Crosshair */}
-                          <div className="absolute inset-0 flex items-center justify-center">
-                            <div className="w-20 h-20 border border-white/50 rounded-lg">
-                              <div className="absolute top-0 left-1/2 w-px h-2 bg-white/50 transform -translate-x-1/2"></div>
-                              <div className="absolute bottom-0 left-1/2 w-px h-2 bg-white/50 transform -translate-x-1/2"></div>
-                              <div className="absolute top-1/2 left-0 w-2 h-px bg-white/50 transform -translate-y-1/2"></div>
-                              <div className="absolute top-1/2 right-0 w-2 h-px bg-white/50 transform -translate-y-1/2"></div>
-                            </div>
-                          </div>
-                          
-                          {/* Capture Button */}
-                          <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2">
-                            <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center">
-                              <div className="w-7 h-7 bg-gray-300 rounded-full"></div>
-                            </div>
+                          {/* Skip Button at Bottom */}
+                          <div className="absolute bottom-0 left-0 right-0 p-4">
+                            <button className="w-full bg-yellow-500 text-black py-3 rounded-xl text-sm font-medium hover:bg-yellow-400 transition">
+                              Skip
+                            </button>
                           </div>
                         </div>
                       </div>
@@ -1532,43 +1542,77 @@ Blake Carter`,
                         <div className="absolute top-3 left-1/2 transform -translate-x-1/2 w-2 h-2 bg-slate-600/60 rounded-full"></div>
                         
                         {/* Screen */}
-                        <div className="absolute top-6 left-3 right-3 bottom-3 bg-slate-800/90 rounded-2xl overflow-hidden border border-slate-600/20">
-                          <div className="p-4 h-full flex flex-col">
-                            {/* Header */}
-                            <div className="text-center mb-3">
-                              <h6 className="text-white text-xs font-medium mb-1">Risk Assessment</h6>
-                              <p className="text-gray-400 text-xs">How dangerous is this hazard?</p>
-                            </div>
-                            
-                            {/* Risk Levels */}
-                            <div className="flex-1 space-y-2">
-                              <div className="bg-green-700/20 border border-green-500/30 rounded-md p-2">
-                                <div className="text-center">
-                                  <div className="text-xs mb-1">🟢</div>
-                                  <div className="text-green-300 text-xs font-semibold">Low Risk</div>
-                                  <div className="text-gray-400 text-xs">Minor hazard</div>
-                                </div>
-                              </div>
-                              <div className="bg-yellow-700/20 border border-yellow-500/30 rounded-md p-2">
-                                <div className="text-center">
-                                  <div className="text-xs mb-1">🟡</div>
-                                  <div className="text-yellow-300 text-xs font-semibold">Medium Risk</div>
-                                  <div className="text-gray-400 text-xs">Potential injury</div>
-                                </div>
-                              </div>
-                              <div className="bg-red-700/20 border border-red-500/30 rounded-md p-2">
-                                <div className="text-center">
-                                  <div className="text-xs mb-1">🔴</div>
-                                  <div className="text-red-300 text-xs font-semibold">High Risk</div>
-                                  <div className="text-gray-400 text-xs">Immediate danger</div>
-                                </div>
+                        <div className="absolute top-6 left-3 right-3 bottom-3 bg-gradient-to-br from-slate-900 via-slate-900 to-slate-800 rounded-2xl overflow-hidden border border-slate-600/20 relative">
+                          {/* Background Pattern */}
+                          <div className="absolute inset-0 opacity-5">
+                            <div className="absolute inset-0" style={{backgroundImage: 'radial-gradient(circle at 25% 25%, #06b6d4 0%, transparent 70%), radial-gradient(circle at 75% 75%, #8b5cf6 0%, transparent 70%)'}}></div>
+                          </div>
+                          
+                          {/* Modern Report Form */}
+                          <div className="flex flex-col h-full relative z-10 p-4">
+                            {/* Progress Bar */}
+                            <div className="mb-4 pt-2">
+                              <div className="w-full bg-gray-700 rounded-full h-1">
+                                <div className="bg-cyan-400 h-1 rounded-full" style={{width: '33%'}}></div>
                               </div>
                             </div>
                             
-                            {/* Submit Button */}
-                            <div className="pt-2">
-                              <div className="bg-gradient-to-r from-cyan-500 to-cyan-600 text-white py-2 rounded-md text-xs font-semibold text-center">
-                                Submit Report
+                            <div className="flex-1 flex flex-col">
+                              {/* Form Step */}
+                              <div className="flex-1 flex flex-col">
+                                <div className="relative flex items-center justify-center mb-4">
+                                  <button className="absolute left-0 text-white hover:text-gray-300 transition">
+                                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7"/>
+                                    </svg>
+                                  </button>
+                                  <h6 className="text-white text-base font-medium">What did you find?</h6>
+                                </div>
+                                
+                                <div className="flex-1 space-y-3">
+                                  <button className="group w-full bg-slate-800 hover:bg-cyan-600 text-white py-3 px-4 rounded-xl text-sm font-medium border border-slate-600 hover:border-cyan-400 transition-all duration-200 text-left">
+                                    <div className="flex items-center space-x-3">
+                                      <svg className="w-5 h-5 text-red-400 group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2">
+                                        <ellipse cx="12" cy="12" rx="8" ry="4" fill="currentColor" opacity="0.3"/>
+                                        <ellipse cx="12" cy="12" rx="6" ry="3" fill="none"/>
+                                        <ellipse cx="12" cy="12" rx="4" ry="2" fill="none"/>
+                                        <path d="M8 10l8 4M16 10l-8 4"/>
+                                      </svg>
+                                      <span className="font-medium">Hole in the ground</span>
+                                    </div>
+                                  </button>
+                                  <button className="group w-full bg-slate-800 hover:bg-cyan-600 text-white py-3 px-4 rounded-xl text-sm font-medium border border-slate-600 hover:border-cyan-400 transition-all duration-200 text-left">
+                                    <div className="flex items-center space-x-3">
+                                      <svg className="w-5 h-5 text-green-400 group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2">
+                                        <path d="M3 20h18"/>
+                                        <path d="M5 20c0-8 3-12 7-12s7 4 7 12"/>
+                                        <rect x="10" y="8" width="4" height="12" fill="none"/>
+                                        <path d="M8 14h8" strokeWidth="1"/>
+                                      </svg>
+                                      <span className="font-medium">Mine tunnel or entrance</span>
+                                    </div>
+                                  </button>
+                                  <button className="group w-full bg-slate-800 hover:bg-cyan-600 text-white py-3 px-4 rounded-xl text-sm font-medium border border-slate-600 hover:border-cyan-400 transition-all duration-200 text-left">
+                                    <div className="flex items-center space-x-3">
+                                      <svg className="w-5 h-5 text-blue-400 group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2">
+                                        <circle cx="12" cy="12" r="3" fill="currentColor" opacity="0.4"/>
+                                        <circle cx="8" cy="8" r="2" fill="currentColor" opacity="0.3"/>
+                                        <circle cx="16" cy="9" r="1.5" fill="currentColor" opacity="0.3"/>
+                                        <circle cx="6" cy="16" r="1.5" fill="currentColor" opacity="0.3"/>
+                                        <circle cx="18" cy="15" r="2" fill="currentColor" opacity="0.3"/>
+                                        <path d="M12 8v8M8 12h8" strokeWidth="1" opacity="0.5"/>
+                                      </svg>
+                                      <span className="font-medium">Contaminated area</span>
+                                    </div>
+                                  </button>
+                                </div>
+                                
+                                {/* Navigation */}
+                                <div className="pt-4">
+                                  <button className="w-full bg-gradient-to-r from-gray-500 to-gray-600 text-white py-3 rounded-xl text-sm font-semibold transition shadow-lg opacity-50 cursor-not-allowed" disabled>
+                                    Continue
+                                  </button>
+                                </div>
                               </div>
                             </div>
                           </div>
