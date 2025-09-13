@@ -32,16 +32,14 @@ function App() {
         <Route path="/miskatonics/mapgyver-lost-person-modeling" element={<MapgyverDetail />} />
         <Route path="/miskatonics/prophet-experiment" element={<ProphetDetail />} />
         <Route path="/miskatonics/princhester-associates" element={<PrinchesterDetail />} />
-        {/* Short URL patterns */}
+        {/* New shorter URL pattern */}
         <Route path="/c" element={<CollaboratorIndex />} />
         <Route path="/c/blake" element={<BlakeCollaborator />} />
-        <Route path="/j/:shortId" element={<CandidateApplication />} />
-        <Route path="/candidate/:candidate/:jobSlug" element={<CandidateApplication />} />
-        
+        <Route path="/c/:collaborator/j/*" element={<CandidateApplication />} />
+
         {/* Legacy URL pattern aliases for backwards compatibility */}
         <Route path="/collaborator" element={<CollaboratorIndex />} />
         <Route path="/collaborator/blake" element={<BlakeCollaborator />} />
-        <Route path="/c/:collaborator/j/*" element={<CandidateApplication />} />
         <Route path="/collaborator/:collaborator/job/*" element={<CandidateApplication />} />
         <Route path="/a/:shortCode" element={<ShortUrlResolver />} />
       </Routes>
