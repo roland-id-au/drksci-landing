@@ -133,68 +133,90 @@ const BlakeCollaborator = () => {
           </div>
         </header>
 
+        {/* PDF Cover Page */}
+        <div className="pdf-cover-page">
+          <div className="cover-header">
+            <h1 className="cover-name">Blake Carter</h1>
+            <p className="cover-title">Technical Leader & Innovation Executive</p>
+            <a href="https://www.linkedin.com/in/blake-carter-5995ab5a/" className="linkedin-badge">
+              <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+              </svg>
+              LinkedIn
+            </a>
+          </div>
+          <div className="cover-footer">
+            <svg viewBox="0 0 98 30" xmlns="http://www.w3.org/2000/svg" className="cover-logo">
+              <defs>
+                <linearGradient id="slash-vaporwave1-cover" x1="0%" y1="0%" x2="0%" y2="100%">
+                  <stop offset="33%" stopColor="#FF00FF" />
+                  <stop offset="33%" stopColor="#00FFFF" />
+                  <stop offset="66%" stopColor="#00FFFF" />
+                  <stop offset="66%" stopColor="#6400FF" />
+                </linearGradient>
+                <linearGradient id="trail1-vaporwave1-cover" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" stopColor="#FF00FF" stopOpacity="0.4" />
+                  <stop offset="100%" stopColor="#FF00FF" stopOpacity="0.1" />
+                </linearGradient>
+                <linearGradient id="trail2-vaporwave1-cover" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" stopColor="#00FFFF" stopOpacity="0.4" />
+                  <stop offset="100%" stopColor="#00FFFF" stopOpacity="0.1" />
+                </linearGradient>
+                <linearGradient id="trail3-vaporwave1-cover" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" stopColor="#6400FF" stopOpacity="0.4" />
+                  <stop offset="100%" stopColor="#6400FF" stopOpacity="0.1" />
+                </linearGradient>
+              </defs>
+              <g transform="translate(-2, 0)">
+                <g>
+                  <path d="M 30 9 L 27.67 14.33 L 30 14.33 L 30 9 Z" fill="#FF00FF" opacity="0.6"/>
+                  <path d="M 27.67 14.33 L 25.34 19.66 L 30 19.66 L 30 14.33 Z" fill="#00FFFF" opacity="0.6"/>
+                  <path d="M 25.34 19.66 L 23 25 L 30 25 L 30 19.66 Z" fill="#6400FF" opacity="0.6"/>
+                  <path d="M 30 9 L 30 14.33 L 52.67 14.33 L 55 9 Z" fill="url(#trail1-vaporwave1-cover)"/>
+                  <path d="M 30 14.33 L 30 19.66 L 52.67 19.66 L 55 14.33 Z" fill="url(#trail2-vaporwave1-cover)"/>
+                  <path d="M 30 19.66 L 30 25 L 52.67 25 L 55 19.66 Z" fill="url(#trail3-vaporwave1-cover)"/>
+                </g>
+                <text x="2" y="25" fontFamily="'Exo 2', sans-serif" fontSize="28" fontWeight="700" fill="#EAEAEA">d</text>
+                <text x="32" y="25" fontFamily="'Exo 2', sans-serif" fontSize="28" fontWeight="700" fill="#EAEAEA">rksci</text>
+                <path d="M23 25 L 18 25 L 25 9 L 30 9 Z" fill="url(#slash-vaporwave1-cover)" />
+              </g>
+            </svg>
+            <div className="cover-links">
+              <a href="https://drksci.com/c/blake" className="cover-link">
+                <span className="cover-link-domain">drksci.com/c/</span><span className="cover-link-path">blake</span>
+              </a>
+              <a href="https://drksci.com/portfolio" className="cover-link">
+                <span className="cover-link-domain">drksci.com/</span><span className="cover-link-path">portfolio</span>
+              </a>
+              <a href="https://drksci.com/projects" className="cover-link">
+                <span className="cover-link-domain">drksci.com/</span><span className="cover-link-path">projects</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
         <div className="max-w-5xl mx-auto px-8 lg:px-12 py-20">
           {/* Profile Section */}
           <section id="profile" className="mb-40">
-            {/* Profile Header */}
+            {/* Profile Header - HARMONIZED: Using consistent display typography */}
             <div className="mb-20">
-              <h1 className="blake-title text-4xl sm:text-5xl md:text-7xl font-thin tracking-wide mb-2">Blake Carter</h1>
-              <p className="blake-subtitle text-xl sm:text-2xl md:text-3xl text-gray-400 mb-8 font-thin tracking-wide">Technical Leader</p>
+              <h1 className="blake-title text-4xl sm:text-5xl md:text-7xl font-thin tracking-tight mb-2 text-white">Blake Carter</h1>
+              <p className="blake-subtitle text-xl sm:text-2xl md:text-3xl text-gray-400 mb-8 font-light tracking-wide">Technical Leader</p>
               
-              {/* Business Badges */}
-              <div className="flex flex-wrap gap-4 mt-8">
-                {/* Drksci Badge */}
-                <a 
-                  href="https://drksci.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center px-4 py-2 bg-gray-900 hover:bg-gray-800 rounded-lg transition-colors group"
-                  title="Drksci - Innovation Studio"
-                >
-                  <div className="flex items-center space-x-3">
-                    <div className="w-8 h-8 flex items-center justify-center">
-                      <span className="text-white font-bold text-lg">d/</span>
-                    </div>
-                    <div>
-                      <p className="text-white text-sm font-medium">Drksci</p>
-                      <p className="text-gray-400 text-xs">Founder • 2024-Present</p>
-                    </div>
-                  </div>
-                </a>
-                
-                {/* ValuePRO Badge */}
-                <a 
-                  href="https://www.valuepro.com.au"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center px-4 py-2 bg-gray-900 hover:bg-gray-800 rounded-lg transition-colors group"
-                  title="ValuePRO Software"
-                >
-                  <div className="flex items-center space-x-3">
-                    <div className="w-8 h-8 flex items-center justify-center">
-                      <svg className="w-6 h-6 text-blue-400" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M12 2L2 7v10c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-10-5z"/>
-                      </svg>
-                    </div>
-                    <div>
-                      <p className="text-white text-sm font-medium">ValuePRO Software</p>
-                      <p className="text-gray-400 text-xs">CEO • 2022-2024</p>
-                    </div>
-                  </div>
-                </a>
-              </div>
             </div>
 
             {/* Executive Summary */}
             <div className="mb-20">
-              <h2 className="text-xs font-light mb-12 text-gray-400 tracking-[0.3em] uppercase">Executive Summary</h2>
+              {/* HARMONIZED: Executive Summary style - preserved as subsection label */}
+              <h2 className="text-sm font-light mb-12 text-gray-400 tracking-[0.3em] uppercase">Executive Summary</h2>
               <div className="max-w-4xl">
-                <p className="text-xl leading-relaxed mb-8 font-light text-gray-300">
+                {/* HARMONIZED: Body text with consistent styling */}
+                <p className="text-lg font-light leading-relaxed mb-8 text-gray-300">
                   Hands-on technical leader with organic experience spanning product development, operational excellence, 
                   and strategic transformation. Passionate about tackling complex challenges that require deep understanding 
                   and versatile execution.
                 </p>
-                <p className="text-xl leading-relaxed font-light text-gray-300">
+                <p className="text-lg font-light leading-relaxed text-gray-300">
                   Focused on opportunities with natural fit to experience, tenacity, and disposition to look beyond 
                   the status-quo. Thrives on novel challenges, hands-on learning, and doing the hard yards.
                 </p>
@@ -203,7 +225,8 @@ const BlakeCollaborator = () => {
 
             {/* Core Values */}
             <div className="mb-20">
-              <h2 className="text-xs font-light mb-12 text-gray-400 tracking-[0.3em] uppercase">Leadership Philosophy</h2>
+              {/* HARMONIZED: Subsection label */}
+              <h2 className="text-sm font-light mb-12 text-gray-400 tracking-[0.3em] uppercase">Leadership Philosophy</h2>
               <div className="grid grid-cols-3 gap-2 sm:gap-8 md:gap-16 philosophy-grid">
                 <div className="text-center">
                   <div className="w-16 h-16 sm:w-20 sm:h-20 mx-auto mb-4 sm:mb-8 flex items-center justify-center">
@@ -212,8 +235,9 @@ const BlakeCollaborator = () => {
                       <path strokeLinecap="round" strokeLinejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
                     </svg>
                   </div>
-                  <h3 className="text-lg sm:text-2xl font-thin mb-1 sm:mb-3 tracking-wide">Envision</h3>
-                  <p className="text-gray-400 font-light text-[0.5rem] sm:text-base">the extraordinary</p>
+                  {/* HARMONIZED: Content heading */}
+                  <h3 className="text-lg sm:text-xl font-medium mb-1 sm:mb-3 tracking-wide text-white">Envision</h3>
+                  <p className="text-gray-400 font-light text-xs sm:text-sm">the extraordinary</p>
                 </div>
                 <div className="text-center">
                   <div className="w-16 h-16 sm:w-20 sm:h-20 mx-auto mb-4 sm:mb-8 flex items-center justify-center">
@@ -225,8 +249,8 @@ const BlakeCollaborator = () => {
                       <path strokeLinecap="round" strokeLinejoin="round" d="M21 12h0" />
                     </svg>
                   </div>
-                  <h3 className="text-lg sm:text-2xl font-thin mb-1 sm:mb-3 tracking-wide">Collaborate</h3>
-                  <p className="text-gray-400 font-light text-[0.5rem] sm:text-base">with charisma</p>
+                  <h3 className="text-lg sm:text-xl font-medium mb-1 sm:mb-3 tracking-wide text-white">Collaborate</h3>
+                  <p className="text-gray-400 font-light text-xs sm:text-sm">with charisma</p>
                 </div>
                 <div className="text-center">
                   <div className="w-16 h-16 sm:w-20 sm:h-20 mx-auto mb-4 sm:mb-8 flex items-center justify-center">
@@ -234,31 +258,33 @@ const BlakeCollaborator = () => {
                       <path strokeLinecap="round" strokeLinejoin="round" d="M15.59 14.37a6 6 0 01-5.84 7.38v-4.8m5.84-2.58a14.98 14.98 0 006.16-12.12A14.98 14.98 0 009.631 8.41m5.96 5.96a14.926 14.926 0 01-5.841 2.58m-.119-8.54a6 6 0 00-7.381 5.84h4.8m2.581-5.84a14.927 14.927 0 00-2.58 5.841m2.58-5.84a14.98 14.98 0 012.58 5.84M9.75 7.5l3 3m0 0l3-3M12 10.5V21" />
                     </svg>
                   </div>
-                  <h3 className="text-lg sm:text-2xl font-thin mb-1 sm:mb-3 tracking-wide">Persevere</h3>
-                  <p className="text-gray-400 font-light text-[0.5rem] sm:text-base">to achieve</p>
+                  <h3 className="text-lg sm:text-xl font-medium mb-1 sm:mb-3 tracking-wide text-white">Persevere</h3>
+                  <p className="text-gray-400 font-light text-xs sm:text-sm">to achieve</p>
                 </div>
               </div>
             </div>
 
             {/* Character Profile */}
             <div className="mb-20">
-              <h2 className="text-xs font-light mb-12 text-gray-400 tracking-[0.3em] uppercase">Character Profile</h2>
+              {/* HARMONIZED: Subsection label */}
+              <h2 className="text-sm font-light mb-12 text-gray-400 tracking-[0.3em] uppercase">Character Profile</h2>
               <div className="space-y-8 max-w-4xl">
                 <div className="flex items-baseline">
                   <span className="text-gray-400 mr-6 font-light flex-shrink-0">/</span>
-                  <p className="text-xl leading-relaxed font-light text-gray-300">
+                  {/* HARMONIZED: Body text */}
+                  <p className="text-lg font-light leading-relaxed text-gray-300">
                     Thrives on novel challenges, hands-on learning opportunities, and doing the hard yards – jumping into the deep end
                   </p>
                 </div>
                 <div className="flex items-baseline">
                   <span className="text-gray-400 mr-6 font-light flex-shrink-0">/</span>
-                  <p className="text-xl leading-relaxed font-light text-gray-300">
+                  <p className="text-lg font-light leading-relaxed text-gray-300">
                     Pursues meaningful work with passion for ground-up understanding, rather than position descriptions
                   </p>
                 </div>
                 <div className="flex items-baseline">
                   <span className="text-gray-400 mr-6 font-light flex-shrink-0">/</span>
-                  <p className="text-xl leading-relaxed font-light text-gray-300">
+                  <p className="text-lg font-light leading-relaxed text-gray-300">
                     Values meaningful stakeholder relationships and dependability as essential foundations
                   </p>
                 </div>
@@ -267,7 +293,8 @@ const BlakeCollaborator = () => {
 
             {/* Personal Insights */}
             <div className="mb-20">
-              <h2 className="text-xs font-light mb-12 text-gray-400 tracking-[0.3em] uppercase">Personal Insights</h2>
+              {/* HARMONIZED: Subsection label */}
+              <h2 className="text-sm font-light mb-12 text-gray-400 tracking-[0.3em] uppercase">Personal Insights</h2>
               <div className="blake-grid grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-x-4 gap-y-2 max-w-4xl text-sm">
                 <div className="flex justify-between py-2 border-b border-gray-800">
                   <span className="text-gray-500 font-light">Location</span>
@@ -308,25 +335,28 @@ const BlakeCollaborator = () => {
 
           {/* Resume Section */}
           <section id="resume" className="mb-40">
-            <h2 className="text-5xl font-thin tracking-tight mb-20">Professional Experience</h2>
+            {/* HARMONIZED: Section heading */}
+            <h2 className="text-4xl md:text-5xl font-light tracking-tight mb-20 text-white">Professional Experience</h2>
             
             {/* Drksci */}
             <div className="mb-20 pb-20 border-b border-gray-800 experience-item">
               <div className="mb-8 experience-header">
-                <h3 className="text-3xl font-thin mb-3 tracking-wide experience-title">Founder</h3>
+                {/* HARMONIZED: Job title */}
+                <h3 className="text-2xl font-light mb-3 tracking-wide text-white experience-title">Founder</h3>
                 <p className="text-gray-400 mb-3 font-light text-lg tracking-wide experience-company">Drksci • Aug 2024 - Present</p>
                 <p className="text-sm text-gray-500 font-light tracking-wider uppercase">
                   Innovation Lab • AI Integration • Data Visualisation • Rapid Prototyping
                 </p>
               </div>
-              <p className="text-xl leading-relaxed mb-8 font-light text-gray-300 max-w-4xl">
+              <p className="text-lg leading-relaxed mb-8 font-light text-gray-300 max-w-4xl">
                 Founded d/rksci as an innovation laboratory exploring the intersection of AI, data science, 
                 and practical business applications. Specialised in rapidly prototyping novel solutions and 
                 transforming ambitious concepts into market-ready realities.
               </p>
               <div className="space-y-10">
                 <div>
-                  <h4 className="text-xs font-light text-gray-400 mb-6 tracking-[0.3em] uppercase">Projects</h4>
+                  {/* HARMONIZED: Subsection label */}
+                  <h4 className="text-sm font-light mb-12 text-gray-400 tracking-[0.3em] uppercase">Projects</h4>
                   <div className="space-y-4 max-w-4xl">
                     <div className="flex items-baseline">
                       <span className="text-cyan-400 mr-4 font-light flex-shrink-0">/</span>
@@ -345,7 +375,8 @@ const BlakeCollaborator = () => {
                   </div>
                 </div>
                 <div>
-                  <h4 className="text-xs font-light text-gray-400 mb-6 tracking-[0.3em] uppercase">Research</h4>
+                  {/* HARMONIZED: Subsection label */}
+                  <h4 className="text-sm font-light mb-12 text-gray-400 tracking-[0.3em] uppercase">Research</h4>
                   <div className="space-y-4 max-w-4xl">
                     <div className="flex items-baseline">
                       <span className="text-green-400 mr-4 font-light flex-shrink-0">/</span>
@@ -376,24 +407,25 @@ const BlakeCollaborator = () => {
             {/* ValuePRO CEO */}
             <div className="mb-20 pb-20 border-b border-gray-800">
               <div className="mb-8">
-                <h3 className="text-3xl font-thin mb-3 tracking-wide">Chief Executive Officer</h3>
+                {/* HARMONIZED: Job title */}
+                <h3 className="text-2xl font-light mb-3 tracking-wide text-white">Chief Executive Officer</h3>
                 <p className="text-gray-400 mb-3 font-light text-lg tracking-wide">ValuePRO Software • Jan 2022 - Aug 2024 (2 yrs 8 mos)</p>
                 <p className="text-sm text-gray-500 font-light tracking-wider uppercase">
                   Constellation Software Portfolio • PropTech • Platform Modernisation
                 </p>
               </div>
               <div className="max-w-4xl space-y-6">
-                <p className="text-xl leading-relaxed font-light text-gray-300">
+                <p className="text-lg leading-relaxed font-light text-gray-300">
                   Revitalised ValuePRO's product portfolio and positioned the company as the premier PropTech solutions 
                   partner for the valuation industry following acquisition by Constellation Software.
                 </p>
-                <p className="text-xl leading-relaxed font-light text-gray-300">
+                <p className="text-lg leading-relaxed font-light text-gray-300">
                   Led modernisation of highly customised product portfolio including 40+ customised (250k+ LOC) forks 
                   of mission-critical software in complex private cloud environment.
                 </p>
               </div>
               <div className="mt-8">
-                <h4 className="text-xs font-light text-gray-400 mb-6 tracking-[0.3em] uppercase">Key Accomplishments</h4>
+                <h4 className="text-sm font-light text-gray-400 mb-6 tracking-[0.3em] uppercase">Key Accomplishments</h4>
                 <div className="space-y-4 max-w-4xl">
                   <div className="flex items-baseline">
                     <span className="text-gray-400 mr-4 font-light flex-shrink-0">/</span>
@@ -414,13 +446,14 @@ const BlakeCollaborator = () => {
             {/* Operations Manager */}
             <div className="mb-20 pb-20 border-b border-gray-800">
               <div className="mb-8">
-                <h3 className="text-3xl font-thin mb-3 tracking-wide">Operations Manager</h3>
+                {/* HARMONIZED: Job title */}
+                <h3 className="text-2xl font-light mb-3 tracking-wide text-white">Operations Manager</h3>
                 <p className="text-gray-400 mb-3 font-light text-lg tracking-wide">ValuePRO Software • Jan 2017 - Jan 2022 (5 yrs 1 mo)</p>
                 <p className="text-sm text-gray-500 font-light tracking-wider uppercase">
                   Team Leadership • Compliance • Security • Professional Services
                 </p>
               </div>
-              <p className="text-xl leading-relaxed mb-8 font-light text-gray-300 max-w-4xl">
+              <p className="text-lg leading-relaxed mb-8 font-light text-gray-300 max-w-4xl">
                 Led development teams in building scalable web applications while maintaining corporate 
                 governance and compliance standards across ISO27001 and 9001 certifications.
               </p>
@@ -439,13 +472,14 @@ const BlakeCollaborator = () => {
             {/* Senior Software Architect */}
             <div className="mb-20 pb-20 border-b border-gray-800">
               <div className="mb-8">
-                <h3 className="text-3xl font-thin mb-3 tracking-wide">Senior Software Architect</h3>
+                {/* HARMONIZED: Job title */}
+                <h3 className="text-2xl font-light mb-3 tracking-wide text-white">Senior Software Architect</h3>
                 <p className="text-gray-400 mb-3 font-light text-lg tracking-wide">ValuePRO Software • Apr 2016 - Jan 2017 (10 mos)</p>
                 <p className="text-sm text-gray-500 font-light tracking-wider uppercase">
                   Legacy Modernisation • DevOps • Source Control • Platform Architecture
                 </p>
               </div>
-              <p className="text-xl leading-relaxed mb-8 font-light text-gray-300 max-w-4xl">
+              <p className="text-lg leading-relaxed mb-8 font-light text-gray-300 max-w-4xl">
                 Joined ValuePRO to spearhead platform modernisation and establish foundational systems including CRM, SOPs, source control, and DevOps practices. 
                 Evolved role to encompass BAU operations, systems management, offshore team leadership, and key account stewardship.
               </p>
@@ -512,7 +546,7 @@ const BlakeCollaborator = () => {
 
             {/* Skills */}
             <div className="mb-20">
-              <h2 className="text-xs font-light mb-12 text-gray-400 tracking-[0.3em] uppercase">Core Competencies</h2>
+              <h2 className="text-sm font-light mb-12 text-gray-400 tracking-[0.3em] uppercase">Core Competencies</h2>
               <div className="max-w-4xl">
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-x-8 gap-y-4 text-xs">
                   <div className="py-3 border-b border-gray-800">
@@ -537,7 +571,7 @@ const BlakeCollaborator = () => {
 
             {/* Education */}
             <div className="mb-20">
-              <h2 className="text-xs font-light mb-12 text-gray-400 tracking-[0.3em] uppercase">Education</h2>
+              <h2 className="text-sm font-light mb-12 text-gray-400 tracking-[0.3em] uppercase">Education</h2>
               <div className="max-w-4xl">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4 text-xs">
                   <div className="py-3 border-b border-gray-800">

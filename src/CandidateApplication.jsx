@@ -5,6 +5,12 @@ import { validateMagicLink } from './utils/validateMagicLink';
 import { blakeProfileData } from './data/blakeProfile';
 import { ExecutiveSummary, ProfessionalExperience, CoreCompetencies, Education } from './components/ProfileComponents';
 import PdfVersion from './components/PdfVersion';
+import CoverLetterSection from './components/sections/CoverLetterSection';
+import VisionStatementSection from './components/sections/VisionStatementSection';
+import VisionStorytellingSection from './components/sections/VisionStorytellingSection';
+import CanaryAppSection from './components/sections/CanaryAppSection';
+import ResumeSection from './components/sections/ResumeSection';
+import ReflectionSection from './components/sections/ReflectionSection';
 import mermaid from 'mermaid';
 import './styles/pageflow.css';
 
@@ -49,7 +55,14 @@ const CandidateApplication = () => {
     'vision-areas': 'Scope',
     'vision-context': 'Context',
     'program-evolution': 'Program Evolution',
+    'vision-storytelling': 'Storytelling',
+    'three-pillars': 'Three Pillars',
+    'case-study': 'Case Study',
+    'digital-innovation': 'Digital Innovation',
     'canary-app': 'Canary App',
+    'user-stories': 'User Stories',
+    'workflow': 'Workflow',
+    'dashboard': 'Dashboard',
     'executive-summary': 'Summary',
     'experience': 'Experience',
     'competencies': 'Competencies',
@@ -60,37 +73,7 @@ const CandidateApplication = () => {
   const [copied, setCopied] = useState(false);
   const mermaidRef = useRef(null);
 
-  // Initialize mermaid
-  useEffect(() => {
-    mermaid.initialize({
-      startOnLoad: true,
-      theme: 'dark',
-      themeVariables: {
-        primaryColor: '#1e3a5f',
-        primaryTextColor: '#fff',
-        primaryBorderColor: '#4a90e2',
-        lineColor: '#4a90e2',
-        secondaryColor: '#2d5016',
-        tertiaryColor: '#5a2c17',
-        background: '#000',
-        mainBkg: '#1a1a1a',
-        secondBkg: '#2a2a2a',
-        tertiaryBkg: '#3a3a3a',
-        darkMode: true,
-        fontFamily: 'Manrope, monospace',
-        fontSize: '14px',
-        clusterBkg: '#1a1a1a',
-        clusterBorder: '#4a90e2'
-      }
-    });
-  }, []);
-
-  // Render mermaid diagram when component mounts or updates
-  useEffect(() => {
-    if (mermaidRef.current && authStatus === 'valid') {
-      mermaid.contentLoaded();
-    }
-  }, [authStatus, activeSection]);
+  // Disable mermaid for now - causing runtime errors
 
   // Validate authentication token
   useEffect(() => {
@@ -309,6 +292,8 @@ Blake Carter`,
       const sections = [
         'cover-letter',
         'vision-statement',
+        'canary-app',
+        'vision-storytelling',
         'resume',
         'reflection'
       ];
@@ -318,9 +303,12 @@ Blake Carter`,
         'background-vision',
         'strategic-pillars',
         'vision-areas',
-        'vision-context',
-        'program-evolution',
-        'canary-app',
+        'three-pillars',
+        'case-study', 
+        'digital-innovation',
+        'user-stories',
+        'mobile-app-screens',
+        'amlp-staff-dashboard',
         'executive-summary',
         'experience',
         'competencies',
@@ -354,8 +342,8 @@ Blake Carter`,
       let relevantSubsections = [];
       if (currentSection === 'vision-statement') {
         relevantSubsections = ['background-vision', 'strategic-pillars', 'vision-areas'];
-      } else if (currentSection === 'vision-statement') {
-        relevantSubsections = ['vision-context', 'program-evolution', 'canary-app'];
+      } else if (currentSection === 'canary-app') {
+        relevantSubsections = ['user-stories', 'mobile-app-screens', 'amlp-staff-dashboard'];
       } else if (currentSection === 'resume') {
         relevantSubsections = ['executive-summary', 'experience', 'competencies', 'education'];
       }
@@ -448,7 +436,8 @@ Blake Carter`,
           <svg className="w-16 h-16 text-red-400 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
           </svg>
-          <h2 className="text-2xl font-thin mb-4">Link Expired</h2>
+          {/* HARMONIZED: Error heading */}
+          <h2 className="text-xl font-light mb-4 text-white">Link Expired</h2>
           <p className="text-gray-400 mb-6">This application link has expired. Please contact the candidate for a new link.</p>
           <a href="mailto:blake@drksci.com" className="inline-block px-6 py-3 bg-cyan-400 text-black hover:bg-cyan-300 transition-colors">
             Request New Link
@@ -465,7 +454,8 @@ Blake Carter`,
           <svg className="w-16 h-16 text-yellow-400 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
           </svg>
-          <h2 className="text-2xl font-thin mb-4">Authentication Required</h2>
+          {/* HARMONIZED: Error heading */}
+          <h2 className="text-xl font-light mb-4 text-white">Authentication Required</h2>
           <p className="text-gray-400 mb-2">{authError}</p>
           <p className="text-gray-500 text-sm">Please use the secure link provided by the candidate to access this application.</p>
         </div>
@@ -542,7 +532,8 @@ Blake Carter`,
                 }}
               >
                 <div className="flex items-center w-full" style={{ height: '28px' }}>
-                  <div className="px-3 text-xs text-gray-400 uppercase tracking-wider font-medium" style={{ width: '45px' }}>REF</div>
+                  {/* HARMONIZED: Label text */}
+                  <div className="px-3 text-xs text-gray-400 uppercase tracking-wider font-normal" style={{ width: '45px' }}>REF</div>
                   <div className="h-6 w-px bg-gray-800"></div>
                   <div className="flex-1 px-3 text-center flex items-center justify-center">
                     <div className="text-xs font-normal tracking-wider font-mono text-gray-200">
@@ -556,8 +547,10 @@ Blake Carter`,
             {/* Job Details */}
             <div className="space-y-5 mb-10">
               <div>
-                <div className="text-xs text-gray-300 uppercase tracking-wider mb-2 font-medium">Applicant</div>
-                <div className="text-base font-light text-white flex items-center justify-between">
+                {/* HARMONIZED: Field label */}
+                <div className="text-xs text-gray-300 uppercase tracking-wider mb-2 font-normal">Applicant</div>
+                {/* HARMONIZED: Field value */}
+                <div className="text-sm font-normal text-white flex items-center justify-between">
                   {blakeProfileData.personal.name}
                   <a 
                     href="https://www.linkedin.com/in/blake-carter-5995ab5a/" 
@@ -572,7 +565,8 @@ Blake Carter`,
                 </div>
               </div>
               <div>
-                <div className="text-xs text-gray-300 uppercase tracking-wider mb-2 font-medium">Position</div>
+                {/* HARMONIZED: Field label */}
+                <div className="text-xs text-gray-300 uppercase tracking-wider mb-2 font-normal">Position</div>
                 <div className="text-sm text-gray-100 mb-1">{job.title}</div>
                 <div className="text-xs text-gray-300">Technical Services, Natural Resources</div>
                 <div className="text-xs text-gray-400" style={{ fontSize: '10px' }}>Department of Natural Resources, Mines, Manufacturing, and Regional Development</div>
@@ -586,7 +580,7 @@ Blake Carter`,
                   <button
                     onClick={() => document.getElementById('cover-letter').scrollIntoView({ behavior: 'smooth' })}
                     className={`block w-full text-left text-sm py-2 px-2 transition-all ${
-                      activeSection === 'cover-letter' ? 'text-white font-medium' : 'text-gray-300 hover:text-white'
+                      activeSection === 'cover-letter' ? 'text-white font-normal' : 'text-gray-300 hover:text-white'
                     }`}
                   >
                     Cover Letter
@@ -596,10 +590,10 @@ Blake Carter`,
                   <button
                     onClick={() => document.getElementById('vision-statement').scrollIntoView({ behavior: 'smooth' })}
                     className={`block w-full text-left text-sm py-2 px-2 transition-all ${
-                      activeSection === 'vision-statement' ? 'text-white font-medium' : 'text-gray-300 hover:text-white'
+                      activeSection === 'vision-statement' ? 'text-white font-normal' : 'text-gray-300 hover:text-white'
                     }`}
                   >
-                    Vision Statement
+                    Vision: Statement
                   </button>
                   <div className="space-y-1 pb-2">
                   <button
@@ -628,39 +622,75 @@ Blake Carter`,
                   </button>
                   </div>
                 </div>
-                <div className={`rounded transition-all py-1 px-2 ${activeSection === 'vision-statement' ? 'bg-gray-700/30 border-l-2 border-white' : 'bg-transparent'}`}>
+                <div className={`rounded transition-all py-1 px-2 ${activeSection === 'canary-app' ? 'bg-gray-700/30 border-l-2 border-white' : 'bg-transparent'}`}>
                   <button
-                    onClick={() => document.getElementById('vision-statement').scrollIntoView({ behavior: 'smooth' })}
+                    onClick={() => document.getElementById('canary-app').scrollIntoView({ behavior: 'smooth' })}
                     className={`block w-full text-left text-sm py-2 px-2 transition-all ${
-                      activeSection === 'vision-statement' ? 'text-white font-medium' : 'text-gray-300 hover:text-white'
+                      activeSection === 'canary-app' ? 'text-white font-normal' : 'text-gray-300 hover:text-white'
                     }`}
                   >
-                    Vision Statement
+                    Vision: Canary App
                   </button>
                   <div className="space-y-1 pb-2">
                     <button
-                      onClick={() => document.getElementById('vision-context').scrollIntoView({ behavior: 'smooth' })}
+                      onClick={() => document.getElementById('user-stories').scrollIntoView({ behavior: 'smooth' })}
                       className={`block w-full text-left text-xs transition-colors pl-4 ${
-                        activeSubsection === 'vision-context' ? 'text-gray-100' : (activeSection === 'vision-statement' ? 'text-gray-400' : 'text-gray-500 hover:text-gray-300')
+                        activeSubsection === 'user-stories' ? 'text-gray-100' : (activeSection === 'canary-app' ? 'text-gray-400' : 'text-gray-500 hover:text-gray-300')
                       }`}
                     >
-                      Context
+                      User Stories
                     </button>
                     <button
-                      onClick={() => document.getElementById('program-evolution').scrollIntoView({ behavior: 'smooth' })}
+                      onClick={() => document.getElementById('workflow').scrollIntoView({ behavior: 'smooth' })}
                       className={`block w-full text-left text-xs transition-colors pl-4 ${
-                        activeSubsection === 'program-evolution' ? 'text-gray-100' : (activeSection === 'vision-statement' ? 'text-gray-400' : 'text-gray-500 hover:text-gray-300')
+                        activeSubsection === 'workflow' ? 'text-gray-100' : (activeSection === 'canary-app' ? 'text-gray-400' : 'text-gray-500 hover:text-gray-300')
                       }`}
                     >
-                      Program Evolution
+                      Workflow
                     </button>
                     <button
-                      onClick={() => document.getElementById('canary-app').scrollIntoView({ behavior: 'smooth' })}
+                      onClick={() => document.getElementById('dashboard').scrollIntoView({ behavior: 'smooth' })}
                       className={`block w-full text-left text-xs transition-colors pl-4 ${
-                        activeSubsection === 'canary-app' ? 'text-gray-100' : (activeSection === 'vision-statement' ? 'text-gray-400' : 'text-gray-500 hover:text-gray-300')
+                        activeSubsection === 'dashboard' ? 'text-gray-100' : (activeSection === 'canary-app' ? 'text-gray-400' : 'text-gray-500 hover:text-gray-300')
                       }`}
                     >
-                      Canary App
+                      Dashboard
+                    </button>
+                  </div>
+                </div>
+                <div className={`rounded transition-all py-1 px-2 ${activeSection === 'vision-storytelling' ? 'bg-gray-700/30 border-l-2 border-white' : 'bg-transparent'}`}>
+                  <button
+                    onClick={() => document.getElementById('vision-storytelling').scrollIntoView({ behavior: 'smooth' })}
+                    className={`block w-full text-left text-sm py-2 px-2 transition-all ${
+                      activeSection === 'vision-storytelling' ? 'text-white font-normal' : 'text-gray-300 hover:text-white'
+                    }`}
+                  >
+                    Vision: Storytelling
+                  </button>
+                  <div className="space-y-1 pb-2">
+                    <button
+                      onClick={() => document.getElementById('three-pillars').scrollIntoView({ behavior: 'smooth' })}
+                      className={`block w-full text-left text-xs transition-colors pl-4 ${
+                        activeSubsection === 'three-pillars' ? 'text-gray-100' : (activeSection === 'vision-storytelling' ? 'text-gray-400' : 'text-gray-500 hover:text-gray-300')
+                      }`}
+                    >
+                      Three Pillars
+                    </button>
+                    <button
+                      onClick={() => document.getElementById('case-study').scrollIntoView({ behavior: 'smooth' })}
+                      className={`block w-full text-left text-xs transition-colors pl-4 ${
+                        activeSubsection === 'case-study' ? 'text-gray-100' : (activeSection === 'vision-storytelling' ? 'text-gray-400' : 'text-gray-500 hover:text-gray-300')
+                      }`}
+                    >
+                      Case Study
+                    </button>
+                    <button
+                      onClick={() => document.getElementById('digital-innovation').scrollIntoView({ behavior: 'smooth' })}
+                      className={`block w-full text-left text-xs transition-colors pl-4 ${
+                        activeSubsection === 'digital-innovation' ? 'text-gray-100' : (activeSection === 'vision-storytelling' ? 'text-gray-400' : 'text-gray-500 hover:text-gray-300')
+                      }`}
+                    >
+                      Digital Innovation
                     </button>
                   </div>
                 </div>
@@ -668,7 +698,7 @@ Blake Carter`,
                   <button
                     onClick={() => document.getElementById('resume').scrollIntoView({ behavior: 'smooth' })}
                     className={`block w-full text-left text-sm py-2 px-2 transition-all ${
-                      activeSection === 'resume' ? 'text-white font-medium' : 'text-gray-300 hover:text-white'
+                      activeSection === 'resume' ? 'text-white font-normal' : 'text-gray-300 hover:text-white'
                     }`}
                   >
                     Resume
@@ -712,7 +742,7 @@ Blake Carter`,
                   <button
                     onClick={() => document.getElementById('reflection').scrollIntoView({ behavior: 'smooth' })}
                     className={`block w-full text-left text-sm py-2 px-2 rounded transition-all ${
-                      activeSection === 'reflection' ? 'text-white font-medium bg-gray-700/30 border-l-2 border-white' : 'text-gray-300 hover:text-white hover:bg-gray-800/20'
+                      activeSection === 'reflection' ? 'text-white font-normal bg-gray-700/30 border-l-2 border-white' : 'text-gray-300 hover:text-white hover:bg-gray-800/20'
                     }`}
                   >
                     Reflection
@@ -768,7 +798,8 @@ Blake Carter`,
         {showStickyHeader && (
           <div className="fixed left-72 right-0 z-10 bg-black flex items-center" style={{ top: '0px', height: '80px', borderBottom: '1px dotted rgba(107, 114, 128, 0.3)', paddingTop: '25px', paddingBottom: '25px' }}>
             <div className="px-4 sm:px-8">
-              <h2 className="text-2xl font-light text-gray-400 tracking-widest animate-fade-in">
+              {/* HARMONIZED: Section header */}
+              <h2 className="text-2xl font-light text-gray-400 tracking-wider animate-fade-in">
                 {activeSection === 'cover-letter' && (
                   <>
                     COVER LETTER
@@ -778,7 +809,7 @@ Blake Carter`,
                   <>
                     VISION EXPLORATION
                     {activeSubsection && subsectionLabels[activeSubsection] && (
-                      <span className="text-2xl text-gray-500 ml-3 font-light tracking-widest"> / {subsectionLabels[activeSubsection].toUpperCase()}</span>
+                      <span className="text-xl text-gray-500 ml-3 font-light tracking-wider"> / {subsectionLabels[activeSubsection].toUpperCase()}</span>
                     )}
                   </>
                 )}
@@ -786,7 +817,15 @@ Blake Carter`,
                   <>
                     VISION STATEMENT
                     {activeSubsection && subsectionLabels[activeSubsection] && (
-                      <span className="text-2xl text-gray-500 ml-3 font-light tracking-widest"> / {subsectionLabels[activeSubsection].toUpperCase()}</span>
+                      <span className="text-xl text-gray-500 ml-3 font-light tracking-wider"> / {subsectionLabels[activeSubsection].toUpperCase()}</span>
+                    )}
+                  </>
+                )}
+                {activeSection === 'vision-storytelling' && (
+                  <>
+                    VISION: STORYTELLING
+                    {activeSubsection && subsectionLabels[activeSubsection] && (
+                      <span className="text-xl text-gray-500 ml-3 font-light tracking-wider"> / {subsectionLabels[activeSubsection].toUpperCase()}</span>
                     )}
                   </>
                 )}
@@ -794,7 +833,7 @@ Blake Carter`,
                   <>
                     RESUME
                     {activeSubsection && subsectionLabels[activeSubsection] && (
-                      <span className="text-2xl text-gray-500 ml-3 font-light tracking-widest"> / {subsectionLabels[activeSubsection].toUpperCase()}</span>
+                      <span className="text-xl text-gray-500 ml-3 font-light tracking-wider"> / {subsectionLabels[activeSubsection].toUpperCase()}</span>
                     )}
                   </>
                 )}
@@ -809,1129 +848,23 @@ Blake Carter`,
           <div className="max-w-5xl px-4 sm:px-8 py-16">
 
           {/* Cover Letter Section */}
-          <section id="cover-letter" className="relative min-h-screen flex flex-col justify-center py-20">
-            <div className="mb-8">
-              <h2 className="text-3xl font-light text-gray-400 tracking-widest mb-4 px-4 sm:px-8">COVER LETTER</h2>
-            </div>
-            <div className="max-w-4xl mt-8">
-              
-              {/* Addressee */}
-              <div className="mb-12 px-4 sm:px-8">
-                <div className="mb-8 font-mono text-sm text-white leading-relaxed font-light">
-                  <div className="mb-1">Attention: Rod Kent,</div>
-                  <div className="mb-4">Director Projects and Asset Management</div>
-                  <div className="mb-1">Re: Director, Innovation and Planning Role</div>
-                </div>
-                <div className="border-t border-gray-800 my-8"></div>
-                
-                <p className="text-lg leading-relaxed mb-4 text-gray-300 serif-cover-letter">
-                  Dear Rod,
-                </p>
-                <p className="text-lg leading-relaxed mb-8 text-gray-300 serif-cover-letter">
-                  I am writing to express my strong interest in the Director, Innovation and Planning position. As a hands-on technical leader with CEO experience and 20+ years of spelunking and historical mine exploration, I bring proven strategic leadership, innovation expertise, and genuine domain understanding that directly addresses the complex challenges of making abandoned mines safe, secure, durable and, where possible, productive.
-                </p>
-              </div>
-
-              {/* Motivation */}
-              <div id="motivation" className="mb-12">
-                <h3 className="text-base font-light mb-12 text-white tracking-[0.3em] uppercase px-4 sm:px-8">Motivation</h3>
-                <div className="px-4 sm:px-8">
-                  <p className="text-lg leading-relaxed mb-6 text-gray-300 serif-cover-letter">
-                    This position represents a convergence of my professional expertise in strategic transformation with specialised domain knowledge developed through two decades documenting hundreds of abandoned mine sites. This hands-on experience positions me to advance Queensland's transition from reactive hazard management toward strategic asset optimisation.
-                  </p>
-                  <p className="text-lg leading-relaxed text-gray-300 serif-cover-letter">
-                    My approach recognises that abandoned mines are not merely remediation challenges but historical artefacts and brownfield opportunities for productive reuse that balance public safety imperatives with cultural heritage preservation.
-                  </p>
-                </div>
-              </div>
-
-              {/* Leadership */}
-              <div id="leadership" className="mb-12">
-                <h3 className="text-base font-light mb-12 text-white tracking-[0.3em] uppercase px-4 sm:px-8">Leadership</h3>
-                <div className="px-4 sm:px-8">
-                  <p className="text-lg leading-relaxed mb-4 text-gray-300 serif-cover-letter">
-                    My progression from Senior Software Architect to Operations Manager to CEO at <a href="https://www.valueprosoftware.com" target="_blank" rel="noopener noreferrer" className="company-badge"><img src="/assets/brand/valuepro-favicon.png" className="inline w-3 h-3 mr-1" alt="" />ValuePRO Software</a> demonstrates the capabilities essential for this role. As Operations Manager, I led multidisciplinary teams while running comprehensive GRC programs across the Secure Controls Framework, Essential Eight, IRAP assessments, and ISO27001/9001 certifications, achieving zero audit findings across 5+ years.
-                  </p>
-                  <p className="text-lg leading-relaxed text-gray-300 serif-cover-letter">
-                    As CEO, I successfully revitalised complex software portfolios during organisational restructuring, achieving exceptional performance metrics including eNPS of 8.5–9.5. This GRC expertise and transformation experience directly translates to implementing the Risk and Prioritisation Framework for Abandoned Mines and leading the Asset Management transformation project.
-                  </p>
-                </div>
-              </div>
-
-              {/* Innovation */}
-              <div id="innovation" className="mb-12">
-                <h3 className="text-base font-light mb-12 text-white tracking-[0.3em] uppercase px-4 sm:px-8">Innovation</h3>
-                <div className="px-4 sm:px-8">
-                  <p className="text-lg leading-relaxed text-gray-300 serif-cover-letter">
-                    Through founding <a href="https://drksci.com" target="_blank" rel="noopener noreferrer" className="company-badge"><img src="/assets/brand/drksci-favicon.svg" className="inline w-3 h-3 mr-1" alt="" />d/rksci</a> as an innovation laboratory, I've developed expertise in applying emerging technologies to complex challenges, including AI-powered terrain analysis and historical data preservation platforms. My technical architecture background provides the foundation needed to modernise spatial and analytical data systems while establishing operational frameworks that support sustained programme growth.
-                  </p>
-                </div>
-              </div>
-
-              {/* Management */}
-              <div id="management" className="mb-12">
-                <h3 className="text-base font-light mb-12 text-white tracking-[0.3em] uppercase px-4 sm:px-8">Management</h3>
-                <div className="px-4 sm:px-8">
-                  <p className="text-lg leading-relaxed mb-4 text-gray-300 serif-cover-letter">
-                    My entrepreneurial experience has required extensive stakeholder management in complex regulatory environments. I'm particularly committed to fostering meaningful partnerships with Traditional Owners, local communities, and businesses, understanding that abandoned mines represent both safety challenges and historical assets requiring culturally sensitive approaches.
-                  </p>
-                  <div className="mt-6 mb-6">
-                    <table className="w-full text-sm">
-                      <thead>
-                        <tr>
-                          <th className="text-left text-xs font-normal text-gray-400 pb-2 pr-4">My Values</th>
-                          <th className="text-left text-xs font-normal text-gray-400 pb-2 pl-4">QLD Government</th>
-                        </tr>
-                      </thead>
-                      <tbody className="text-gray-300">
-                        <tr className="border-t border-gray-800">
-                          <td className="py-2 pr-4">Envision the Extraordinary</td>
-                          <td className="py-2 pl-4">Ideas into action</td>
-                        </tr>
-                        <tr className="border-t border-gray-800">
-                          <td className="py-2 pr-4">Collaborate with Charisma</td>
-                          <td className="py-2 pl-4">Empower people</td>
-                        </tr>
-                        <tr className="border-t border-gray-800">
-                          <td className="py-2 pr-4">Persevere to Achieve</td>
-                          <td className="py-2 pl-4">Customers first</td>
-                        </tr>
-                        <tr className="border-t border-gray-800">
-                          <td className="py-2 pr-4"></td>
-                          <td className="py-2 pl-4">Be courageous</td>
-                        </tr>
-                        <tr className="border-t border-gray-800">
-                          <td className="py-2 pr-4"></td>
-                          <td className="py-2 pl-4">Unleash potential</td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
-              </div>
-
-              {/* Value */}
-              <div id="value" className="mb-12">
-                <h3 className="text-base font-light mb-12 text-white tracking-[0.3em] uppercase px-4 sm:px-8">Value</h3>
-                <div className="px-4 sm:px-8">
-                  <p className="text-lg leading-relaxed text-gray-300 serif-cover-letter">
-                    The convergence of comprehensive GRC programme management, strategic transformation achievements, and 20+ years of hands-on abandoned mine documentation creates a unique qualification profile that positions me to drive programme evolution from reactive management toward proactive asset optimisation while maintaining rigorous safety and compliance standards.
-                  </p>
-                </div>
-              </div>
-
-
-              {/* Closing */}
-              <div id="closing-remarks" className="mb-12">
-                <div className="px-4 sm:px-8">
-                  <p className="text-lg leading-relaxed mb-8 text-gray-300 serif-cover-letter">
-                    I welcome the opportunity to discuss how my experience and vision can contribute to the department's objectives.
-                  </p>
-                  <p className="text-lg leading-relaxed mb-4 text-gray-300 serif-cover-letter">
-                    Sincerely,
-                  </p>
-                  <p className="text-lg leading-relaxed mb-8 text-gray-300 serif-cover-letter">
-                    Blake Carter
-                  </p>
-                  <div className="mt-4">
-                    <img 
-                      src="/assets/personnel/blake-signature.png" 
-                      alt="Blake Carter Signature"
-                      className="h-20 opacity-90"
-                      style={{ 
-                        filter: 'invert(1) brightness(0.7)',
-                        mixBlendMode: 'lighten'
-                      }}
-                    />
-                  </div>
-                  <div className="border-t border-gray-800 my-8"></div>
-                  <p className="text-sm leading-relaxed text-gray-400 italic text-center" style={{ fontFamily: 'Source Serif 4, serif', fontWeight: '300' }}>
-                    Available for discussion at your convenience | References available upon request
-                  </p>
-                </div>
-              </div>
-            </div>
-          </section>
+          <CoverLetterSection />
 
           {/* Vision Statement Section */}
-          <section id="vision-statement" className="relative min-h-screen flex flex-col justify-center py-20">
-            <div className="mb-8">
-              <h2 className="text-3xl font-light text-gray-400 tracking-widest mb-4 px-4 sm:px-8">VISION STATEMENT</h2>
-            </div>
-            <div className="max-w-4xl px-4 sm:px-8 mt-8">
-              {/* Introduction */}
-              <div id="background-vision" className="mb-12">
-                <h3 className="text-base font-light mb-12 text-white tracking-[0.3em] uppercase">Introduction</h3>
-                <p className="text-lg leading-relaxed mb-4 text-gray-300 serif-cover-letter">
-                  Twenty years ago, I descended into my first abandoned mine shaft. What began as adventure became passion, then discipline, and now—opportunity to serve. Hundreds of sites later, I've witnessed firsthand both the hidden dangers and untapped potential beneath Queensland's surface.
-                </p>
-                <p className="text-lg leading-relaxed mb-4 text-gray-300 serif-cover-letter">
-                  As CEO of <a href="https://www.valueprosoftware.com" target="_blank" rel="noopener noreferrer" className="company-badge"><img src="/assets/brand/valuepro-favicon.png" className="inline w-3 h-3 mr-1" alt="" />ValuePRO Software</a>, I learned to transform complex legacy systems into productive assets. But it's underground, navigating forgotten workings and documenting forgotten histories, where I discovered my true calling: turning liabilities into legacies.
-                </p>
-                <p className="text-lg leading-relaxed text-gray-300 serif-cover-letter">
-                  Queensland's abandoned mines aren't just safety challenges—they're sleeping assets waiting for the right vision. My external perspective, unencumbered by "how we've always done it," combined with deep technical leadership and genuine domain passion, positions me to evolve the AMLP from reactive hazard management toward proactive transformation that balances safety, heritage, and opportunity.
-                </p>
-              </div>
+          <VisionStatementSection />
 
-              {/* Strategic Pillars */}
-              <div id="strategic-pillars" className="mb-12">
-                <h3 className="text-base font-light mb-12 text-white tracking-[0.3em] uppercase">Pillars</h3>
-                <p className="text-lg leading-relaxed mb-6 text-gray-300 serif-cover-letter">
-                  My conceptual approach to Queensland's Abandoned Mine Lands Program is grounded in four core tenets developed through 20+ years of hands-on exploration and executive leadership experience:
-                </p>
-                <div className="space-y-6">
-                  <div>
-                    <h4 className="text-sm font-medium text-gray-500 mb-2">1. Awareness</h4>
-                    <p className="text-base leading-relaxed text-gray-300 serif-cover-letter">
-                      The idiom "You can't manage what you can't see" represents both a key challenge and opportunity in abandoned mine management. Situational awareness requires a confluence of information to make data-driven decisions, yet is difficult to scale across thousands of sites in inventory. Humans can only maintain so many sites in inventory and corresponding registers at once, making it vital to adopt a systemised approach that automates integration—including gaps in data—and delivers meaningful insights to drive the right decisions and prioritise resources effectively.
-                    </p>
-                  </div>
-                  <div>
-                    <h4 className="text-sm font-medium text-gray-500 mb-2">2. Insights</h4>
-                    <p className="text-base leading-relaxed text-gray-300 serif-cover-letter">
-                      Data-driven decision making that reveals patterns and possibilities others miss
-                    </p>
-                  </div>
-                  <div>
-                    <h4 className="text-sm font-medium text-gray-500 mb-2">3. Integration</h4>
-                    <p className="text-base leading-relaxed text-gray-300 serif-cover-letter">
-                      Bringing together systems, stakeholders, and solutions into cohesive transformation
-                    </p>
-                  </div>
-                  <div>
-                    <h4 className="text-sm font-medium text-gray-500 mb-2">4. Engagement</h4>
-                    <p className="text-base leading-relaxed text-gray-300 serif-cover-letter">
-                      Meaningful collaboration that brings all voices into the solution
-                    </p>
-                  </div>
-                </div>
-                <p className="text-lg leading-relaxed mt-6 text-gray-300">
-                  These tenets guide my approach to transforming Queensland's abandoned mine management from reactive hazard response to proactive asset transformation, balancing safety imperatives with heritage preservation while creating lasting community value.
-                </p>
-              </div>
+          {/* Canary App Section */}
+          <CanaryAppSection />
 
-              {/* Strategic Leadership & Transformation - Key Areas */}
-              <div id="vision-areas" className="mb-12">
-                <h3 className="text-base font-light mb-12 text-white tracking-[0.3em] uppercase">Scope</h3>
-                
-                <div className="space-y-8">
-                  <div className="border-l-2 border-cyan-400/30 pl-6">
-                    <h4 className="text-lg font-medium text-gray-200 mb-3">1. Abandoned Mine Lands Program Evolution</h4>
-                    <p className="text-base text-gray-300 mb-2">
-                      Transform AMLP from reactive hazard management to proactive asset transformation ecosystem, expanding beyond the current 120 complex sites to systematically address Queensland's full inventory while balancing safety, heritage, and productivity opportunities.
-                    </p>
-                  </div>
-
-                  <div className="border-l-2 border-cyan-400/30 pl-6">
-                    <h4 className="text-lg font-medium text-gray-200 mb-3">2. Risk & Prioritisation Framework Innovation</h4>
-                    <p className="text-base text-gray-300 mb-2">
-                      Enhance the 2021 framework with predictive modeling, AI-driven risk assessment, and dynamic prioritisation that adapts to changing conditions, optimising safety outcomes while accelerating identification of viable re-commercialisation opportunities.
-                    </p>
-                  </div>
-
-                  <div className="border-l-2 border-cyan-400/30 pl-6">
-                    <h4 className="text-lg font-medium text-gray-200 mb-3">3. Repurposing & Re-commercialisation Innovation</h4>
-                    <p className="text-base text-gray-300 mb-2">
-                      Expand the Wolfram Camp pilot success into a systematic program identifying renewable energy, critical minerals, tourism, and alternative land use opportunities, creating jobs in regional communities while reducing government liability.
-                    </p>
-                  </div>
-
-                  <div className="border-l-2 border-cyan-400/30 pl-6">
-                    <h4 className="text-lg font-medium text-gray-200 mb-3">4. Digital & Spatial Systems Transformation</h4>
-                    <p className="text-base text-gray-300 mb-2">
-                      Implement next-generation spatial and analytical data systems combining LiDAR scanning, drone surveillance, IoT monitoring, and AI analytics for comprehensive site monitoring and predictive modeling.
-                    </p>
-                  </div>
-
-                  <div className="border-l-2 border-cyan-400/30 pl-6">
-                    <h4 className="text-lg font-medium text-gray-200 mb-3">5. Indigenous Partnership & Cultural Heritage</h4>
-                    <p className="text-base text-gray-300 mb-2">
-                      Integrate Traditional Owner knowledge, cultural protocols, and community aspirations into all aspects of abandoned mine management, strengthening cultural preservation while improving reconciliation outcomes.
-                    </p>
-                  </div>
-
-                  <div className="border-l-2 border-cyan-400/30 pl-6">
-                    <h4 className="text-lg font-medium text-gray-200 mb-3">6. Financial & Partnership Innovation</h4>
-                    <p className="text-base text-gray-300 mb-2">
-                      Develop diversified funding portfolio combining government investment with private partnerships, carbon credit monetisation, and revenue-generating repurposing initiatives to enhance program sustainability.
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-            </div>
-          </section>
-
-          {/* Vision Statement Section */}
-          <section id="vision-statement" className="relative min-h-screen flex flex-col justify-center py-20">
-            <div className="mb-8">
-              <h2 className="text-3xl font-light text-gray-400 tracking-widest mb-4 px-4 sm:px-8">VISION STATEMENT</h2>
-            </div>
-            
-            <div className="max-w-6xl px-4 sm:px-8">
-              <div id="vision-context" className="mb-12">
-                <h3 className="text-2xl font-light text-gray-400 tracking-wider mb-6">Context</h3>
-                <p className="text-lg leading-relaxed mb-6 text-gray-300 serif-cover-letter">
-                  I've handpicked three sites that range from safe, concerning, through dangerous (in my opinion), to demonstrate this vision.
-                </p>
-                
-                {/* Info Badge */}
-                <div className="mb-6 bg-blue-500/10 border border-blue-500/30 rounded-lg flex">
-                  <div className="bg-blue-500/20 p-4 flex items-center justify-center">
-                    <svg className="w-6 h-6 text-blue-300" viewBox="0 0 20 20" fill="currentColor">
-                      <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                    </svg>
-                  </div>
-                  <p className="text-sm text-blue-300 font-semibold p-4 flex-1">
-                    These examples are an intentionally cherry-picked cross-section of legacy site severities.
-                  </p>
-                </div>
-                
-                {/* Three Column Site Gallery */}
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                  {/* Tower Hill */}
-                  <div className="group">
-                    <div 
-                      className="aspect-[4/3] bg-gray-800 rounded-lg overflow-hidden mb-3 relative cursor-pointer"
-                      onClick={() => setFullscreenImage({ 
-                        full: '/assets/vision-statement/tower-hill.jpg', 
-                        name: 'Tower Hill, Leyburn, QLD' 
-                      })}
-                    >
-                      <img 
-                        src="/assets/vision-statement/tower-hill-optimized.jpg" 
-                        alt="Tower Hill mine site"
-                        className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-                        style={{ filter: 'sepia(0.6) hue-rotate(60deg) saturate(2.4)' }}
-                      />
-                      <div className="absolute bottom-0 left-0 right-0 bg-green-500/90 backdrop-blur-sm text-black text-sm font-black py-2 px-2 text-center">
-                        SAFE
-                      </div>
-                    </div>
-                    <h4 className="text-sm font-medium text-gray-200 mb-1">Tower Hill</h4>
-                    <p className="text-xs text-gray-400 mb-2">Leyburn, QLD</p>
-                    <p className="text-sm text-gray-300 pl-2 border-l-2 border-green-500/50">"Exemplary site management. All shafts and adits across the extensive field are properly secured with clear signage."</p>
-                  </div>
-                  
-                  {/* Dittmer / Duffer Workings */}
-                  <div className="group">
-                    <div 
-                      className="aspect-[4/3] bg-gray-800 rounded-lg overflow-hidden mb-3 relative cursor-pointer"
-                      onClick={() => setFullscreenImage({ 
-                        full: '/assets/vision-statement/dittmer-workings.jpg', 
-                        name: 'Dittmer / Duffer Lode, Proserpine, FNQ' 
-                      })}
-                    >
-                      <img 
-                        src="/assets/vision-statement/dittmer-workings-optimized.jpg" 
-                        alt="Dittmer / Duffer Workings mine site"
-                        className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-                        style={{ filter: 'sepia(0.5) hue-rotate(15deg) saturate(2.5) brightness(1.1)' }}
-                      />
-                      <div className="absolute bottom-0 left-0 right-0 bg-yellow-400/90 backdrop-blur-sm text-black text-sm font-black py-2 px-2 text-center">
-                        CONCERNING
-                      </div>
-                    </div>
-                    <h4 className="text-sm font-medium text-gray-200 mb-1">Dittmer / Duffer Lode</h4>
-                    <p className="text-xs text-gray-400 mb-2">Proserpine, FNQ</p>
-                    <p className="text-sm text-gray-300 pl-2 border-l-2 border-yellow-400/50">"A forgotten site still attracting fossickers for its high-grade deposits. The mountain switchbacks lead to exposed stopes at the upper workings—significant fall hazards remain unsealed."</p>
-                  </div>
-                  
-                  {/* Governor Norman */}
-                  <div className="group">
-                    <div 
-                      className="aspect-[4/3] bg-gray-800 rounded-lg overflow-hidden mb-3 relative cursor-pointer"
-                      onClick={() => setFullscreenImage({ 
-                        full: '/assets/vision-statement/governor-norman.jpg', 
-                        name: 'Governor Norman c/o Jumna Mill, FNQ' 
-                      })}
-                    >
-                      <img 
-                        src="/assets/vision-statement/governor-norman-optimized.jpg" 
-                        alt="Governor Norman mine site"
-                        className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-                        style={{ filter: 'sepia(0.8) hue-rotate(-30deg) saturate(3.6) contrast(1.2)' }}
-                      />
-                      <div className="absolute bottom-0 left-0 right-0 bg-red-500/90 backdrop-blur-sm text-black text-sm font-black py-2 px-2 text-center">
-                        DANGER
-                      </div>
-                    </div>
-                    <h4 className="text-sm font-medium text-gray-200 mb-1">Governor Norman</h4>
-                    <p className="text-xs text-gray-400 mb-2">C/O Jumna Mill, FNQ</p>
-                    <p className="text-sm text-gray-300 pl-2 border-l-2 border-red-500/50">"Worst of the entire local area; adits open near 4WD tracks; dangerous workings; ostensibly higher risk than the 'Great Southern', which is saying something. Boom sticks included."</p>
-                  </div>
-                </div>
-              </div>
-              
-              {/* Program Evolution Section */}
-              <div id="program-evolution" className="mt-16">
-                <h3 className="text-2xl font-light text-gray-400 tracking-wider mb-6">Program Evolution</h3>
-                
-                {/* Mermaid Diagram */}
-                <div className="bg-gray-900/30 rounded-lg p-6 border border-gray-800 overflow-x-auto">
-                  <div className="mermaid" ref={mermaidRef}>
-{`graph TB
-    subgraph AW["SAFETY & COMPLIANCE"]
-        direction LR
-        MERLIN[MERLIN Database]
-        FD[Field Assessments]
-        TR[Mining Titles]
-        ENV[Environmental Data]
-    end
-    
-    subgraph IN["RISK ASSESSMENT"]
-        direction LR
-        RA[Risk Model]
-        AI[AI Model]
-        CURR[Current Risk]
-        PROJ[Future Risk]
-        PRIOR[Priority Ranking]
-    end
-    
-    subgraph PL["PLANNING & BUDGET"]
-        direction LR
-        PLAN[Action Planning]
-        BUD[Budget Forecast]
-        Y1[Year 1]
-        Y3[Year 3]
-        Y5[Year 5]
-    end
-    
-    subgraph AC["REMEDIATION"]
-        direction LR
-        REM[Site Remediation]
-        KPI[Actual vs Forecast KPIs]
-    end
-    
-    subgraph EN["STAKEHOLDER ENGAGEMENT"]
-        direction LR
-        COMM[Community Engagement]
-        GOV[Government Agencies]
-        LC[Local Communities]
-        TO[Traditional Owners]
-        PROC[Procurement]
-        CONT[Local Contractors]
-    end
-    
-    %% Vertical connections between phases
-    MERLIN --> RA
-    FD --> RA
-    TR --> RA
-    ENV --> RA
-    
-    RA --> AI
-    AI --> CURR
-    AI --> PROJ
-    CURR --> PRIOR
-    PROJ --> PRIOR
-    
-    PRIOR --> PLAN
-    PLAN --> BUD
-    BUD --> Y1
-    BUD --> Y3
-    BUD --> Y5
-    
-    BUD --> REM
-    BUD --> KPI
-    
-    REM --> COMM
-    KPI --> COMM
-    COMM --> GOV
-    COMM --> LC
-    COMM --> TO
-    COMM --> PROC
-    PROC --> CONT
-    
-    %% Styling
-    classDef inputBox fill:#1e3a5f,stroke:#4a90e2,stroke-width:2px,color:#fff
-    classDef processBox fill:#2d5016,stroke:#5cb85c,stroke-width:2px,color:#fff
-    classDef aiBox fill:#4a1e5f,stroke:#9a4ae2,stroke-width:3px,color:#fff
-    classDef outputBox fill:#5a2c17,stroke:#d9534f,stroke-width:2px,color:#fff
-    classDef peopleBox fill:#5f1e3a,stroke:#e24a90,stroke-width:2px,color:#fff
-    classDef swimlane fill:#0a0a0a,stroke:#333,stroke-width:2px,color:#fff
-    
-    class MERLIN,FD,TR,ENV inputBox
-    class RA,CURR,PROJ,PRIOR,PLAN,BUD,Y1,Y3,Y5 processBox
-    class AI aiBox
-    class REM,KPI outputBox
-    class COMM,GOV,LC,TO,PROC,CONT peopleBox
-    class AW,IN,PL,AC,EN swimlane`}
-                  </div>
-                </div>
-                
-                <p className="text-sm text-gray-400 mt-4 italic text-center">
-                  Queensland Abandoned Mine Lands Program - Data Flow & Decision Framework
-                </p>
-              </div>
-            </div>
-              
-              {/* Canary App Subsection */}
-              <div id="canary-app" className="mt-16">
-                <h3 className="text-2xl font-light text-gray-400 tracking-wider mb-6">Canary App</h3>
-                
-                <div className="mb-8">
-                  <h4 className="text-4xl text-white font-extralight mb-6" style={{ fontFamily: 'Manrope, sans-serif' }}>Digital hazard intelligence for Queensland's abandoned mine program</h4>
-                <p className="text-lg text-gray-300 mb-6 leading-relaxed max-w-4xl">
-                  What if every abandoned mine hazard was managed through the proper risk framework? Industry operators and staff identify hazards with GPS precision, AMLP staff assess priority levels with photo evidence, and control measures are implemented with full regulatory compliance—all starting with a field report.
-                </p>
-              </div>
-
-              {/* Three Key Features */}
-              <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
-                {/* Industry Partnership */}
-                <div className="bg-slate-900/30 border border-slate-700/30 rounded-lg p-6">
-                  <h4 className="text-lg text-gray-400 font-extralight mb-3">Industry Partnership</h4>
-                  <p className="text-sm text-gray-500 font-extralight mb-4">Collaborative approach leveraging private sector expertise</p>
-                  <div className="space-y-2 text-sm">
-                    <div className="flex items-center">
-                      <svg className="w-3 h-3 mr-3 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2">
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5"/>
-                      </svg>
-                      <div className="text-gray-600 font-extralight">Cross-industry knowledge sharing</div>
-                    </div>
-                    <div className="flex items-center">
-                      <svg className="w-3 h-3 mr-3 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2">
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5"/>
-                      </svg>
-                      <div className="text-gray-600 font-extralight">Streamlined contractor workflows</div>
-                    </div>
-                    <div className="flex items-center">
-                      <svg className="w-3 h-3 mr-3 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2">
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5"/>
-                      </svg>
-                      <div className="text-gray-600 font-extralight">Integrated remediation planning</div>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Data Driven Decisions */}
-                <div className="bg-slate-900/30 border border-slate-700/30 rounded-lg p-6">
-                  <h4 className="text-lg text-gray-400 font-extralight mb-3">Data Driven Decisions</h4>
-                  <p className="text-sm text-gray-500 font-extralight mb-4">Accurate reports and forecasting for informed stakeholder decisions</p>
-                  <div className="space-y-2 text-sm">
-                    <div className="flex items-center">
-                      <svg className="w-3 h-3 mr-3 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2">
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5"/>
-                      </svg>
-                      <div className="text-gray-600 font-extralight">Evidence-based site prioritization</div>
-                    </div>
-                    <div className="flex items-center">
-                      <svg className="w-3 h-3 mr-3 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2">
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5"/>
-                      </svg>
-                      <div className="text-gray-600 font-extralight">Real-time hazard trends</div>
-                    </div>
-                    <div className="flex items-center">
-                      <svg className="w-3 h-3 mr-3 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2">
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5"/>
-                      </svg>
-                      <div className="text-gray-600 font-extralight">Cost-impact analysis</div>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Public Safety First */}
-                <div className="bg-slate-900/30 border border-slate-700/30 rounded-lg p-6">
-                  <h4 className="text-lg text-gray-400 font-extralight mb-3">Public Safety First</h4>
-                  <p className="text-sm text-gray-500 font-extralight mb-4">Proactive community protection and rapid response systems</p>
-                  <div className="space-y-2 text-sm">
-                    <div className="flex items-center">
-                      <svg className="w-3 h-3 mr-3 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2">
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5"/>
-                      </svg>
-                      <div className="text-gray-600 font-extralight">Immediate threat assessment</div>
-                    </div>
-                    <div className="flex items-center">
-                      <svg className="w-3 h-3 mr-3 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2">
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5"/>
-                      </svg>
-                      <div className="text-gray-600 font-extralight">Automated community notifications</div>
-                    </div>
-                    <div className="flex items-center">
-                      <svg className="w-3 h-3 mr-3 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2">
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5"/>
-                      </svg>
-                      <div className="text-gray-600 font-extralight">Coordinated emergency protocols</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* User Stories */}
-              <div className="mb-12">
-                <h4 className="text-2xl text-white font-extralight mb-6">User Stories</h4>
-                <p className="text-gray-300 text-base mb-6">How different professionals use Canary for hazard reporting in the field</p>
-                
-                <div className="grid lg:grid-cols-3 gap-6 mb-8">
-                  {/* Exploration Driller */}
-                  <div className="bg-gradient-to-br from-cyan-900/20 via-slate-800/50 to-slate-900/50 rounded-lg p-4 border border-cyan-500/20 hover:border-cyan-400/30 transition-all duration-300">
-                    <div className="flex items-center space-x-3 mb-3">
-                      <div className="w-8 h-8 bg-cyan-500/20 rounded-lg flex items-center justify-center">
-                        <svg className="w-4 h-4 text-cyan-400" fill="currentColor" viewBox="0 0 24 24">
-                          <path d="M12 2C8.13 2 5 5.13 5 9c0 1.74.5 3.37 1.41 4.84.95 1.54 2.2 2.86 3.16 4.4.47.75.43 1.76.43 1.76s-.04-1.01.43-1.76c.96-1.54 2.21-2.86 3.16-4.4C14.5 12.37 15 10.74 15 9c0-3.87-3.13-7-7-7zm0 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2z"/>
-                        </svg>
-                      </div>
-                      <div>
-                        <h5 className="text-cyan-300 font-medium text-sm">Exploration Driller</h5>
-                        <p className="text-gray-400 text-xs">Remote operations</p>
-                      </div>
-                    </div>
-                    <p className="text-gray-300 text-sm leading-relaxed">"I photograph old shafts and unstable ground to keep my crew safe. The app works offline in remote areas."</p>
-                  </div>
-                  
-                  {/* Environmental Scientist */}
-                  <div className="bg-gradient-to-br from-green-900/20 via-slate-800/50 to-slate-900/50 rounded-lg p-4 border border-green-500/20 hover:border-green-400/30 transition-all duration-300">
-                    <div className="flex items-center space-x-3 mb-3">
-                      <div className="w-8 h-8 bg-green-500/20 rounded-lg flex items-center justify-center">
-                        <svg className="w-4 h-4 text-green-400" fill="currentColor" viewBox="0 0 24 24">
-                          <path d="M12 2C9.79 2 8 3.79 8 6s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4zm0 6c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2z"/>
-                          <path d="M8 12c-2.76 0-5 2.24-5 5 0 1.66 1.34 3 3 3h8c1.66 0 3-1.34 3-3 0-2.76-2.24-5-5-5H8z" opacity="0.7"/>
-                        </svg>
-                      </div>
-                      <div>
-                        <h5 className="text-green-300 font-medium text-sm">Environmental Scientist</h5>
-                        <p className="text-gray-400 text-xs">Site assessment</p>
-                      </div>
-                    </div>
-                    <p className="text-gray-300 text-sm leading-relaxed">"I collect standardized reports with precise GPS data and photos for regulatory compliance assessments."</p>
-                  </div>
-                  
-                  {/* Park Ranger */}
-                  <div className="bg-gradient-to-br from-yellow-900/20 via-slate-800/50 to-slate-900/50 rounded-lg p-4 border border-yellow-500/20 hover:border-yellow-400/30 transition-all duration-300">
-                    <div className="flex items-center space-x-3 mb-3">
-                      <div className="w-8 h-8 bg-yellow-500/20 rounded-lg flex items-center justify-center">
-                        <svg className="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 24 24">
-                          <path d="M12 2l-1.09 8.26C10.73 11.17 10 12 10 13c0 1.1.9 2 2 2s2-.9 2-2c0-1-.73-1.83-.91-2.74L12 2z"/>
-                          <path d="M4 10c0 1.1.9 2 2 2h2v6c0 2.21 1.79 4 4 4s4-1.79 4-4v-6h2c1.1 0 2-.9 2-2 0-1.1-.9-2-2-2H6c-1.1 0-2 .9-2 2z" fill="none"/>
-                        </svg>
-                      </div>
-                      <div>
-                        <h5 className="text-yellow-300 font-medium text-sm">Park Ranger</h5>
-                        <p className="text-gray-400 text-xs">Public safety</p>
-                      </div>
-                    </div>
-                    <p className="text-gray-300 text-sm leading-relaxed">"I guide visitors to safely report hazards from a distance, coordinating area closures and emergency responses."</p>
-                  </div>
-                </div>
-              </div>
-
-              {/* App Screens */}
-              <div className="mb-12">
-                <h4 className="text-2xl text-white font-extralight mb-6">Mobile App Screens</h4>
-                <p className="text-gray-300 text-base mb-8">Field reporting application for hazard identification and risk assessment</p>
-                
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                  {/* Step 1: Check Screen */}
-                  <div className="text-center">
-                    <div className="border-l-2 border-cyan-400/30 pl-4 mb-6">
-                      <h5 className="text-lg font-medium text-gray-200 mb-2">Check</h5>
-                      <p className="text-base text-gray-300">Instant hazard detection and safety status</p>
-                    </div>
-                    
-                    {/* Phone Mockup */}
-                    <div className="relative mx-auto" style={{ width: '200px', height: '400px' }}>
-                      {/* Phone Frame */}
-                      <div className="absolute inset-0 bg-slate-900/50 rounded-3xl border-2 border-slate-700/30 shadow-lg">
-                        {/* Camera */}
-                        <div className="absolute top-3 left-1/2 transform -translate-x-1/2 w-2 h-2 bg-slate-600/60 rounded-full"></div>
-                        
-                        {/* Screen */}
-                        <div className="absolute top-6 left-3 right-3 bottom-3 bg-emerald-500/90 rounded-2xl overflow-hidden border border-slate-600/20">
-                          <div className="flex flex-col items-center justify-center px-6 py-8 h-full relative z-10">
-                            <div className="text-center space-y-6">
-                              {/* Status Icon */}
-                              <div className="w-20 h-20 bg-white/20 rounded-full mx-auto flex items-center justify-center">
-                                <svg className="w-12 h-12 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"/>
-                                </svg>
-                              </div>
-                              
-                              {/* Status Message */}
-                              <div className="space-y-3">
-                                <h6 className="text-2xl font-light text-white">No known hazards nearby</h6>
-                                <div className="space-y-1">
-                                  <p className="text-white/80 text-sm">Checked 500m ±20m</p>
-                                  <p className="text-white/80 text-sm">2 hours ago</p>
-                                </div>
-                              </div>
-                              
-                              {/* Action Button */}
-                              <div className="pt-8">
-                                <button className="w-full bg-black text-white py-4 px-6 rounded-xl font-medium">
-                                  Report a Hazard
-                                </button>
-                                <div className="mt-6">
-                                  <a href="#" className="text-white/70 text-xs">Get in touch with us</a>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  
-                  {/* Step 2: Capture Screen */}
-                  <div className="text-center">
-                    <div className="border-l-2 border-cyan-400/30 pl-4 mb-6">
-                      <h5 className="text-lg font-medium text-gray-200 mb-2">Capture</h5>
-                      <p className="text-base text-gray-300">GPS-tagged photo evidence collection</p>
-                    </div>
-                    
-                    {/* Phone Mockup */}
-                    <div className="relative mx-auto" style={{ width: '200px', height: '400px' }}>
-                      {/* Phone Frame */}
-                      <div className="absolute inset-0 bg-slate-900/50 rounded-3xl border-2 border-slate-700/30 shadow-lg">
-                        {/* Camera */}
-                        <div className="absolute top-3 left-1/2 transform -translate-x-1/2 w-2 h-2 bg-slate-600/60 rounded-full"></div>
-                        
-                        {/* Screen */}
-                        <div className="absolute top-6 left-3 right-3 bottom-3 bg-gray-900/90 rounded-2xl overflow-hidden relative border border-slate-600/20">
-                          {/* Camera Background */}
-                          <div className="absolute inset-0 bg-gradient-to-br from-green-900/40 via-gray-800 to-gray-900"></div>
-                          
-                          {/* Safety Warning Badge */}
-                          <div className="pt-4 px-4 z-20 relative">
-                            <div className="text-center">
-                              <div className="relative inline-flex items-center bg-black px-8 py-2 rounded-full mb-2">
-                                <span className="text-yellow-300 text-lg uppercase font-bold" style={{fontFamily: 'Impact, Arial Black, sans-serif', textShadow: '3px 3px 0px rgba(0,0,0,1), -2px -2px 0px rgba(0,0,0,1), 2px -2px 0px rgba(0,0,0,1), -2px 2px 0px rgba(0,0,0,1), 0px 0px 8px rgba(255,0,0,0.5)', letterSpacing: '0.5px'}}>STAY OUT, STAY ALIVE</span>
-                                <span className="absolute left-2 top-1/2 transform -translate-y-1/2 text-lg animate-pulse" style={{color: '#eab308'}}>☠️</span>
-                                <span className="absolute right-2 top-1/2 transform -translate-y-1/2 text-lg animate-pulse" style={{color: '#eab308'}}>☠️</span>
-                              </div>
-                            </div>
-                          </div>
-
-                          {/* Camera Interface */}
-                          <div className="flex flex-col relative z-10 h-full px-4 pb-16">
-                            {/* Camera viewport */}
-                            <div className="flex-1 flex items-center justify-center relative">
-                              {/* Video will be displayed here */}
-                            </div>
-                            
-                            {/* Camera controls */}
-                            <div className="flex justify-center items-center pb-4 mt-8">
-                              <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center">
-                                <div className="w-12 h-12 bg-white border-2 border-gray-300 rounded-full"></div>
-                              </div>
-                            </div>
-                          </div>
-                          
-                          {/* Skip Button at Bottom */}
-                          <div className="absolute bottom-0 left-0 right-0 p-4">
-                            <button className="w-full bg-yellow-500 text-black py-3 rounded-xl text-sm font-medium hover:bg-yellow-400 transition">
-                              Skip
-                            </button>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  
-                  {/* Step 3: Submit Screen */}
-                  <div className="text-center">
-                    <div className="border-l-2 border-cyan-400/30 pl-4 mb-6">
-                      <h5 className="text-lg font-medium text-gray-200 mb-2">Submit</h5>
-                      <p className="text-base text-gray-300">Automated priority assessment and routing</p>
-                    </div>
-                    
-                    {/* Phone Mockup */}
-                    <div className="relative mx-auto" style={{ width: '200px', height: '400px' }}>
-                      {/* Phone Frame */}
-                      <div className="absolute inset-0 bg-slate-900/50 rounded-3xl border-2 border-slate-700/30 shadow-lg">
-                        {/* Camera */}
-                        <div className="absolute top-3 left-1/2 transform -translate-x-1/2 w-2 h-2 bg-slate-600/60 rounded-full"></div>
-                        
-                        {/* Screen */}
-                        <div className="absolute top-6 left-3 right-3 bottom-3 bg-gradient-to-br from-slate-900 via-slate-900 to-slate-800 rounded-2xl overflow-hidden border border-slate-600/20 relative">
-                          {/* Background Pattern */}
-                          <div className="absolute inset-0 opacity-5">
-                            <div className="absolute inset-0" style={{backgroundImage: 'radial-gradient(circle at 25% 25%, #06b6d4 0%, transparent 70%), radial-gradient(circle at 75% 75%, #8b5cf6 0%, transparent 70%)'}}></div>
-                          </div>
-                          
-                          {/* Modern Report Form */}
-                          <div className="flex flex-col h-full relative z-10 p-4">
-                            {/* Progress Bar */}
-                            <div className="mb-4 pt-2">
-                              <div className="w-full bg-gray-700 rounded-full h-1">
-                                <div className="bg-cyan-400 h-1 rounded-full" style={{width: '33%'}}></div>
-                              </div>
-                            </div>
-                            
-                            <div className="flex-1 flex flex-col">
-                              {/* Form Step */}
-                              <div className="flex-1 flex flex-col">
-                                <div className="relative flex items-center justify-center mb-4">
-                                  <button className="absolute left-0 text-white hover:text-gray-300 transition">
-                                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7"/>
-                                    </svg>
-                                  </button>
-                                  <h6 className="text-white text-base font-medium">What did you find?</h6>
-                                </div>
-                                
-                                <div className="flex-1 space-y-3">
-                                  <button className="group w-full bg-slate-800 hover:bg-cyan-600 text-white py-3 px-4 rounded-xl text-sm font-medium border border-slate-600 hover:border-cyan-400 transition-all duration-200 text-left">
-                                    <div className="flex items-center space-x-3">
-                                      <svg className="w-5 h-5 text-red-400 group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2">
-                                        <ellipse cx="12" cy="12" rx="8" ry="4" fill="currentColor" opacity="0.3"/>
-                                        <ellipse cx="12" cy="12" rx="6" ry="3" fill="none"/>
-                                        <ellipse cx="12" cy="12" rx="4" ry="2" fill="none"/>
-                                        <path d="M8 10l8 4M16 10l-8 4"/>
-                                      </svg>
-                                      <span className="font-medium">Hole in the ground</span>
-                                    </div>
-                                  </button>
-                                  <button className="group w-full bg-slate-800 hover:bg-cyan-600 text-white py-3 px-4 rounded-xl text-sm font-medium border border-slate-600 hover:border-cyan-400 transition-all duration-200 text-left">
-                                    <div className="flex items-center space-x-3">
-                                      <svg className="w-5 h-5 text-green-400 group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2">
-                                        <path d="M3 20h18"/>
-                                        <path d="M5 20c0-8 3-12 7-12s7 4 7 12"/>
-                                        <rect x="10" y="8" width="4" height="12" fill="none"/>
-                                        <path d="M8 14h8" strokeWidth="1"/>
-                                      </svg>
-                                      <span className="font-medium">Mine tunnel or entrance</span>
-                                    </div>
-                                  </button>
-                                  <button className="group w-full bg-slate-800 hover:bg-cyan-600 text-white py-3 px-4 rounded-xl text-sm font-medium border border-slate-600 hover:border-cyan-400 transition-all duration-200 text-left">
-                                    <div className="flex items-center space-x-3">
-                                      <svg className="w-5 h-5 text-blue-400 group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2">
-                                        <circle cx="12" cy="12" r="3" fill="currentColor" opacity="0.4"/>
-                                        <circle cx="8" cy="8" r="2" fill="currentColor" opacity="0.3"/>
-                                        <circle cx="16" cy="9" r="1.5" fill="currentColor" opacity="0.3"/>
-                                        <circle cx="6" cy="16" r="1.5" fill="currentColor" opacity="0.3"/>
-                                        <circle cx="18" cy="15" r="2" fill="currentColor" opacity="0.3"/>
-                                        <path d="M12 8v8M8 12h8" strokeWidth="1" opacity="0.5"/>
-                                      </svg>
-                                      <span className="font-medium">Contaminated area</span>
-                                    </div>
-                                  </button>
-                                </div>
-                                
-                                {/* Navigation */}
-                                <div className="pt-4">
-                                  <button className="w-full bg-gradient-to-r from-gray-500 to-gray-600 text-white py-3 rounded-xl text-sm font-semibold transition shadow-lg opacity-50 cursor-not-allowed" disabled>
-                                    Continue
-                                  </button>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Dashboard Section */}
-              <div className="mb-12">
-                <h4 className="text-2xl text-white font-extralight mb-6">AMLP Staff Dashboard</h4>
-                <p className="text-gray-300 text-base mb-8">Real-time hazard monitoring and regulatory oversight for Queensland's abandoned mine program staff</p>
-                
-                {/* Browser Mockup */}
-                <div className="w-full bg-gray-900/30 border border-gray-800 rounded-lg overflow-hidden shadow-xl" style={{ height: '450px' }}>
-                  {/* Browser Header */}
-                  <div className="bg-slate-800/50 px-4 py-2 border-b border-slate-700/30 backdrop-blur-sm">
-                    <div className="flex items-center space-x-3">
-                      <div className="flex space-x-1.5">
-                        <div className="w-2.5 h-2.5 bg-red-500/80 rounded-full"></div>
-                        <div className="w-2.5 h-2.5 bg-yellow-500/80 rounded-full"></div>
-                        <div className="w-2.5 h-2.5 bg-green-500/80 rounded-full"></div>
-                      </div>
-                      <div className="flex-1 bg-slate-700/50 rounded px-3 py-1 text-gray-300 text-xs font-light">
-                        dashboard.amlpcanary.qld.gov.au
-                      </div>
-                    </div>
-                  </div>
-                  
-                  {/* Dashboard Content */}
-                  <div className="bg-slate-900/20 p-4 h-full">
-                    <div className="grid grid-cols-12 gap-3 h-full">
-                      
-                      {/* Left Side - Stats & Event List */}
-                      <div className="col-span-5 space-y-3">
-                        {/* Stats Grid */}
-                        <div className="grid grid-cols-3 gap-2">
-                          <div className="bg-slate-800/30 rounded-md p-2 text-center border border-slate-700/20">
-                            <div className="text-red-400 text-lg font-light">12</div>
-                            <div className="text-gray-400 text-xs uppercase tracking-wider">Critical</div>
-                          </div>
-                          <div className="bg-slate-800/30 rounded-md p-2 text-center border border-slate-700/20">
-                            <div className="text-amber-400 text-lg font-light">24</div>
-                            <div className="text-gray-400 text-xs uppercase tracking-wider">Pending</div>
-                          </div>
-                          <div className="bg-slate-800/30 rounded-md p-2 text-center border border-slate-700/20">
-                            <div className="text-emerald-400 text-lg font-light">143</div>
-                            <div className="text-gray-400 text-xs uppercase tracking-wider">Controlled</div>
-                          </div>
-                        </div>
-                        
-                        {/* Active Events Header */}
-                        <div className="flex items-center justify-between">
-                          <h5 className="text-white text-sm font-medium">Active Events</h5>
-                          <div className="flex items-center space-x-2">
-                            <div className="w-2 h-2 bg-red-500 rounded-full animate-pulse"></div>
-                            <span className="text-gray-400 text-xs">Live Feed</span>
-                          </div>
-                        </div>
-                        
-                        {/* Event List */}
-                        <div className="space-y-2 overflow-y-auto" style={{ maxHeight: '240px' }}>
-                          {/* Priority Event */}
-                          <div className="bg-red-900/20 border border-red-600/30 rounded-md p-2">
-                            <div className="flex items-start justify-between">
-                              <div className="flex items-start space-x-2">
-                                <div className="px-1 py-0.5 bg-red-500/80 text-white text-xs font-bold rounded">P1</div>
-                                <div>
-                                  <div className="text-white text-xs font-medium">#AML-2024-0847</div>
-                                  <div className="text-red-300 text-xs">Acid Mine Drainage</div>
-                                  <div className="text-gray-400 text-xs">Mount Morgan • 2 min ago</div>
-                                </div>
-                              </div>
-                              <div className="text-red-400 text-xs">LIVE</div>
-                            </div>
-                          </div>
-                          
-                          {/* Other Events */}
-                          <div className="bg-slate-800/20 border border-slate-700/30 rounded-md p-2">
-                            <div className="flex items-start justify-between">
-                              <div className="flex items-start space-x-2">
-                                <div className="px-1 py-0.5 bg-red-500/80 text-white text-xs font-bold rounded">P1</div>
-                                <div>
-                                  <div className="text-white text-xs">#AML-2024-0846</div>
-                                  <div className="text-orange-300 text-xs">Shaft Collapse</div>
-                                  <div className="text-gray-400 text-xs">Irvinebank • 8 min ago</div>
-                                </div>
-                              </div>
-                              <div className="text-orange-400 text-xs">ACTIVE</div>
-                            </div>
-                          </div>
-                          
-                          <div className="bg-slate-800/20 border border-slate-700/30 rounded-md p-2">
-                            <div className="flex items-start justify-between">
-                              <div className="flex items-start space-x-2">
-                                <div className="px-1 py-0.5 bg-orange-500/80 text-white text-xs font-bold rounded">P2</div>
-                                <div>
-                                  <div className="text-white text-xs">#AML-2024-0845</div>
-                                  <div className="text-yellow-300 text-xs">Water Contamination</div>
-                                  <div className="text-gray-400 text-xs">Drake • 15 min ago</div>
-                                </div>
-                              </div>
-                              <div className="text-yellow-400 text-xs">PENDING</div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      
-                      {/* Right Side - Map View */}
-                      <div className="col-span-7">
-                        <div className="bg-slate-800/20 border border-slate-700/20 rounded-md h-full relative overflow-hidden">
-                          {/* Map Header */}
-                          <div className="absolute top-3 left-3 right-3 z-10">
-                            <div className="flex items-center justify-between">
-                              <h5 className="text-white text-sm font-medium">Queensland Hazard Map</h5>
-                              <div className="bg-slate-800/50 px-2 py-1 rounded text-gray-300 text-xs backdrop-blur-sm">
-                                Live: 179 sites monitored
-                              </div>
-                            </div>
-                          </div>
-                          
-                          {/* Map Background */}
-                          <div className="absolute inset-0 bg-gradient-to-br from-green-900/10 via-slate-800/50 to-slate-900/60">
-                            {/* Simulated map with hazard markers */}
-                            <div className="absolute inset-3 rounded">
-                              {/* Priority markers */}
-                              <div className="absolute top-12 left-20 w-2.5 h-2.5 bg-red-500 rounded-full animate-pulse border border-white/50"></div>
-                              <div className="absolute top-24 right-16 w-2.5 h-2.5 bg-red-500 rounded-full animate-pulse border border-white/50"></div>
-                              <div className="absolute bottom-20 left-12 w-2 h-2 bg-orange-500 rounded-full border border-white/50"></div>
-                              <div className="absolute bottom-32 right-24 w-2 h-2 bg-yellow-500 rounded-full border border-white/50"></div>
-                              <div className="absolute top-16 right-32 w-1.5 h-1.5 bg-green-500 rounded-full"></div>
-                              <div className="absolute bottom-16 left-32 w-1.5 h-1.5 bg-green-500 rounded-full"></div>
-                              
-                              {/* Legend */}
-                              <div className="absolute bottom-3 right-3 bg-slate-800/60 rounded p-2 backdrop-blur-sm">
-                                <div className="space-y-1">
-                                  <div className="flex items-center space-x-2">
-                                    <div className="w-1.5 h-1.5 bg-red-500 rounded-full"></div>
-                                    <span className="text-gray-300 text-xs">Critical (P1)</span>
-                                  </div>
-                                  <div className="flex items-center space-x-2">
-                                    <div className="w-1.5 h-1.5 bg-orange-500 rounded-full"></div>
-                                    <span className="text-gray-300 text-xs">High (P2)</span>
-                                  </div>
-                                  <div className="flex items-center space-x-2">
-                                    <div className="w-1.5 h-1.5 bg-yellow-500 rounded-full"></div>
-                                    <span className="text-gray-300 text-xs">Medium (P3)</span>
-                                  </div>
-                                  <div className="flex items-center space-x-2">
-                                    <div className="w-1.5 h-1.5 bg-green-500 rounded-full"></div>
-                                    <span className="text-gray-300 text-xs">Controlled</span>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="bg-blue-500/10 border border-blue-500/30 rounded-lg p-6">
-                <div className="flex items-start space-x-4">
-                  <div className="bg-blue-500/20 p-3 rounded-lg flex-shrink-0">
-                    <svg className="w-6 h-6 text-blue-300" viewBox="0 0 20 20" fill="currentColor">
-                      <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                    </svg>
-                  </div>
-                  <div>
-                    <h5 className="text-lg font-semibold text-blue-300 mb-2">Proof of Concept</h5>
-                    <p className="text-sm text-blue-200">
-                      This mobile application concept demonstrates how digital tools can transform abandoned mine hazard reporting from reactive incident response to proactive risk management, enabling systematic documentation and evidence-based prioritization across Queensland's extensive inventory.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </section>
+          {/* Vision: Storytelling Section */}
+          <VisionStorytellingSection />
 
           {/* Resume Section */}
-          <section id="resume" className="relative min-h-screen flex flex-col justify-center py-20">
-            <div className="mb-8">
-              <h2 className="text-3xl font-light text-gray-400 tracking-widest mb-4 px-4 sm:px-8">RESUME</h2>
-            </div>
-            
-            {/* Executive Summary - Now part of resume */}
-            <div className="px-4 sm:px-8 mt-8">
-              <ExecutiveSummary 
-                summary={blakeProfileData.summary} 
-                focusAreas={blakeProfileData.focusAreas} 
-              />
-
-              {/* Professional Experience */}
-              <ProfessionalExperience experiences={blakeProfileData.experience} />
-
-              {/* Core Competencies */}
-              <CoreCompetencies skills={blakeProfileData.skills} />
-
-              {/* Education */}
-              <Education education={blakeProfileData.education} />
-            </div>
-          </section>
+          <ResumeSection blakeProfileData={blakeProfileData} />
 
           {/* Reflection Section */}
-          <section id="reflection" className="relative min-h-screen flex flex-col justify-center py-20">
-            <div className="w-full px-4 sm:px-8 mt-8">
-              <h2 className="text-3xl font-light text-gray-400 tracking-widest mb-12">REFLECTION</h2>
-              {/* Abandoned Places Reflection - Now at the top */}
-              <div className="mb-8 max-w-4xl">
-                <p className="text-lg leading-relaxed font-light text-gray-300">
-                  I owe much of my professional development to these abandoned places that first fascinated me as a child. Their industrial histories and human stories have been a constant source of learning throughout my career, providing unique insights that continue to inform my approach to complex transformation challenges.
-                </p>
-              </div>
-              <div className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-2 mb-12">
-                {[
-                  { thumb: '/assets/personnel/application-gallery/thumbs/calgoa-qld.jpg', full: '/assets/personnel/application-gallery/calgoa-qld.jpg', name: 'Calgoa, QLD' },
-                  { thumb: '/assets/personnel/application-gallery/thumbs/carbonate-hill-nm-1.jpg', full: '/assets/personnel/application-gallery/carbonate-hill-nm-1.jpg', name: 'Carbonate Hill, NM' },
-                  { thumb: '/assets/personnel/application-gallery/thumbs/carbonate-hill-nm-2.jpg', full: '/assets/personnel/application-gallery/carbonate-hill-nm-2.jpg', name: 'Carbonate Hill, NM' },
-                  { thumb: '/assets/personnel/application-gallery/thumbs/carbonate-hill-nm-3.jpg', full: '/assets/personnel/application-gallery/carbonate-hill-nm-3.jpg', name: 'Carbonate Hill, NM' },
-                  { thumb: '/assets/personnel/application-gallery/thumbs/carbonate-hill-nm-4.jpg', full: '/assets/personnel/application-gallery/carbonate-hill-nm-4.jpg', name: 'Carbonate Hill, NM' },
-                  { thumb: '/assets/personnel/application-gallery/thumbs/drake-nsw-1.jpg', full: '/assets/personnel/application-gallery/drake-nsw-1.jpg', name: 'Drake, NSW' },
-                  { thumb: '/assets/personnel/application-gallery/thumbs/drake-nsw-2.jpg', full: '/assets/personnel/application-gallery/drake-nsw-2.jpg', name: 'Drake, NSW' },
-                  { thumb: '/assets/personnel/application-gallery/thumbs/irvinebank-qld-1.jpg', full: '/assets/personnel/application-gallery/irvinebank-qld-1.jpg', name: 'Irvinebank, QLD' },
-                  { thumb: '/assets/personnel/application-gallery/thumbs/irvinebank-qld-2.jpg', full: '/assets/personnel/application-gallery/irvinebank-qld-2.jpg', name: 'Irvinebank, QLD' },
-                  { thumb: '/assets/personnel/application-gallery/thumbs/leadville-co-1.jpg', full: '/assets/personnel/application-gallery/leadville-co-1.jpg', name: 'Leadville, CO' },
-                  { thumb: '/assets/personnel/application-gallery/thumbs/leadville-co-2.jpg', full: '/assets/personnel/application-gallery/leadville-co-2.jpg', name: 'Leadville, CO' },
-                  { thumb: '/assets/personnel/application-gallery/thumbs/luina-tas.jpg', full: '/assets/personnel/application-gallery/luina-tas.jpg', name: 'Luina, TAS' },
-                  { thumb: '/assets/personnel/application-gallery/thumbs/nunya-qld-1.jpg', full: '/assets/personnel/application-gallery/nunya-qld-1.jpg', name: 'Nunya, QLD' },
-                  { thumb: '/assets/personnel/application-gallery/thumbs/nunya-qld-2.jpg', full: '/assets/personnel/application-gallery/nunya-qld-2.jpg', name: 'Nunya, QLD' },
-                  { thumb: '/assets/personnel/application-gallery/thumbs/nunya-qld-3.jpg', full: '/assets/personnel/application-gallery/nunya-qld-3.jpg', name: 'Nunya, QLD' },
-                  { thumb: '/assets/personnel/application-gallery/thumbs/rosarden-tas-1.jpg', full: '/assets/personnel/application-gallery/rosarden-tas-1.jpg', name: 'Rosarden, TAS' },
-                  { thumb: '/assets/personnel/application-gallery/thumbs/rosarden-tas-2.jpg', full: '/assets/personnel/application-gallery/rosarden-tas-2.jpg', name: 'Rosarden, TAS' },
-                  { thumb: '/assets/personnel/application-gallery/thumbs/svalbard-dk.jpg', full: '/assets/personnel/application-gallery/svalbard-dk.jpg', name: 'Svalbard, DK' },
-                  { thumb: '/assets/personnel/application-gallery/thumbs/tombstone-az-1.jpg', full: '/assets/personnel/application-gallery/tombstone-az-1.jpg', name: 'Tombstone, AZ' },
-                  { thumb: '/assets/personnel/application-gallery/thumbs/tombstone-az-2.jpg', full: '/assets/personnel/application-gallery/tombstone-az-2.jpg', name: 'Tombstone, AZ' },
-                  { thumb: '/assets/personnel/application-gallery/thumbs/virginia-city-nv-1.jpg', full: '/assets/personnel/application-gallery/virginia-city-nv-1.jpg', name: 'Virginia City, NV' },
-                  { thumb: '/assets/personnel/application-gallery/thumbs/virginia-city-nv-2.jpg', full: '/assets/personnel/application-gallery/virginia-city-nv-2.jpg', name: 'Virginia City, NV' },
-                ].map((image, idx) => (
-                  <div key={idx} className="text-center">
-                    <div 
-                      className="relative mb-0 overflow-hidden rounded-lg cursor-pointer transition-all"
-                      style={{ width: '50%', aspectRatio: '1', margin: '0 auto' }}
-                      onClick={() => setFullscreenImage(image)}
-                    >
-                      <img 
-                        src={image.thumb}
-                        alt={`${image.name} abandoned mine site`}
-                        className="absolute inset-0 w-full h-full object-cover kodachrome-filter"
-                        style={{ 
-                          objectPosition: 'center'
-                        }}
-                        ref={(el) => {
-                          if (el) {
-                            const observer = new IntersectionObserver(
-                              ([entry]) => {
-                                if (entry.isIntersecting) {
-                                  el.style.filter = 'sepia(0.2) saturate(0.8) hue-rotate(10deg) contrast(1.1) brightness(0.95)';
-                                } else {
-                                  el.style.filter = 'sepia(0.4) saturate(0.9) hue-rotate(15deg) contrast(1.2) brightness(0.3)';
-                                }
-                              },
-                              { threshold: 0.3 }
-                            );
-                            observer.observe(el);
-                          }
-                        }}
-                      />
-                    </div>
-                    <p className="text-[10px] text-gray-300 font-light text-center font-sans mt-1">
-                      {image.name}
-                    </p>
-                  </div>
-                ))}
-              </div>
-              
-              {/* Inspiration */}
-              <div className="mt-16 max-w-4xl">
-                <p className="text-base leading-relaxed font-light text-gray-400">
-                  Inspired in no small part by my grandfathers.
-                </p>
-              </div>
-              
-              {/* Grandfathers Photos */}
-              <div className="flex gap-4 mt-8 justify-start flex-wrap">
-                {[
-                  { thumb: '/assets/personnel/application-gallery/thumbs/oliver.jpg?v=2', full: '/assets/personnel/application-gallery/oliver.jpg?v=2', name: 'Oliver Carter, Searching for Lasseter\'s Reef c.a. 1970s' },
-                  { thumb: '/assets/personnel/application-gallery/thumbs/oliver-tanami.jpg?v=1', full: '/assets/personnel/application-gallery/oliver-tanami.jpg?v=1', name: 'Oliver Carter, Tanami Desert' },
-                  { thumb: '/assets/personnel/application-gallery/thumbs/oliver-heap-leach.jpg?v=1', full: '/assets/personnel/application-gallery/oliver-heap-leach.jpg?v=1', name: 'Oliver Carter, Heap Leaching Operation' },
-                  { thumb: '/assets/personnel/application-gallery/thumbs/oliver-cyaniding-for-gold.jpg?v=1', full: '/assets/personnel/application-gallery/oliver-cyaniding-for-gold.jpg?v=1', name: 'Oliver Carter, Gold Cyanidation Process' },
-                  { thumb: '/assets/personnel/application-gallery/thumbs/keith.jpg?v=2', full: '/assets/personnel/application-gallery/keith.jpg?v=2', name: 'Keith Hughes, Exploration Geologist, Northern Territory' },
-                ].map((image, idx) => (
-                  <div key={idx} className="text-center" style={{ width: '120px' }}>
-                    <div 
-                      className="relative mb-0 overflow-hidden rounded-lg cursor-pointer transition-all"
-                      style={{ width: '120px', height: '120px' }}
-                      onClick={() => setFullscreenImage(image)}
-                    >
-                      <img 
-                        src={image.thumb}
-                        alt={`${image.name}`}
-                        className="absolute inset-0 w-full h-full object-cover kodachrome-filter"
-                        style={{ 
-                          objectPosition: 'center',
-                          filter: 'sepia(0.2) saturate(0.8) hue-rotate(10deg) contrast(1.1) brightness(0.95)'
-                        }}
-                      />
-                    </div>
-                    <p className="text-[10px] text-gray-300 font-light text-center font-sans mt-1">
-                      {image.name}
-                    </p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </section>
+          <ReflectionSection setFullscreenImage={setFullscreenImage} />
+
           
           {/* Fullscreen Image Modal */}
           {fullscreenImage && (

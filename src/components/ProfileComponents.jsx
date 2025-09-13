@@ -25,13 +25,15 @@ const getFavicon = (company) => {
 // Executive Summary Component
 export const ExecutiveSummary = ({ summary, focusAreas }) => (
   <div id="executive-summary" className="mb-20">
-    <h2 className="text-sm font-medium mb-12 text-gray-500 tracking-wider uppercase">Summary</h2>
+    {/* HARMONIZED: Subsection label */}
+    <h2 className="text-sm font-light mb-12 text-gray-400 tracking-[0.3em] uppercase">Summary</h2>
     <div className="max-w-4xl">
-      <p className="text-xl leading-relaxed mb-8 font-light text-gray-300">
+      {/* HARMONIZED: Body text */}
+      <p className="text-lg font-light leading-relaxed mb-8 text-gray-300">
         {summary}
       </p>
       {focusAreas && (
-        <p className="text-xl leading-relaxed font-light text-gray-300">
+        <p className="text-lg font-light leading-relaxed text-gray-300">
           {focusAreas}
         </p>
       )}
@@ -42,7 +44,8 @@ export const ExecutiveSummary = ({ summary, focusAreas }) => (
 // Professional Experience Component
 export const ProfessionalExperience = ({ experiences }) => (
   <div id="experience" className="mb-20">
-    <h2 className="text-sm font-medium mb-12 text-gray-500 tracking-wider uppercase">Experience</h2>
+    {/* HARMONIZED: Subsection label */}
+    <h2 className="text-sm font-light mb-12 text-gray-400 tracking-[0.3em] uppercase">Experience</h2>
     
     {experiences.map((exp, idx) => {
       // Special condensed styling for "Earlier Career" section
@@ -51,7 +54,8 @@ export const ProfessionalExperience = ({ experiences }) => (
       return (
         <div key={idx} className="mb-20 pb-20 border-b border-gray-800 experience-item">
           <div className={isEarlierCareer ? "mb-6" : "mb-8 experience-header"}>
-            <h3 className={isEarlierCareer ? "text-sm font-medium mb-3 text-gray-500 tracking-wider uppercase" : "text-2xl font-light mb-3 tracking-wide experience-title text-gray-200"}>{exp.title}</h3>
+            {/* HARMONIZED: Job title or Earlier Career section */}
+            <h3 className={isEarlierCareer ? "text-xs font-light mb-3 text-gray-400 tracking-[0.3em] uppercase" : "text-2xl font-light mb-3 tracking-wide text-white experience-title"}>{exp.title}</h3>
             {!isEarlierCareer && (
               <>
                 <div className="flex items-center space-x-2 mb-3">
@@ -77,7 +81,7 @@ export const ProfessionalExperience = ({ experiences }) => (
           </div>
           
           {exp.description && (
-            <p className="text-xl leading-relaxed mb-8 font-light text-gray-300 max-w-4xl">
+            <p className="text-lg font-light leading-relaxed mb-8 text-gray-300 max-w-4xl">
               {exp.description}
             </p>
           )}
@@ -85,7 +89,7 @@ export const ProfessionalExperience = ({ experiences }) => (
           {exp.accomplishments && (
             <div className={isEarlierCareer ? "" : "mt-8"}>
               {!isEarlierCareer && (
-                <h4 className="text-xs font-light text-gray-400 mb-6 tracking-[0.3em] uppercase">
+                <h4 className="text-sm font-light text-gray-400 mb-6 tracking-[0.3em] uppercase">
                   Key Accomplishments
                 </h4>
               )}
@@ -98,6 +102,7 @@ export const ProfessionalExperience = ({ experiences }) => (
                   ) : (
                     <div key={itemIdx} className="flex items-baseline">
                       <span className="text-gray-400 mr-4 font-light flex-shrink-0">/</span>
+                      {/* HARMONIZED: List item text */}
                       <p className="text-lg font-light text-gray-300">{item}</p>
                     </div>
                   )
@@ -108,7 +113,8 @@ export const ProfessionalExperience = ({ experiences }) => (
           
           {exp.projects && (
           <div className="mt-10">
-            <h4 className="text-xs font-light text-gray-400 mb-6 tracking-[0.3em] uppercase">Projects</h4>
+            {/* HARMONIZED: Subsection label */}
+            <h4 className="text-sm font-light text-gray-400 mb-6 tracking-[0.3em] uppercase">Projects</h4>
             <div className="space-y-4 max-w-4xl">
               {exp.projects.map((project, projectIdx) => (
                 <div key={projectIdx} className="flex items-baseline">
@@ -130,7 +136,8 @@ export const ProfessionalExperience = ({ experiences }) => (
         
         {exp.research && (
           <div className="mt-10">
-            <h4 className="text-xs font-light text-gray-400 mb-6 tracking-[0.3em] uppercase">Research</h4>
+            {/* HARMONIZED: Subsection label */}
+            <h4 className="text-sm font-light text-gray-400 mb-6 tracking-[0.3em] uppercase">Research</h4>
             <div className="space-y-4 max-w-4xl">
               {exp.research.map((item, researchIdx) => (
                 <div key={researchIdx} className="flex items-baseline">
@@ -155,7 +162,8 @@ export const ProfessionalExperience = ({ experiences }) => (
 // Core Competencies Component
 export const CoreCompetencies = ({ skills }) => (
   <div id="competencies" className="mb-20">
-    <h2 className="text-sm font-medium mb-12 text-gray-500 tracking-wider uppercase">Competencies</h2>
+    {/* HARMONIZED: Subsection label */}
+    <h2 className="text-sm font-light mb-12 text-gray-400 tracking-[0.3em] uppercase">Competencies</h2>
     <div className="max-w-4xl">
       <div className="grid grid-cols-2 md:grid-cols-4 gap-x-8 gap-y-4 text-xs">
         {Object.entries(skills).map(([category, skillList], idx) => (
@@ -172,7 +180,8 @@ export const CoreCompetencies = ({ skills }) => (
 // Education Component
 export const Education = ({ education }) => (
   <div id="education" className="mb-20">
-    <h2 className="text-sm font-medium mb-12 text-gray-500 tracking-wider uppercase">Education</h2>
+    {/* HARMONIZED: Subsection label */}
+    <h2 className="text-sm font-light mb-12 text-gray-400 tracking-[0.3em] uppercase">Education</h2>
     <div className="max-w-4xl">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4 text-xs">
         {Object.entries(education).map(([category, detail], idx) => (

@@ -1,10 +1,12 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
-// Google Fonts: Add to public/index.html
-// <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;700&family=Exo+2:wght@400;700&display=swap" rel="stylesheet">
+// Google Fonts: Already loaded in public/index.html
+// Manrope: Used for team section headers and global styling
+// Exo 2: Used for logo text
+// Source Serif 4: Used for cover letter content
 
-// Team Avatar Component
+// Team Avatar Component - Harmonized Typography
 function TeamAvatar({ name, video, onEmilyClick, onBlakeClick }) {
   const videoRef = useRef();
   const [isLoaded, setIsLoaded] = useState(false);
@@ -49,27 +51,21 @@ function TeamAvatar({ name, video, onEmilyClick, onBlakeClick }) {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting) {
+          if (entry.isIntersecting && !isInView) {
             setIsInView(true);
-            // Auto-play only Emily on mobile when in view
-            if (window.innerWidth <= 768 && videoRef.current && isLoaded && name === 'Emily') {
-              // Small delay to ensure video is ready
-              setTimeout(() => {
-                if (videoRef.current) {
-                  videoRef.current.play().catch(err => {
-                    console.log('Video play failed:', err);
-                  });
-                  videoRef.current.playbackRate = 1.15;
-                  
-                  // Stop after 3 seconds
-                  setTimeout(() => {
-                    if (videoRef.current) {
-                      videoRef.current.pause();
-                      videoRef.current.currentTime = 0;
-                    }
-                  }, 3000);
-                }
-              }, 100);
+            if (videoRef.current && isLoaded) {
+              const playPromise = videoRef.current.play();
+              if (playPromise !== undefined) {
+                playPromise.catch(() => {
+                  console.log("Video play interrupted");
+                });
+              }
+            }
+          } else if (!entry.isIntersecting && isInView) {
+            setIsInView(false);
+            if (videoRef.current) {
+              videoRef.current.pause();
+              videoRef.current.currentTime = 0;
             }
           }
         });
@@ -79,89 +75,45 @@ function TeamAvatar({ name, video, onEmilyClick, onBlakeClick }) {
 
     if (containerRef.current) {
       observer.observe(containerRef.current);
+      return () => {
+        containerRef.current && observer.unobserve(containerRef.current);
+      };
     }
-
-    return () => {
-      if (containerRef.current) {
-        observer.unobserve(containerRef.current);
-      }
-    };
-  }, [isLoaded, name]);
+  }, [isInView, isLoaded]);
 
   return (
-    <div 
-      ref={containerRef}
-      style={{ 
-        textAlign: 'center', 
-        width: '100%', 
-        maxWidth: '250px',
-        opacity: isInView ? 1 : 0,
-        transform: isInView ? 'translateY(0)' : 'translateY(30px)',
-        transition: 'opacity 0.8s ease-out, transform 0.8s ease-out',
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center'
-      }}
-    >
-      <div
-        style={{
-          width: '100%',
-          paddingBottom: '100%', // 1:1 aspect ratio
-          position: 'relative',
-          borderRadius: '50%',
-          overflow: 'hidden',
-          background: '#000',
-          cursor: 'pointer',
-          marginBottom: '1rem',
-          boxShadow: '0 4px 20px rgba(0, 0, 0, 0.2)'
+    <div className="animated-item flex flex-col items-center">
+      <div 
+        ref={containerRef}
+        className="w-32 h-32 sm:w-40 sm:h-40 rounded-full overflow-hidden bg-gray-800 cursor-pointer transition-transform duration-300 hover:scale-105"
+        onClick={() => {
+          if (name === 'Blake' && onBlakeClick) onBlakeClick();
+          if (name === 'Emily' && onEmilyClick) onEmilyClick();
         }}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
-        onClick={() => {
-          if (name === 'Blake' && onBlakeClick) {
-            onBlakeClick();
-          } else if (name === 'Emily' && window.innerWidth <= 768 && onEmilyClick) {
-            onEmilyClick();
-          }
-        }}
       >
-        <video
-          ref={videoRef}
-          src={video}
-          style={{
-            width: '100%',
-            height: '100%',
-            objectFit: 'cover',
-            filter: 'grayscale(100%)',
-            position: 'absolute',
-            top: 0,
-            left: 0
-          }}
-          muted
-          playsInline
-          preload="auto"
-        />
+        {video ? (
+          <video 
+            ref={videoRef}
+            muted 
+            loop 
+            playsInline
+            className="w-full h-full object-cover"
+          >
+            <source src={video} type="video/webm" />
+          </video>
+        ) : (
+          <img 
+            src="/media/team/team-emily_still-black.png" 
+            alt={name}
+            className="w-full h-full object-cover"
+          />
+        )}
       </div>
-      <p 
-        style={{ 
-          color: 'white', 
-          fontSize: '1.25rem', 
-          fontWeight: '300',
-          marginTop: '1rem',
-          letterSpacing: '0.1em',
-          textTransform: 'uppercase',
-          width: '100%',
-          textAlign: 'center',
-          margin: '1rem 0 0 0',
-          cursor: name === 'Blake' ? 'pointer' : 'default',
-          textDecoration: name === 'Blake' && isHovering ? 'underline' : 'none',
-          textUnderlineOffset: '4px',
-          transition: 'text-decoration 0.2s'
-        }}
-        onClick={() => name === 'Blake' && onBlakeClick && onBlakeClick()}
-        onMouseEnter={() => name === 'Blake' && setIsHovering(true)}
-        onMouseLeave={() => name === 'Blake' && setIsHovering(false)}
-      >
+      
+      {/* HARMONIZED: Using standardized typography */}
+      <p className="text-sm font-normal text-gray-400 uppercase tracking-wide mt-4 text-center transition-colors duration-300 hover:text-white">
         {name}
       </p>
     </div>
@@ -196,6 +148,7 @@ function FullLogo() {
           <path d="M 30 14.33 L 30 19.66 L 52.67 19.66 L 55 14.33 Z" fill="url(#trail2-vaporwave1-dark)"/>
           <path d="M 30 19.66 L 30 25 L 52.67 25 L 55 19.66 Z" fill="url(#trail3-vaporwave1-dark)"/>
         </g>
+        {/* PRESERVED: Original Exo 2 font for logo text */}
         <text x="2" y="25" fontFamily="'Exo 2', sans-serif" fontSize="28" fontWeight="700" fill="#EAEAEA">d</text>
         <text x="32" y="25" fontFamily="'Exo 2', sans-serif" fontSize="28" fontWeight="700" fill="#EAEAEA">rksci</text>
         <path d="M23 25 L 18 25 L 25 9 L 30 9 Z" fill="url(#slash-vaporwave1-dark)" />
@@ -213,7 +166,6 @@ export default function LandingPage({ showEmilyModal: initialShowModal = false }
   const [isTeamInView, setIsTeamInView] = useState(false);
   const teamRef = useRef();
   const [showEmilyModal, setShowEmilyModal] = useState(initialShowModal);
-
 
   useEffect(() => {
     // Section Reveal Animation
@@ -242,7 +194,7 @@ export default function LandingPage({ showEmilyModal: initialShowModal = false }
             setIsWeAreInView(entry.isIntersecting);
           } else if (entry.target === servicesRef.current) {
             setIsServicesInView(entry.isIntersecting);
-          } else if (entry.target === teamRef.current) { // Add teamRef to observer
+          } else if (entry.target === teamRef.current) {
             setIsTeamInView(entry.isIntersecting);
           }
         });
@@ -258,7 +210,6 @@ export default function LandingPage({ showEmilyModal: initialShowModal = false }
       sectionsObserver.observe(servicesRef.current);
     }
 
-    // Observe teamRef here as well
     if (teamRef.current) {
       sectionsObserver.observe(teamRef.current);
     }
@@ -268,86 +219,91 @@ export default function LandingPage({ showEmilyModal: initialShowModal = false }
     };
   }, []);
 
-
   return (
-    <div className="landing-page-container">
+    <div className="landing-page-container bg-black text-white min-h-screen">
 
-      <main id="main-content" className="container">
+      <main id="main-content" className="container mx-auto px-4 sm:px-8">
         
         {/* Hero Section */}
-        <section id="hero" style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
+        <section id="hero" className="min-h-screen flex flex-col">
           {/* Header with Logo and Navigation */}
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingTop: '3rem', paddingBottom: '2rem', position: 'relative' }}>
+          <div className="flex justify-between items-center pt-12 pb-8">
             <FullLogo />
-            {/* Desktop Navigation */}
-            <div className="desktop-nav" style={{ display: 'flex', gap: '2rem', fontSize: '1rem', fontWeight: 'normal', letterSpacing: '0.05em' }}>
-              <Link to="/portfolio" style={{ color: '#6b7280', textDecoration: 'none', transition: 'color 0.3s' }} 
-                    onMouseEnter={(e) => e.target.style.color = 'white'}
-                    onMouseLeave={(e) => e.target.style.color = '#6b7280'}>
+            
+            {/* HARMONIZED: Standardized navigation typography */}
+            <div className="desktop-nav hidden md:flex gap-8">
+              <Link 
+                to="/portfolio" 
+                className="text-sm font-normal tracking-wide text-gray-400 hover:text-white transition-colors duration-300 no-underline"
+              >
                 Portfolio
               </Link>
-              <Link to="/research" style={{ color: '#6b7280', textDecoration: 'none', transition: 'color 0.3s' }}
-                    onMouseEnter={(e) => e.target.style.color = 'white'}
-                    onMouseLeave={(e) => e.target.style.color = '#6b7280'}>
+              <Link 
+                to="/research" 
+                className="text-sm font-normal tracking-wide text-gray-400 hover:text-white transition-colors duration-300 no-underline"
+              >
                 Research
               </Link>
             </div>
+            
             {/* Mobile Navigation */}
-            <div className="mobile-nav" style={{ display: 'none' }}>
-              <Link to="/portfolio" style={{ color: '#6b7280', textDecoration: 'none', fontSize: '0.875rem', marginRight: '1rem' }}>
+            <div className="mobile-nav md:hidden flex gap-4">
+              <Link 
+                to="/portfolio" 
+                className="text-sm font-normal text-gray-400 hover:text-white transition-colors no-underline"
+              >
                 Portfolio
               </Link>
-              <Link to="/research" style={{ color: '#6b7280', textDecoration: 'none', fontSize: '0.875rem' }}>
+              <Link 
+                to="/research" 
+                className="text-sm font-normal text-gray-400 hover:text-white transition-colors no-underline"
+              >
                 Research
               </Link>
             </div>
           </div>
           
           {/* Hero Text Container - centered in remaining space */}
-          <div style={{ 
-            flex: 1, 
-            display: 'flex', 
-            alignItems: 'center', 
-            justifyContent: 'center',
-            width: '100%',
-            minHeight: '80vh' 
-          }}>
-            <h1 className="hero-title animated-item" style={{ 
-              fontSize: '3rem', 
-              fontWeight: 'bold', 
-              lineHeight: '1.1', 
-              textAlign: 'center'
-            }}>
+          <div className="flex-1 flex items-center justify-center min-h-[80vh]">
+            {/* HARMONIZED: Display heading using our typography system */}
+            <h1 className="hero-title animated-item text-4xl md:text-6xl font-thin tracking-tight text-white text-center leading-tight">
               Progress waits for no one.
             </h1>
           </div>
           
           {/* "WE ARE" section with expanded content */}
-          <div id="about" ref={weAreRef} style={{ width: '100%', paddingBottom: '3rem' }}>
-            <div className="animated-item" style={{ marginBottom: '3rem' }}>
-              <h2 style={{ 
-                color: isWeAreInView ? 'white' : '#9ca3af', 
-                letterSpacing: '0.1em', 
-                fontWeight: 'normal',
-                transition: 'color 0.5s ease'
-              }}>WE ARE</h2>
+          <div id="about" ref={weAreRef} className="w-full pb-12">
+            <div className="animated-item mb-12">
+              {/* HARMONIZED: Subsection label using Executive Summary style */}
+              <h2 className="text-base font-light tracking-[0.3em] uppercase text-white text-center transition-colors duration-500">
+                WE ARE
+              </h2>
             </div>
-            <div className="about-grid animated-item" style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '4rem' }}>
+            
+            <div className="about-grid animated-item grid grid-cols-1 md:grid-cols-3 gap-16">
               <div>
-                <h3 style={{ fontSize: '1.25rem', fontWeight: 'bold', color: isWeAreInView ? 'white' : '#6b7280', transition: 'color 0.5s' }}>Inquisitive</h3>
-                <p style={{ color: isWeAreInView ? 'white' : '#6b7280', marginTop: '0.5rem', fontSize: '0.875rem', lineHeight: '1.6', textAlign: 'justify', letterSpacing: '0.05em', wordSpacing: '0.1em', hyphens: 'auto', transition: 'color 0.5s' }}>
+                {/* HARMONIZED: Content heading */}
+                <h3 className="text-xl font-medium text-white mb-3 transition-colors duration-500">
+                  Inquisitive
+                </h3>
+                {/* HARMONIZED: Body text with consistent styling */}
+                <p className="text-lg font-light leading-relaxed text-gray-300 transition-colors duration-500">
                   Our best ideas are born from cross-pollination. We thrive on conversations with interesting people to connect disparate concepts and uncover novel solutions that others might miss.
                 </p>
               </div>
               <div>
-                <h3 style={{ fontSize: '1.25rem', fontWeight: 'bold', color: isWeAreInView ? 'white' : '#6b7280', transition: 'color 0.5s' }}>Inventive</h3>
-                <p style={{ color: isWeAreInView ? 'white' : '#6b7280', marginTop: '0.5rem', fontSize: '0.875rem', lineHeight: '1.6', textAlign: 'justify', letterSpacing: '0.05em', wordSpacing: '0.1em', hyphens: 'auto', transition: 'color 0.5s' }}>
+                <h3 className="text-xl font-medium text-white mb-3 transition-colors duration-500">
+                  Inventive
+                </h3>
+                <p className="text-lg font-light leading-relaxed text-gray-300 transition-colors duration-500">
                   Driven by a passion for invention, we excel at transforming ambitious, high-concept ideas into tangible, market-ready realities through creative problem-solving.
                 </p>
               </div>
               <div>
-                <h3 style={{ fontSize: '1.25rem', fontWeight: 'bold', color: isWeAreInView ? 'white' : '#6b7280', transition: 'color 0.5s' }}>Experimental</h3>
-                <p style={{ color: isWeAreInView ? 'white' : '#6b7280', marginTop: '0.5rem', fontSize: '0.875rem', lineHeight: '1.6', textAlign: 'justify', letterSpacing: '0.05em', wordSpacing: '0.1em', hyphens: 'auto', transition: 'color 0.5s' }}>
+                <h3 className="text-xl font-medium text-white mb-3 transition-colors duration-500">
+                  Experimental
+                </h3>
+                <p className="text-lg font-light leading-relaxed text-gray-300 transition-colors duration-500">
                   As tireless experimenters, we embrace a culture of rapid prototyping and iterative development to find the most effective path forward for every challenge.
                 </p>
               </div>
@@ -356,167 +312,81 @@ export default function LandingPage({ showEmilyModal: initialShowModal = false }
         </section>
 
         {/* Services Section */}
-        <section id="services" ref={servicesRef} className="services-section" style={{ paddingTop: '4rem', paddingBottom: '8rem' }}>
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '2rem' }}>
-            <div className="animated-item" style={{ marginBottom: '3rem' }}>
-              <h2 style={{ 
-                color: isServicesInView ? 'white' : '#9ca3af', 
-                letterSpacing: '0.1em', 
-                fontWeight: 'normal',
-                transition: 'color 0.5s ease'
-              }}>OUR APPROACH</h2>
+        <section id="services" ref={servicesRef} className="services-section py-16">
+          <div className="mb-12">
+            <div className="animated-item">
+              {/* HARMONIZED: Subsection label */}
+              <h2 className="text-base font-light tracking-[0.3em] uppercase text-white text-center transition-colors duration-500">
+                OUR APPROACH
+              </h2>
             </div>
           </div>
           
-          <div style={{ paddingTop: '1rem' }}>
-            <div 
-              className="project-link animated-item" 
-              style={{ 
-                paddingTop: '1.5rem', 
-                paddingBottom: '1.5rem', 
-                color: '#9ca3af', 
-                transition: 'color 0.3s',
-                cursor: 'pointer'
-              }}
-            >
+          <div className="space-y-12">
+            {/* Listen */}
+            <div className="project-link animated-item py-6 cursor-pointer group">
               <div>
-                <h3 className="service-title" style={{ fontSize: '1.875rem', fontWeight: 'bold', color: isServicesInView ? 'white' : '#9ca3af', transition: 'color 0.5s' }}>Listen</h3>
-                <div style={{ marginBottom: '1rem' }}>
-                  <span style={{ 
-                    display: 'inline-block',
-                    fontSize: '0.75rem', 
-                    letterSpacing: '0.1em', 
-                    fontWeight: 'normal', 
-                    color: '#6b7280',
-                    backgroundColor: '#1f2937',
-                    paddingLeft: '0.75rem',
-                    paddingRight: '0.75rem',
-                    paddingTop: '0.25rem',
-                    paddingBottom: '0.25rem',
-                    borderRadius: '0.375rem',
-                    marginRight: '0.5rem'
-                  }}>
+                {/* HARMONIZED: Section heading */}
+                <h3 className="text-3xl font-light text-white mb-4 group-hover:text-cyan-400 transition-colors duration-300">
+                  Listen
+                </h3>
+                
+                {/* HARMONIZED: Tags with consistent styling */}
+                <div className="mb-6 flex flex-wrap gap-2">
+                  <span className="text-xs font-normal tracking-wide text-gray-400 bg-gray-800 px-3 py-1 rounded-md">
                     DISCOVERY
                   </span>
-                  <span style={{ 
-                    display: 'inline-block',
-                    fontSize: '0.75rem', 
-                    letterSpacing: '0.1em', 
-                    fontWeight: 'normal', 
-                    color: '#6b7280',
-                    backgroundColor: '#1f2937',
-                    paddingLeft: '0.75rem',
-                    paddingRight: '0.75rem',
-                    paddingTop: '0.25rem',
-                    paddingBottom: '0.25rem',
-                    borderRadius: '0.375rem'
-                  }}>
+                  <span className="text-xs font-normal tracking-wide text-gray-400 bg-gray-800 px-3 py-1 rounded-md">
                     STRATEGY
                   </span>
                 </div>
-                <p style={{ color: isServicesInView ? 'white' : '#9ca3af', marginTop: '0.5rem', transition: 'color 0.5s' }}>
+                
+                {/* HARMONIZED: Body text */}
+                <p className="text-lg font-light leading-relaxed text-gray-300 transition-colors duration-500">
                   Every challenge is unique. We begin by listening, drawing insights from cross-pollination and deep conversation to understand the nuanced context of your specific problem.
                 </p>
               </div>
             </div>
 
-            <div 
-              className="project-link animated-item" 
-              style={{ 
-                paddingTop: '1.5rem', 
-                paddingBottom: '1.5rem', 
-                color: '#9ca3af', 
-                transition: 'color 0.3s',
-                cursor: 'pointer'
-              }}
-            >
+            {/* Ideate */}
+            <div className="project-link animated-item py-6 cursor-pointer group">
               <div>
-                <h3 className="service-title" style={{ fontSize: '1.875rem', fontWeight: 'bold', color: isServicesInView ? 'white' : '#9ca3af', transition: 'color 0.5s' }}>Ideate</h3>
-                <div style={{ marginBottom: '1rem' }}>
-                  <span style={{ 
-                    display: 'inline-block',
-                    fontSize: '0.75rem', 
-                    letterSpacing: '0.1em', 
-                    fontWeight: 'normal', 
-                    color: '#6b7280',
-                    backgroundColor: '#1f2937',
-                    paddingLeft: '0.75rem',
-                    paddingRight: '0.75rem',
-                    paddingTop: '0.25rem',
-                    paddingBottom: '0.25rem',
-                    borderRadius: '0.375rem',
-                    marginRight: '0.5rem'
-                  }}>
+                <h3 className="text-3xl font-light text-white mb-4 group-hover:text-cyan-400 transition-colors duration-300">
+                  Ideate
+                </h3>
+                
+                <div className="mb-6 flex flex-wrap gap-2">
+                  <span className="text-xs font-normal tracking-wide text-gray-400 bg-gray-800 px-3 py-1 rounded-md">
                     INNOVATION
                   </span>
-                  <span style={{ 
-                    display: 'inline-block',
-                    fontSize: '0.75rem', 
-                    letterSpacing: '0.1em', 
-                    fontWeight: 'normal', 
-                    color: '#6b7280',
-                    backgroundColor: '#1f2937',
-                    paddingLeft: '0.75rem',
-                    paddingRight: '0.75rem',
-                    paddingTop: '0.25rem',
-                    paddingBottom: '0.25rem',
-                    borderRadius: '0.375rem'
-                  }}>
+                  <span className="text-xs font-normal tracking-wide text-gray-400 bg-gray-800 px-3 py-1 rounded-md">
                     DESIGN
                   </span>
                 </div>
-                <p style={{ color: isServicesInView ? 'white' : '#9ca3af', marginTop: '0.5rem', transition: 'color 0.5s' }}>
+                
+                <p className="text-lg font-light leading-relaxed text-gray-300 transition-colors duration-500">
                   Our expertise lies in seeing the hidden variables. We ideate novel, lateral solutions that connect disparate concepts to create a clear, strategic path forward.
                 </p>
               </div>
             </div>
 
-            <div 
-              className="project-link animated-item" 
-              style={{ 
-                paddingTop: '1.5rem', 
-                paddingBottom: '1.5rem', 
-                color: '#9ca3af', 
-                transition: 'color 0.3s',
-                cursor: 'pointer'
-              }}
-            >
+            {/* Prototype */}
+            <div className="project-link animated-item py-6 cursor-pointer group">
               <div>
-                <h3 className="service-title" style={{ fontSize: '1.875rem', fontWeight: 'bold', color: isServicesInView ? 'white' : '#9ca3af', transition: 'color 0.5s' }}>Prototype</h3>
-                <div style={{ marginBottom: '1rem' }}>
-                  <span style={{ 
-                    display: 'inline-block',
-                    fontSize: '0.75rem', 
-                    letterSpacing: '0.1em', 
-                    fontWeight: 'normal', 
-                    color: '#6b7280',
-                    backgroundColor: '#1f2937',
-                    paddingLeft: '0.75rem',
-                    paddingRight: '0.75rem',
-                    paddingTop: '0.25rem',
-                    paddingBottom: '0.25rem',
-                    borderRadius: '0.375rem',
-                    marginRight: '0.5rem'
-                  }}>
+                <h3 className="text-3xl font-light text-white mb-4 group-hover:text-cyan-400 transition-colors duration-300">
+                  Prototype
+                </h3>
+                
+                <div className="mb-6 flex flex-wrap gap-2">
+                  <span className="text-xs font-normal tracking-wide text-gray-400 bg-gray-800 px-3 py-1 rounded-md">
                     DEVELOPMENT
                   </span>
-                  <span style={{ 
-                    display: 'inline-block',
-                    fontSize: '0.75rem', 
-                    letterSpacing: '0.1em', 
-                    fontWeight: 'normal', 
-                    color: '#6b7280',
-                    backgroundColor: '#1f2937',
-                    paddingLeft: '0.75rem',
-                    paddingRight: '0.75rem',
-                    paddingTop: '0.25rem',
-                    paddingBottom: '0.25rem',
-                    borderRadius: '0.375rem'
-                  }}>
+                  <span className="text-xs font-normal tracking-wide text-gray-400 bg-gray-800 px-3 py-1 rounded-md">
                     TESTING
                   </span>
                 </div>
-                <p style={{ color: isServicesInView ? 'white' : '#9ca3af', marginTop: '0.5rem', transition: 'color 0.5s' }}>
+                
+                <p className="text-lg font-light leading-relaxed text-gray-300 transition-colors duration-500">
                   Ideas are validated through action. We rapidly build functional prototypes and interactive demos, transforming abstract concepts into tangible assets you can see, touch, and test.
                 </p>
               </div>
@@ -525,8 +395,9 @@ export default function LandingPage({ showEmilyModal: initialShowModal = false }
         </section>
 
         {/* Team Section with bios */}
-        <section id="team" ref={teamRef} style={{ paddingTop: '4rem', paddingBottom: '6rem', position: 'relative' }}>
-          <div className="animated-item" style={{ marginBottom: '3rem', textAlign: 'center', width: '100%' }}>
+        <section id="team" ref={teamRef} className="py-16">
+          <div className="animated-item mb-12 text-center">
+            {/* PRESERVED: Original Manrope font for team section header */}
             <h2 style={{ 
               color: isTeamInView ? 'white' : '#9ca3af', 
               letterSpacing: '0.1em', 
@@ -540,25 +411,26 @@ export default function LandingPage({ showEmilyModal: initialShowModal = false }
               We don't bite
             </h2>
           </div>
-          <div className="team-section" style={{ margin: '4rem auto', maxWidth: '1200px' }}>
-            <div className="team-grid" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '6rem', flexWrap: 'wrap' }}>
+          
+          <div className="team-section max-w-4xl mx-auto">
+            <div className="team-grid flex justify-center items-center gap-24 flex-wrap">
               {/* Blake */}
               <TeamAvatar
                 name="Blake"
-                video="/team-blake_gray.webm"
+                video="/media/team/team-blake_gray.webm"
                 onBlakeClick={() => navigate('/c/blake')}
               />
               
               {/* Giselle */}
               <TeamAvatar
                 name="Giselle"
-                video="/team-gen_gray.webm"
+                video="/media/team/team-gen_gray.webm"
               />
               
               {/* Emily */}
               <TeamAvatar
                 name="Emily"
-                still="/team-emily_still-black.png"
+                still="/media/team/team-emily_still-black.png"
                 onEmilyClick={() => setShowEmilyModal(true)}
               />
             </div>
@@ -566,23 +438,12 @@ export default function LandingPage({ showEmilyModal: initialShowModal = false }
         </section>
 
         {/* Contact Section */}
-        <section id="contact" style={{ paddingTop: '4rem', paddingBottom: '6rem' }}>
-          <div className="animated-item" style={{ textAlign: 'center', width: '100%' }}>
+        <section id="contact" className="py-16">
+          <div className="animated-item text-center">
+            {/* HARMONIZED: Large display text with consistent styling */}
             <a 
               href="mailto:contact@drksci.com" 
-              className="contact-title"
-              style={{
-                fontSize: '2.25rem',
-                fontWeight: 'bold',
-                color: 'white',
-                textDecoration: 'none',
-                textDecorationThickness: '4px',
-                textUnderlineOffset: '8px',
-                display: 'block',
-                width: '100%'
-              }}
-              onMouseEnter={(e) => e.target.style.textDecoration = 'underline'}
-              onMouseLeave={(e) => e.target.style.textDecoration = 'none'}
+              className="text-3xl md:text-4xl font-light text-white hover:text-cyan-400 transition-colors duration-300 no-underline hover:underline underline-offset-8"
             >
               contact@drksci.com
             </a>
@@ -591,96 +452,37 @@ export default function LandingPage({ showEmilyModal: initialShowModal = false }
 
       </main>
       
-      {/* Emily Modal for Mobile */}
+      {/* Emily Modal for Mobile - Using harmonized typography */}
       {showEmilyModal && (
-        <div 
-          style={{
-            position: 'fixed',
-            top: 0,
-            left: 0,
-            width: '100vw',
-            height: '100vh',
-            background: 'rgba(0, 0, 0, 0.95)',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            zIndex: 9999
-          }}
-          onClick={() => setShowEmilyModal(false)}
-        >
-          {/* Close Button */}
-          <button
-            className="mobile-modal-close"
-            onClick={() => setShowEmilyModal(false)}
-            style={{
-              position: 'absolute',
-              top: '1rem',
-              right: '1rem',
-              background: 'rgba(0, 0, 0, 0.8)',
-              border: '1px solid #333',
-              color: 'white',
-              width: '44px',
-              height: '44px',
-              borderRadius: '50%',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              cursor: 'pointer',
-              zIndex: 10,
-              fontSize: '1.25rem'
-            }}
-            aria-label="Close modal"
-          >
-            ✕
-          </button>
-          
-          <div style={{ 
-            width: '80%', 
-            maxWidth: '350px',
-            margin: '0 auto'
-          }}>
-            <div 
-              style={{
-                width: '100%',
-                paddingBottom: '100%',
-                position: 'relative',
-                borderRadius: '50%',
-                overflow: 'hidden',
-                background: 'linear-gradient(135deg, #1a1a1a, #2a2a2a)',
-                boxShadow: '0 20px 60px rgba(255, 0, 255, 0.5)'
-              }}
-              onClick={(e) => e.stopPropagation()}
-            >
-              <img
-                src="/team-emily_still-black.png"
+        <div className="fixed inset-0 bg-black bg-opacity-90 flex items-center justify-center z-50 p-4">
+          <div className="bg-gray-900 rounded-lg p-8 max-w-md w-full">
+            <div className="text-center">
+              <img 
+                src="/media/team/team-emily_still.png" 
                 alt="Emily"
-                style={{
-                  width: '100%',
-                  height: '100%',
-                  objectFit: 'cover',
-                  position: 'absolute',
-                  top: 0,
-                  left: 0,
-                  filter: 'none'
-                }}
+                className="w-32 h-32 rounded-full mx-auto mb-6"
               />
+              
+              {/* HARMONIZED: Content heading */}
+              <h3 className="text-xl font-medium text-white mb-4">Emily</h3>
+              
+              {/* HARMONIZED: Body text */}
+              <p className="text-lg font-light leading-relaxed text-gray-300 mb-6">
+                Emily is currently taking a well-deserved break from the digital world. 
+                She'll be back soon with fresh perspectives and renewed energy.
+              </p>
+              
+              {/* HARMONIZED: Button with consistent styling */}
+              <button 
+                onClick={() => setShowEmilyModal(false)}
+                className="text-sm font-normal tracking-wide text-cyan-400 hover:text-white transition-colors bg-transparent border border-cyan-400 hover:border-white px-6 py-2 rounded-md"
+              >
+                Close
+              </button>
             </div>
-            <p style={{
-              color: 'white',
-              fontSize: '1.5rem',
-              fontWeight: '300',
-              marginTop: '2rem',
-              letterSpacing: '0.1em',
-              textTransform: 'uppercase',
-              textAlign: 'center'
-            }}>
-              Emily
-            </p>
           </div>
         </div>
       )}
     </div>
   );
 }
-
- 
