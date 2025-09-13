@@ -5,7 +5,8 @@ import './styles/print.css';
 
 const BlakeCollaborator = () => {
   const [activeSection, setActiveSection] = useState('profile');
-  
+  const [isPrintMode, setIsPrintMode] = useState(false);
+
   useEffect(() => {
     // Smooth scroll to section when navigation changes
     const element = document.getElementById(activeSection);
@@ -13,6 +14,23 @@ const BlakeCollaborator = () => {
       element.scrollIntoView({ behaviour: 'smooth', block: 'start' });
     }
   }, [activeSection]);
+
+  useEffect(() => {
+    // Check for #print in URL hash
+    const checkPrintMode = () => {
+      setIsPrintMode(window.location.hash === '#print');
+    };
+
+    // Check on mount
+    checkPrintMode();
+
+    // Listen for hash changes
+    window.addEventListener('hashchange', checkPrintMode);
+
+    return () => {
+      window.removeEventListener('hashchange', checkPrintMode);
+    };
+  }, []);
 
   const generatePDF = () => {
     // Use the pre-generated static PDF
@@ -133,8 +151,8 @@ const BlakeCollaborator = () => {
           </div>
         </header>
 
-        {/* PDF Cover Page */}
-        <div className="pdf-cover-page">
+        {/* PDF Cover Page - visible in print mode or when #print hash is present */}
+        <div className={`pdf-cover-page ${isPrintMode ? 'print-mode-visible' : ''}`}>
           <div className="cover-header">
             <h1 className="cover-name">Blake Carter</h1>
             <p className="cover-title">Technical Leader & Innovation Executive</p>
