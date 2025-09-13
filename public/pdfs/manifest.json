@@ -1,13 +1,13 @@
 {
-  "generated": "2025-08-31T14:04:15.769Z",
-  "baseUrl": "https://drksci.com",
+  "generated": "2025-09-12T16:36:04.846Z",
+  "baseUrl": "http://localhost:3000",
   "pdfs": [
     {
       "pageId": "blake-collaborator",
       "component": "BlakeCollaborator",
-      "filename": "blake-carter-resume.pdf",
-      "path": "/pdfs/blake-carter-resume.pdf",
-      "size": 1123,
+      "filename": "blake-carter-resume-jrhp2u-20250912.pdf",
+      "path": "/assets/personnel/pdfs/blake-carter-resume-jrhp2u-20250912.pdf",
+      "size": 84912,
       "title": "Blake Carter - Resume"
     }
   ]

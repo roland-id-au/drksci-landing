@@ -5,13 +5,48 @@ const fs = require('fs');
 const path = require('path');
 const { execSync } = require('child_process');
 
+// Import PDF naming utilities
+function generatePdfName(candidateName, jobTitle = null, id = null, type = 'resume') {
+  const today = new Date();
+  const dateStr = today.toISOString().slice(0, 10).replace(/-/g, '');
+  
+  // Generate or use provided ID
+  const shortId = id || generateShortId();
+  
+  // Clean full candidate name (replace spaces with hyphens, remove special chars, lowercase)
+  const candidateSlug = candidateName.toLowerCase()
+    .replace(/\s+/g, '-')          // spaces to hyphens
+    .replace(/[^a-z0-9-]/g, '');   // remove special chars except hyphens
+  
+  if (jobTitle) {
+    // For job applications: {full-candidate-name}-{job-title}-{id}-YYYYMMDD.pdf
+    const jobSlug = jobTitle.toLowerCase()
+      .replace(/\s+/g, '-')        // spaces to hyphens
+      .replace(/[^a-z0-9-]/g, ''); // remove special chars except hyphens
+    return `${candidateSlug}-${jobSlug}-${shortId}-${dateStr}.pdf`;
+  } else {
+    // For general resumes: {full-candidate-name}-{type}-{id}-YYYYMMDD.pdf
+    return `${candidateSlug}-${type}-${shortId}-${dateStr}.pdf`;
+  }
+}
+
+function generateShortId(length = 6) {
+  const chars = 'abcdefghijklmnopqrstuvwxyz0123456789';
+  let result = '';
+  for (let i = 0; i < length; i++) {
+    result += chars.charAt(Math.floor(Math.random() * chars.length));
+  }
+  return result;
+}
+
 // Configuration for PDF generation
 const PDF_CONFIG = {
   collaborators: {
     blake: {
-      url: '/collaborators/blake',  // Use old URL until new routes are deployed
-      filename: 'blake-carter-resume.pdf',
-      title: 'Blake Carter - Resume'
+      url: '/c/blake',
+      filename: generatePdfName('Blake Carter', null, null, 'resume'),
+      title: 'Blake Carter - Resume',
+      candidate: 'Blake Carter'
     }
   },
   candidate: {
@@ -127,109 +162,170 @@ async function generatePdf(config, baseUrl, retryCount = 0) {
     // Wait for content to load
     await page.waitForSelector('body', { timeout: 15000 });
     
+    // CRITICAL: Wait for React to render the actual content
+    // Check if React root has content (not just the noscript message)
+    await page.waitForFunction(
+      () => {
+        const root = document.getElementById('root');
+        if (!root) return false;
+        // Check if root has actual content (not just empty or noscript)
+        const hasContent = root.innerHTML.length > 100;
+        const hasVisibleElements = root.querySelector('h1, h2, .pdf-cover-page, .cover-name, section');
+        return hasContent && hasVisibleElements;
+      },
+      { timeout: 30000 }
+    );
+    
+    console.log('  ✓ React content loaded');
+    
     // Wait for specific content that indicates page is loaded
     // For Blake's page, wait for specific content
     if (config.url.includes('/c/blake') || config.url.includes('/collaborators/blake')) {
       try {
-        await page.waitForSelector('.blake-title, h1, [class*="text-7xl"], [class*="text-6xl"]', { timeout: 15000 });
-        // Also wait for sections to load
-        await page.waitForSelector('section, [id="profile"], [id="resume"]', { timeout: 10000 });
+        await page.waitForSelector('.pdf-cover-page, .cover-name, h1', { timeout: 15000 });
+        console.log('  ✓ PDF cover page detected');
       } catch (e) {
-        console.log('  ⚠ Warning: Some content elements not found');
-      }
-    } else {
-      try {
-        await page.waitForSelector('h1, [class*="title"]', { timeout: 10000 });
-      } catch (e) {
-        console.log('  ⚠ Warning: Could not find title element');
+        console.log('  ⚠ Warning: PDF cover elements not found');
       }
     }
     
-    // Wait for any dynamic content
-    await new Promise(resolve => setTimeout(resolve, 5000));
+    // Additional wait to ensure all styles are applied
+    await new Promise(resolve => setTimeout(resolve, 3000));
     
-    // Check if content is actually loaded by checking page height
-    const pageHeight = await page.evaluate(() => document.body.scrollHeight);
-    console.log(`  Page height: ${pageHeight}px`);
-    
-    if (pageHeight < 500 && retryCount < maxRetries) {
-      throw new Error('Page content appears incomplete (too short)');
-    }
-    
-    // Apply print-specific styles and hide non-print elements
-    await page.evaluate(() => {
-      // Hide PDF download buttons in the PDF itself
-      const pdfButtons = document.querySelectorAll('[aria-label*="PDF"]');
-      pdfButtons.forEach(btn => btn.style.display = 'none');
-      
-      // Hide navigation elements
-      const nav = document.querySelector('nav');
-      if (nav) nav.style.display = 'none';
-      
-      // Hide any footer links or social media icons
-      const footers = document.querySelectorAll('footer');
-      footers.forEach(f => f.style.display = 'none');
-      
-      // Remove any link underlines and make links black for print
-      const style = document.createElement('style');
-      style.textContent = `
-        @media print {
-          a {
-            color: #000 !important;
-            text-decoration: none !important;
-          }
-          a[href]:after {
-            content: none !important;
-          }
-          .no-print {
-            display: none !important;
-          }
-          body {
-            font-size: 11pt !important;
-            line-height: 1.5 !important;
-          }
-          h1 {
-            font-size: 20pt !important;
-            margin-top: 0 !important;
-          }
-          h2 {
-            font-size: 16pt !important;
-            margin-top: 12pt !important;
-          }
-          h3 {
-            font-size: 14pt !important;
-            margin-top: 10pt !important;
-          }
-          * {
-            -webkit-print-color-adjust: exact !important;
-            print-color-adjust: exact !important;
-            color-adjust: exact !important;
-          }
-        }
-      `;
-      document.head.appendChild(style);
+    // Check if content is actually loaded by checking page height and content
+    const pageInfo = await page.evaluate(() => {
+      const height = document.body.scrollHeight;
+      const rootContent = document.getElementById('root')?.innerHTML || '';
+      const hasReactContent = rootContent.includes('Blake Carter') || rootContent.includes('cover-name');
+      const textContent = document.body.innerText || '';
+      return {
+        height,
+        hasReactContent,
+        contentLength: rootContent.length,
+        hasText: textContent.length > 100,
+        sampleText: textContent.substring(0, 200)
+      };
     });
+    
+    console.log(`  Page height: ${pageInfo.height}px`);
+    console.log(`  React content: ${pageInfo.hasReactContent ? 'Yes' : 'No'}`);
+    console.log(`  Content length: ${pageInfo.contentLength} chars`);
+    
+    if (!pageInfo.hasReactContent || pageInfo.contentLength < 500) {
+      console.log('  ⚠ Page content appears to be HTML source, not rendered');
+      console.log(`  Sample: ${pageInfo.sampleText}`);
+      if (retryCount < maxRetries) {
+        throw new Error('React content not properly rendered');
+      }
+    }
     
     // Emulate print media
     await page.emulateMediaType('print');
+    
+    // Directly inject print styles since @media print isn't working reliably
+    const fs = require('fs');
+    const printCssPath = path.join(__dirname, '..', 'src', 'styles', 'print.css');
+    
+    if (fs.existsSync(printCssPath)) {
+      const printCssContent = fs.readFileSync(printCssPath, 'utf8');
+      
+      // Extract only the content inside @media print { ... }
+      const printMediaMatch = printCssContent.match(/@media print \{([\s\S]*)\}$/);
+      if (printMediaMatch) {
+        const printStylesOnly = printMediaMatch[1];
+        
+        await page.evaluate((cssContent) => {
+          // Remove any existing print styles
+          const existingPrintStyles = document.querySelector('style[data-print-injected]');
+          if (existingPrintStyles) {
+            existingPrintStyles.remove();
+          }
+          
+          // Inject print styles directly (without @media print wrapper)
+          const style = document.createElement('style');
+          style.setAttribute('data-print-injected', 'true');
+          style.textContent = cssContent;
+          document.head.appendChild(style);
+          console.log('✅ Print styles injected directly');
+        }, printStylesOnly);
+      }
+    }
+    
+    // Hide non-print elements
+    await page.evaluate(() => {
+      const elementsToHide = [
+        '[aria-label*="PDF"]', 'nav', '.mobile-nav', '.desktop-nav',
+        'footer', '.no-print', '.screen-only', 'button'
+      ];
+      
+      elementsToHide.forEach(selector => {
+        document.querySelectorAll(selector).forEach(el => {
+          el.style.display = 'none';
+        });
+      });
+    });
+    
+    // Enhanced text normalization for ATS compatibility
+    await page.evaluate(() => {
+      try {
+        document.querySelectorAll('*').forEach(el => {
+          if (el.textContent && el.textContent.trim()) {
+            let text = el.textContent;
+            
+            // Normalize Unicode characters to NFC form
+            text = text.normalize('NFC');
+            
+            // Replace problematic Unicode characters with ATS-safe equivalents
+            const charMap = {
+              '\u2022': '*',   // Unicode bullet -> ASCII asterisk (more ATS-friendly)
+              '\u2013': '-',   // En dash -> hyphen
+              '\u2014': '-',   // Em dash -> hyphen
+              '\u2018': "'",   // Left single quote -> apostrophe
+              '\u2019': "'",   // Right single quote -> apostrophe
+              '\u201C': '"',   // Left double quote -> straight quote
+              '\u201D': '"',   // Right double quote -> straight quote
+              '\u00A0': ' ',   // Non-breaking space -> regular space
+              '\u2026': '...', // Ellipsis -> three dots
+              '\u00B7': '*',   // Middle dot -> asterisk
+              '\u25CF': '*',   // Black circle -> asterisk
+              '\u2219': '*',   // Bullet operator -> asterisk
+            };
+            
+            // Apply character replacements
+            for (const [unicode, replacement] of Object.entries(charMap)) {
+              text = text.replace(new RegExp(unicode, 'g'), replacement);
+            }
+            
+            // Clean up extra whitespace
+            text = text.replace(/\s+/g, ' ').trim();
+            
+            el.textContent = text;
+          }
+        });
+        console.log('✅ Enhanced text normalization applied');
+      } catch (error) {
+        console.error('Text normalization error:', error);
+      }
+    });
     
     // Generate PDF with optimized settings for beautiful print output
     const pdfBuffer = await page.pdf({
       format: 'A4',
       printBackground: true,
       margin: {
-        top: '10mm',
-        bottom: '10mm',
-        left: '10mm',
-        right: '10mm'
+        top: '5mm',
+        bottom: '5mm',
+        left: '5mm',
+        right: '5mm'
       },
       preferCSSPageSize: true,
       displayHeaderFooter: false,
-      scale: 0.95  // Slightly scale down to ensure content fits well
+      scale: 1.0,  // Use full scale
+      tagged: true  // Generate tagged PDF for ATS compatibility
     });
     
     // Ensure output directory exists
-    const outputDir = path.join(__dirname, '..', 'public', 'pdfs');
+    const outputDir = path.join(__dirname, '..', 'public', 'assets', 'personnel', 'pdfs');
     if (!fs.existsSync(outputDir)) {
       fs.mkdirSync(outputDir, { recursive: true });
     }
@@ -244,7 +340,7 @@ async function generatePdf(config, baseUrl, retryCount = 0) {
       success: true, 
       ...config,
       size: pdfBuffer.length,
-      path: `/pdfs/${config.filename}`
+      path: `/assets/personnel/pdfs/${config.filename}`
     };
     
   } catch (error) {
