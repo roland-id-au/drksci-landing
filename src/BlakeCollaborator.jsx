@@ -50,7 +50,7 @@ const BlakeCollaborator = () => {
         <title>Blake Carter - d/rksci</title>
       </Helmet>
       
-      <div className="min-h-screen bg-black text-white">
+      <div className="min-h-screen bg-black text-white collaborator-page">
         {/* Header with Navigation */}
         <header className="sticky top-0 z-10 bg-black/95 backdrop-blur-sm print-hide">
           <div className="max-w-5xl mx-auto px-4 sm:px-8 lg:px-12">

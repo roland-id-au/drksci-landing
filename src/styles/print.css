@@ -1,5 +1,5 @@
-/* Cover page visibility on screen when #print hash is present */
-.pdf-cover-page.print-mode-visible {
+/* Cover page visibility on screen when #print hash is present (scoped to collaborator page) */
+.collaborator-page .pdf-cover-page.print-mode-visible {
   display: flex !important;
   flex-direction: column !important;
   justify-content: space-between !important;
@@ -12,11 +12,11 @@
   box-sizing: border-box !important;
 }
 
-.pdf-cover-page.print-mode-visible .cover-header {
+.collaborator-page .pdf-cover-page.print-mode-visible .cover-header {
   display: block !important;
 }
 
-.pdf-cover-page.print-mode-visible .cover-name {
+.collaborator-page .pdf-cover-page.print-mode-visible .cover-name {
   font-size: 3.5rem !important;
   font-weight: 100 !important;
   letter-spacing: -0.02em !important;
@@ -25,7 +25,7 @@
   line-height: 1.1 !important;
 }
 
-.pdf-cover-page.print-mode-visible .cover-title {
+.collaborator-page .pdf-cover-page.print-mode-visible .cover-title {
   font-size: 1.5rem !important;
   font-weight: 300 !important;
   opacity: 0.9 !important;
@@ -33,14 +33,14 @@
   margin-bottom: 2rem !important;
 }
 
-.pdf-cover-page.print-mode-visible .cover-footer {
+.collaborator-page .pdf-cover-page.print-mode-visible .cover-footer {
   display: flex !important;
   justify-content: space-between !important;
   align-items: flex-end !important;
   color: var(--cover-page-text, white) !important;
 }
 
-.pdf-cover-page.print-mode-visible .linkedin-badge {
+.collaborator-page .pdf-cover-page.print-mode-visible .linkedin-badge {
   display: inline-flex !important;
   align-items: center !important;
   gap: 0.5rem !important;
@@ -54,10 +54,11 @@
   margin-bottom: 1rem !important;
 }
 
-/* Hide cover page by default on screen */
+/* Hide cover page by default on screen except for print media */
 .pdf-cover-page:not(.print-mode-visible) {
   display: none !important;
 }
+
 
 /* Light Mode Web Version for Print */
 @media print {
