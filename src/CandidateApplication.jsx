@@ -19,13 +19,16 @@ import './styles/pageflow.css';
 // Example: /collaborator/blake/job/qld-655778-25
 // This page presents the candidate's application in a professional format for review
 const CandidateApplication = () => {
-  const { collaborator } = useParams();
+  const { collaborator, shortId } = useParams();
   const location = useLocation();
   const [searchParams] = useSearchParams();
   
   // Extract job ID from different URL formats
   let jobId = '';
-  if (location.pathname.includes('/collaborator/')) {
+  if (shortId) {
+    // Direct shortId route like /j/qld-655778-25
+    jobId = shortId;
+  } else if (location.pathname.includes('/collaborator/')) {
     jobId = location.pathname.split(`/collaborator/${collaborator}/job/`)[1] || '';
   } else if (location.pathname.includes('/c/')) {
     jobId = location.pathname.split(`/c/${collaborator}/j/`)[1] || '';

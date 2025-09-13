@@ -730,7 +730,7 @@ export default function MapgyverDetail() {
               border: '1px solid #333'
             }}>
               <img
-                src="/videos/forest-canopy.jpg"
+                src="/media/videos/forest-canopy.jpg"
                 alt="Dense forest canopy - typical lost person terrain"
                 style={{
                   width: '100%',
@@ -780,8 +780,8 @@ export default function MapgyverDetail() {
             >
               <video
                 ref={el => videoRefs.current['terrain'] = el}
-                src="/videos/terrain-reconnaissance.mp4"
-                poster="/videos/terrain-reconnaissance-thumb.jpg"
+                src="/media/videos/terrain-reconnaissance.mp4"
+                poster="/media/videos/terrain-reconnaissance-thumb.jpg"
                 muted
                 loop
                 playsInline
@@ -860,8 +860,8 @@ export default function MapgyverDetail() {
             >
               <video
                 ref={el => videoRefs.current['navigation'] = el}
-                src="/videos/navigation-challenges.mp4"
-                poster="/videos/navigation-challenges-thumb.jpg"
+                src="/media/videos/navigation-challenges.mp4"
+                poster="/media/videos/navigation-challenges-thumb.jpg"
                 muted
                 loop
                 playsInline
