@@ -121,7 +121,7 @@ const BlakeCollaborator = () => {
                   </div>
                 </nav>
                 
-                <div className="flex items-center space-x-2">
+                <div className="flex items-center space-x-1">
                   {/* LinkedIn Button */}
                   <a 
                     href="https://www.linkedin.com/in/blake-carter-5995ab5a/" 
@@ -142,7 +142,8 @@ const BlakeCollaborator = () => {
                     aria-label="Download Resume PDF"
                   >
                     <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20M10,19L12,15H9V10H15V15L13,19H10Z"/>
+                      <path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2Z"/>
+                      <text x="12" y="16" fontSize="6" textAnchor="middle" fill="#000" fontFamily="sans-serif" fontWeight="900" stroke="#000" strokeWidth="0.2">PDF</text>
                     </svg>
                   </button>
                 </div>
@@ -339,7 +340,7 @@ const BlakeCollaborator = () => {
                   <span className="font-light text-gray-300">Osbourne 1</span>
                 </div>
                 <div className="flex justify-between py-2 border-b border-gray-800">
-                  <span className="text-gray-500 font-light">Favourite place</span>
+                  <span className="text-gray-500 font-light">Holiday</span>
                   <span className="font-light text-gray-300">Waratah, TAS</span>
                 </div>
                 <div className="flex justify-between py-2 border-b border-gray-800">
@@ -374,7 +375,7 @@ const BlakeCollaborator = () => {
               <div className="space-y-10">
                 <div>
                   {/* HARMONIZED: Subsection label */}
-                  <h4 className="text-sm font-light mb-12 text-gray-400 tracking-[0.3em] uppercase">Projects</h4>
+                  <h4 className="text-sm font-light mb-12 text-gray-400 tracking-[0.3em] uppercase">Key Accomplishments</h4>
                   <div className="space-y-4 max-w-4xl">
                     <div className="flex items-baseline">
                       <span className="text-cyan-400 mr-4 font-light flex-shrink-0">/</span>
@@ -394,7 +395,7 @@ const BlakeCollaborator = () => {
                 </div>
                 <div>
                   {/* HARMONIZED: Subsection label */}
-                  <h4 className="text-sm font-light mb-12 text-gray-400 tracking-[0.3em] uppercase">Research</h4>
+                  <h4 className="text-sm font-light mb-12 text-gray-400 tracking-[0.3em] uppercase">Key Accomplishments</h4>
                   <div className="space-y-4 max-w-4xl">
                     <div className="flex items-baseline">
                       <span className="text-green-400 mr-4 font-light flex-shrink-0">/</span>
@@ -472,17 +473,21 @@ const BlakeCollaborator = () => {
                 </p>
               </div>
               <p className="text-lg leading-relaxed mb-8 font-light text-gray-300 max-w-4xl">
-                Led development teams in building scalable web applications while maintaining corporate 
+                Led development teams in building scalable web applications while maintaining corporate
                 governance and compliance standards across ISO27001 and 9001 certifications.
               </p>
-              <div className="space-y-4 max-w-4xl">
-                <div className="flex items-baseline">
-                  <span className="text-gray-400 mr-4 font-light flex-shrink-0">/</span>
-                  <p className="text-lg font-light text-gray-300">Maintained ISO27001 & 9001 certification with zero audit findings</p>
-                </div>
-                <div className="flex items-baseline">
-                  <span className="text-gray-400 mr-4 font-light flex-shrink-0">/</span>
-                  <p className="text-lg font-light text-gray-300">Implemented SIEM and EDR security solutions across enterprise infrastructure</p>
+              <div>
+                {/* HARMONIZED: Subsection label */}
+                <h4 className="text-sm font-light mb-12 text-gray-400 tracking-[0.3em] uppercase">Key Accomplishments</h4>
+                <div className="space-y-4 max-w-4xl">
+                  <div className="flex items-baseline">
+                    <span className="text-gray-400 mr-4 font-light flex-shrink-0">/</span>
+                    <p className="text-lg font-light text-gray-300">Maintained ISO27001 & 9001 certification with zero audit findings</p>
+                  </div>
+                  <div className="flex items-baseline">
+                    <span className="text-gray-400 mr-4 font-light flex-shrink-0">/</span>
+                    <p className="text-lg font-light text-gray-300">Implemented SIEM and EDR security solutions across enterprise infrastructure</p>
+                  </div>
                 </div>
               </div>
             </div>
@@ -498,21 +503,25 @@ const BlakeCollaborator = () => {
                 </p>
               </div>
               <p className="text-lg leading-relaxed mb-8 font-light text-gray-300 max-w-4xl">
-                Joined ValuePRO to spearhead platform modernisation and establish foundational systems including CRM, SOPs, source control, and DevOps practices. 
+                Joined ValuePRO to spearhead platform modernisation and establish foundational systems including CRM, SOPs, source control, and DevOps practices.
                 Evolved role to encompass BAU operations, systems management, offshore team leadership, and key account stewardship.
               </p>
-              <div className="space-y-4 max-w-4xl">
-                <div className="flex items-baseline">
-                  <span className="text-gray-400 mr-4 font-light flex-shrink-0">/</span>
-                  <p className="text-lg font-light text-gray-300">Implemented CI/CD pipelines and change management procedures</p>
-                </div>
-                <div className="flex items-baseline">
-                  <span className="text-gray-400 mr-4 font-light flex-shrink-0">/</span>
-                  <p className="text-lg font-light text-gray-300">Managed 100:2 consolidation of divergent internal dependency codebases</p>
-                </div>
-                <div className="flex items-baseline">
-                  <span className="text-gray-400 mr-4 font-light flex-shrink-0">/</span>
-                  <p className="text-lg font-light text-gray-300">Introduced source control for 150+ legacy codebases</p>
+              <div>
+                {/* HARMONIZED: Subsection label */}
+                <h4 className="text-sm font-light mb-12 text-gray-400 tracking-[0.3em] uppercase">Key Accomplishments</h4>
+                <div className="space-y-4 max-w-4xl">
+                  <div className="flex items-baseline">
+                    <span className="text-gray-400 mr-4 font-light flex-shrink-0">/</span>
+                    <p className="text-lg font-light text-gray-300">Implemented CI/CD pipelines and change management procedures</p>
+                  </div>
+                  <div className="flex items-baseline">
+                    <span className="text-gray-400 mr-4 font-light flex-shrink-0">/</span>
+                    <p className="text-lg font-light text-gray-300">Managed 100:2 consolidation of divergent internal dependency codebases</p>
+                  </div>
+                  <div className="flex items-baseline">
+                    <span className="text-gray-400 mr-4 font-light flex-shrink-0">/</span>
+                    <p className="text-lg font-light text-gray-300">Introduced source control for 150+ legacy codebases</p>
+                  </div>
                 </div>
               </div>
             </div>
@@ -587,6 +596,39 @@ const BlakeCollaborator = () => {
               </div>
             </div>
 
+            {/* Technical Competencies */}
+            <div className="mb-20">
+              <h2 className="text-sm font-light mb-12 text-gray-400 tracking-[0.3em] uppercase">Technical Competencies</h2>
+              <div className="max-w-4xl">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-4 text-xs">
+                  <div className="py-3 border-b border-gray-800">
+                    <span className="text-gray-500 font-light block mb-1">LANGUAGES</span>
+                    <span className="text-gray-300 font-light">Python • JavaScript • TypeScript • Dart • SQL</span>
+                  </div>
+                  <div className="py-3 border-b border-gray-800">
+                    <span className="text-gray-500 font-light block mb-1">FRAMEWORKS</span>
+                    <span className="text-gray-300 font-light">React • Next.js • FastAPI • Flutter • Express</span>
+                  </div>
+                  <div className="py-3 border-b border-gray-800">
+                    <span className="text-gray-500 font-light block mb-1">DATABASES</span>
+                    <span className="text-gray-300 font-light">PostgreSQL • SQLite • Redis • TimescaleDB</span>
+                  </div>
+                  <div className="py-3 border-b border-gray-800">
+                    <span className="text-gray-500 font-light block mb-1">CLOUD & DEVOPS</span>
+                    <span className="text-gray-300 font-light">Azure • AWS • Docker • Terraform</span>
+                  </div>
+                  <div className="py-3 border-b border-gray-800">
+                    <span className="text-gray-500 font-light block mb-1">CI/CD & AUTOMATION</span>
+                    <span className="text-gray-300 font-light">GitHub Actions • GitLab CI</span>
+                  </div>
+                  <div className="py-3 border-b border-gray-800">
+                    <span className="text-gray-500 font-light block mb-1">MACHINE LEARNING</span>
+                    <span className="text-gray-300 font-light">TensorFlow • PyTorch • Neural Networks • GIS</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
             {/* Education */}
             <div className="mb-20">
               <h2 className="text-sm font-light mb-12 text-gray-400 tracking-[0.3em] uppercase">Education</h2>
@@ -602,7 +644,7 @@ const BlakeCollaborator = () => {
                   </div>
                   <div className="py-3 border-b border-gray-800">
                     <span className="text-gray-500 font-light block mb-1">FORMAL</span>
-                    <span className="text-gray-300 font-light">B.A. / B.IT. - UQ (skipped)</span>
+                    <span className="text-gray-300 font-light">B.A. / B.IT. - UQ (incomplete)</span>
                   </div>
                   <div className="py-3 border-b border-gray-800">
                     <span className="text-gray-500 font-light block mb-1">PROGRAMMING</span>

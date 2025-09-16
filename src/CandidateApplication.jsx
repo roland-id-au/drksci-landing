@@ -791,9 +791,10 @@ Blake Carter`,
           </div>
           
           {/* PDF Download - matching LinkedIn badge style */}
-          <PdfVersion 
+          <PdfVersion
             filename={`blake-carter-${jobId || 'resume'}.pdf`}
             className="ml-2"
+            variant="linkedin"
           />
         </div>
 

@@ -197,13 +197,14 @@ const defaultPrintStyles = `
 }
 `;
 
-const PdfVersion = ({ 
+const PdfVersion = ({
   pdfPath,
   filename = 'document.pdf',
   className = '',
   style = {},
   children,
   showIcon = true,
+  variant = 'default', // 'default' or 'linkedin'
   printStyles = null // Allow custom print styles to be passed
 }) => {
   // Construct the PDF URL based on the path
@@ -242,9 +243,26 @@ const PdfVersion = ({
     document.body.removeChild(link);
   };
   
+  // LinkedIn-style badge
+  const linkedinStyleBadge = (
+    <button
+      onClick={handleDownload}
+      className={`pdf-version-component inline-flex items-center gap-2 px-3 py-2 bg-gray-800 hover:bg-gray-700 border border-gray-600 rounded text-sm text-white transition-colors ${className}`}
+      style={style}
+      aria-label="Download PDF version"
+      title="Download PDF version"
+    >
+      <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 24 24">
+        <path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2Z"/>
+        <text x="12" y="16" fontSize="6" textAnchor="middle" fill="#000" fontFamily="sans-serif" fontWeight="900" stroke="#000" strokeWidth="0.2">PDF</text>
+      </svg>
+      PDF
+    </button>
+  );
+
   // Default button with PDF icon matching LinkedIn style
   const defaultButton = (
-    <button 
+    <button
       onClick={handleDownload}
       className={`pdf-version-component inline-flex items-center text-gray-300 hover:text-white transition-colors opacity-60 hover:opacity-100 ${className}`}
       style={style}
@@ -263,7 +281,7 @@ const PdfVersion = ({
   // If custom children are provided without icon requirement
   if (children && !showIcon) {
     return (
-      <a 
+      <a
         href={pdfUrl}
         download={filename}
         target="_blank"
@@ -275,7 +293,12 @@ const PdfVersion = ({
       </a>
     );
   }
-  
+
+  // Return LinkedIn-style badge if requested
+  if (variant === 'linkedin') {
+    return linkedinStyleBadge;
+  }
+
   return defaultButton;
 };
 

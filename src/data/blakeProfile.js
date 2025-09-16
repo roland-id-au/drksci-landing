@@ -45,7 +45,7 @@ export const blakeProfileData = {
     "Hobby": "Spelunking",
     "First car": "'91 Prelude",
     "First PC": "Osbourne 1", 
-    "Favourite place": "Waratah, TAS",
+    "Holiday": "Waratah, TAS",
     "Weakness": "Challenges"
   },
   

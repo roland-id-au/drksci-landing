@@ -7,7 +7,7 @@ import { Link, useNavigate } from 'react-router-dom';
 // Source Serif 4: Used for cover letter content
 
 // Team Avatar Component - Harmonized Typography
-function TeamAvatar({ name, video, onEmilyClick, onBlakeClick }) {
+function TeamAvatar({ name, video, still, onEmilyClick, onBlakeClick }) {
   const videoRef = useRef();
   const [isLoaded, setIsLoaded] = useState(false);
   const [isHovering, setIsHovering] = useState(false);
@@ -94,18 +94,18 @@ function TeamAvatar({ name, video, onEmilyClick, onBlakeClick }) {
         onMouseLeave={handleMouseLeave}
       >
         {video ? (
-          <video 
+          <video
             ref={videoRef}
-            muted 
-            loop 
+            muted
+            loop
             playsInline
             className="w-full h-full object-cover"
           >
             <source src={video} type="video/webm" />
           </video>
         ) : (
-          <img 
-            src="/media/team/team-emily_still-black.png" 
+          <img
+            src={still || "/media/team/team-emily_still-black.png"}
             alt={name}
             className="w-full h-full object-cover"
           />
