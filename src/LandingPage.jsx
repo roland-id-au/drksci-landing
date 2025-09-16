@@ -417,16 +417,16 @@ export default function LandingPage({ showEmilyModal: initialShowModal = false }
               {/* Blake */}
               <TeamAvatar
                 name="Blake"
-                video="/media/team/team-blake_gray.webm"
+                still="/media/team/team-blake_still-black.png"
                 onBlakeClick={() => navigate('/c/blake')}
               />
-              
+
               {/* Giselle */}
               <TeamAvatar
                 name="Giselle"
-                video="/media/team/team-gen_gray.webm"
+                still="/media/team/team-gen_still-black.png"
               />
-              
+
               {/* Emily */}
               <TeamAvatar
                 name="Emily"
