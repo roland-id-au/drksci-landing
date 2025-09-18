@@ -19,7 +19,7 @@
   /* Single page setup - prevent page breaks */
   @page {
     size: 10in auto;  /* Wide page, auto height for single page */
-    margin: 0;        /* No margins - full bleed */
+    margin: 5mm 2mm 5mm 5mm;  /* Reduced right margin specifically */
   }
   
   /* Prevent all page breaks */
@@ -40,13 +40,13 @@
   }
   
   body {
-    font-family: 'Arial', 'Helvetica Neue', Helvetica, sans-serif;
+    font-family: system-ui, -apple-system, 'Segoe UI', 'Roboto', 'Ubuntu', 'Cantarell', 'Noto Sans', sans-serif;
     font-size: 11pt;
     line-height: 1.4;
     color: #000000 !important;
     background: white !important;
     margin: 0;
-    padding: 0;
+    padding: 2mm;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
@@ -82,8 +82,9 @@
     page-break-inside: avoid !important;
     color: var(--cover-page-text) !important;
     margin: 0 0 20pt 0 !important;
-    padding: 15mm !important;
+    padding: 10mm !important;
     box-sizing: border-box !important;
+    font-family: system-ui, -apple-system, 'Segoe UI', 'Roboto', 'Ubuntu', 'Cantarell', 'Noto Sans', sans-serif !important;
   }
   
   /* Cover page header with name and title */
@@ -91,21 +92,26 @@
     display: block !important;
   }
   
-  .pdf-cover-page .cover-name {
+  .pdf-cover-page .cover-name,
+  .pdf-cover-page .blake-title {
     font-size: 56pt !important;
     font-weight: 100 !important;
     letter-spacing: -0.02em !important;
     margin-bottom: 8pt !important;
     color: var(--cover-page-text) !important;
     line-height: 1.1 !important;
+    font-family: system-ui, -apple-system, 'Segoe UI', 'Roboto', 'Ubuntu', 'Cantarell', 'Noto Sans', sans-serif !important;
   }
   
-  .pdf-cover-page .cover-title {
+  .pdf-cover-page .cover-title,
+  .pdf-cover-page .blake-subtitle,
+  .pdf-cover-page .blake-subtitle div {
     font-size: 22pt !important;
     font-weight: 300 !important;
     opacity: 0.9 !important;
     color: var(--cover-page-text) !important;
     margin-bottom: 24pt !important;
+    font-family: system-ui, -apple-system, 'Segoe UI', 'Roboto', 'Ubuntu', 'Cantarell', 'Noto Sans', sans-serif !important;
   }
   
   /* Cover page footer with contact info */
@@ -224,8 +230,16 @@
   
   /* Main content section styles */
   .blake-section {
-    margin-bottom: 20pt !important;
+    margin-bottom: 12pt !important;
     page-break-inside: avoid !important;
+  }
+
+  /* Reduce main content container margins to match cover page */
+  .max-w-5xl {
+    padding-left: 10mm !important;
+    padding-right: 10mm !important;
+    max-width: none !important;
+    width: 100% !important;
   }
   
   /* Major sections - prevent breaking across pages */
