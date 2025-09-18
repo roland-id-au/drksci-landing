@@ -11,6 +11,7 @@ import KareerDetail from './KareerDetail';
 import PrinchesterDetail from './PrinchesterDetail';
 import CollaboratorIndex from './CollaboratorIndex';
 import BlakeCollaborator from './BlakeCollaborator';
+import BlakeCoverPage from './BlakeCoverPage';
 import CandidateApplication from './CandidateApplication';
 import ShortUrlResolver from './ShortUrlResolver';
 
@@ -35,12 +36,14 @@ function App() {
         {/* Short URL patterns */}
         <Route path="/c" element={<CollaboratorIndex />} />
         <Route path="/c/blake" element={<BlakeCollaborator />} />
+        <Route path="/c/blake/cover" element={<BlakeCoverPage />} />
         <Route path="/j/:shortId" element={<CandidateApplication />} />
         <Route path="/candidate/:candidate/:jobSlug" element={<CandidateApplication />} />
         
         {/* Legacy URL pattern aliases for backwards compatibility */}
         <Route path="/collaborator" element={<CollaboratorIndex />} />
         <Route path="/collaborator/blake" element={<BlakeCollaborator />} />
+        <Route path="/collaborator/blake/cover" element={<BlakeCoverPage />} />
         <Route path="/c/:collaborator/j/*" element={<CandidateApplication />} />
         <Route path="/collaborator/:collaborator/job/*" element={<CandidateApplication />} />
         <Route path="/a/:shortCode" element={<ShortUrlResolver />} />
