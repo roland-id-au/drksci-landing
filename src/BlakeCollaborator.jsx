@@ -30,7 +30,32 @@ const getFavicon = (company) => {
 const BlakeCollaborator = () => {
   const [activeSection, setActiveSection] = useState('profile');
   const [isDarkMode, setIsDarkMode] = useState(true);
-  
+
+  useEffect(() => {
+    // Check URL hash for light mode
+    const checkLightMode = () => {
+      const isLightMode = window.location.hash === '#light';
+      setIsDarkMode(!isLightMode);
+
+      // Apply dark mode class to html element
+      if (isLightMode) {
+        document.documentElement.classList.remove('dark');
+      } else {
+        document.documentElement.classList.add('dark');
+      }
+    };
+
+    // Check on mount
+    checkLightMode();
+
+    // Listen for hash changes
+    window.addEventListener('hashchange', checkLightMode);
+
+    return () => {
+      window.removeEventListener('hashchange', checkLightMode);
+    };
+  }, []);
+
   useEffect(() => {
     // Smooth scroll to section when navigation changes
     const element = document.getElementById(activeSection);
@@ -64,6 +89,11 @@ const BlakeCollaborator = () => {
           }
           .cinematic-bw {
             filter: grayscale(100%) contrast(1.2) brightness(0.9) !important;
+          }
+
+          /* Light mode version - brighter and softer */
+          html:not(.dark) .cinematic-bw {
+            filter: grayscale(100%) contrast(0.8) brightness(1.3) !important;
           }
           .poster-dots::after {
             content: '';
@@ -147,25 +177,6 @@ const BlakeCollaborator = () => {
               <Link to="/" className="hover:opacity-80 transition-opacity">
                 <svg viewBox="0 0 98 30" xmlns="http://www.w3.org/2000/svg" style={{ width: '100%', maxWidth: '120px', height: 'auto' }} className="sm:max-w-[160px]">
                   <defs>
-                    {/* Light mode gradients */}
-                    <linearGradient id="slash-light" x1="0%" y1="0%" x2="0%" y2="100%">
-                      <stop offset="33%" stopColor="#1f2937" />
-                      <stop offset="33%" stopColor="#374151" />
-                      <stop offset="66%" stopColor="#374151" />
-                      <stop offset="66%" stopColor="#111827" />
-                    </linearGradient>
-                    <linearGradient id="trail1-light" x1="0%" y1="0%" x2="100%" y2="0%">
-                      <stop offset="0%" stopColor="#1f2937" stopOpacity="0.6" />
-                      <stop offset="100%" stopColor="#1f2937" stopOpacity="0.2" />
-                    </linearGradient>
-                    <linearGradient id="trail2-light" x1="0%" y1="0%" x2="100%" y2="0%">
-                      <stop offset="0%" stopColor="#374151" stopOpacity="0.6" />
-                      <stop offset="100%" stopColor="#374151" stopOpacity="0.2" />
-                    </linearGradient>
-                    <linearGradient id="trail3-light" x1="0%" y1="0%" x2="100%" y2="0%">
-                      <stop offset="0%" stopColor="#111827" stopOpacity="0.6" />
-                      <stop offset="100%" stopColor="#111827" stopOpacity="0.2" />
-                    </linearGradient>
 
                     {/* Dark mode gradients */}
                     <linearGradient id="slash-dark" x1="0%" y1="0%" x2="0%" y2="100%">
@@ -188,17 +199,11 @@ const BlakeCollaborator = () => {
                     </linearGradient>
                   </defs>
                   <g transform="translate(-2, 0)">
-                    {/* Light mode logo (hidden in dark mode) */}
+                    {/* Light mode logo (hidden in dark mode) - Simple stroke version */}
                     <g className="dark:hidden">
-                      <path d="M 30 9 L 27.67 14.33 L 30 14.33 L 30 9 Z" fill="#1f2937" opacity="0.8"/>
-                      <path d="M 27.67 14.33 L 25.34 19.66 L 30 19.66 L 30 14.33 Z" fill="#374151" opacity="0.8"/>
-                      <path d="M 25.34 19.66 L 23 25 L 30 25 L 30 19.66 Z" fill="#111827" opacity="0.8"/>
-                      <path d="M 30 9 L 30 14.33 L 52.67 14.33 L 55 9 Z" fill="url(#trail1-light)"/>
-                      <path d="M 30 14.33 L 30 19.66 L 52.67 19.66 L 55 14.33 Z" fill="url(#trail2-light)"/>
-                      <path d="M 30 19.66 L 30 25 L 52.67 25 L 55 19.66 Z" fill="url(#trail3-light)"/>
                       <text x="2" y="25" fontFamily="'Exo 2', sans-serif" fontSize="28" fontWeight="700" fill="#111827">d</text>
                       <text x="32" y="25" fontFamily="'Exo 2', sans-serif" fontSize="28" fontWeight="700" fill="#111827">rksci</text>
-                      <path d="M23 25 L 18 25 L 25 9 L 30 9 Z" fill="url(#slash-light)" />
+                      <path d="M23 25 L 18 25 L 25 9 L 30 9 Z" stroke="#111827" strokeWidth="2" fill="none" />
                     </g>
 
                     {/* Dark mode logo (hidden in light mode) */}
@@ -273,7 +278,14 @@ const BlakeCollaborator = () => {
 
                   {/* Dark/Light Mode Toggle */}
                   <button
-                    onClick={() => setIsDarkMode(!isDarkMode)}
+                    onClick={() => {
+                      const isCurrentlyLight = window.location.hash === '#light';
+                      if (isCurrentlyLight) {
+                        window.location.hash = '';
+                      } else {
+                        window.location.hash = '#light';
+                      }
+                    }}
                     className="flex items-center justify-center w-8 h-8 sm:w-10 sm:h-10 transition-colors text-gray-800 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white"
                     aria-label={isDarkMode ? "Switch to light mode" : "Switch to dark mode"}
                   >
@@ -396,44 +408,44 @@ const BlakeCollaborator = () => {
               <h2 className="text-sm font-light mb-8 tracking-[0.3em] uppercase text-black dark:text-white">Personal Insights</h2>
               <div className="blake-grid grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-x-12 gap-y-2 max-w-4xl text-xs">
                 <div className="flex justify-between py-2">
-                  <span className="font-light text-gray-800 dark:text-gray-400">Location</span>
+                  <span className="font-light text-black dark:text-gray-400">Location</span>
                   <span className="text-gray-700 mx-1 flex-1 border-b border-dotted border-gray-200 text-2xs" style={{backgroundImage: 'radial-gradient(circle, rgb(156, 163, 175) 0.5px, transparent 0.5px)', backgroundSize: '3px 1px', backgroundPosition: 'bottom', backgroundRepeat: 'repeat-x', height: '1em', borderBottom: 'none', alignSelf: 'flex-end', marginBottom: '2px'}}></span>
-                  <span className="font-light text-gray-900 dark:text-gray-200">Brisbane</span>
+                  <span className="font-light text-black dark:text-gray-200">Brisbane</span>
                 </div>
                 <div className="flex justify-between py-2">
-                  <span className="font-light text-gray-800 dark:text-gray-400">Travel / Relocate</span>
+                  <span className="font-light text-black dark:text-gray-400">Travel / Relocate</span>
                   <span className="text-gray-700 mx-1 flex-1 border-b border-dotted border-gray-200 text-2xs" style={{backgroundImage: 'radial-gradient(circle, rgb(156, 163, 175) 0.5px, transparent 0.5px)', backgroundSize: '3px 1px', backgroundPosition: 'bottom', backgroundRepeat: 'repeat-x', height: '1em', borderBottom: 'none', alignSelf: 'flex-end', marginBottom: '2px'}}></span>
-                  <span className="font-light text-gray-900 dark:text-gray-200">Yes</span>
+                  <span className="font-light text-black dark:text-gray-200">Yes</span>
                 </div>
                 <div className="flex justify-between py-2">
-                  <span className="font-light text-gray-800 dark:text-gray-400">Married</span>
+                  <span className="font-light text-black dark:text-gray-400">Married</span>
                   <span className="text-gray-700 mx-1 flex-1 border-b border-dotted border-gray-200 text-2xs" style={{backgroundImage: 'radial-gradient(circle, rgb(156, 163, 175) 0.5px, transparent 0.5px)', backgroundSize: '3px 1px', backgroundPosition: 'bottom', backgroundRepeat: 'repeat-x', height: '1em', borderBottom: 'none', alignSelf: 'flex-end', marginBottom: '2px'}}></span>
-                  <span className="font-light text-gray-900 dark:text-gray-200">Las Vegas</span>
+                  <span className="font-light text-black dark:text-gray-200">Las Vegas</span>
                 </div>
                 <div className="flex justify-between py-2">
-                  <span className="font-light text-gray-800 dark:text-gray-400">Hobby</span>
+                  <span className="font-light text-black dark:text-gray-400">Hobby</span>
                   <span className="text-gray-700 mx-1 flex-1 border-b border-dotted border-gray-200 text-2xs" style={{backgroundImage: 'radial-gradient(circle, rgb(156, 163, 175) 0.5px, transparent 0.5px)', backgroundSize: '3px 1px', backgroundPosition: 'bottom', backgroundRepeat: 'repeat-x', height: '1em', borderBottom: 'none', alignSelf: 'flex-end', marginBottom: '2px'}}></span>
-                  <span className="font-light text-gray-900 dark:text-gray-200">Spelunking</span>
+                  <span className="font-light text-black dark:text-gray-200">Spelunking</span>
                 </div>
                 <div className="flex justify-between py-2">
-                  <span className="font-light text-gray-800 dark:text-gray-400">First car</span>
+                  <span className="font-light text-black dark:text-gray-400">First car</span>
                   <span className="text-gray-700 mx-1 flex-1 border-b border-dotted border-gray-200 text-2xs" style={{backgroundImage: 'radial-gradient(circle, rgb(156, 163, 175) 0.5px, transparent 0.5px)', backgroundSize: '3px 1px', backgroundPosition: 'bottom', backgroundRepeat: 'repeat-x', height: '1em', borderBottom: 'none', alignSelf: 'flex-end', marginBottom: '2px'}}></span>
-                  <span className="font-light text-gray-900 dark:text-gray-200">'91 Prelude</span>
+                  <span className="font-light text-black dark:text-gray-200">'91 Prelude</span>
                 </div>
                 <div className="flex justify-between py-2">
-                  <span className="font-light text-gray-800 dark:text-gray-400">First PC</span>
+                  <span className="font-light text-black dark:text-gray-400">First PC</span>
                   <span className="text-gray-700 mx-1 flex-1 border-b border-dotted border-gray-200 text-2xs" style={{backgroundImage: 'radial-gradient(circle, rgb(156, 163, 175) 0.5px, transparent 0.5px)', backgroundSize: '3px 1px', backgroundPosition: 'bottom', backgroundRepeat: 'repeat-x', height: '1em', borderBottom: 'none', alignSelf: 'flex-end', marginBottom: '2px'}}></span>
-                  <span className="font-light text-gray-900 dark:text-gray-200">Osbourne 1</span>
+                  <span className="font-light text-black dark:text-gray-200">Osbourne 1</span>
                 </div>
                 <div className="flex justify-between py-2">
-                  <span className="font-light text-gray-800 dark:text-gray-400">Holidays</span>
+                  <span className="font-light text-black dark:text-gray-400">Holidays</span>
                   <span className="text-gray-700 mx-1 flex-1 border-b border-dotted border-gray-200 text-2xs" style={{backgroundImage: 'radial-gradient(circle, rgb(156, 163, 175) 0.5px, transparent 0.5px)', backgroundSize: '3px 1px', backgroundPosition: 'bottom', backgroundRepeat: 'repeat-x', height: '1em', borderBottom: 'none', alignSelf: 'flex-end', marginBottom: '2px'}}></span>
-                  <span className="font-light text-gray-900 dark:text-gray-200">Waratah, TAS</span>
+                  <span className="font-light text-black dark:text-gray-200">Waratah, TAS</span>
                 </div>
                 <div className="flex justify-between py-2">
-                  <span className="font-light text-gray-800 dark:text-gray-400">Weakness</span>
+                  <span className="font-light text-black dark:text-gray-400">Weakness</span>
                   <span className="text-gray-700 mx-1 flex-1 border-b border-dotted border-gray-200 text-2xs" style={{backgroundImage: 'radial-gradient(circle, rgb(156, 163, 175) 0.5px, transparent 0.5px)', backgroundSize: '3px 1px', backgroundPosition: 'bottom', backgroundRepeat: 'repeat-x', height: '1em', borderBottom: 'none', alignSelf: 'flex-end', marginBottom: '2px'}}></span>
-                  <span className="font-light text-gray-900 dark:text-gray-200">Challenges</span>
+                  <span className="font-light text-black dark:text-gray-200">Challenges</span>
                 </div>
               </div>
 

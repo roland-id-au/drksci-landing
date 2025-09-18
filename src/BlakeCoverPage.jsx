@@ -1,7 +1,33 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet';
 
 const BlakeCoverPage = () => {
+  const [isDarkMode, setIsDarkMode] = useState(true);
+
+  useEffect(() => {
+    // Check URL hash for light mode
+    const checkLightMode = () => {
+      const isLightMode = window.location.hash === '#light';
+      setIsDarkMode(!isLightMode);
+
+      // Apply dark mode class to html element
+      if (isLightMode) {
+        document.documentElement.classList.remove('dark');
+      } else {
+        document.documentElement.classList.add('dark');
+      }
+    };
+
+    // Check on mount
+    checkLightMode();
+
+    // Listen for hash changes
+    window.addEventListener('hashchange', checkLightMode);
+
+    return () => {
+      window.removeEventListener('hashchange', checkLightMode);
+    };
+  }, []);
   return (
     <>
       <Helmet>
@@ -27,7 +53,7 @@ const BlakeCoverPage = () => {
         </style>
       </Helmet>
 
-      <div className="min-h-screen bg-black text-white cover-warming">
+      <div className={`min-h-screen transition-colors duration-300 bg-white text-black dark:bg-black dark:text-white cover-warming ${isDarkMode ? 'dark' : ''}`}>
         {/* PDF Cover Page - Full width layout */}
         <div className="pdf-cover-page h-screen flex flex-col justify-between relative">
           {/* LinkedIn Badge - Top right position */}

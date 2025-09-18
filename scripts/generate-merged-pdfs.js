@@ -8,8 +8,8 @@ const { PDFDocument } = require('pdf-lib');
 const collaborators = [
   {
     name: 'Blake Carter',
-    contentUrl: 'http://localhost:3000/c/blake',
-    coverUrl: 'http://localhost:3000/c/blake/cover',
+    contentUrl: 'http://localhost:3000/c/blake', // Dark mode for profile content (no #light hash)
+    coverUrl: 'http://localhost:3000/c/blake/cover', // Dark mode for cover (no #light hash)
     filename: 'blake-carter-resume.pdf'
   }
 ];
@@ -37,7 +37,19 @@ async function generateSinglePagePDF(url, description) {
     // Wait for the main content to load
     await page.waitForSelector('body', { timeout: 15000 });
 
-    // Wait a bit more for dynamic content
+    // Apply correct mode based on URL hash
+    await page.evaluate(() => {
+      const isLightMode = window.location.hash === '#light';
+      if (isLightMode) {
+        document.documentElement.classList.remove('dark');
+        document.documentElement.classList.add('light');
+      } else {
+        document.documentElement.classList.add('dark');
+        document.documentElement.classList.remove('light');
+      }
+    });
+
+    // Wait for dynamic content and theme application
     await new Promise(resolve => setTimeout(resolve, 3000));
 
     // Force screen media and disable all print styles, hide header
@@ -198,7 +210,19 @@ async function generatePDF(url, description) {
     // Wait for the main content to load
     await page.waitForSelector('body', { timeout: 15000 });
 
-    // Wait a bit more for dynamic content
+    // Apply correct mode based on URL hash
+    await page.evaluate(() => {
+      const isLightMode = window.location.hash === '#light';
+      if (isLightMode) {
+        document.documentElement.classList.remove('dark');
+        document.documentElement.classList.add('light');
+      } else {
+        document.documentElement.classList.add('dark');
+        document.documentElement.classList.remove('light');
+      }
+    });
+
+    // Wait for dynamic content and theme application
     await new Promise(resolve => setTimeout(resolve, 3000));
 
     // Only emulate print media for content pages, not cover pages
