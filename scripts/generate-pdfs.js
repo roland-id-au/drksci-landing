@@ -7,7 +7,7 @@ const path = require('path');
 const collaborators = [
   {
     name: 'Blake Carter',
-    url: 'https://drksci.com/collaborators/blake',
+    url: 'http://localhost:3000/c/blake#print',
     filename: 'blake-carter-resume.pdf'
   }
   // Only generating for Blake for now
