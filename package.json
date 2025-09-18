@@ -15,6 +15,7 @@
     "marked": "^16.0.0",
     "mermaid": "^11.10.1",
     "nunjucks": "^3.2.4",
+    "pdf-lib": "^1.17.1",
     "playwright": "^1.53.2",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
@@ -48,18 +49,9 @@
     "profile:disable": "node scripts/profile-manager.js disable",
     "profile:token": "node scripts/profile-manager.js token",
     "profile:cleanup": "node scripts/profile-manager.js cleanup",
-    "pdf:generate:all": "node scripts/generate-resume-pdf.js",
-    "pdf:generate:resume": "node scripts/generate-resume-pdf.js",
-    "pdf:generate:cover": "node scripts/generate-cover-letter.js",
-    "pdf:generate:job": "node scripts/generate-cover-letter.js",
-    "pdf:clean": "rm -f public/assets/personnel/pdfs/*.pdf",
-    "jobs:list": "npm run profile:list",
-    "jobs:add": "npm run profile:add",
-    "jobs:remove": "npm run profile:remove",
-    "jobs:info": "npm run profile:info",
-    "app:list": "npm run profile:list",
-    "app:add": "npm run profile:add",
-    "app:remove": "npm run profile:remove"
+    "pdf:generate:all": "node scripts/generate-pdfs.js",
+    "pdf:generate:merged": "node scripts/generate-merged-pdfs.js",
+    "pdf:generate:resume": "node scripts/generate-pdfs.js"
   },
   "eslintConfig": {
     "extends": [
