@@ -85,9 +85,20 @@ async function generateSinglePagePDF(url, description) {
 
         /* Make contact buttons clearly clickable */
         a[href*="mailto:"],
-        a[href*="calendly.com"] {
+        a[href*="calendly.com"],
+        a[href*="linkedin.com"],
+        a[href*="drksci.com"] {
           display: block !important;
           cursor: pointer !important;
+        }
+
+        /* Cover page link styling for PDF */
+        .linkedin-badge,
+        .email-link,
+        .booking-link,
+        .cover-link {
+          position: relative !important;
+          z-index: 10 !important;
         }
 
         /* Remove trailing space after final image */

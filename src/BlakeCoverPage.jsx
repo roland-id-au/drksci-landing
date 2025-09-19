@@ -84,6 +84,22 @@ const BlakeCoverPage = () => {
             </div>
           </div>
 
+          {/* Contact Links - Above footer */}
+          <div className="cover-contact flex justify-center gap-8 px-12 sm:px-18 mb-8">
+            <a href="mailto:blake@drksci.com"
+               className="email-link text-sm text-gray-300 hover:text-white transition-colors duration-300 font-light tracking-wide relative">
+              <span>blake@drksci.com</span>
+              {/* PDF clickable overlay */}
+              <div className="absolute inset-0 bg-transparent z-10" style={{content: '""'}}></div>
+            </a>
+            <a href="https://calendly.com/blake-roland/30min"
+               className="booking-link text-sm text-gray-300 hover:text-white transition-colors duration-300 font-light tracking-wide relative">
+              <span>Book a Meeting</span>
+              {/* PDF clickable overlay */}
+              <div className="absolute inset-0 bg-transparent z-10" style={{content: '""'}}></div>
+            </a>
+          </div>
+
           {/* Cover Footer - Full width with same margins as content */}
           <div className="cover-footer flex justify-between items-end px-12 sm:px-18 py-8 sm:py-12">
             {/* Logo */}
