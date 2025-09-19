@@ -49,7 +49,7 @@
     "profile:disable": "node scripts/profile-manager.js disable",
     "profile:token": "node scripts/profile-manager.js token",
     "profile:cleanup": "node scripts/profile-manager.js cleanup",
-    "pdf:generate:all": "node scripts/generate-pdfs.js",
+    "pdf:generate:all": "node scripts/generate-merged-pdfs.js",
     "pdf:generate:merged": "node scripts/generate-merged-pdfs.js",
     "pdf:generate:resume": "node scripts/generate-pdfs.js"
   },
