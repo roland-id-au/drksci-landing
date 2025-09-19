@@ -41,7 +41,7 @@ export const blakeProfileData = {
   insights: {
     "Location": "Brisbane",
     "Travel": "Willing", 
-    "Married": "Las Vegas",
+    "Wifetime": "Las Vegas",
     "Hobby": "Spelunking",
     "First car": "'91 Prelude",
     "First PC": "Osbourne 1", 
