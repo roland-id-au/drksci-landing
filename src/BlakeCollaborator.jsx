@@ -95,10 +95,10 @@ const BlakeCollaborator = () => {
   }, []);
 
   const generatePDF = () => {
-    // Use the pre-generated static PDF
+    // Use the pre-generated static PDF - switch between dark/light mode variants
     const link = document.createElement('a');
-    link.href = '/pdfs/blake-carter-resume.pdf';
-    link.download = 'Blake_Carter_Resume.pdf';
+    link.href = isDarkMode ? '/pdfs/blake-carter-resume.pdf' : '/pdfs/blake-carter-resume-light.pdf';
+    link.download = isDarkMode ? 'Blake_Carter_Resume.pdf' : 'Blake_Carter_Resume_Light.pdf';
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -468,7 +468,7 @@ const BlakeCollaborator = () => {
                 <div className="flex items-baseline">
                   <span className="mr-6 font-light flex-shrink-0 text-gray-800 dark:text-gray-300">/</span>
                   <p className="text-lg font-light leading-relaxed text-gray-800 dark:text-gray-300">
-                    Will die on the hill that UI/UX impressions matter
+                    Will almost certainly die on the hill that UI/UX impressions matter
                   </p>
                 </div>
               </div>
@@ -973,7 +973,7 @@ const BlakeCollaborator = () => {
                 <div className="rounded-2xl p-2 subtle-noise" style={{backgroundColor: isDarkMode ? 'transparent' : '#faf9f7'}}>
                   <div className="aspect-square rounded-lg overflow-hidden mb-2">
                     <img
-                      src="/assets/hobbies/hobby-1.png"
+                      src="/assets/hobbies/hobby-1.jpg"
                       alt="Explored"
                       className="w-full h-full object-cover hover:scale-105 transition-transform duration-300 cooling-filter"
                     />
@@ -989,7 +989,7 @@ const BlakeCollaborator = () => {
                 <div className="rounded-2xl p-2 subtle-noise" style={{backgroundColor: isDarkMode ? 'transparent' : '#faf9f7'}}>
                   <div className="aspect-square rounded-lg overflow-hidden mb-2">
                     <img
-                      src="/assets/hobbies/hobby-3.png"
+                      src="/assets/hobbies/hobby-3.jpg"
                       alt="Spelunking"
                       className="w-full h-full object-cover hover:scale-105 transition-transform duration-300 cooling-filter"
                     />
@@ -1005,7 +1005,7 @@ const BlakeCollaborator = () => {
                 <div className="rounded-2xl p-2 subtle-noise" style={{backgroundColor: isDarkMode ? 'transparent' : '#faf9f7'}}>
                   <div className="aspect-square rounded-lg overflow-hidden mb-2">
                     <img
-                      src="/assets/hobbies/hobby-4.png"
+                      src="/assets/hobbies/hobby-4.jpg"
                       alt="Exploring"
                       className="w-full h-full object-cover hover:scale-105 transition-transform duration-300 cooling-filter"
                     />
@@ -1021,7 +1021,7 @@ const BlakeCollaborator = () => {
                 <div className="rounded-2xl p-2 subtle-noise" style={{backgroundColor: isDarkMode ? 'transparent' : '#faf9f7'}}>
                   <div className="aspect-square rounded-lg overflow-hidden mb-2">
                     <img
-                      src="/assets/hobbies/hobby-2.png"
+                      src="/assets/hobbies/hobby-2.jpg"
                       alt="Wife"
                       className="w-full h-full object-cover hover:scale-105 transition-transform duration-300 cooling-filter"
                     />

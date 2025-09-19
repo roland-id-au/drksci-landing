@@ -9,8 +9,10 @@ const collaborators = [
   {
     name: 'Blake Carter',
     contentUrl: 'http://localhost:3000/c/blake', // Dark mode for profile content (no #light hash)
-    coverUrl: 'http://localhost:3000/c/blake/cover', // Dark mode for cover (no #light hash)
-    filename: 'blake-carter-resume.pdf'
+    contentUrlLight: 'http://localhost:3000/c/blake#light', // Light mode for profile content
+    coverUrl: 'http://localhost:3000/c/blake/cover', // Dark mode for cover (always dark)
+    filename: 'blake-carter-resume.pdf',
+    filenameLight: 'blake-carter-resume-light.pdf'
   }
 ];
 
@@ -31,11 +33,11 @@ async function generateSinglePagePDF(url, description) {
     // Navigate to the page
     await page.goto(url, {
       waitUntil: 'networkidle2',
-      timeout: 30000
+      timeout: 60000
     });
 
     // Wait for the main content to load
-    await page.waitForSelector('body', { timeout: 15000 });
+    await page.waitForSelector('body', { timeout: 30000 });
 
     // Apply correct mode based on URL hash
     await page.evaluate(() => {
@@ -204,11 +206,11 @@ async function generatePDF(url, description) {
     // Navigate to the page
     await page.goto(url, {
       waitUntil: 'networkidle2',
-      timeout: 30000
+      timeout: 60000
     });
 
     // Wait for the main content to load
-    await page.waitForSelector('body', { timeout: 15000 });
+    await page.waitForSelector('body', { timeout: 30000 });
 
     // Apply correct mode based on URL hash
     await page.evaluate(() => {
@@ -297,7 +299,7 @@ async function generatePDF(url, description) {
   }
 }
 
-async function mergePDFs(coverBuffer, contentBuffer, outputPath) {
+async function mergePDFs(coverBuffer, contentBuffer, outputPath, returnBuffer = false) {
   console.log('Merging cover and content PDFs...');
 
   try {
@@ -320,11 +322,15 @@ async function mergePDFs(coverBuffer, contentBuffer, outputPath) {
 
     // Save the merged PDF
     const mergedPdfBytes = await mergedPdf.save();
-    fs.writeFileSync(outputPath, mergedPdfBytes);
 
-    console.log(`  ✓ Merged PDF saved (${(mergedPdfBytes.length / 1024).toFixed(2)} KB)`);
-
-    return mergedPdfBytes.length;
+    if (returnBuffer) {
+      console.log(`  ✓ Merged PDF created (${(mergedPdfBytes.length / 1024).toFixed(2)} KB)`);
+      return mergedPdfBytes;
+    } else {
+      fs.writeFileSync(outputPath, mergedPdfBytes);
+      console.log(`  ✓ Merged PDF saved (${(mergedPdfBytes.length / 1024).toFixed(2)} KB)`);
+      return mergedPdfBytes.length;
+    }
 
   } catch (error) {
     console.error(`  ✗ Failed to merge PDFs:`, error.message);
@@ -332,14 +338,41 @@ async function mergePDFs(coverBuffer, contentBuffer, outputPath) {
   }
 }
 
+async function compressPDF(inputBuffer, targetSizeKB = 2048) {
+  console.log('Compressing PDF to reduce file size...');
+
+  try {
+    const pdfDoc = await PDFDocument.load(inputBuffer);
+    const compressedBytes = await pdfDoc.save({
+      useObjectStreams: false,
+      addDefaultPage: false,
+      objectsPerTick: 50,
+      updateFieldAppearances: false
+    });
+
+    const originalSizeKB = inputBuffer.length / 1024;
+    const compressedSizeKB = compressedBytes.length / 1024;
+
+    console.log(`  ✓ Compressed from ${originalSizeKB.toFixed(2)} KB to ${compressedSizeKB.toFixed(2)} KB`);
+
+    return compressedBytes;
+  } catch (error) {
+    console.error(`  ✗ Failed to compress PDF:`, error.message);
+    return inputBuffer; // Return original if compression fails
+  }
+}
+
 async function generateCollaboratorPDF(collaborator) {
   console.log(`\nGenerating PDF for ${collaborator.name}...`);
 
-  // Generate cover and content PDFs separately
+  // Generate cover and content PDFs separately (dark mode)
   const coverBuffer = await generatePDF(collaborator.coverUrl, 'cover page');
   const contentBuffer = await generateSinglePagePDF(collaborator.contentUrl, 'content page (single page)');
 
-  if (!coverBuffer && !contentBuffer) {
+  // Generate light mode content
+  const contentBufferLight = await generateSinglePagePDF(collaborator.contentUrlLight, 'content page (light mode)');
+
+  if (!coverBuffer && !contentBuffer && !contentBufferLight) {
     console.error(`Failed to generate any PDFs for ${collaborator.name}`);
     return { success: false, filename: collaborator.filename, error: 'Failed to generate PDFs' };
   }
@@ -350,35 +383,73 @@ async function generateCollaboratorPDF(collaborator) {
     fs.mkdirSync(outputDir, { recursive: true });
   }
 
-  // Merge PDFs
-  const outputPath = path.join(outputDir, collaborator.filename);
-  const mergedSize = await mergePDFs(coverBuffer, contentBuffer, outputPath);
+  const results = [];
 
-  if (mergedSize) {
-    return {
-      success: true,
-      filename: collaborator.filename,
-      size: mergedSize,
-      hasCover: !!coverBuffer,
-      hasContent: !!contentBuffer
-    };
-  } else {
-    return { success: false, filename: collaborator.filename, error: 'Failed to merge PDFs' };
+  // Generate dark mode PDF
+  if (coverBuffer && contentBuffer) {
+    const darkOutputPath = path.join(outputDir, collaborator.filename);
+    let mergedBuffer = await mergePDFs(coverBuffer, contentBuffer, darkOutputPath, true); // Return buffer instead of writing
+
+    if (mergedBuffer) {
+      // Compress if over 2MB
+      if (mergedBuffer.length > 2 * 1024 * 1024) {
+        mergedBuffer = await compressPDF(mergedBuffer);
+      }
+
+      // Write compressed version
+      fs.writeFileSync(darkOutputPath, mergedBuffer);
+
+      results.push({
+        success: true,
+        filename: collaborator.filename,
+        size: mergedBuffer.length,
+        mode: 'dark',
+        hasCover: !!coverBuffer,
+        hasContent: !!contentBuffer
+      });
+    }
   }
+
+  // Generate light mode PDF
+  if (coverBuffer && contentBufferLight) {
+    const lightOutputPath = path.join(outputDir, collaborator.filenameLight);
+    let mergedBuffer = await mergePDFs(coverBuffer, contentBufferLight, lightOutputPath, true); // Return buffer instead of writing
+
+    if (mergedBuffer) {
+      // Compress if over 2MB
+      if (mergedBuffer.length > 2 * 1024 * 1024) {
+        mergedBuffer = await compressPDF(mergedBuffer);
+      }
+
+      // Write compressed version
+      fs.writeFileSync(lightOutputPath, mergedBuffer);
+
+      results.push({
+        success: true,
+        filename: collaborator.filenameLight,
+        size: mergedBuffer.length,
+        mode: 'light',
+        hasCover: !!coverBuffer,
+        hasContent: !!contentBufferLight
+      });
+    }
+  }
+
+  return results.length > 0 ? results : [{ success: false, filename: collaborator.filename, error: 'Failed to merge PDFs' }];
 }
 
 async function generateAllPDFs() {
   console.log('Starting enhanced PDF generation with separate cover and content...\n');
 
-  const results = [];
+  const allResults = [];
 
   for (const collaborator of collaborators) {
     try {
-      const result = await generateCollaboratorPDF(collaborator);
-      results.push(result);
+      const results = await generateCollaboratorPDF(collaborator);
+      allResults.push(...results);
     } catch (error) {
       console.error(`Failed to process ${collaborator.name}:`, error);
-      results.push({
+      allResults.push({
         success: false,
         filename: collaborator.filename,
         error: error.message
@@ -390,15 +461,18 @@ async function generateAllPDFs() {
   console.log('Enhanced PDF generation complete!');
   console.log('\nGenerated files:');
 
-  const successful = results.filter(r => r.success);
-  const failed = results.filter(r => !r.success);
+  const successful = allResults.filter(r => r.success);
+  const failed = allResults.filter(r => !r.success);
 
   if (successful.length > 0) {
     successful.forEach(result => {
       const parts = [];
       if (result.hasCover) parts.push('cover');
       if (result.hasContent) parts.push('content');
-      console.log(`  ✓ ${result.filename} (${(result.size / 1024).toFixed(2)} KB) - ${parts.join(' + ')}`);
+      const mode = result.mode ? ` (${result.mode} mode)` : '';
+      const sizeKB = (result.size / 1024).toFixed(2);
+      const sizeStatus = result.size > 2 * 1024 * 1024 ? ' ⚠️  >2MB' : ' ✓ ≤2MB';
+      console.log(`  ✓ ${result.filename} (${sizeKB} KB${sizeStatus}) - ${parts.join(' + ')}${mode}`);
     });
   }
 
