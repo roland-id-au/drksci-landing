@@ -1172,7 +1172,7 @@ const BlakeCollaborator = () => {
                   </div>
                   <div className="px-3 pt-2 pb-1">
                     <div className="text-xs text-gray-600 dark:text-gray-400 font-normal leading-tight text-left">
-                      <div className="text-sm mb-1">Wife</div>
+                      <div className="text-sm mb-1">Wifetime</div>
                       Samuel Griffith Observatory<br/>
                       <span className="text-2xs font-light mt-1 block">🇺🇸 Hollywood Hills, CA</span>
                     </div>
