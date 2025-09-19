@@ -52,7 +52,18 @@ async function generateSinglePagePDF(url, description) {
     });
 
     // Wait for dynamic content and theme application
-    await new Promise(resolve => setTimeout(resolve, 3000));
+    await new Promise(resolve => setTimeout(resolve, 5000));
+
+    // Wait for images to load completely
+    await page.evaluate(() => {
+      return Promise.all(Array.from(document.images).map(img => {
+        if (img.complete) return Promise.resolve();
+        return new Promise((resolve, reject) => {
+          img.addEventListener('load', resolve);
+          img.addEventListener('error', reject);
+        });
+      }));
+    });
 
     // Force screen media and disable all print styles, hide header
     await page.emulateMediaType('screen');
@@ -135,6 +146,60 @@ async function generateSinglePagePDF(url, description) {
           margin-bottom: 0 !important;
         }
 
+        /* Force body to exactly fit content */
+        body {
+          min-height: unset !important;
+          height: auto !important;
+        }
+
+        /* Remove min-height constraints */
+        .min-h-screen {
+          min-height: unset !important;
+          height: auto !important;
+        }
+
+        /* Force last element to be the true end */
+        *:last-child {
+          margin-bottom: 0 !important;
+          padding-bottom: 0 !important;
+        }
+
+        /* Target attribution badge specifically */
+        .mb-20.flex.justify-center {
+          margin-bottom: 0 !important;
+        }
+
+        /* Override any large bottom margins */
+        .mb-20 {
+          margin-bottom: 0 !important;
+        }
+
+        /* Remove padding from main containers */
+        .py-20,
+        .py-16,
+        .py-12 {
+          padding-bottom: 0 !important;
+        }
+
+        /* Reduce image quality for PDF compression */
+        img {
+          image-rendering: auto !important;
+          max-width: 100% !important;
+          height: auto !important;
+          transform: scale(0.8) !important;
+          filter: contrast(0.9) brightness(0.95) !important;
+        }
+
+        /* Optimize fonts for PDF compression - use system fonts */
+        * {
+          font-family: system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif !important;
+        }
+
+        /* Remove custom icon fonts - replace with Unicode symbols */
+        .material-symbols-outlined {
+          font-family: system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif !important;
+        }
+
 
         /* Disable all page breaks for single-page layout */
         * {
@@ -189,25 +254,56 @@ async function generateSinglePagePDF(url, description) {
     // Wait for styles to apply
     await new Promise(resolve => setTimeout(resolve, 1000));
 
-    // Get the viewport dimensions and content height
+    // Get the precise content height by finding the attribution badge (last content)
     const dimensions = await page.evaluate(() => {
-      const body = document.body;
-      const html = document.documentElement;
+      // First try to find the attribution badge specifically
+      const attributionBadge = document.querySelector('.bg-blue-100, .dark\\:bg-blue-900\\/30');
+
+      let targetElement = null;
+      let maxBottom = 0;
+
+      if (attributionBadge) {
+        // Use the attribution badge container
+        const container = attributionBadge.closest('.mb-20, .mb-8, .mb-16');
+        targetElement = container || attributionBadge;
+        const rect = targetElement.getBoundingClientRect();
+        maxBottom = rect.bottom + window.scrollY;
+        console.log('Found attribution badge, using it as last element');
+      } else {
+        // Fallback: find last meaningful content element
+        const contentElements = Array.from(document.querySelectorAll('section, .grid, .mb-20, .mb-16, .mb-8')).filter(el => {
+          const style = window.getComputedStyle(el);
+          return style.display !== 'none' && style.visibility !== 'hidden' && el.offsetHeight > 0;
+        });
+
+        contentElements.forEach(el => {
+          const rect = el.getBoundingClientRect();
+          const bottom = rect.bottom + window.scrollY;
+          if (bottom > maxBottom) {
+            maxBottom = bottom;
+            targetElement = el;
+          }
+        });
+        console.log('Using fallback method to find last element');
+      }
+
+      console.log('Last content element:', targetElement?.tagName, targetElement?.className);
+      console.log('Content bottom:', maxBottom);
+
+      // Add minimal buffer and cap at reasonable height
+      // Typical web content shouldn't exceed 4500px
+      const finalHeight = Math.min(Math.ceil(maxBottom) + 40, 4500);
 
       return {
-        contentHeight: Math.max(
-          body.scrollHeight,
-          body.offsetHeight,
-          html.clientHeight,
-          html.scrollHeight,
-          html.offsetHeight
-        ),
+        contentHeight: finalHeight,
         viewportWidth: window.innerWidth,
-        viewportHeight: window.innerHeight
+        viewportHeight: window.innerHeight,
+        lastElementInfo: `${targetElement?.tagName} ${targetElement?.className}`
       };
     });
 
     console.log(`Content dimensions: ${dimensions.contentHeight}px height, ${dimensions.viewportWidth}px width`);
+    console.log(`Last element info: ${dimensions.lastElementInfo}`);
 
     const pdfWidth = '210mm';  // A4 width to match cover page
     const pdfHeight = `${dimensions.contentHeight * 0.264583}mm`;
@@ -224,7 +320,7 @@ async function generateSinglePagePDF(url, description) {
         left: '0mm',
         right: '0mm'
       },
-      scale: 0.7,  // Aggressive scale reduction for smaller file size
+      scale: 0.7,  // Restore scale while focusing on font optimization
       displayHeaderFooter: false,
       preferCSSPageSize: false,
       pageRanges: '1' // Force single page only
@@ -278,7 +374,18 @@ async function generatePDF(url, description) {
     });
 
     // Wait for dynamic content and theme application
-    await new Promise(resolve => setTimeout(resolve, 3000));
+    await new Promise(resolve => setTimeout(resolve, 5000));
+
+    // Wait for images to load completely
+    await page.evaluate(() => {
+      return Promise.all(Array.from(document.images).map(img => {
+        if (img.complete) return Promise.resolve();
+        return new Promise((resolve, reject) => {
+          img.addEventListener('load', resolve);
+          img.addEventListener('error', reject);
+        });
+      }));
+    });
 
     // Only emulate print media for content pages, not cover pages
     if (!url.includes('/cover')) {
@@ -417,11 +524,11 @@ async function compressPDF(inputBuffer, targetSizeKB = 2048) {
   try {
     const pdfDoc = await PDFDocument.load(inputBuffer);
 
-    // More aggressive compression settings
+    // Ultra aggressive compression settings for font and object optimization
     const compressedBytes = await pdfDoc.save({
       useObjectStreams: true,
       addDefaultPage: false,
-      objectsPerTick: 100,
+      objectsPerTick: 25, // Smaller chunks for better compression
       updateFieldAppearances: false,
       compress: true
     });
@@ -467,10 +574,8 @@ async function generateCollaboratorPDF(collaborator) {
     let mergedBuffer = await mergePDFs(coverBuffer, contentBuffer, darkOutputPath, true); // Return buffer instead of writing
 
     if (mergedBuffer) {
-      // Compress if over 2MB
-      if (mergedBuffer.length > 2 * 1024 * 1024) {
-        mergedBuffer = await compressPDF(mergedBuffer);
-      }
+      // Always compress to reduce file size
+      mergedBuffer = await compressPDF(mergedBuffer);
 
       // Write compressed version
       fs.writeFileSync(darkOutputPath, mergedBuffer);
@@ -492,10 +597,8 @@ async function generateCollaboratorPDF(collaborator) {
     let mergedBuffer = await mergePDFs(coverBuffer, contentBufferLight, lightOutputPath, true); // Return buffer instead of writing
 
     if (mergedBuffer) {
-      // Compress if over 2MB
-      if (mergedBuffer.length > 2 * 1024 * 1024) {
-        mergedBuffer = await compressPDF(mergedBuffer);
-      }
+      // Always compress to reduce file size
+      mergedBuffer = await compressPDF(mergedBuffer);
 
       // Write compressed version
       fs.writeFileSync(lightOutputPath, mergedBuffer);
