@@ -75,7 +75,7 @@ export const generateCompletePDF = (jsPDF) => {
   // Character Profile
   addSection('CHARACTER PROFILE');
   const traits = [
-    'Thrives on novel challenges, hands-on learning opportunities, and doing the hard yards – jumping into the deep end',
+    'Thrives on novel challenges, hands-on learning, jumping in the deep end',
     'Natural integrator who synthesises complexity into clarity through systematic thinking and creative problem-solving',
     'Builds trust through authentic relationships, combining technical excellence with genuine human connection',
     'Resilient problem-solver who views setbacks as data points for iteration and improvement'

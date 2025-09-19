@@ -319,7 +319,7 @@ const PdfVersion = ({
       title="Download PDF version"
     >
       <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 24 24">
-        <path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2Z"/>
+        <path d="M14,2H8c-1.1,0-2,0.9-2,2v16c0,1.1,0.9,2,2,2h10c1.1,0,2-0.9,2-2V8L14,2z M14,3.5L18.5,8H14V3.5z"/>
         <text x="12" y="16" fontSize="6" textAnchor="middle" fill="#000" fontFamily="sans-serif" fontWeight="900" stroke="#000" strokeWidth="0.2">PDF</text>
       </svg>
       PDF
@@ -337,7 +337,7 @@ const PdfVersion = ({
     >
       {showIcon && (
         <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-          <path d="M14,2H6C4.9,2,4,2.9,4,4v16c0,1.1,0.9,2,2,2h12c1.1,0,2-0.9,2-2V8L14,2z M14,3.5L18.5,8H14V3.5z M7,19v-2h10v2H7z M7,16v-2h10v2H7z M7,13v-2h5v2H7z"/>
+          <path d="M14,2H8c-1.1,0-2,0.9-2,2v16c0,1.1,0.9,2,2,2h10c1.1,0,2-0.9,2-2V8L14,2z M14,3.5L18.5,8H14V3.5z M9,19v-2h8v2H9z M9,16v-2h8v2H9z M9,13v-2h5v2H9z"/>
         </svg>
       )}
       {children && <span className="ml-2">{children}</span>}

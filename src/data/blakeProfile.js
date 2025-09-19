@@ -12,7 +12,7 @@ export const blakeProfileData = {
   
   summary: "Hands-on technical leader with organic experience spanning product development, operational excellence, and strategic transformation. Passionate about tackling complex challenges that require deep understanding and versatile execution.",
   
-  focusAreas: "Focused on opportunities with natural fit to experience, tenacity, and disposition to look beyond the status-quo. Thrives on novel challenges, hands-on learning, and doing the hard yards.",
+  focusAreas: "Focused on opportunities with natural fit to experience, tenacity, and disposition to look beyond the status-quo. Thrives on novel challenges, hands-on learning, jumping in the deep end.",
   
   philosophy: [
     {
@@ -33,7 +33,7 @@ export const blakeProfileData = {
   ],
   
   character: [
-    "Thrives on novel challenges, hands-on learning opportunities, and doing the hard yards – jumping into the deep end",
+    "Thrives on novel challenges, hands-on learning, jumping in the deep end",
     "Pursues meaningful work with passion for ground-up understanding, rather than position descriptions", 
     "Values meaningful stakeholder relationships and dependability as essential foundations"
   ],

@@ -30,6 +30,8 @@ const getFavicon = (company) => {
 const BlakeCollaborator = () => {
   const [activeSection, setActiveSection] = useState('profile');
   const [isDarkMode, setIsDarkMode] = useState(true);
+  const [modalImage, setModalImage] = useState(null);
+  const [isInitialLoad, setIsInitialLoad] = useState(true);
   const headerRef = useRef(null);
 
   useEffect(() => {
@@ -58,12 +60,18 @@ const BlakeCollaborator = () => {
   }, []);
 
   useEffect(() => {
+    // Skip scroll on initial load
+    if (isInitialLoad) {
+      setIsInitialLoad(false);
+      return;
+    }
+
     // Smooth scroll to section when navigation changes
     const element = document.getElementById(activeSection);
     if (element) {
       element.scrollIntoView({ behaviour: 'smooth', block: 'start' });
     }
-  }, [activeSection]);
+  }, [activeSection, isInitialLoad]);
 
   useEffect(() => {
     let lastScrollY = window.scrollY;
@@ -93,6 +101,27 @@ const BlakeCollaborator = () => {
       window.removeEventListener('scroll', handleScroll);
     };
   }, []);
+
+  // Handle keyboard events for modal
+  useEffect(() => {
+    const handleKeyDown = (event) => {
+      if (event.key === 'Escape' && modalImage) {
+        setModalImage(null);
+      }
+    };
+
+    if (modalImage) {
+      document.addEventListener('keydown', handleKeyDown);
+      document.body.style.overflow = 'hidden'; // Prevent body scroll when modal open
+    } else {
+      document.body.style.overflow = '';
+    }
+
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+      document.body.style.overflow = '';
+    };
+  }, [modalImage]);
 
   const generatePDF = () => {
     // Use the pre-generated static PDF - switch between dark/light mode variants
@@ -456,7 +485,7 @@ const BlakeCollaborator = () => {
                 <div className="flex items-baseline">
                   <span className="mr-6 font-light flex-shrink-0 text-gray-800 dark:text-gray-300">/</span>
                   <p className="text-lg font-light leading-relaxed text-gray-800 dark:text-gray-300">
-                    Thrives on novel challenges, hands-on learning, hard yards; jumping in the deep end
+                    Thrives on novel challenges, hands-on learning, jumping in the deep end
                   </p>
                 </div>
                 <div className="flex items-baseline">
@@ -468,8 +497,79 @@ const BlakeCollaborator = () => {
                 <div className="flex items-baseline">
                   <span className="mr-6 font-light flex-shrink-0 text-gray-800 dark:text-gray-300">/</span>
                   <p className="text-lg font-light leading-relaxed text-gray-800 dark:text-gray-300">
-                    Will almost certainly die on the hill that UI/UX impressions matter
+                    Ready to die-on-the-hill and principle that UI/UX is worth doing well
                   </p>
+                </div>
+                <div className="flex items-baseline">
+                  <span className="mr-6 font-light flex-shrink-0 text-gray-800 dark:text-gray-300">/</span>
+                  <p className="text-lg font-light leading-relaxed text-gray-800 dark:text-gray-300">
+                    Driven by ideas, backed by data-driven acumen
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Working Genius */}
+            <div className="mb-20">
+              <div className="flex items-center gap-2 mb-8">
+                <h2 className="text-sm font-light tracking-[0.3em] uppercase text-black dark:text-white">Working Genius</h2>
+                <a href="https://www.workinggenius.com/" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 transition-colors">
+                  <span className="material-symbols-outlined" style={{fontSize: '16px', fontVariationSettings: "'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 16"}}>open_in_new</span>
+                </a>
+              </div>
+              <div className="grid grid-cols-6 gap-4 max-w-4xl">
+                {/* Wonder - Genius */}
+                <div className="flex flex-col items-center text-center">
+                  <div className="mb-3">
+                    <span className="material-symbols-outlined text-gray-700 dark:text-gray-300" style={{fontSize: '3rem', fontVariationSettings: "'FILL' 0, 'wght' 50, 'GRAD' 0, 'opsz' 48"}}>heart_smile</span>
+                  </div>
+                  <div className="text-sm font-medium text-black dark:text-white">Wonder</div>
+                  <div className="text-xs text-gray-600 dark:text-gray-400 mt-1">Genius</div>
+                </div>
+
+                {/* Invention - Genius */}
+                <div className="flex flex-col items-center text-center">
+                  <div className="mb-3">
+                    <span className="material-symbols-outlined text-gray-700 dark:text-gray-300" style={{fontSize: '3rem', fontVariationSettings: "'FILL' 0, 'wght' 50, 'GRAD' 0, 'opsz' 48"}}>heart_smile</span>
+                  </div>
+                  <div className="text-sm font-medium text-black dark:text-white">Invention</div>
+                  <div className="text-xs text-gray-600 dark:text-gray-400 mt-1">Genius</div>
+                </div>
+
+                {/* Discernment - Competency */}
+                <div className="flex flex-col items-center text-center">
+                  <div className="mb-3">
+                    <span className="material-symbols-outlined text-gray-700 dark:text-gray-300" style={{fontSize: '3rem', fontVariationSettings: "'FILL' 0, 'wght' 50, 'GRAD' 0, 'opsz' 48"}}>sentiment_satisfied</span>
+                  </div>
+                  <div className="text-sm font-medium text-black dark:text-white">Discernment</div>
+                  <div className="text-xs text-gray-600 dark:text-gray-400 mt-1">Competency</div>
+                </div>
+
+                {/* Tenacity - Competency */}
+                <div className="flex flex-col items-center text-center">
+                  <div className="mb-3">
+                    <span className="material-symbols-outlined text-gray-700 dark:text-gray-300" style={{fontSize: '3rem', fontVariationSettings: "'FILL' 0, 'wght' 50, 'GRAD' 0, 'opsz' 48"}}>sentiment_satisfied</span>
+                  </div>
+                  <div className="text-sm font-medium text-black dark:text-white">Tenacity</div>
+                  <div className="text-xs text-gray-600 dark:text-gray-400 mt-1">Competency</div>
+                </div>
+
+                {/* Galvanising - Frustration */}
+                <div className="flex flex-col items-center text-center">
+                  <div className="mb-3">
+                    <span className="material-symbols-outlined text-gray-700 dark:text-gray-300" style={{fontSize: '3rem', fontVariationSettings: "'FILL' 0, 'wght' 50, 'GRAD' 0, 'opsz' 48"}}>sentiment_neutral</span>
+                  </div>
+                  <div className="text-sm font-medium text-black dark:text-white">Galvanising</div>
+                  <div className="text-xs text-gray-600 dark:text-gray-400 mt-1">Frustration</div>
+                </div>
+
+                {/* Enablement - Frustration */}
+                <div className="flex flex-col items-center text-center">
+                  <div className="mb-3">
+                    <span className="material-symbols-outlined text-gray-700 dark:text-gray-300" style={{fontSize: '3rem', fontVariationSettings: "'FILL' 0, 'wght' 50, 'GRAD' 0, 'opsz' 48"}}>sentiment_neutral</span>
+                  </div>
+                  <div className="text-sm font-medium text-black dark:text-white">Enablement</div>
+                  <div className="text-xs text-gray-600 dark:text-gray-400 mt-1">Frustration</div>
                 </div>
               </div>
             </div>
@@ -671,7 +771,7 @@ const BlakeCollaborator = () => {
                   </div>
                   <div className="flex items-baseline">
                     <span className="text-gray-800 dark:text-gray-300 mr-4 font-light flex-shrink-0">/</span>
-                    <p className="text-sm font-light text-gray-800 dark:text-gray-300">Rebuilt R&D and Professional Services functions with improved structures.</p>
+                    <p className="text-sm font-light text-gray-800 dark:text-gray-300">Rebuilt R&D and Professional Services functions with significant automation.</p>
                   </div>
                   <div className="flex items-baseline">
                     <span className="text-gray-800 dark:text-gray-300 mr-4 font-light flex-shrink-0">/</span>
@@ -971,7 +1071,18 @@ const BlakeCollaborator = () => {
               <h2 className="text-sm font-light mb-8 text-black dark:text-white tracking-[0.3em] uppercase">Extraordinary Things...</h2>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl">
                 <div className="rounded-2xl p-2 subtle-noise" style={{backgroundColor: isDarkMode ? 'transparent' : '#faf9f7'}}>
-                  <div className="aspect-square rounded-lg overflow-hidden mb-2">
+                  <div
+                    className="aspect-square rounded-lg overflow-hidden mb-2 cursor-pointer"
+                    onClick={() => setModalImage({
+                      src: "/assets/hobbies/hobby-1.jpg",
+                      alt: "Explored",
+                      caption: {
+                        title: "Hiking",
+                        description: "Extreme polar bear danger",
+                        location: "🇷🇺 Pyramiden, RU"
+                      }
+                    })}
+                  >
                     <img
                       src="/assets/hobbies/hobby-1.jpg"
                       alt="Explored"
@@ -981,13 +1092,24 @@ const BlakeCollaborator = () => {
                   <div className="px-3 pt-2 pb-1">
                     <div className="text-xs text-gray-600 dark:text-gray-400 font-normal leading-tight text-left">
                       <div className="text-sm mb-1">Hiking</div>
-                      Acute polar bear risk<br/>
-                      <span className="text-2xs font-light mt-1 block">Pyramiden, RU</span>
+                      Extreme polar bear danger<br/>
+                      <span className="text-2xs font-light mt-1 block">🇷🇺 Pyramiden, RU</span>
                     </div>
                   </div>
                 </div>
                 <div className="rounded-2xl p-2 subtle-noise" style={{backgroundColor: isDarkMode ? 'transparent' : '#faf9f7'}}>
-                  <div className="aspect-square rounded-lg overflow-hidden mb-2">
+                  <div
+                    className="aspect-square rounded-lg overflow-hidden mb-2 cursor-pointer"
+                    onClick={() => setModalImage({
+                      src: "/assets/hobbies/hobby-3.jpg",
+                      alt: "Spelunking",
+                      caption: {
+                        title: "Spelunking",
+                        description: "Comstock Lode",
+                        location: "🇺🇸 Virginia City, NV"
+                      }
+                    })}
+                  >
                     <img
                       src="/assets/hobbies/hobby-3.jpg"
                       alt="Spelunking"
@@ -998,12 +1120,23 @@ const BlakeCollaborator = () => {
                     <div className="text-xs text-gray-600 dark:text-gray-400 font-normal leading-tight text-left">
                       <div className="text-sm mb-1">Spelunking</div>
                       Comstock Lode<br/>
-                      <span className="text-2xs font-light mt-1 block">Virginia City, NV</span>
+                      <span className="text-2xs font-light mt-1 block">🇺🇸 Virginia City, NV</span>
                     </div>
                   </div>
                 </div>
                 <div className="rounded-2xl p-2 subtle-noise" style={{backgroundColor: isDarkMode ? 'transparent' : '#faf9f7'}}>
-                  <div className="aspect-square rounded-lg overflow-hidden mb-2">
+                  <div
+                    className="aspect-square rounded-lg overflow-hidden mb-2 cursor-pointer"
+                    onClick={() => setModalImage({
+                      src: "/assets/hobbies/hobby-4.jpg",
+                      alt: "Exploring",
+                      caption: {
+                        title: "Exploring",
+                        description: "ICBM Silo (abandoned)",
+                        location: "🇺🇸 Roswell, NM"
+                      }
+                    })}
+                  >
                     <img
                       src="/assets/hobbies/hobby-4.jpg"
                       alt="Exploring"
@@ -1013,13 +1146,24 @@ const BlakeCollaborator = () => {
                   <div className="px-3 pt-2 pb-1">
                     <div className="text-xs text-gray-600 dark:text-gray-400 font-normal leading-tight text-left">
                       <div className="text-sm mb-1">Exploring</div>
-                      Abandoned ICBM Facility<br/>
-                      <span className="text-2xs font-light mt-1 block">Roswell, NM</span>
+                      ICBM Silo (abandoned)<br/>
+                      <span className="text-2xs font-light mt-1 block">🇺🇸 Roswell, NM</span>
                     </div>
                   </div>
                 </div>
                 <div className="rounded-2xl p-2 subtle-noise" style={{backgroundColor: isDarkMode ? 'transparent' : '#faf9f7'}}>
-                  <div className="aspect-square rounded-lg overflow-hidden mb-2">
+                  <div
+                    className="aspect-square rounded-lg overflow-hidden mb-2 cursor-pointer"
+                    onClick={() => setModalImage({
+                      src: "/assets/hobbies/hobby-2.jpg",
+                      alt: "Wife",
+                      caption: {
+                        title: "Wife",
+                        description: "Samuel Griffith Observatory",
+                        location: "🇺🇸 Hollywood Hills, CA"
+                      }
+                    })}
+                  >
                     <img
                       src="/assets/hobbies/hobby-2.jpg"
                       alt="Wife"
@@ -1030,7 +1174,7 @@ const BlakeCollaborator = () => {
                     <div className="text-xs text-gray-600 dark:text-gray-400 font-normal leading-tight text-left">
                       <div className="text-sm mb-1">Wife</div>
                       Samuel Griffith Observatory<br/>
-                      <span className="text-2xs font-light mt-1 block">Hollywood Hills, CA</span>
+                      <span className="text-2xs font-light mt-1 block">🇺🇸 Hollywood Hills, CA</span>
                     </div>
                   </div>
                 </div>
@@ -1039,6 +1183,33 @@ const BlakeCollaborator = () => {
           </section>
         </div>
       </div>
+
+      {/* Photo Modal */}
+      {modalImage && (
+        <div
+          className="fixed inset-0 bg-black flex flex-col items-center justify-center z-50 p-12"
+          onClick={() => setModalImage(null)}
+        >
+          {/* Simple Caption Line */}
+          {modalImage.caption && (
+            <div className="mb-8 text-center">
+              <div className="text-white text-sm font-light tracking-wide">
+                {modalImage.caption.title} &nbsp;&nbsp;•&nbsp;&nbsp; {modalImage.caption.description} &nbsp;&nbsp;•&nbsp;&nbsp; {modalImage.caption.location}
+              </div>
+            </div>
+          )}
+
+          {/* Full Screen Image */}
+          <div className="max-w-7xl max-h-full">
+            <img
+              src={modalImage.src}
+              alt={modalImage.alt}
+              className="max-w-full max-h-full object-contain"
+              onClick={(e) => e.stopPropagation()}
+            />
+          </div>
+        </div>
+      )}
     </>
   );
 };

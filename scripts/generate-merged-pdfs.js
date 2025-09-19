@@ -26,8 +26,8 @@ async function generateSinglePagePDF(url, description) {
 
   const page = await browser.newPage();
 
-  // Set viewport for consistent rendering
-  await page.setViewport({ width: 1280, height: 800 });
+  // Set smaller viewport for better compression
+  await page.setViewport({ width: 1024, height: 768 });
 
   try {
     // Navigate to the page
@@ -120,6 +120,21 @@ async function generateSinglePagePDF(url, description) {
           margin-bottom: 0 !important;
         }
 
+        /* Aggressive trailing space removal */
+        body > div:last-child,
+        .min-h-screen > div:last-child,
+        main:last-child,
+        [data-pdf-page]:last-child {
+          margin-bottom: 0 !important;
+          padding-bottom: 0 !important;
+        }
+
+        /* Remove any trailing margins from gallery section */
+        .grid.grid-cols-2:last-child,
+        .grid.grid-cols-4:last-child {
+          margin-bottom: 0 !important;
+        }
+
 
         @media print {
           * {
@@ -185,7 +200,10 @@ async function generateSinglePagePDF(url, description) {
         left: '0mm',
         right: '0mm'
       },
-      scale: 0.9  // 90% zoom to fit more content
+      scale: 0.7,  // Aggressive scale reduction for smaller file size
+      format: 'A4',
+      displayHeaderFooter: false,
+      preferCSSPageSize: false
     });
 
     console.log(`  ✓ Generated ${description} (${(pdfBuffer.length / 1024).toFixed(2)} KB)`);
@@ -210,8 +228,8 @@ async function generatePDF(url, description) {
 
   const page = await browser.newPage();
 
-  // Set viewport for consistent rendering
-  await page.setViewport({ width: 1280, height: 800 });
+  // Set smaller viewport for better compression
+  await page.setViewport({ width: 1024, height: 768 });
 
   try {
     // Navigate to the page
@@ -354,11 +372,14 @@ async function compressPDF(inputBuffer, targetSizeKB = 2048) {
 
   try {
     const pdfDoc = await PDFDocument.load(inputBuffer);
+
+    // More aggressive compression settings
     const compressedBytes = await pdfDoc.save({
-      useObjectStreams: false,
+      useObjectStreams: true,
       addDefaultPage: false,
-      objectsPerTick: 50,
-      updateFieldAppearances: false
+      objectsPerTick: 100,
+      updateFieldAppearances: false,
+      compress: true
     });
 
     const originalSizeKB = inputBuffer.length / 1024;
