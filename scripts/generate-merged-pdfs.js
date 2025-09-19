@@ -136,11 +136,33 @@ async function generateSinglePagePDF(url, description) {
         }
 
 
+        /* Disable all page breaks for single-page layout */
+        * {
+          page-break-before: avoid !important;
+          page-break-after: avoid !important;
+          page-break-inside: avoid !important;
+          break-before: avoid !important;
+          break-after: avoid !important;
+          break-inside: avoid !important;
+        }
+
+        /* Force single page layout */
+        html, body {
+          height: auto !important;
+          overflow: visible !important;
+        }
+
         @media print {
           * {
             all: unset !important;
             display: revert !important;
             box-sizing: border-box !important;
+            page-break-before: avoid !important;
+            page-break-after: avoid !important;
+            page-break-inside: avoid !important;
+            break-before: avoid !important;
+            break-after: avoid !important;
+            break-inside: avoid !important;
           }
           html, body {
             font-family: system-ui, -apple-system, 'Segoe UI', 'Roboto', 'Ubuntu', 'Cantarell', 'Noto Sans', sans-serif !important;
@@ -148,6 +170,8 @@ async function generateSinglePagePDF(url, description) {
             padding: 0 !important;
             background: white !important;
             color: black !important;
+            height: auto !important;
+            overflow: visible !important;
           }
           .bg-black {
             background: white !important;
@@ -201,9 +225,9 @@ async function generateSinglePagePDF(url, description) {
         right: '0mm'
       },
       scale: 0.7,  // Aggressive scale reduction for smaller file size
-      format: 'A4',
       displayHeaderFooter: false,
-      preferCSSPageSize: false
+      preferCSSPageSize: false,
+      pageRanges: '1' // Force single page only
     });
 
     console.log(`  ✓ Generated ${description} (${(pdfBuffer.length / 1024).toFixed(2)} KB)`);
