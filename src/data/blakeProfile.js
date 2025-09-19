@@ -100,7 +100,7 @@ export const blakeProfileData = {
       accomplishments: [
         "Replatformed and launched alpha successor to legacy (450k+ LOC) core product in under 1 year",
         "Achieved eNPS of 8.5–9.5 by shifting team culture to embrace meaningful impacts", 
-        "Delivered SaaS 'rule of 40' throughout significant organisational restructuring"
+        "Consistent 40-50% EBITA margin and eNPS of 8.5-9.5/10"
       ]
     },
     {
