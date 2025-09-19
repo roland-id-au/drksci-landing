@@ -318,7 +318,7 @@ const PdfVersion = ({
       aria-label="Download PDF version"
       title="Download PDF version"
     >
-      <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 24 24">
+      <svg className="w-3 h-3" fill="white" viewBox="0 0 24 24">
         <path d="M14,2H8c-1.1,0-2,0.9-2,2v16c0,1.1,0.9,2,2,2h10c1.1,0,2-0.9,2-2V8L14,2z M14,3.5L18.5,8H14V3.5z"/>
         <text x="12" y="16" fontSize="6" textAnchor="middle" fill="#000" fontFamily="sans-serif" fontWeight="900" stroke="#000" strokeWidth="0.2">PDF</text>
       </svg>

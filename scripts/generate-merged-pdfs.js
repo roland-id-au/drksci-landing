@@ -335,9 +335,15 @@ async function mergePDFs(coverBuffer, contentBuffer, outputPath, returnBuffer = 
     // Create a new PDF document
     const mergedPdf = await PDFDocument.create();
 
+    let totalPages = 0;
+
     // Parse the cover PDF
     if (coverBuffer) {
       const coverPdf = await PDFDocument.load(coverBuffer);
+      const coverPageCount = coverPdf.getPageCount();
+      console.log(`  Cover PDF has ${coverPageCount} page(s)`);
+      totalPages += coverPageCount;
+
       const coverPages = await mergedPdf.copyPages(coverPdf, coverPdf.getPageIndices());
       coverPages.forEach((page) => mergedPdf.addPage(page));
     }
@@ -345,8 +351,22 @@ async function mergePDFs(coverBuffer, contentBuffer, outputPath, returnBuffer = 
     // Parse the content PDF
     if (contentBuffer) {
       const contentPdf = await PDFDocument.load(contentBuffer);
+      const contentPageCount = contentPdf.getPageCount();
+      console.log(`  Content PDF has ${contentPageCount} page(s)`);
+      totalPages += contentPageCount;
+
       const contentPages = await mergedPdf.copyPages(contentPdf, contentPdf.getPageIndices());
       contentPages.forEach((page) => mergedPdf.addPage(page));
+    }
+
+    // Validate expected page count
+    const finalPageCount = mergedPdf.getPageCount();
+    console.log(`  Final merged PDF has ${finalPageCount} page(s) (expected: 2)`);
+
+    if (finalPageCount !== 2) {
+      console.warn(`  ⚠️  WARNING: Expected 2 pages but got ${finalPageCount} pages!`);
+    } else {
+      console.log(`  ✓ Page count validation passed`);
     }
 
     // Save the merged PDF
@@ -397,7 +417,7 @@ async function compressPDF(inputBuffer, targetSizeKB = 2048) {
 async function generateCollaboratorPDF(collaborator) {
   console.log(`\nGenerating PDF for ${collaborator.name}...`);
 
-  // Generate cover and content PDFs separately (dark mode)
+  // Generate cover with standard A4 and content with single page approach
   const coverBuffer = await generatePDF(collaborator.coverUrl, 'cover page');
   const contentBuffer = await generateSinglePagePDF(collaborator.contentUrl, 'content page (single page)');
 

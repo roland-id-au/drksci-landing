@@ -1181,6 +1181,18 @@ const BlakeCollaborator = () => {
               </div>
             </div>
           </section>
+
+          {/* Attribution Badge */}
+          <div className="mb-20 flex justify-center">
+            <div className="bg-blue-100 dark:bg-blue-900/30 border border-blue-300 dark:border-blue-700 rounded-lg p-4 inline-flex items-center gap-3 text-blue-800 dark:text-blue-200">
+              <span className="material-symbols-outlined text-blue-600 dark:text-blue-400" style={{fontSize: '1.5rem'}}>
+                info
+              </span>
+              <span className="text-sm font-medium">
+                Web and print collateral fully designed and developed by me — per hands-on ethos.
+              </span>
+            </div>
+          </div>
         </div>
       </div>
 
