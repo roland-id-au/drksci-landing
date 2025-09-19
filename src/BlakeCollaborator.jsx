@@ -671,11 +671,11 @@ const BlakeCollaborator = () => {
                   </div>
                   <div className="flex items-baseline">
                     <span className="text-gray-800 dark:text-gray-300 mr-4 font-light flex-shrink-0">/</span>
-                    <p className="text-sm font-light text-gray-800 dark:text-gray-300">Maintained 40-50% EBITA margin with team eNPS of 8.5-9.5 during restructuring.</p>
+                    <p className="text-sm font-light text-gray-800 dark:text-gray-300">Rebuilt R&D and Professional Services functions with improved structures.</p>
                   </div>
                   <div className="flex items-baseline">
                     <span className="text-gray-800 dark:text-gray-300 mr-4 font-light flex-shrink-0">/</span>
-                    <p className="text-sm font-light text-gray-800 dark:text-gray-300">Rebuilt R&D and Professional Services functions with improved structures.</p>
+                    <p className="text-sm font-light text-gray-800 dark:text-gray-300">Consistently delivered 40-50% EBITA margin and team eNPS of 8.5-9.5/10.</p>
                   </div>
                 </div>
               </div>
