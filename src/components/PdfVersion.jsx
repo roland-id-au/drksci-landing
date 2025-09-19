@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 
 // Default print styles for beautiful PDF output
 const defaultPrintStyles = `
@@ -200,16 +200,82 @@ const defaultPrintStyles = `
 const PdfVersion = ({
   pdfPath,
   filename = 'document.pdf',
+  lightFilename, // Optional separate filename for light mode
   className = '',
   style = {},
   children,
   showIcon = true,
   variant = 'default', // 'default' or 'linkedin'
-  printStyles = null // Allow custom print styles to be passed
+  printStyles = null, // Allow custom print styles to be passed
+  autoDetectMode = true // Enable automatic light/dark mode detection
 }) => {
-  // Construct the PDF URL based on the path
+  const [isDarkMode, setIsDarkMode] = useState(true);
+
+  // Detect current page mode for automatic PDF selection
+  useEffect(() => {
+    if (!autoDetectMode) return;
+
+    const detectMode = () => {
+      // Check URL hash first
+      const isLightMode = window.location.hash === '#light';
+      if (isLightMode !== undefined) {
+        setIsDarkMode(!isLightMode);
+        return;
+      }
+
+      // Fall back to checking document class
+      const hasLightMode = document.documentElement.classList.contains('light');
+      const hasDarkMode = document.documentElement.classList.contains('dark');
+
+      if (hasLightMode) {
+        setIsDarkMode(false);
+      } else if (hasDarkMode) {
+        setIsDarkMode(true);
+      } else {
+        // Default to dark mode if neither is explicitly set
+        setIsDarkMode(true);
+      }
+    };
+
+    // Initial detection
+    detectMode();
+
+    // Listen for hash changes (light/dark mode switching)
+    const handleHashChange = () => detectMode();
+    window.addEventListener('hashchange', handleHashChange);
+
+    // Listen for class changes on document element
+    const observer = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+        if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
+          detectMode();
+        }
+      });
+    });
+
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ['class']
+    });
+
+    return () => {
+      window.removeEventListener('hashchange', handleHashChange);
+      observer.disconnect();
+    };
+  }, [autoDetectMode]);
+
+  // Determine the appropriate filename based on mode
+  const getFilename = () => {
+    if (!autoDetectMode || !lightFilename) {
+      return filename;
+    }
+
+    return isDarkMode ? filename : lightFilename;
+  };
+
+  // Construct the PDF URL based on the path and mode
   // PDFs should be pre-generated in public/pdfs/
-  const pdfUrl = pdfPath || `/pdfs/${filename}`;
+  const pdfUrl = pdfPath || `/pdfs/${getFilename()}`;
   
   // Inject print styles when component mounts
   useEffect(() => {

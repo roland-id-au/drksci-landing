@@ -793,6 +793,7 @@ Blake Carter`,
           {/* PDF Download - matching LinkedIn badge style */}
           <PdfVersion
             filename={`blake-carter-${jobId || 'resume'}.pdf`}
+            lightFilename={`blake-carter-${jobId || 'resume'}-light.pdf`}
             className="ml-2"
             variant="linkedin"
           />

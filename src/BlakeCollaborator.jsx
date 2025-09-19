@@ -517,7 +517,7 @@ const BlakeCollaborator = () => {
                 <div className="flex justify-between py-2">
                   <span className="font-light text-black dark:text-gray-400">Weakness</span>
                   <span className="text-gray-700 mx-1 flex-1 border-b border-dotted border-gray-200 text-2xs" style={{backgroundImage: 'radial-gradient(circle, rgb(156, 163, 175) 0.5px, transparent 0.5px)', backgroundSize: '3px 1px', backgroundPosition: 'bottom', backgroundRepeat: 'repeat-x', height: '1em', borderBottom: 'none', alignSelf: 'flex-end', marginBottom: '2px'}}></span>
-                  <span className="font-light text-black dark:text-gray-200">Challenge fixation</span>
+                  <span className="font-light text-black dark:text-gray-200">Challenges</span>
                 </div>
               </div>
 
