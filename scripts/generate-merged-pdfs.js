@@ -8,7 +8,7 @@ const { PDFDocument } = require('pdf-lib');
 const collaborators = [
   {
     name: 'Blake Carter',
-    contentUrl: 'http://localhost:3000/c/blake', // Dark mode for profile content (no #light hash)
+    contentUrl: 'http://localhost:3000/c/blake#print', // Dark mode for profile content with print fragment to hide header
     contentUrlLight: 'http://localhost:3000/c/blake#light', // Light mode for profile content
     coverUrl: 'http://localhost:3000/c/blake/cover', // Dark mode for cover (always dark)
     filename: 'blake-carter-resume.pdf',
@@ -95,6 +95,20 @@ async function generateSinglePagePDF(url, description) {
           print-color-adjust: exact !important;
           -webkit-print-color-adjust: exact !important;
         }
+        /* Hide modal overlay images, only show thumbnails */
+        .modal, .modal-overlay, .fixed.inset-0 {
+          display: none !important;
+        }
+        /* Ensure links are clickable and visible */
+        a {
+          color: inherit !important;
+          text-decoration: underline !important;
+          cursor: pointer !important;
+          pointer-events: auto !important;
+        }
+        a:hover {
+          opacity: 0.8 !important;
+        }
       `
     });
 
@@ -103,20 +117,33 @@ async function generateSinglePagePDF(url, description) {
 
     // Get the precise content height by finding the attribution badge (last content)
     const dimensions = await page.evaluate(() => {
-      // First try to find the attribution badge specifically
-      const attributionBadge = document.querySelector('.bg-blue-100, .dark\\:bg-blue-900\\/30');
-
+      // Try multiple approaches to find the last content
       let targetElement = null;
       let maxBottom = 0;
 
-      if (attributionBadge) {
-        // Use the attribution badge container
-        const container = attributionBadge.closest('.mb-20, .mb-8, .mb-16');
-        targetElement = container || attributionBadge;
+      // 1. Look for the attribution section with copyright text
+      const copyrightElement = Array.from(document.querySelectorAll('*')).find(el =>
+        el.textContent && el.textContent.includes('Web and print media authored by and copyright of Blake Carter')
+      );
+
+      if (copyrightElement) {
+        const container = copyrightElement.closest('.mb-20, .text-center') || copyrightElement;
+        targetElement = container;
         const rect = targetElement.getBoundingClientRect();
         maxBottom = rect.bottom + window.scrollY;
-        console.log('Found attribution badge, using it as last element');
+        console.log('Found copyright text, using it as last element');
       } else {
+        // 2. Look for attribution section by class
+        const attributionSection = document.querySelector('.mb-20.text-center');
+        if (attributionSection) {
+          targetElement = attributionSection;
+          const rect = targetElement.getBoundingClientRect();
+          maxBottom = rect.bottom + window.scrollY;
+          console.log('Found attribution section, using it as last element');
+        }
+      }
+
+      if (!targetElement) {
         // Fallback: find last meaningful content element
         const contentElements = Array.from(document.querySelectorAll('section, .grid, .mb-20, .mb-16, .mb-8')).filter(el => {
           const style = window.getComputedStyle(el);
@@ -137,9 +164,8 @@ async function generateSinglePagePDF(url, description) {
       console.log('Last content element:', targetElement?.tagName, targetElement?.className);
       console.log('Content bottom:', maxBottom);
 
-      // Add minimal buffer and cap at reasonable height
-      // Typical web content shouldn't exceed 4500px
-      const finalHeight = Math.min(Math.ceil(maxBottom) + 40, 4500);
+      // Add minimal buffer but don't cap height - let it capture the full content
+      const finalHeight = Math.ceil(maxBottom) + 40;
 
       return {
         contentHeight: finalHeight,
@@ -167,15 +193,20 @@ async function generateSinglePagePDF(url, description) {
         left: '0mm',
         right: '0mm'
       },
-      scale: 1.0,
+      scale: 0.75, // Reduce scale to prevent rasterization and preserve text/links
       displayHeaderFooter: false,
       preferCSSPageSize: false,
-      pageRanges: '1' // Force single page only
+      pageRanges: '1', // Force single page only
+      // Enable tagged PDFs for better link preservation
+      tagged: true
     });
 
     console.log(`  ✓ Generated ${description} (${(pdfBuffer.length / 1024).toFixed(2)} KB)`);
 
-    return pdfBuffer;
+    // Compress the PDF to optimize images
+    const compressedBuffer = await compressPDF(pdfBuffer);
+
+    return compressedBuffer;
 
   } catch (error) {
     console.error(`  ✗ Failed to generate ${description}:`, error.message);

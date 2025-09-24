@@ -622,15 +622,17 @@ const BlakeCollaborator = () => {
                 </div>
               </div>
 
-              {/* Right to Work and Police Check */}
-              <div className="flex items-center gap-8 mt-8 max-w-4xl text-xs">
+              {/* Right to Work and Police Check - Single Row Layout */}
+              <div className="flex flex-wrap items-center gap-x-12 gap-y-6 mt-12 max-w-4xl text-xs">
                 <div className="flex items-center gap-2">
                   <div className="w-4 h-4 rounded-full border border-gray-400 flex items-center justify-center">
                     <svg className="w-2.5 h-2.5 text-gray-900 dark:text-gray-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="3">
                       <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7"></path>
                     </svg>
                   </div>
-                  <span className="text-gray-900 dark:text-gray-200 font-light">Right to work (Australian Citizen)</span>
+                  <span className="text-gray-900 dark:text-gray-200 font-light whitespace-nowrap">
+                    Right to Work / Australian Citizen
+                  </span>
                 </div>
                 <div className="flex items-center gap-2">
                   <div className="w-4 h-4 rounded-full border border-gray-400 flex items-center justify-center">
@@ -638,7 +640,7 @@ const BlakeCollaborator = () => {
                       <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7"></path>
                     </svg>
                   </div>
-                  <span className="text-gray-900 dark:text-gray-200 font-light">National Police Check</span>
+                  <span className="text-gray-900 dark:text-gray-200 font-light whitespace-nowrap">National Police Check</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <div className="w-4 h-4 rounded-full border border-gray-400 flex items-center justify-center">
@@ -646,8 +648,10 @@ const BlakeCollaborator = () => {
                       <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7"></path>
                     </svg>
                   </div>
-                  <span className="text-gray-900 dark:text-gray-200 font-light">
-                    <a href="https://whiteribbon.org.au" className="hover:underline">Advocate: White Ribbon Australia — Stop Violence Against Women</a>
+                  <span className="text-gray-900 dark:text-gray-200 font-light whitespace-nowrap">
+                    <a href="https://whiteribbon.org.au" className="hover:underline">
+                      Advocate: White Ribbon Australia / Stop Violence Against Women
+                    </a>
                   </span>
                 </div>
               </div>

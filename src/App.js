@@ -12,6 +12,7 @@ import PrinchesterDetail from './PrinchesterDetail';
 import CollaboratorIndex from './CollaboratorIndex';
 import BlakeCollaborator from './BlakeCollaborator';
 import BlakeCoverPage from './BlakeCoverPage';
+import BlakeCoverLetterPage from './BlakeCoverLetterPage';
 import CandidateApplication from './CandidateApplication';
 import ShortUrlResolver from './ShortUrlResolver';
 
@@ -37,6 +38,7 @@ function App() {
         <Route path="/c" element={<CollaboratorIndex />} />
         <Route path="/c/blake" element={<BlakeCollaborator />} />
         <Route path="/c/blake/cover" element={<BlakeCoverPage />} />
+        <Route path="/c/blake/letter/:letterName" element={<BlakeCoverLetterPage />} />
         <Route path="/j/:shortId" element={<CandidateApplication />} />
         <Route path="/candidate/:candidate/:jobSlug" element={<CandidateApplication />} />
         
