@@ -1188,7 +1188,45 @@ const BlakeCollaborator = () => {
                     </div>
                   </div>
                 </div>
+
+                {/* Additional hobbies 5-21 */}
+                {[5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21].map(num => (
+                  <div key={num} className="rounded-2xl p-2 subtle-noise" style={{backgroundColor: isDarkMode ? 'transparent' : '#faf9f7'}}>
+                    <div className="aspect-square rounded-lg overflow-hidden mb-2 cursor-pointer" onClick={() => setModalImage({src: `/assets/hobbies/hobby-${num}.jpg`, alt: `Hobby ${num}`, caption: {title: `Hobby ${num}`, line2: "", line3: ""}})}>
+                      <img src={`/assets/hobbies/thumbs/hobby-${num}-thumb.jpg`} alt={`Hobby ${num}`} className="w-full h-full object-cover saturate-50 hover:saturate-100 transition-all duration-300 cooling-filter" />
+                    </div>
+                    <div className="px-3 pt-2 pb-1">
+                      <div className="text-xs text-gray-600 dark:text-gray-400 font-normal leading-tight text-left">
+                        <div className="text-sm mb-1">Hobby {num}</div>
+                        <br/>
+                        <span className="text-2xs font-light mt-1 block"></span>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+
               </div>
+            </div>
+          </section>
+
+          {/* Biography Section */}
+          <section className="mb-20">
+            <h2 className="text-4xl md:text-5xl tracking-tight mb-20 text-black dark:text-white mt-48" style={{fontFamily: 'Manrope, system-ui, sans-serif', fontWeight: 500}}>Biography</h2>
+
+            <div className="max-w-4xl mb-16">
+              <p className="text-lg font-light leading-relaxed text-gray-800 dark:text-gray-300 mb-6">
+                I've always been driven by an intense curiosity for what makes things tick. This has led me down some strange and wonderful paths, from being hundreds of meters underground exploring tunnels untouched for a century, to having my head under the hood of a car. I'm fascinated by intricate challenges—whether it's a geological puzzle in a remote landscape or deconstructing an incredible feat of early industrial engineering.
+              </p>
+              <p className="text-lg font-light leading-relaxed text-gray-800 dark:text-gray-300">
+                In my professional life, I channel this same energy into building software. More recently, I've become captivated by leveraging AI-assistive workflows to strip away the grind and accelerate the journey from a raw idea to a real invention. It's an incredible time to be a creator.
+              </p>
+            </div>
+
+            <h2 className="text-sm font-light mb-10 text-black dark:text-white tracking-[0.3em] uppercase mt-32">Mantra</h2>
+            <div className="max-w-4xl mb-16">
+              <p className="text-lg font-light leading-relaxed text-gray-800 dark:text-gray-300">
+                Currently exploring opportunities naturally aligned with my professional experience, tenacity, and disposition to look beyond the status-quo. I am motivated by hands-on learning and the ability to make an impact in new domains over role seniority, as this has always been the source of my professional growth and cross-pollinated-experience throughout my career.
+              </p>
             </div>
           </section>
 
