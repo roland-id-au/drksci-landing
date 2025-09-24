@@ -1275,6 +1275,67 @@ const BlakeCollaborator = () => {
               </a>
             </div>
           </div>
+
+          {/* Hobbies Gallery - Moved to bottom */}
+          <section className="mb-20">
+            <div className="mb-20">
+              <h2 className="text-sm font-light mb-8 text-black dark:text-white tracking-[0.3em] uppercase">Extraordinary Things...</h2>
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl">
+                <div className="rounded-2xl p-2 subtle-noise" style={{backgroundColor: isDarkMode ? 'transparent' : '#faf9f7'}}>
+                  <div
+                    className="aspect-square rounded-lg overflow-hidden mb-2 cursor-pointer"
+                    onClick={() => setModalImage({
+                      src: "/assets/hobbies/hobby-1.jpg",
+                      alt: "Explored",
+                      caption: {
+                        title: "Pyramiden",
+                        description: "Ultimate polar bear hazard",
+                        location: "🇷🇺 Pyramiden, RU"
+                      }
+                    })}
+                  >
+                    <img
+                      src="/assets/hobbies/hobby-1.jpg"
+                      alt="Explored"
+                      className="w-full h-full object-cover saturate-50 hover:saturate-100 transition-all duration-300 cooling-filter"
+                    />
+                  </div>
+                  <div className="px-3 pt-2 pb-1">
+                    <div className="text-xs text-gray-600 dark:text-gray-400 font-normal leading-tight text-left">
+                      <div className="text-sm mb-1">Pyramiden</div>
+                      Ultimate polar bear hazard<br/>
+                      <span className="text-2xs font-light mt-1 block">🇷🇺 Pyramiden, RU</span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Additional hobbies 2-21 */}
+                {[2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21].map(num => (
+                  <div key={num} className="rounded-2xl p-2 subtle-noise" style={{backgroundColor: isDarkMode ? 'transparent' : '#faf9f7'}}>
+                    <div className="aspect-square rounded-lg overflow-hidden mb-2 cursor-pointer" onClick={() => setModalImage({
+                      src: `/assets/hobbies/hobby-${num}.jpg`,
+                      alt: `Hobby ${num}`,
+                      caption: {
+                        title: `Hobby ${num}`,
+                        description: num === 3 ? "Comstock Load, Searching Sutro Tunnel" : "",
+                        location: num === 3 ? "🇺🇸 Virginia City, NV" : ""
+                      }
+                    })}>
+                      <img src={`/assets/hobbies/thumbs/hobby-${num}-thumb.jpg`} alt={`Hobby ${num}`} className="w-full h-full object-cover saturate-50 hover:saturate-100 transition-all duration-300 cooling-filter" />
+                    </div>
+                    <div className="px-3 pt-2 pb-1">
+                      <div className="text-xs text-gray-600 dark:text-gray-400 font-normal leading-tight text-left">
+                        <div className="text-sm mb-1">{num === 3 ? "Spelunking" : `Hobby ${num}`}</div>
+                        {num === 3 && <>Comstock Load, Searching Sutro Tunnel<br/></>}
+                        {num === 3 && <span className="text-2xs font-light mt-1 block">🇺🇸 Virginia City, NV</span>}
+                      </div>
+                    </div>
+                  </div>
+                ))}
+
+              </div>
+            </div>
+          </section>
         </div>
       </div>
 
