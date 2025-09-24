@@ -32,7 +32,7 @@ async function generateSinglePagePDF(url, description) {
   try {
     // Navigate to the page
     await page.goto(url, {
-      waitUntil: 'networkidle2',
+      waitUntil: 'networkidle0',
       timeout: 60000
     });
 
@@ -65,188 +65,35 @@ async function generateSinglePagePDF(url, description) {
       }));
     });
 
-    // Force screen media and disable all print styles, hide header
+    // Inject Material Icons font to ensure it loads in PDF
+    await page.addStyleTag({
+      content: `
+        @font-face {
+          font-family: 'Material Symbols Outlined';
+          font-style: normal;
+          font-weight: 100 700;
+          src: url(https://fonts.gstatic.com/s/materialsymbolsoutlined/v135/kJF1BvYX7BgnkSrUwT8OhrdQw4oELdPIeeII9v6oDMzByHX9rA6RzaxHMPdY3JiOqVZrUeNYdOFZdlWnZw.woff2) format('woff2');
+        }
+        .material-symbols-outlined {
+          font-family: 'Material Symbols Outlined' !important;
+        }
+      `
+    });
+
+    // Wait for fonts to load
+    await page.evaluate(() => document.fonts.ready);
+    await new Promise(resolve => setTimeout(resolve, 3000));
+
+    // Force screen media and minimal styling - only hide header
     await page.emulateMediaType('screen');
     await page.addStyleTag({
       content: `
-        /* Hide header menu */
         header, .sticky, nav, .mobile-nav, .desktop-nav {
           display: none !important;
         }
-
-        /* Adjust margins for collaborator page - narrow margins */
-        .max-w-5xl {
-          max-width: none !important;
-          margin: 0 auto !important;
-        }
-        .px-12 {
-          padding-left: 4rem !important;
-          padding-right: 4rem !important;
-        }
-        .sm\\:px-18 {
-          padding-left: 4rem !important;
-          padding-right: 4rem !important;
-        }
-
-        /* Ensure links are clickable in PDF */
-        a[href] {
-          color: inherit !important;
-          text-decoration: none !important;
-        }
-
-        /* Make contact buttons clearly clickable */
-        a[href*="mailto:"],
-        a[href*="calendly.com"],
-        a[href*="linkedin.com"],
-        a[href*="drksci.com"] {
-          display: block !important;
-          cursor: pointer !important;
-        }
-
-        /* Cover page link styling for PDF */
-        .linkedin-badge,
-        .email-link,
-        .booking-link,
-        .cover-link {
-          position: relative !important;
-          z-index: 10 !important;
-        }
-
-        /* Remove trailing space after final image */
-        section:last-child {
-          margin-bottom: 0 !important;
-          padding-bottom: 0 !important;
-        }
-
-        /* Reduce bottom padding on main container */
-        .py-20 {
-          padding-bottom: 0.25rem !important;
-        }
-
-        /* Remove excess spacing on final elements */
-        .mb-8:last-child,
-        .mb-16:last-child,
-        .mb-20:last-child,
-        .mb-40:last-child {
-          margin-bottom: 0 !important;
-        }
-
-        /* Aggressive trailing space removal */
-        body > div:last-child,
-        .min-h-screen > div:last-child,
-        main:last-child,
-        [data-pdf-page]:last-child {
-          margin-bottom: 0 !important;
-          padding-bottom: 0 !important;
-        }
-
-        /* Remove any trailing margins from gallery section */
-        .grid.grid-cols-2:last-child,
-        .grid.grid-cols-4:last-child {
-          margin-bottom: 0 !important;
-        }
-
-        /* Force body to exactly fit content */
-        body {
-          min-height: unset !important;
-          height: auto !important;
-        }
-
-        /* Remove min-height constraints */
-        .min-h-screen {
-          min-height: unset !important;
-          height: auto !important;
-        }
-
-        /* Force last element to be the true end */
-        *:last-child {
-          margin-bottom: 0 !important;
-          padding-bottom: 0 !important;
-        }
-
-        /* Target attribution badge specifically */
-        .mb-20.flex.justify-center {
-          margin-bottom: 0 !important;
-        }
-
-        /* Override any large bottom margins */
-        .mb-20 {
-          margin-bottom: 0 !important;
-        }
-
-        /* Remove padding from main containers */
-        .py-20,
-        .py-16,
-        .py-12 {
-          padding-bottom: 0 !important;
-        }
-
-        /* Reduce image quality for PDF compression */
-        img {
-          image-rendering: auto !important;
-          max-width: 100% !important;
-          height: auto !important;
-          transform: scale(0.8) !important;
-          filter: contrast(0.9) brightness(0.95) !important;
-        }
-
-        /* Optimize fonts for PDF compression - use system fonts */
         * {
-          font-family: system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif !important;
-        }
-
-        /* Remove custom icon fonts - replace with Unicode symbols */
-        .material-symbols-outlined {
-          font-family: system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif !important;
-        }
-
-
-        /* Disable all page breaks for single-page layout */
-        * {
-          page-break-before: avoid !important;
-          page-break-after: avoid !important;
-          page-break-inside: avoid !important;
-          break-before: avoid !important;
-          break-after: avoid !important;
-          break-inside: avoid !important;
-        }
-
-        /* Force single page layout */
-        html, body {
-          height: auto !important;
-          overflow: visible !important;
-        }
-
-        @media print {
-          * {
-            all: unset !important;
-            display: revert !important;
-            box-sizing: border-box !important;
-            page-break-before: avoid !important;
-            page-break-after: avoid !important;
-            page-break-inside: avoid !important;
-            break-before: avoid !important;
-            break-after: avoid !important;
-            break-inside: avoid !important;
-          }
-          html, body {
-            font-family: system-ui, -apple-system, 'Segoe UI', 'Roboto', 'Ubuntu', 'Cantarell', 'Noto Sans', sans-serif !important;
-            margin: 0 !important;
-            padding: 0 !important;
-            background: white !important;
-            color: black !important;
-            height: auto !important;
-            overflow: visible !important;
-          }
-          .bg-black {
-            background: white !important;
-          }
-          .text-white {
-            color: black !important;
-          }
-          header, .sticky, nav, .mobile-nav, .desktop-nav {
-            display: none !important;
-          }
+          print-color-adjust: exact !important;
+          -webkit-print-color-adjust: exact !important;
         }
       `
     });
@@ -320,7 +167,7 @@ async function generateSinglePagePDF(url, description) {
         left: '0mm',
         right: '0mm'
       },
-      scale: 0.7,  // Restore scale while focusing on font optimization
+      scale: 1.0,
       displayHeaderFooter: false,
       preferCSSPageSize: false,
       pageRanges: '1' // Force single page only
@@ -354,7 +201,7 @@ async function generatePDF(url, description) {
   try {
     // Navigate to the page
     await page.goto(url, {
-      waitUntil: 'networkidle2',
+      waitUntil: 'networkidle0',
       timeout: 60000
     });
 
@@ -387,29 +234,27 @@ async function generatePDF(url, description) {
       }));
     });
 
-    // Only emulate print media for content pages, not cover pages
-    if (!url.includes('/cover')) {
-      await page.emulateMediaType('print');
-    } else {
-      // Force screen media and disable all print styles for cover page
-      await page.emulateMediaType('screen');
-      await page.addStyleTag({
-        content: `
-          @media print {
-            * {
-              all: unset !important;
-              display: revert !important;
-              box-sizing: border-box !important;
-            }
-            html, body {
-              font-family: system-ui, -apple-system, 'Segoe UI', 'Roboto', 'Ubuntu', 'Cantarell', 'Noto Sans', sans-serif !important;
-              margin: 0 !important;
-              padding: 0 !important;
-            }
-          }
-        `
-      });
-    }
+    // Inject Material Icons font to ensure it loads in PDF
+    await page.addStyleTag({
+      content: `
+        @font-face {
+          font-family: 'Material Symbols Outlined';
+          font-style: normal;
+          font-weight: 100 700;
+          src: url(https://fonts.gstatic.com/s/materialsymbolsoutlined/v135/kJF1BvYX7BgnkSrUwT8OhrdQw4oELdPIeeII9v6oDMzByHX9rA6RzaxHMPdY3JiOqVZrUeNYdOFZdlWnZw.woff2) format('woff2');
+        }
+        .material-symbols-outlined {
+          font-family: 'Material Symbols Outlined' !important;
+        }
+      `
+    });
+
+    // Wait for fonts to load
+    await page.evaluate(() => document.fonts.ready);
+    await new Promise(resolve => setTimeout(resolve, 3000));
+
+    // Force screen media for all pages to preserve layout
+    await page.emulateMediaType('screen');
 
     // Generate PDF using A4 width (210mm) but dynamic height
     const dimensions = await page.evaluate(() => {
