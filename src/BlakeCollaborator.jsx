@@ -1068,120 +1068,6 @@ const BlakeCollaborator = () => {
               />
             </div>
 
-            {/* Hobbies Gallery */}
-            <div className="mb-20">
-              <h2 className="text-sm font-light mb-8 text-black dark:text-white tracking-[0.3em] uppercase">Extraordinary Things...</h2>
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl">
-                <div className="rounded-2xl p-2 subtle-noise" style={{backgroundColor: isDarkMode ? 'transparent' : '#faf9f7'}}>
-                  <div
-                    className="aspect-square rounded-lg overflow-hidden mb-2 cursor-pointer"
-                    onClick={() => setModalImage({
-                      src: "/assets/hobbies/hobby-1.jpg",
-                      alt: "Explored",
-                      caption: {
-                        title: "Hiking (around)",
-                        description: "Ultimate polar bear hazard",
-                        location: "🇷🇺 Pyramiden, RU"
-                      }
-                    })}
-                  >
-                    <img
-                      src="/assets/hobbies/hobby-1.jpg"
-                      alt="Explored"
-                      className="w-full h-full object-cover saturate-50 hover:saturate-100 transition-all duration-300 cooling-filter"
-                    />
-                  </div>
-                  <div className="px-3 pt-2 pb-1">
-                    <div className="text-xs text-gray-600 dark:text-gray-400 font-normal leading-tight text-left">
-                      <div className="text-sm mb-1">Hiking (around)</div>
-                      Ultimate polar bear hazard<br/>
-                      <span className="text-2xs font-light mt-1 block">🇷🇺 Pyramiden, RU</span>
-                    </div>
-                  </div>
-                </div>
-                <div className="rounded-2xl p-2 subtle-noise" style={{backgroundColor: isDarkMode ? 'transparent' : '#faf9f7'}}>
-                  <div
-                    className="aspect-square rounded-lg overflow-hidden mb-2 cursor-pointer"
-                    onClick={() => setModalImage({
-                      src: "/assets/hobbies/hobby-3.jpg",
-                      alt: "Spelunking",
-                      caption: {
-                        title: "Spelunking",
-                        description: "Comstock Lode",
-                        location: "🇺🇸 Virginia City, NV"
-                      }
-                    })}
-                  >
-                    <img
-                      src="/assets/hobbies/hobby-3.jpg"
-                      alt="Spelunking"
-                      className="w-full h-full object-cover saturate-50 hover:saturate-100 transition-all duration-300 cooling-filter"
-                    />
-                  </div>
-                  <div className="px-3 pt-2 pb-1">
-                    <div className="text-xs text-gray-600 dark:text-gray-400 font-normal leading-tight text-left">
-                      <div className="text-sm mb-1">Spelunking</div>
-                      Comstock Lode<br/>
-                      <span className="text-2xs font-light mt-1 block">🇺🇸 Virginia City, NV</span>
-                    </div>
-                  </div>
-                </div>
-                <div className="rounded-2xl p-2 subtle-noise" style={{backgroundColor: isDarkMode ? 'transparent' : '#faf9f7'}}>
-                  <div
-                    className="aspect-square rounded-lg overflow-hidden mb-2 cursor-pointer"
-                    onClick={() => setModalImage({
-                      src: "/assets/hobbies/hobby-4.jpg",
-                      alt: "Exploring",
-                      caption: {
-                        title: "Exploring",
-                        description: "ICBM Silo (abandoned)",
-                        location: "🇺🇸 Roswell, NM"
-                      }
-                    })}
-                  >
-                    <img
-                      src="/assets/hobbies/hobby-4.jpg"
-                      alt="Exploring"
-                      className="w-full h-full object-cover saturate-50 hover:saturate-100 transition-all duration-300 cooling-filter"
-                    />
-                  </div>
-                  <div className="px-3 pt-2 pb-1">
-                    <div className="text-xs text-gray-600 dark:text-gray-400 font-normal leading-tight text-left">
-                      <div className="text-sm mb-1">Exploring</div>
-                      ICBM Silo (abandoned)<br/>
-                      <span className="text-2xs font-light mt-1 block">🇺🇸 Roswell, NM</span>
-                    </div>
-                  </div>
-                </div>
-                <div className="rounded-2xl p-2 subtle-noise" style={{backgroundColor: isDarkMode ? 'transparent' : '#faf9f7'}}>
-                  <div
-                    className="aspect-square rounded-lg overflow-hidden mb-2 cursor-pointer"
-                    onClick={() => setModalImage({
-                      src: "/assets/hobbies/hobby-2.jpg",
-                      alt: "Wifepie",
-                      caption: {
-                        title: "Wifepie",
-                        description: "Chateau Marmont",
-                        location: "🇺🇸 Hollywood Hills, CA"
-                      }
-                    })}
-                  >
-                    <img
-                      src="/assets/hobbies/hobby-2.jpg"
-                      alt="Wife"
-                      className="w-full h-full object-cover saturate-50 hover:saturate-100 transition-all duration-300 cooling-filter"
-                    />
-                  </div>
-                  <div className="px-3 pt-2 pb-1">
-                    <div className="text-xs text-gray-600 dark:text-gray-400 font-normal leading-tight text-left">
-                      <div className="text-sm mb-1">Wifepie</div>
-                      Chateau Marmont<br/>
-                      <span className="text-2xs font-light mt-1 block">🇺🇸 Hollywood Hills, CA</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
           </section>
 
           {/* Attribution Text with Tech Stack */}
@@ -1232,6 +1118,397 @@ const BlakeCollaborator = () => {
           </div>
         </div>
       </div>
+
+      {/* Hobbies Gallery */}
+      <section className="mb-20">
+        <h2 className="text-sm font-light mb-8 text-black dark:text-white tracking-[0.3em] uppercase">Extraordinary Things...</h2>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl">
+
+          {/* Hobby 1 - Pyramiden */}
+          <div className="rounded-2xl p-2 subtle-noise" style={{backgroundColor: isDarkMode ? 'transparent' : '#faf9f7'}}>
+            <div
+              className="aspect-square rounded-lg overflow-hidden mb-2 cursor-pointer"
+              onClick={() => setModalImage({
+                src: "/assets/hobbies/hobby-1.jpg",
+                alt: "Pyramiden",
+                caption: {
+                  title: "Pyramiden",
+                  description: "Ultimate polar bear hazard",
+                  location: "🇷🇺 Pyramiden, RU"
+                }
+              })}
+            >
+              <img
+                src="/assets/hobbies/thumbs/hobby-1-thumb.jpg"
+                alt="Pyramiden"
+                className="w-full h-full object-cover saturate-50 hover:saturate-100 transition-all duration-300 cooling-filter"
+              />
+            </div>
+            <div className="px-3 pt-2 pb-1">
+              <div className="text-xs text-gray-600 dark:text-gray-400 font-normal leading-tight text-left">
+                <div className="text-sm mb-1">Pyramiden</div>
+                Ultimate polar bear hazard<br/>
+                <span className="text-2xs font-light mt-1 block">🇷🇺 Pyramiden, RU</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Hobby 2 - Wifepie */}
+          <div className="rounded-2xl p-2 subtle-noise" style={{backgroundColor: isDarkMode ? 'transparent' : '#faf9f7'}}>
+            <div
+              className="aspect-square rounded-lg overflow-hidden mb-2 cursor-pointer"
+              onClick={() => setModalImage({
+                src: "/assets/hobbies/hobby-2.jpg",
+                alt: "Wifepie",
+                caption: {
+                  title: "Wifepie",
+                  description: "Chateau Marmont",
+                  location: "🇺🇸 Hollywood Hills, CA"
+                }
+              })}
+            >
+              <img
+                src="/assets/hobbies/thumbs/hobby-2-thumb.jpg"
+                alt="Wifepie"
+                className="w-full h-full object-cover saturate-50 hover:saturate-100 transition-all duration-300 cooling-filter"
+              />
+            </div>
+            <div className="px-3 pt-2 pb-1">
+              <div className="text-xs text-gray-600 dark:text-gray-400 font-normal leading-tight text-left">
+                <div className="text-sm mb-1">Wifepie</div>
+                Chateau Marmont<br/>
+                <span className="text-2xs font-light mt-1 block">🇺🇸 Hollywood Hills, CA</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Hobby 3 - Spelunking */}
+          <div className="rounded-2xl p-2 subtle-noise" style={{backgroundColor: isDarkMode ? 'transparent' : '#faf9f7'}}>
+            <div
+              className="aspect-square rounded-lg overflow-hidden mb-2 cursor-pointer"
+              onClick={() => setModalImage({
+                src: "/assets/hobbies/hobby-3.jpg",
+                alt: "Spelunking",
+                caption: {
+                  title: "Spelunking",
+                  description: "Comstock Load, Searching Sutro Tunnel",
+                  location: "🇺🇸 Virginia City, NV"
+                }
+              })}
+            >
+              <img
+                src="/assets/hobbies/thumbs/hobby-3-thumb.jpg"
+                alt="Spelunking"
+                className="w-full h-full object-cover saturate-50 hover:saturate-100 transition-all duration-300 cooling-filter"
+              />
+            </div>
+            <div className="px-3 pt-2 pb-1">
+              <div className="text-xs text-gray-600 dark:text-gray-400 font-normal leading-tight text-left">
+                <div className="text-sm mb-1">Spelunking</div>
+                Comstock Load, Searching Sutro Tunnel<br/>
+                <span className="text-2xs font-light mt-1 block">🇺🇸 Virginia City, NV</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Hobby 4 - Exploring */}
+          <div className="rounded-2xl p-2 subtle-noise" style={{backgroundColor: isDarkMode ? 'transparent' : '#faf9f7'}}>
+            <div
+              className="aspect-square rounded-lg overflow-hidden mb-2 cursor-pointer"
+              onClick={() => setModalImage({
+                src: "/assets/hobbies/hobby-4.jpg",
+                alt: "Exploring",
+                caption: {
+                  title: "Exploring",
+                  description: "Cold War, Abandoned ICBM Silo",
+                  location: "🇺🇸 Roswell, NM"
+                }
+              })}
+            >
+              <img
+                src="/assets/hobbies/thumbs/hobby-4-thumb.jpg"
+                alt="Exploring"
+                className="w-full h-full object-cover saturate-50 hover:saturate-100 transition-all duration-300 cooling-filter"
+              />
+            </div>
+            <div className="px-3 pt-2 pb-1">
+              <div className="text-xs text-gray-600 dark:text-gray-400 font-normal leading-tight text-left">
+                <div className="text-sm mb-1">Exploring</div>
+                Cold War, Abandoned ICBM Silo<br/>
+                <span className="text-2xs font-light mt-1 block">🇺🇸 Roswell, NM</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Hobby 5 - Waukaringa */}
+          <div className="rounded-2xl p-2 subtle-noise" style={{backgroundColor: isDarkMode ? 'transparent' : '#faf9f7'}}>
+            <div
+              className="aspect-square rounded-lg overflow-hidden mb-2 cursor-pointer"
+              onClick={() => setModalImage({
+                src: "/assets/hobbies/hobby-5.jpg",
+                alt: "Waukaringa",
+                caption: {
+                  title: "Waukaringa",
+                  description: "Desert Ghost Town",
+                  location: "🇦🇺 Waukaringa, SA"
+                }
+              })}
+            >
+              <img
+                src="/assets/hobbies/thumbs/hobby-5-thumb.jpg"
+                alt="Waukaringa"
+                className="w-full h-full object-cover saturate-50 hover:saturate-100 transition-all duration-300 cooling-filter"
+              />
+            </div>
+            <div className="px-3 pt-2 pb-1">
+              <div className="text-xs text-gray-600 dark:text-gray-400 font-normal leading-tight text-left">
+                <div className="text-sm mb-1">Waukaringa</div>
+                Desert Ghost Town<br/>
+                <span className="text-2xs font-light mt-1 block">🇦🇺 Waukaringa, SA</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Hobby 6 - YacDonalds */}
+          <div className="rounded-2xl p-2 subtle-noise" style={{backgroundColor: isDarkMode ? 'transparent' : '#faf9f7'}}>
+            <div
+              className="aspect-square rounded-lg overflow-hidden mb-2 cursor-pointer"
+              onClick={() => setModalImage({
+                src: "/assets/hobbies/hobby-6.jpg",
+                alt: "YacDonalds",
+                caption: {
+                  title: "YacDonalds",
+                  description: "Yugoslavia Fast Food",
+                  location: "🇷🇸 Belgrade, RS"
+                }
+              })}
+            >
+              <img
+                src="/assets/hobbies/thumbs/hobby-6-thumb.jpg"
+                alt="YacDonalds"
+                className="w-full h-full object-cover saturate-50 hover:saturate-100 transition-all duration-300 cooling-filter"
+              />
+            </div>
+            <div className="px-3 pt-2 pb-1">
+              <div className="text-xs text-gray-600 dark:text-gray-400 font-normal leading-tight text-left">
+                <div className="text-sm mb-1">YacDonalds</div>
+                Yugoslavia Fast Food<br/>
+                <span className="text-2xs font-light mt-1 block">🇷🇸 Belgrade, RS</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Hobbies 7-10 - Generic for now */}
+          {[7,8,9,10].map(num => (
+            <div key={num} className="rounded-2xl p-2 subtle-noise" style={{backgroundColor: isDarkMode ? 'transparent' : '#faf9f7'}}>
+              <div
+                className="aspect-square rounded-lg overflow-hidden mb-2 cursor-pointer"
+                onClick={() => setModalImage({
+                  src: `/assets/hobbies/hobby-${num}.jpg`,
+                  alt: `Hobby ${num}`,
+                  caption: {
+                    title: `Hobby ${num}`,
+                    description: "",
+                    location: ""
+                  }
+                })}
+              >
+                <img
+                  src={`/assets/hobbies/thumbs/hobby-${num}-thumb.jpg`}
+                  alt={`Hobby ${num}`}
+                  className="w-full h-full object-cover saturate-50 hover:saturate-100 transition-all duration-300 cooling-filter"
+                />
+              </div>
+              <div className="px-3 pt-2 pb-1">
+                <div className="text-xs text-gray-600 dark:text-gray-400 font-normal leading-tight text-left">
+                  <div className="text-sm mb-1">Hobby {num}</div>
+                  <br/>
+                  <span className="text-2xs font-light mt-1 block"></span>
+                </div>
+              </div>
+            </div>
+          ))}
+
+          {/* Hobby 11 - Wallace */}
+          <div className="rounded-2xl p-2 subtle-noise" style={{backgroundColor: isDarkMode ? 'transparent' : '#faf9f7'}}>
+            <div
+              className="aspect-square rounded-lg overflow-hidden mb-2 cursor-pointer"
+              onClick={() => setModalImage({
+                src: "/assets/hobbies/hobby-11.jpg",
+                alt: "Long Drive",
+                caption: {
+                  title: "Long Drive",
+                  description: "Stardust Motel",
+                  location: "🇺🇸 Wallace, ID"
+                }
+              })}
+            >
+              <img
+                src="/assets/hobbies/thumbs/hobby-11-thumb.jpg"
+                alt="Long Drive"
+                className="w-full h-full object-cover saturate-50 hover:saturate-100 transition-all duration-300 cooling-filter"
+              />
+            </div>
+            <div className="px-3 pt-2 pb-1">
+              <div className="text-xs text-gray-600 dark:text-gray-400 font-normal leading-tight text-left">
+                <div className="text-sm mb-1">Long Drive</div>
+                Stardust Motel<br/>
+                <span className="text-2xs font-light mt-1 block">🇺🇸 Wallace, ID</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Hobbies 12-14 - Generic for now */}
+          {[12,14].map(num => (
+            <div key={num} className="rounded-2xl p-2 subtle-noise" style={{backgroundColor: isDarkMode ? 'transparent' : '#faf9f7'}}>
+              <div
+                className="aspect-square rounded-lg overflow-hidden mb-2 cursor-pointer"
+                onClick={() => setModalImage({
+                  src: `/assets/hobbies/hobby-${num}.jpg`,
+                  alt: `Hobby ${num}`,
+                  caption: {
+                    title: `Hobby ${num}`,
+                    description: "",
+                    location: ""
+                  }
+                })}
+              >
+                <img
+                  src={`/assets/hobbies/thumbs/hobby-${num}-thumb.jpg`}
+                  alt={`Hobby ${num}`}
+                  className="w-full h-full object-cover saturate-50 hover:saturate-100 transition-all duration-300 cooling-filter"
+                />
+              </div>
+              <div className="px-3 pt-2 pb-1">
+                <div className="text-xs text-gray-600 dark:text-gray-400 font-normal leading-tight text-left">
+                  <div className="text-sm mb-1">Hobby {num}</div>
+                  <br/>
+                  <span className="text-2xs font-light mt-1 block"></span>
+                </div>
+              </div>
+            </div>
+          ))}
+
+          {/* Hobby 15 - World Top 10 Roads */}
+          <div className="rounded-2xl p-2 subtle-noise" style={{backgroundColor: isDarkMode ? 'transparent' : '#faf9f7'}}>
+            <div
+              className="aspect-square rounded-lg overflow-hidden mb-2 cursor-pointer"
+              onClick={() => setModalImage({
+                src: "/assets/hobbies/hobby-15.jpg",
+                alt: "Roads",
+                caption: {
+                  title: "Roads",
+                  description: "World Top 10 Worst Roads",
+                  location: ""
+                }
+              })}
+            >
+              <img
+                src="/assets/hobbies/thumbs/hobby-15-thumb.jpg"
+                alt="Roads"
+                className="w-full h-full object-cover saturate-50 hover:saturate-100 transition-all duration-300 cooling-filter"
+              />
+            </div>
+            <div className="px-3 pt-2 pb-1">
+              <div className="text-xs text-gray-600 dark:text-gray-400 font-normal leading-tight text-left">
+                <div className="text-sm mb-1">Roads</div>
+                World Top 10 Worst Roads<br/>
+                <span className="text-2xs font-light mt-1 block"></span>
+              </div>
+            </div>
+          </div>
+
+          {/* Hobbies 16-19 - Generic for now */}
+          {[16,17,18,19].map(num => (
+            <div key={num} className="rounded-2xl p-2 subtle-noise" style={{backgroundColor: isDarkMode ? 'transparent' : '#faf9f7'}}>
+              <div
+                className="aspect-square rounded-lg overflow-hidden mb-2 cursor-pointer"
+                onClick={() => setModalImage({
+                  src: `/assets/hobbies/hobby-${num}.jpg`,
+                  alt: `Hobby ${num}`,
+                  caption: {
+                    title: `Hobby ${num}`,
+                    description: "",
+                    location: ""
+                  }
+                })}
+              >
+                <img
+                  src={`/assets/hobbies/thumbs/hobby-${num}-thumb.jpg`}
+                  alt={`Hobby ${num}`}
+                  className="w-full h-full object-cover saturate-50 hover:saturate-100 transition-all duration-300 cooling-filter"
+                />
+              </div>
+              <div className="px-3 pt-2 pb-1">
+                <div className="text-xs text-gray-600 dark:text-gray-400 font-normal leading-tight text-left">
+                  <div className="text-sm mb-1">Hobby {num}</div>
+                  <br/>
+                  <span className="text-2xs font-light mt-1 block"></span>
+                </div>
+              </div>
+            </div>
+          ))}
+
+          {/* Hobby 20 - Gulliver's Kingdom */}
+          <div className="rounded-2xl p-2 subtle-noise" style={{backgroundColor: isDarkMode ? 'transparent' : '#faf9f7'}}>
+            <div
+              className="aspect-square rounded-lg overflow-hidden mb-2 cursor-pointer"
+              onClick={() => setModalImage({
+                src: "/assets/hobbies/hobby-20.jpg",
+                alt: "Gulliver's Kingdom",
+                caption: {
+                  title: "Gulliver's Kingdom",
+                  description: "Abandoned Themepark",
+                  location: "🇯🇵 Mt. Fuji"
+                }
+              })}
+            >
+              <img
+                src="/assets/hobbies/thumbs/hobby-20-thumb.jpg"
+                alt="Gulliver's Kingdom"
+                className="w-full h-full object-cover saturate-50 hover:saturate-100 transition-all duration-300 cooling-filter"
+              />
+            </div>
+            <div className="px-3 pt-2 pb-1">
+              <div className="text-xs text-gray-600 dark:text-gray-400 font-normal leading-tight text-left">
+                <div className="text-sm mb-1">Gulliver's Kingdom</div>
+                Abandoned Themepark<br/>
+                <span className="text-2xs font-light mt-1 block">🇯🇵 Mt. Fuji</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Hobby 21 - Generic for now */}
+          <div className="rounded-2xl p-2 subtle-noise" style={{backgroundColor: isDarkMode ? 'transparent' : '#faf9f7'}}>
+            <div
+              className="aspect-square rounded-lg overflow-hidden mb-2 cursor-pointer"
+              onClick={() => setModalImage({
+                src: "/assets/hobbies/hobby-21.jpg",
+                alt: "Hobby 21",
+                caption: {
+                  title: "Hobby 21",
+                  description: "",
+                  location: ""
+                }
+              })}
+            >
+              <img
+                src="/assets/hobbies/thumbs/hobby-21-thumb.jpg"
+                alt="Hobby 21"
+                className="w-full h-full object-cover saturate-50 hover:saturate-100 transition-all duration-300 cooling-filter"
+              />
+            </div>
+            <div className="px-3 pt-2 pb-1">
+              <div className="text-xs text-gray-600 dark:text-gray-400 font-normal leading-tight text-left">
+                <div className="text-sm mb-1">Hobby 21</div>
+                <br/>
+                <span className="text-2xs font-light mt-1 block"></span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
 
       {/* Photo Modal */}
       {modalImage && (
