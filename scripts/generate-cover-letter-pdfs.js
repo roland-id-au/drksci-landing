@@ -203,8 +203,8 @@ async function generateSinglePagePDF(url, description) {
       console.log('Last content element:', targetElement?.tagName, targetElement?.className || targetElement?.textContent?.substring(0, 50));
       console.log('Content bottom:', maxBottom);
 
-      // Add buffer to ensure signature is fully captured
-      const finalHeight = Math.ceil(maxBottom) + 80;
+      // Add buffer to ensure signature is fully captured plus user requested 200px
+      const finalHeight = Math.ceil(maxBottom) + 200;
 
       return {
         contentHeight: finalHeight,

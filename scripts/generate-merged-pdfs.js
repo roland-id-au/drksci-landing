@@ -193,7 +193,7 @@ async function generateSinglePagePDF(url, description) {
         left: '0mm',
         right: '0mm'
       },
-      scale: 0.75, // Reduce scale to prevent rasterization and preserve text/links
+      scale: 1.0, // Full scale to maintain quality - links are preserved by tagged PDF option
       displayHeaderFooter: false,
       preferCSSPageSize: false,
       pageRanges: '1', // Force single page only
