@@ -1087,7 +1087,7 @@ const BlakeCollaborator = () => {
                       src: "/assets/hobbies/hobby-1.jpg",
                       alt: "Explored",
                       caption: {
-                        title: "Hiking (around)",
+                        title: "Pyramiden",
                         description: "Ultimate polar bear hazard",
                         location: "🇷🇺 Pyramiden, RU"
                       }
@@ -1101,7 +1101,7 @@ const BlakeCollaborator = () => {
                   </div>
                   <div className="px-3 pt-2 pb-1">
                     <div className="text-xs text-gray-600 dark:text-gray-400 font-normal leading-tight text-left">
-                      <div className="text-sm mb-1">Hiking (around)</div>
+                      <div className="text-sm mb-1">Pyramiden</div>
                       Ultimate polar bear hazard<br/>
                       <span className="text-2xs font-light mt-1 block">🇷🇺 Pyramiden, RU</span>
                     </div>
@@ -1115,7 +1115,7 @@ const BlakeCollaborator = () => {
                       alt: "Spelunking",
                       caption: {
                         title: "Spelunking",
-                        description: "Comstock Lode",
+                        description: "Comstock Load, Searching Sutro Tunnel",
                         location: "🇺🇸 Virginia City, NV"
                       }
                     })}
@@ -1129,7 +1129,7 @@ const BlakeCollaborator = () => {
                   <div className="px-3 pt-2 pb-1">
                     <div className="text-xs text-gray-600 dark:text-gray-400 font-normal leading-tight text-left">
                       <div className="text-sm mb-1">Spelunking</div>
-                      Comstock Lode<br/>
+                      Comstock Load, Searching Sutro Tunnel<br/>
                       <span className="text-2xs font-light mt-1 block">🇺🇸 Virginia City, NV</span>
                     </div>
                   </div>
