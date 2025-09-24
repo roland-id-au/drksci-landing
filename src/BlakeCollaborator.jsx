@@ -378,7 +378,7 @@ const BlakeCollaborator = () => {
                     <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="currentColor" viewBox="0 0 24 24">
                       <path d="M2 2v20c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8l-6-6H4c-1.1 0-2 .9-2 2z"/>
                       <path d="M14 2v6h6"/>
-                      <text x="12" y="16" fontSize="7" textAnchor="middle" fill="currentColor" fontFamily="sans-serif" fontWeight="900">PDF</text>
+                      <text x="12" y="16" fontSize="7" textAnchor="middle" fill={isDarkMode ? "#000000" : "#ffffff"} fontFamily="sans-serif" fontWeight="900">PDF</text>
                     </svg>
                   </button>
 
@@ -625,6 +625,14 @@ const BlakeCollaborator = () => {
 
               {/* Right to Work and Police Check */}
               <div className="flex items-center gap-8 mt-8 max-w-4xl text-xs">
+                <div className="flex items-center gap-2">
+                  <div className="w-4 h-4 rounded-full border border-gray-400 flex items-center justify-center">
+                    <img src="/assets/icons/volunteer_activism.svg" alt="Volunteer Activism" className="w-2.5 h-2.5" />
+                  </div>
+                  <span className="text-gray-900 dark:text-gray-200 font-light">
+                    <a href="https://whiteribbon.org.au" className="hover:underline">Advocate: White Ribbon Australia — Stop Violence Against Women</a>
+                  </span>
+                </div>
                 <div className="flex items-center gap-2">
                   <div className="w-4 h-4 rounded-full border border-gray-400 flex items-center justify-center">
                     <svg className="w-2.5 h-2.5 text-gray-900 dark:text-gray-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="3">
