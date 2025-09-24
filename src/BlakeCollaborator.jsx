@@ -1222,8 +1222,7 @@ const BlakeCollaborator = () => {
               </p>
             </div>
 
-            <h2 className="text-sm font-light mb-10 text-black dark:text-white tracking-[0.3em] uppercase mt-32">Mantra</h2>
-            <div className="max-w-4xl mb-16">
+            <div className="max-w-4xl mb-16 mt-32">
               <p className="text-lg font-light leading-relaxed text-gray-800 dark:text-gray-300">
                 Currently exploring opportunities naturally aligned with my professional experience, tenacity, and disposition to look beyond the status-quo. I am motivated by hands-on learning and the ability to make an impact in new domains over role seniority, as this has always been the source of my professional growth and cross-pollinated-experience throughout my career.
               </p>
