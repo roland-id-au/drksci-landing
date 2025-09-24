@@ -164,8 +164,8 @@ async function generateSinglePagePDF(url, description) {
       console.log('Last content element:', targetElement?.tagName, targetElement?.className);
       console.log('Content bottom:', maxBottom);
 
-      // Add minimal buffer but don't cap height - let it capture the full content
-      const finalHeight = Math.ceil(maxBottom) + 40;
+      // Add minimal buffer but don't cap height - let it capture the full content plus user requested 100px
+      const finalHeight = Math.ceil(maxBottom) + 140;
 
       return {
         contentHeight: finalHeight,
