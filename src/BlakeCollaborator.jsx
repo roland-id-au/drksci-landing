@@ -28,7 +28,7 @@ const getFavicon = (company) => {
 };
 
 const BlakeCollaborator = () => {
-  const [activeSection, setActiveSection] = useState('profile');
+  const [activeSection] = useState('profile'); // eslint-disable-line no-unused-vars
   const [isDarkMode, setIsDarkMode] = useState(true);
   const [modalImage, setModalImage] = useState(null);
   const [isInitialLoad, setIsInitialLoad] = useState(true);
@@ -434,8 +434,7 @@ const BlakeCollaborator = () => {
                   and versatile execution.
                 </p>
                 <p className="text-lg font-light leading-relaxed text-gray-800 dark:text-gray-300">
-                  Currently exploring opportunities naturally aligned with my professional experience, tenacity, and disposition to look beyond
-                  the status-quo.
+                  Currently exploring opportunities naturally aligned with my professional experience, tenacity, and disposition to look beyond the status-quo. I am pursuing hands-on learning and the ability to make an impact in new domains above role seniority, as this has always been the source of my professional growth and cross-pollinated experience throughout my career.
                 </p>
               </div>
             </div>
@@ -543,7 +542,7 @@ const BlakeCollaborator = () => {
                   <div className="mb-3">
                     <span className="material-symbols-outlined text-gray-700 dark:text-gray-300" style={{fontSize: '3rem', fontVariationSettings: "'FILL' 0, 'wght' 50, 'GRAD' 0, 'opsz' 48"}}>sentiment_satisfied</span>
                   </div>
-                  <div className="text-sm font-medium text-black dark:text-white">Discernment</div>
+                  <div className="text-sm font-medium text-black dark:text-white">Enablement</div>
                   <div className="text-xs text-gray-600 dark:text-gray-400 mt-1">Competency</div>
                 </div>
 
@@ -570,7 +569,7 @@ const BlakeCollaborator = () => {
                   <div className="mb-3">
                     <span className="material-symbols-outlined text-gray-700 dark:text-gray-300" style={{fontSize: '3rem', fontVariationSettings: "'FILL' 0, 'wght' 50, 'GRAD' 0, 'opsz' 48"}}>sentiment_neutral</span>
                   </div>
-                  <div className="text-sm font-medium text-black dark:text-white">Enablement</div>
+                  <div className="text-sm font-medium text-black dark:text-white">Discernment</div>
                   <div className="text-xs text-gray-600 dark:text-gray-400 mt-1">Frustration</div>
                 </div>
               </div>
@@ -627,14 +626,6 @@ const BlakeCollaborator = () => {
               <div className="flex items-center gap-8 mt-8 max-w-4xl text-xs">
                 <div className="flex items-center gap-2">
                   <div className="w-4 h-4 rounded-full border border-gray-400 flex items-center justify-center">
-                    <img src="/assets/icons/volunteer_activism.svg" alt="Volunteer Activism" className="w-2.5 h-2.5" />
-                  </div>
-                  <span className="text-gray-900 dark:text-gray-200 font-light">
-                    <a href="https://whiteribbon.org.au" className="hover:underline">Advocate: White Ribbon Australia — Stop Violence Against Women</a>
-                  </span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <div className="w-4 h-4 rounded-full border border-gray-400 flex items-center justify-center">
                     <svg className="w-2.5 h-2.5 text-gray-900 dark:text-gray-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="3">
                       <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7"></path>
                     </svg>
@@ -648,6 +639,16 @@ const BlakeCollaborator = () => {
                     </svg>
                   </div>
                   <span className="text-gray-900 dark:text-gray-200 font-light">National Police Check</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <div className="w-4 h-4 rounded-full border border-gray-400 flex items-center justify-center">
+                    <svg className="w-2.5 h-2.5 text-gray-900 dark:text-gray-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="3">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7"></path>
+                    </svg>
+                  </div>
+                  <span className="text-gray-900 dark:text-gray-200 font-light">
+                    <a href="https://whiteribbon.org.au" className="hover:underline">Advocate: White Ribbon Australia — Stop Violence Against Women</a>
+                  </span>
                 </div>
               </div>
             </div>
@@ -680,7 +681,7 @@ const BlakeCollaborator = () => {
                 </p>
               </div>
               <p className="text-lg leading-relaxed mb-8 font-light text-gray-800 dark:text-gray-200 max-w-4xl">
-                As Founder of d/rksci, I lead an innovation lab focused on the practical application of AI and data science for business. My work involves hands-on <strong>AI Integration</strong>, <strong>Data Visualisation</strong>, and <strong>Rapid Prototyping</strong> to transform complex concepts into tangible solutions for market testing. This work focuses on impact over commerciality.
+                As Founder of d/rksci, I lead an innovation lab focused on the practical application of AI and data science for business. My work involves hands-on <strong>AI Integration</strong>, <strong>Data Visualisation</strong>, and <strong>Rapid Prototyping</strong> to transform complex concepts into tangible solutions for market testing.
               </p>
               <div className="space-y-10">
                 <div>
@@ -1059,154 +1060,6 @@ const BlakeCollaborator = () => {
               </div>
             </div>
 
-            <h2 className="text-sm font-light mb-10 text-black dark:text-white tracking-[0.3em] uppercase mt-48">Mantra</h2>
-
-            <div className="max-w-4xl mb-6">
-              <p className="text-lg font-light leading-relaxed text-gray-800 dark:text-gray-300">
-                I want to believe that we all have the ability to achieve extraordinary things.
-              </p>
-            </div>
-
-            <div className="relative w-full h-80 mb-20 rounded-lg overflow-hidden no-filter halftone-poster">
-              <img
-                src="/assets/contact-bg.jpg"
-                alt="Contact background"
-                className="w-full h-full object-cover cinematic-bw"
-                style={{objectPosition: 'center 25%', transform: 'scale(1.1)'}}
-              />
-            </div>
-
-            {/* Hobbies Gallery */}
-            <div className="mb-20">
-              <h2 className="text-sm font-light mb-8 text-black dark:text-white tracking-[0.3em] uppercase">Extraordinary Things...</h2>
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl">
-                <div className="rounded-2xl p-2 subtle-noise" style={{backgroundColor: isDarkMode ? 'transparent' : '#faf9f7'}}>
-                  <div
-                    className="aspect-square rounded-lg overflow-hidden mb-2 cursor-pointer"
-                    onClick={() => setModalImage({
-                      src: "/assets/hobbies/hobby-1.jpg",
-                      alt: "Explored",
-                      caption: {
-                        title: "Pyramiden",
-                        description: "Ultimate polar bear hazard",
-                        location: "🇷🇺 Pyramiden, RU"
-                      }
-                    })}
-                  >
-                    <img
-                      src="/assets/hobbies/hobby-1.jpg"
-                      alt="Explored"
-                      className="w-full h-full object-cover saturate-50 hover:saturate-100 transition-all duration-300 cooling-filter"
-                    />
-                  </div>
-                  <div className="px-3 pt-2 pb-1">
-                    <div className="text-xs text-gray-600 dark:text-gray-400 font-normal leading-tight text-left">
-                      <div className="text-sm mb-1">Pyramiden</div>
-                      Ultimate polar bear hazard<br/>
-                      <span className="text-2xs font-light mt-1 block">🇷🇺 Pyramiden, RU</span>
-                    </div>
-                  </div>
-                </div>
-                <div className="rounded-2xl p-2 subtle-noise" style={{backgroundColor: isDarkMode ? 'transparent' : '#faf9f7'}}>
-                  <div
-                    className="aspect-square rounded-lg overflow-hidden mb-2 cursor-pointer"
-                    onClick={() => setModalImage({
-                      src: "/assets/hobbies/hobby-3.jpg",
-                      alt: "Spelunking",
-                      caption: {
-                        title: "Spelunking",
-                        description: "Comstock Load, Searching Sutro Tunnel",
-                        location: "🇺🇸 Virginia City, NV"
-                      }
-                    })}
-                  >
-                    <img
-                      src="/assets/hobbies/hobby-3.jpg"
-                      alt="Spelunking"
-                      className="w-full h-full object-cover saturate-50 hover:saturate-100 transition-all duration-300 cooling-filter"
-                    />
-                  </div>
-                  <div className="px-3 pt-2 pb-1">
-                    <div className="text-xs text-gray-600 dark:text-gray-400 font-normal leading-tight text-left">
-                      <div className="text-sm mb-1">Spelunking</div>
-                      Comstock Load, Searching Sutro Tunnel<br/>
-                      <span className="text-2xs font-light mt-1 block">🇺🇸 Virginia City, NV</span>
-                    </div>
-                  </div>
-                </div>
-                <div className="rounded-2xl p-2 subtle-noise" style={{backgroundColor: isDarkMode ? 'transparent' : '#faf9f7'}}>
-                  <div
-                    className="aspect-square rounded-lg overflow-hidden mb-2 cursor-pointer"
-                    onClick={() => setModalImage({
-                      src: "/assets/hobbies/hobby-4.jpg",
-                      alt: "Exploring",
-                      caption: {
-                        title: "Exploring",
-                        description: "ICBM Silo (abandoned)",
-                        location: "🇺🇸 Roswell, NM"
-                      }
-                    })}
-                  >
-                    <img
-                      src="/assets/hobbies/hobby-4.jpg"
-                      alt="Exploring"
-                      className="w-full h-full object-cover saturate-50 hover:saturate-100 transition-all duration-300 cooling-filter"
-                    />
-                  </div>
-                  <div className="px-3 pt-2 pb-1">
-                    <div className="text-xs text-gray-600 dark:text-gray-400 font-normal leading-tight text-left">
-                      <div className="text-sm mb-1">Exploring</div>
-                      ICBM Silo (abandoned)<br/>
-                      <span className="text-2xs font-light mt-1 block">🇺🇸 Roswell, NM</span>
-                    </div>
-                  </div>
-                </div>
-                <div className="rounded-2xl p-2 subtle-noise" style={{backgroundColor: isDarkMode ? 'transparent' : '#faf9f7'}}>
-                  <div
-                    className="aspect-square rounded-lg overflow-hidden mb-2 cursor-pointer"
-                    onClick={() => setModalImage({
-                      src: "/assets/hobbies/hobby-2.jpg",
-                      alt: "Wifepie",
-                      caption: {
-                        title: "Wifepie",
-                        description: "Chateau Marmont",
-                        location: "🇺🇸 Hollywood Hills, CA"
-                      }
-                    })}
-                  >
-                    <img
-                      src="/assets/hobbies/hobby-2.jpg"
-                      alt="Wife"
-                      className="w-full h-full object-cover saturate-50 hover:saturate-100 transition-all duration-300 cooling-filter"
-                    />
-                  </div>
-                  <div className="px-3 pt-2 pb-1">
-                    <div className="text-xs text-gray-600 dark:text-gray-400 font-normal leading-tight text-left">
-                      <div className="text-sm mb-1">Wifepie</div>
-                      Chateau Marmont<br/>
-                      <span className="text-2xs font-light mt-1 block">🇺🇸 Hollywood Hills, CA</span>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Additional hobbies 5-21 */}
-                {[5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21].map(num => (
-                  <div key={num} className="rounded-2xl p-2 subtle-noise" style={{backgroundColor: isDarkMode ? 'transparent' : '#faf9f7'}}>
-                    <div className="aspect-square rounded-lg overflow-hidden mb-2 cursor-pointer" onClick={() => setModalImage({src: `/assets/hobbies/hobby-${num}.jpg`, alt: `Hobby ${num}`, caption: {title: `Hobby ${num}`, line2: "", line3: ""}})}>
-                      <img src={`/assets/hobbies/thumbs/hobby-${num}-thumb.jpg`} alt={`Hobby ${num}`} className="w-full h-full object-cover saturate-50 hover:saturate-100 transition-all duration-300 cooling-filter" />
-                    </div>
-                    <div className="px-3 pt-2 pb-1">
-                      <div className="text-xs text-gray-600 dark:text-gray-400 font-normal leading-tight text-left">
-                        <div className="text-sm mb-1">Hobby {num}</div>
-                        <br/>
-                        <span className="text-2xs font-light mt-1 block"></span>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-
-              </div>
-            </div>
           </section>
 
           {/* Biography Section */}
@@ -1222,10 +1075,189 @@ const BlakeCollaborator = () => {
               </p>
             </div>
 
-            <div className="max-w-4xl mb-16 mt-32">
+            <h2 className="text-sm font-light mb-10 text-black dark:text-white tracking-[0.3em] uppercase mt-16">Mantra</h2>
+
+            <div className="max-w-4xl mb-6">
               <p className="text-lg font-light leading-relaxed text-gray-800 dark:text-gray-300">
-                Currently exploring opportunities naturally aligned with my professional experience, tenacity, and disposition to look beyond the status-quo. I am motivated by hands-on learning and the ability to make an impact in new domains over role seniority, as this has always been the source of my professional growth and cross-pollinated-experience throughout my career.
+                <em>I want to believe</em>&nbsp; that we all have the ability to achieve extraordinary things.
               </p>
+            </div>
+
+            <div className="relative w-full h-80 mb-20 rounded-lg overflow-hidden no-filter halftone-poster">
+              <img
+                src="/assets/contact-bg.jpg"
+                alt="Contact background"
+                className="w-full h-full object-cover cinematic-bw"
+                style={{objectPosition: 'center 25%', transform: 'scale(1.1)'}}
+              />
+            </div>
+
+          </section>
+
+          {/* Hobbies Gallery */}
+          <section className="mb-20">
+            <div className="mb-20">
+              <h2 className="text-sm font-light mb-8 text-black dark:text-white tracking-[0.3em] uppercase">Seeing is believing</h2>
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl">
+                <div className="rounded-2xl p-2 subtle-noise" style={{backgroundColor: isDarkMode ? 'transparent' : '#faf9f7'}}>
+                  <div
+                    className="aspect-square rounded-lg overflow-hidden mb-2 cursor-pointer"
+                    onClick={() => setModalImage({
+                      src: "/assets/hobbies/hobby-1.jpg",
+                      alt: "Pyramiden Outpost",
+                      caption: {
+                        title: "Pyramiden Outpost",
+                        description: "Existential polar bear hazard",
+                        location: "🇷🇺 Pyramiden, RU"
+                      }
+                    })}
+                  >
+                    <img
+                      src="/assets/hobbies/hobby-1.jpg"
+                      alt="Pyramiden Outpost"
+                      className="w-full h-full object-cover saturate-50 hover:saturate-100 transition-all duration-300 cooling-filter"
+                    />
+                  </div>
+                  <div className="px-3 pt-2 pb-1">
+                    <div className="text-xs text-gray-600 dark:text-gray-400 font-normal leading-tight text-left">
+                      <div className="text-sm mb-1">Pyramiden Outpost</div>
+                      Existential polar bear hazard<br/>
+                      <span className="text-2xs font-light mt-1 block">🇷🇺 Pyramiden, RU</span>
+                    </div>
+                  </div>
+                </div>
+                <div className="rounded-2xl p-2 subtle-noise" style={{backgroundColor: isDarkMode ? 'transparent' : '#faf9f7'}}>
+                  <div
+                    className="aspect-square rounded-lg overflow-hidden mb-2 cursor-pointer"
+                    onClick={() => setModalImage({
+                      src: "/assets/hobbies/hobby-3.jpg",
+                      alt: "Comstock Lode",
+                      caption: {
+                        title: "Comstock Lode",
+                        description: "Search for the Sutro Tunnel",
+                        location: "🇺🇸 Virginia City, NV"
+                      }
+                    })}
+                  >
+                    <img
+                      src="/assets/hobbies/hobby-3.jpg"
+                      alt="Comstock Lode"
+                      className="w-full h-full object-cover saturate-50 hover:saturate-100 transition-all duration-300 cooling-filter"
+                    />
+                  </div>
+                  <div className="px-3 pt-2 pb-1">
+                    <div className="text-xs text-gray-600 dark:text-gray-400 font-normal leading-tight text-left">
+                      <div className="text-sm mb-1">Comstock Lode</div>
+                      Search for the Sutro Tunnel<br/>
+                      <span className="text-2xs font-light mt-1 block">🇺🇸 Virginia City, NV</span>
+                    </div>
+                  </div>
+                </div>
+                <div className="rounded-2xl p-2 subtle-noise" style={{backgroundColor: isDarkMode ? 'transparent' : '#faf9f7'}}>
+                  <div
+                    className="aspect-square rounded-lg overflow-hidden mb-2 cursor-pointer"
+                    onClick={() => setModalImage({
+                      src: "/assets/hobbies/hobby-4.jpg",
+                      alt: "Cold War",
+                      caption: {
+                        title: "Cold War",
+                        description: "Abandoned ICBM Silo",
+                        location: "🇺🇸 Roswell, NM"
+                      }
+                    })}
+                  >
+                    <img
+                      src="/assets/hobbies/hobby-4.jpg"
+                      alt="Cold War"
+                      className="w-full h-full object-cover saturate-50 hover:saturate-100 transition-all duration-300 cooling-filter"
+                    />
+                  </div>
+                  <div className="px-3 pt-2 pb-1">
+                    <div className="text-xs text-gray-600 dark:text-gray-400 font-normal leading-tight text-left">
+                      <div className="text-sm mb-1">Cold War</div>
+                      Abandoned ICBM Silo<br/>
+                      <span className="text-2xs font-light mt-1 block">🇺🇸 Roswell, NM</span>
+                    </div>
+                  </div>
+                </div>
+                <div className="rounded-2xl p-2 subtle-noise" style={{backgroundColor: isDarkMode ? 'transparent' : '#faf9f7'}}>
+                  <div
+                    className="aspect-square rounded-lg overflow-hidden mb-2 cursor-pointer"
+                    onClick={() => setModalImage({
+                      src: "/assets/hobbies/hobby-2.jpg",
+                      alt: "Wifetime",
+                      caption: {
+                        title: "Wifetime",
+                        description: "Chateau Marmont",
+                        location: "🇺🇸 Hollywood Hills, CA"
+                      }
+                    })}
+                  >
+                    <img
+                      src="/assets/hobbies/hobby-2.jpg"
+                      alt="Wifetime"
+                      className="w-full h-full object-cover saturate-50 hover:saturate-100 transition-all duration-300 cooling-filter"
+                    />
+                  </div>
+                  <div className="px-3 pt-2 pb-1">
+                    <div className="text-xs text-gray-600 dark:text-gray-400 font-normal leading-tight text-left">
+                      <div className="text-sm mb-1">Wifetime</div>
+                      Chateau Marmont<br/>
+                      <span className="text-2xs font-light mt-1 block">🇺🇸 Hollywood Hills, CA</span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Additional hobbies 5-21 */}
+                {[5,6,7,8,9,10,11,12,14,15,16,17,18,19,21,20].map(num => {
+                  const captions = {
+                    5: { title: "Waukaringa", description: "Desert Ghost Town", location: "🇦🇺 South Australia" },
+                    6: { title: "Aerial Tramway", description: "Elevated bear danger", location: "🇺🇸 Telluride, CO" },
+                    7: { title: "Wifetime", description: "Griffith Observatory", location: "🇺🇸 Hollywood Hills" },
+                    8: { title: "Gravity Observatory", description: "Lost Underground Lab", location: "🇦🇺 New South Wales" },
+                    9: { title: "YacDonalds", description: "Top 10 Dangerous Roads", location: "🇳🇵 Nepal" },
+                    10: { title: "Shrine over Annapurna", description: "Top 10 Dangerous Roads", location: "🇳🇵 Nepal" },
+                    11: { title: "Wifetime", description: "Stardust Motel", location: "🇺🇸 Wallace, ID" },
+                    12: { title: "Ghost Town", description: "Nevada Border", location: "🇺🇸 Bodie, CA" },
+                    14: { title: "Ballroom Stope", description: "Hollow Mountain", location: "🇦🇺 Tasmania" },
+                    15: { title: "Concerning Ladder", description: "Underground Manway", location: "🇨🇦 British Columbia" },
+                    16: { title: "Terrifying Ladder", description: "Wolfram Mine", location: "🇦🇺 Tasmania" },
+                    17: { title: "1900s Copper Mine", description: "Untouched", location: "🇦🇺 Queensland" },
+                    18: { title: "Ghost Car", description: "Ghost Town", location: "🇺🇸 Carbonate Hill, NM" },
+                    19: { title: "Giant Ore Hopper", description: "3,096m Elevation", location: "🇺🇸 Leadville, CO" },
+                    20: { title: "Gulliver's Kingdom", description: "Abandoned Theme Park", location: "🇯🇵 Mt. Fuji" },
+                    21: { title: "Midnight Sun", description: "Abandoned Coal Mine", location: "🇳🇴 Svalbard, Norway" }
+                  };
+                  const caption = captions[num] || { title: `Hobby ${num}`, description: "", location: "" };
+                  return (
+                    <div key={num} className="rounded-2xl p-2 subtle-noise" style={{backgroundColor: isDarkMode ? 'transparent' : '#faf9f7'}}>
+                      <div className="aspect-square rounded-lg overflow-hidden mb-2 cursor-pointer" onClick={() => {
+                        // Swap modal images for positions that had their content swapped
+                        let modalSrc = `/assets/hobbies/hobby-${num}.jpg`;
+                        if (num === 7) modalSrc = `/assets/hobbies/hobby-8.jpg`;
+                        if (num === 8) modalSrc = `/assets/hobbies/hobby-7.jpg`;
+                        if (num === 11) modalSrc = `/assets/hobbies/hobby-14.jpg`;
+                        if (num === 14) modalSrc = `/assets/hobbies/hobby-11.jpg`;
+                        setModalImage({
+                          src: modalSrc,
+                          alt: caption.title,
+                          caption: caption
+                        });
+                      }}>
+                        <img src={`/assets/hobbies/thumbs/hobby-${num}-thumb.jpg`} alt={caption.title} className="w-full h-full object-cover saturate-50 hover:saturate-100 transition-all duration-300 cooling-filter" />
+                      </div>
+                      <div className="px-3 pt-2 pb-1">
+                        <div className="text-xs text-gray-600 dark:text-gray-400 font-normal leading-tight text-left">
+                          <div className="text-sm mb-1">{caption.title}</div>
+                          {caption.description && <>{caption.description}<br/></>}
+                          {caption.location && <span className="text-2xs font-light mt-1 block">{caption.location}</span>}
+                        </div>
+                      </div>
+                    </div>
+                  );
+                })}
+
+              </div>
             </div>
           </section>
 
@@ -1275,67 +1307,6 @@ const BlakeCollaborator = () => {
               </a>
             </div>
           </div>
-
-          {/* Hobbies Gallery - Moved to bottom */}
-          <section className="mb-20">
-            <div className="mb-20">
-              <h2 className="text-sm font-light mb-8 text-black dark:text-white tracking-[0.3em] uppercase">Extraordinary Things...</h2>
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl">
-                <div className="rounded-2xl p-2 subtle-noise" style={{backgroundColor: isDarkMode ? 'transparent' : '#faf9f7'}}>
-                  <div
-                    className="aspect-square rounded-lg overflow-hidden mb-2 cursor-pointer"
-                    onClick={() => setModalImage({
-                      src: "/assets/hobbies/hobby-1.jpg",
-                      alt: "Explored",
-                      caption: {
-                        title: "Pyramiden",
-                        description: "Ultimate polar bear hazard",
-                        location: "🇷🇺 Pyramiden, RU"
-                      }
-                    })}
-                  >
-                    <img
-                      src="/assets/hobbies/hobby-1.jpg"
-                      alt="Explored"
-                      className="w-full h-full object-cover saturate-50 hover:saturate-100 transition-all duration-300 cooling-filter"
-                    />
-                  </div>
-                  <div className="px-3 pt-2 pb-1">
-                    <div className="text-xs text-gray-600 dark:text-gray-400 font-normal leading-tight text-left">
-                      <div className="text-sm mb-1">Pyramiden</div>
-                      Ultimate polar bear hazard<br/>
-                      <span className="text-2xs font-light mt-1 block">🇷🇺 Pyramiden, RU</span>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Additional hobbies 2-21 */}
-                {[2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21].map(num => (
-                  <div key={num} className="rounded-2xl p-2 subtle-noise" style={{backgroundColor: isDarkMode ? 'transparent' : '#faf9f7'}}>
-                    <div className="aspect-square rounded-lg overflow-hidden mb-2 cursor-pointer" onClick={() => setModalImage({
-                      src: `/assets/hobbies/hobby-${num}.jpg`,
-                      alt: `Hobby ${num}`,
-                      caption: {
-                        title: `Hobby ${num}`,
-                        description: num === 3 ? "Comstock Load, Searching Sutro Tunnel" : "",
-                        location: num === 3 ? "🇺🇸 Virginia City, NV" : ""
-                      }
-                    })}>
-                      <img src={`/assets/hobbies/thumbs/hobby-${num}-thumb.jpg`} alt={`Hobby ${num}`} className="w-full h-full object-cover saturate-50 hover:saturate-100 transition-all duration-300 cooling-filter" />
-                    </div>
-                    <div className="px-3 pt-2 pb-1">
-                      <div className="text-xs text-gray-600 dark:text-gray-400 font-normal leading-tight text-left">
-                        <div className="text-sm mb-1">{num === 3 ? "Spelunking" : `Hobby ${num}`}</div>
-                        {num === 3 && <>Comstock Load, Searching Sutro Tunnel<br/></>}
-                        {num === 3 && <span className="text-2xs font-light mt-1 block">🇺🇸 Virginia City, NV</span>}
-                      </div>
-                    </div>
-                  </div>
-                ))}
-
-              </div>
-            </div>
-          </section>
         </div>
       </div>
 
