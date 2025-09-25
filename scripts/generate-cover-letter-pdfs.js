@@ -5,27 +5,6 @@ const fs = require('fs');
 const path = require('path');
 const { PDFDocument } = require('pdf-lib');
 
-async function compressPDF(inputBuffer, targetSizeKB = 2048) {
-  console.log('Compressing PDF to reduce file size...');
-  try {
-    const pdfDoc = await PDFDocument.load(inputBuffer);
-    // Ultra aggressive compression settings for font and object optimization
-    const compressedBytes = await pdfDoc.save({
-      useObjectStreams: true,
-      addDefaultPage: false,
-      objectsPerTick: 25, // Smaller chunks for better compression
-      updateFieldAppearances: false,
-      compress: true
-    });
-    const originalSizeKB = inputBuffer.length / 1024;
-    const compressedSizeKB = compressedBytes.length / 1024;
-    console.log(`  ✓ Compressed from ${originalSizeKB.toFixed(2)} KB to ${compressedSizeKB.toFixed(2)} KB`);
-    return compressedBytes;
-  } catch (error) {
-    console.error(`  ✗ Failed to compress PDF:`, error.message);
-    return inputBuffer; // Return original if compression fails
-  }
-}
 
 // Function to get all cover letters from the directory
 function getCoverLetters() {
@@ -74,6 +53,11 @@ async function generateSinglePagePDF(url, description) {
 
     // Wait for the main content to load
     await page.waitForSelector('body', { timeout: 60000 });
+
+    // Set browser zoom to 85% for cover letters
+    await page.evaluate(() => {
+      document.body.style.zoom = '0.85';
+    });
 
     // Apply correct mode - force dark mode for cover letters
     await page.evaluate(() => {
@@ -262,10 +246,7 @@ async function generateSinglePagePDF(url, description) {
 
     console.log(`  ✓ Generated ${description} (${(pdfBuffer.length / 1024).toFixed(2)} KB)`);
 
-    // Compress the PDF to optimize images
-    const compressedBuffer = await compressPDF(pdfBuffer);
-
-    return compressedBuffer;
+    return pdfBuffer;
 
   } catch (error) {
     console.error(`  ✗ Failed to generate ${description}:`, error.message);

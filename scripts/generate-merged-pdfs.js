@@ -16,7 +16,25 @@ const collaborators = [
   }
 ];
 
-async function generateSinglePagePDF(url, description) {
+// Function to wrap URLs with tracking redirects
+function wrapLinksWithTracking(pdfFileName, pdfDate) {
+  return `
+    // Wrap all external links with tracking redirects
+    const links = document.querySelectorAll('a[href]');
+    links.forEach(link => {
+      const originalHref = link.getAttribute('href');
+      if (originalHref && (originalHref.startsWith('http') || originalHref.startsWith('mailto:'))) {
+        const encodedUrl = encodeURIComponent(originalHref);
+        const encodedFrom = encodeURIComponent('${pdfFileName}');
+        const encodedDate = encodeURIComponent('${pdfDate}');
+        const trackingUrl = \`https://drksci.com/go?to=\${encodedUrl}&from=\${encodedFrom}&v=\${encodedDate}\`;
+        link.setAttribute('href', trackingUrl);
+      }
+    });
+  `;
+}
+
+async function generateSinglePagePDF(url, description, pdfFileName = null, pdfDate = null) {
   console.log(`Generating ${description}...`);
 
   const browser = await chromium.launch({
@@ -91,14 +109,23 @@ async function generateSinglePagePDF(url, description) {
 
     // Ensure text is properly rendered and selectable
     await page.evaluate(() => {
-      // Force font rendering completion
+      // Force font rendering completion and optimize for text preservation
       const allElements = document.querySelectorAll('*');
       allElements.forEach(el => {
         const style = window.getComputedStyle(el);
         if (style.fontFamily) {
           el.style.fontDisplay = 'block';
         }
+        // Disable complex visual effects that might cause rasterization
+        el.style.transform = 'none';
+        el.style.filter = 'none';
+        el.style.backdropFilter = 'none';
+        el.style.mixBlendMode = 'normal';
       });
+
+      // Force text selection to be enabled
+      document.body.style.userSelect = 'text';
+      document.body.style.webkitUserSelect = 'text';
     });
 
     // Force screen media and minimal styling - only hide header
@@ -111,6 +138,11 @@ async function generateSinglePagePDF(url, description) {
         * {
           print-color-adjust: exact !important;
           -webkit-print-color-adjust: exact !important;
+          /* Disable hyphenation for better text flow */
+          hyphens: none !important;
+          -webkit-hyphens: none !important;
+          -moz-hyphens: none !important;
+          -ms-hyphens: none !important;
         }
         /* Hide modal overlay images, only show thumbnails */
         .modal, .modal-overlay, .fixed.inset-0 {
@@ -204,6 +236,11 @@ async function generateSinglePagePDF(url, description) {
 
     // Wait for styles to apply
     await new Promise(resolve => setTimeout(resolve, 1000));
+
+    // Apply link tracking if PDF filename is provided
+    if (pdfFileName && pdfDate) {
+      await page.evaluate(wrapLinksWithTracking(pdfFileName, pdfDate));
+    }
 
     // Force scroll to bottom to ensure all content is loaded and visible
     await page.evaluate(() => {
@@ -360,22 +397,16 @@ async function generateSinglePagePDF(url, description) {
       scale: 1.0, // Use full PDF scale, browser zoom handles sizing
       displayHeaderFooter: false,
       preferCSSPageSize: false,
-      // Enhanced text structure preservation options
-      tagged: true, // Enable tagged PDFs for accessibility
-      outline: true, // Generate PDF outline/bookmarks
-      printBackground: true, // Preserve all visual elements
-      // Force single page by setting page ranges
-      pageRanges: '1',
-      // Optimize for text layer preservation
-      format: undefined // Use explicit width/height for precision
+      // Minimal PDF options for better text structure
+      tagged: true, // Enable tagged PDFs for accessibility and text structure
+      printBackground: true, // Preserve visual elements
+      pageRanges: '1', // Single page only
+      format: undefined // Use explicit dimensions
     });
 
     console.log(`  ✓ Generated ${description} (${(pdfBuffer.length / 1024).toFixed(2)} KB)`);
 
-    // Compress the PDF to optimize images
-    const compressedBuffer = await compressPDF(pdfBuffer);
-
-    return compressedBuffer;
+    return pdfBuffer;
 
   } catch (error) {
     console.error(`  ✗ Failed to generate ${description}:`, error.message);
@@ -385,7 +416,7 @@ async function generateSinglePagePDF(url, description) {
   }
 }
 
-async function generatePDF(url, description) {
+async function generatePDF(url, description, pdfFileName = null, pdfDate = null) {
   console.log(`Generating ${description}...`);
 
   const browser = await chromium.launch({
@@ -456,14 +487,23 @@ async function generatePDF(url, description) {
 
     // Ensure text is properly rendered and selectable
     await page.evaluate(() => {
-      // Force font rendering completion
+      // Force font rendering completion and optimize for text preservation
       const allElements = document.querySelectorAll('*');
       allElements.forEach(el => {
         const style = window.getComputedStyle(el);
         if (style.fontFamily) {
           el.style.fontDisplay = 'block';
         }
+        // Disable complex visual effects that might cause rasterization
+        el.style.transform = 'none';
+        el.style.filter = 'none';
+        el.style.backdropFilter = 'none';
+        el.style.mixBlendMode = 'normal';
       });
+
+      // Force text selection to be enabled
+      document.body.style.userSelect = 'text';
+      document.body.style.webkitUserSelect = 'text';
     });
 
     // Force screen media for all pages to preserve layout
@@ -477,6 +517,11 @@ async function generatePDF(url, description) {
         }
       `
     });
+
+    // Apply link tracking if PDF filename is provided
+    if (pdfFileName && pdfDate) {
+      await page.evaluate(wrapLinksWithTracking(pdfFileName, pdfDate));
+    }
 
     // Generate PDF using full A4 dimensions for cover page
     const dimensions = await page.evaluate(() => {
@@ -536,14 +581,11 @@ async function generatePDF(url, description) {
       },
       preferCSSPageSize: false,
       scale: 1.0,
-      // Enhanced text structure preservation options
-      tagged: true, // Enable tagged PDFs for accessibility
-      outline: true, // Generate PDF outline/bookmarks
-      printBackground: true, // Preserve all visual elements
-      // Force single page by setting page ranges
-      pageRanges: '1',
-      // Optimize for text layer preservation
-      format: undefined // Use explicit width/height for precision
+      // Minimal PDF options for better text structure
+      tagged: true, // Enable tagged PDFs for accessibility and text structure
+      printBackground: true, // Preserve visual elements
+      pageRanges: '1', // Single page only
+      format: undefined // Use explicit dimensions
     });
     console.log(`  ✓ Generated ${description} (${(pdfBuffer.length / 1024).toFixed(2)} KB)`);
 
@@ -616,39 +658,15 @@ async function mergePDFs(coverBuffer, contentBuffer, outputPath, returnBuffer = 
   }
 }
 
-async function compressPDF(inputBuffer, targetSizeKB = 2048) {
-  console.log('Compressing PDF to reduce file size...');
-
-  try {
-    const pdfDoc = await PDFDocument.load(inputBuffer);
-
-    // Ultra aggressive compression settings for font and object optimization
-    const compressedBytes = await pdfDoc.save({
-      useObjectStreams: true,
-      addDefaultPage: false,
-      objectsPerTick: 25, // Smaller chunks for better compression
-      updateFieldAppearances: false,
-      compress: true
-    });
-
-    const originalSizeKB = inputBuffer.length / 1024;
-    const compressedSizeKB = compressedBytes.length / 1024;
-
-    console.log(`  ✓ Compressed from ${originalSizeKB.toFixed(2)} KB to ${compressedSizeKB.toFixed(2)} KB`);
-
-    return compressedBytes;
-  } catch (error) {
-    console.error(`  ✗ Failed to compress PDF:`, error.message);
-    return inputBuffer; // Return original if compression fails
-  }
-}
-
 async function generateCollaboratorPDF(collaborator) {
   console.log(`\nGenerating PDF for ${collaborator.name}...`);
 
+  // Generate PDF date for tracking
+  const pdfDate = new Date().toISOString().split('T')[0]; // YYYY-MM-DD format
+
   // Generate cover with standard A4 and content with single page approach
-  const coverBuffer = await generatePDF(collaborator.coverUrl, 'cover page');
-  const contentBuffer = await generateSinglePagePDF(collaborator.contentUrl, 'content page (single page)');
+  const coverBuffer = await generatePDF(collaborator.coverUrl, 'cover page', `${collaborator.name.toLowerCase().replace(' ', '-')}-cover-only.pdf`, pdfDate);
+  const contentBuffer = await generateSinglePagePDF(collaborator.contentUrl, 'content page (single page)', collaborator.filename, pdfDate);
 
   // Save individual cover page for debugging
   if (coverBuffer) {
@@ -658,7 +676,7 @@ async function generateCollaboratorPDF(collaborator) {
   }
 
   // Generate light mode content
-  const contentBufferLight = await generateSinglePagePDF(collaborator.contentUrlLight, 'content page (light mode)');
+  const contentBufferLight = await generateSinglePagePDF(collaborator.contentUrlLight, 'content page (light mode)', collaborator.filenameLight, pdfDate);
 
   if (!coverBuffer && !contentBuffer && !contentBufferLight) {
     console.error(`Failed to generate any PDFs for ${collaborator.name}`);
@@ -679,10 +697,7 @@ async function generateCollaboratorPDF(collaborator) {
     let mergedBuffer = await mergePDFs(coverBuffer, contentBuffer, darkOutputPath, true); // Return buffer instead of writing
 
     if (mergedBuffer) {
-      // Always compress to reduce file size
-      mergedBuffer = await compressPDF(mergedBuffer);
-
-      // Write compressed version
+      // Write merged PDF
       fs.writeFileSync(darkOutputPath, mergedBuffer);
 
       results.push({
@@ -702,10 +717,7 @@ async function generateCollaboratorPDF(collaborator) {
     let mergedBuffer = await mergePDFs(coverBuffer, contentBufferLight, lightOutputPath, true); // Return buffer instead of writing
 
     if (mergedBuffer) {
-      // Always compress to reduce file size
-      mergedBuffer = await compressPDF(mergedBuffer);
-
-      // Write compressed version
+      // Write merged PDF
       fs.writeFileSync(lightOutputPath, mergedBuffer);
 
       results.push({

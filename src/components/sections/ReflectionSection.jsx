@@ -39,10 +39,16 @@ const ReflectionSection = ({ setFullscreenImage }) => {
             { thumb: '/assets/personnel/application-gallery/thumbs/virginia-city-nv-2.jpg', full: '/assets/personnel/application-gallery/virginia-city-nv-2.jpg', name: 'Virginia City, NV' },
           ].map((image, idx) => (
             <div key={idx} className="text-center">
-              <div 
-                className="relative mb-0 overflow-hidden rounded-lg cursor-pointer transition-all"
+              <a
+                href="https://drksci.com/c/blake#seeing-is-believing"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="relative mb-0 overflow-hidden rounded-lg cursor-pointer transition-all block"
                 style={{ width: '50%', aspectRatio: '1', margin: '0 auto' }}
-                onClick={() => setFullscreenImage(image)}
+                onClick={(e) => {
+                  e.preventDefault();
+                  setFullscreenImage(image);
+                }}
               >
                 <img 
                   src={image.thumb}
@@ -67,7 +73,7 @@ const ReflectionSection = ({ setFullscreenImage }) => {
                     }
                   }}
                 />
-              </div>
+              </a>
               <p className="text-[10px] text-gray-300 font-light text-center font-sans mt-1">
                 {image.name}
               </p>
@@ -93,10 +99,16 @@ const ReflectionSection = ({ setFullscreenImage }) => {
             { thumb: '/assets/personnel/application-gallery/thumbs/keith.jpg?v=2', full: '/assets/personnel/application-gallery/keith.jpg?v=2', name: 'Keith Hughes, Exploration Geologist, Northern Territory' },
           ].map((image, idx) => (
             <div key={idx} className="text-center" style={{ width: '120px' }}>
-              <div 
-                className="relative mb-0 overflow-hidden rounded-lg cursor-pointer transition-all"
+              <a
+                href="https://drksci.com/c/blake#seeing-is-believing"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="relative mb-0 overflow-hidden rounded-lg cursor-pointer transition-all block"
                 style={{ width: '120px', height: '120px' }}
-                onClick={() => setFullscreenImage(image)}
+                onClick={(e) => {
+                  e.preventDefault();
+                  setFullscreenImage(image);
+                }}
               >
                 <img 
                   src={image.thumb}
@@ -107,7 +119,7 @@ const ReflectionSection = ({ setFullscreenImage }) => {
                     filter: 'sepia(0.2) saturate(0.8) hue-rotate(10deg) contrast(1.1) brightness(0.95)'
                   }}
                 />
-              </div>
+              </a>
               <p className="text-[10px] text-gray-300 font-light text-center font-sans mt-1">
                 {image.name}
               </p>
