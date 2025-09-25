@@ -205,7 +205,7 @@ export default function ProjectDetail() {
   // Determine type from current location
   const location = window.location.pathname;
   const isPortfolio = location.includes('/portfolio/');
-  const isResearch = location.includes('/miskatonics/');
+  const isResearch = location.includes('/miskatonics/') || location.includes('/research/');
 
   const project = allProjects[id];
 
@@ -228,7 +228,7 @@ export default function ProjectDetail() {
       }}>
         <div style={{ textAlign: 'center' }}>
           <h1 style={{ fontSize: '2rem', marginBottom: '1rem' }}>Project Not Found</h1>
-          <Link to={isPortfolio ? '/portfolio' : '/miskatonics'} style={{ color: '#aaa' }}>
+          <Link to={isPortfolio ? '/portfolio' : '/research'} style={{ color: '#aaa' }}>
             ← Back to {isPortfolio ? 'Portfolio' : 'Research'}
           </Link>
         </div>
@@ -283,15 +283,15 @@ export default function ProjectDetail() {
             onMouseLeave={(e) => !isPortfolio && (e.target.style.color = '#6b7280')}>
               Portfolio
             </Link>
-            <Link to="/miskatonics" style={{ 
-              color: isResearch ? 'white' : '#6b7280', 
+            <Link to="/research" style={{
+              color: isResearch ? 'white' : '#6b7280',
               textDecoration: 'none',
               fontWeight: isResearch ? '600' : 'normal',
               transition: 'color 0.3s'
             }}
             onMouseEnter={(e) => !isResearch && (e.target.style.color = 'white')}
             onMouseLeave={(e) => !isResearch && (e.target.style.color = '#6b7280')}>
-              Miskatonics
+              Research
             </Link>
           </nav>
         </header>
