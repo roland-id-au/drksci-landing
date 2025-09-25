@@ -149,6 +149,51 @@ This work combines cognitive science, network theory, and machine learning to cr
       'Integration with university research databases',
       'Corporate innovation pipeline optimization'
     ]
+  },
+  'sideplot-ai-ideation': {
+    type: 'research',
+    title: 'Sideplot: Multi-Agent AI Ideation Systems',
+    category: 'Human-AI Collaboration',
+    description: 'Investigating orchestrated AI agent systems for creative ideation. How "chaos provides, order sustains" when humans and AI collaborate on transforming scattered inspiration into structured innovation.',
+    fullDescription: `Sideplot explores the frontier of human-AI creative collaboration through multi-agent orchestration systems. Our research investigates how AI can augment rather than replace human creativity by embracing the natural chaos of ideation while providing intelligent structure.
+
+The system embodies the philosophy that "chaos provides, order sustains"—designed for those moments when your mind becomes a "glorious browser with 100 tabs open." Rather than imposing premature structure, our approach creates judgment-free zones where humans can externalize scattered thoughts, allowing AI orchestrators to intelligently weave fragments into coherent narratives.
+
+Our prototype features Sophia, an orchestrator agent that functions as a project manager for "brain-galaxy moments." Sophia dynamically creates specialized subject matter expert (SME) agents from what we call our "Jurassic Park of idiosyncratic AI colleagues," each tailored to specific domains of a user's emerging project.
+
+The research validates that great ideas don't emerge linearly. Our interactive node-graph interface built with ReactFlow demonstrates how visual mapping combined with conversational AI can mirror the natural flow of human creativity: messy, non-linear, and wonderfully unpredictable.`,
+    status: 'Prototype Validated',
+    published: '2024',
+    authors: ['Blake', 'Sophia (AI Co-researcher)'],
+    tags: ['Multi-Agent Systems', 'Human-AI Collaboration', 'Creative AI', 'Ideation Tools', 'Orchestration Systems', 'Interactive Visualization'],
+    abstract: 'A multi-agent AI system that orchestrates creative ideation by balancing chaotic human inspiration with intelligent structural guidance, validated through interactive prototype development.',
+    methodology: `Our methodology combines human-centered design with multi-agent AI architecture. We implemented a working prototype using React, TypeScript, and OpenAI integration, featuring dynamic agent generation and interactive node-graph visualization.
+
+The research employed iterative design validation with users experiencing "scattered inspiration" scenarios. We measured the system's ability to maintain user agency while providing meaningful structure, analyzing conversation flows, node creation patterns, and user satisfaction metrics.
+
+Technical implementation utilized Zustand for state management, ReactFlow for visual interfaces, and custom prompt engineering for agent personality development. The system supports real-time multi-agent discussions, document branching, and seamless transitions between exploration and structured planning modes.`,
+    findings: [
+      'Users maintained creative agency while benefiting from AI structural guidance',
+      'Multi-agent discussions generated novel perspectives users hadn\'t considered',
+      'Visual node-graph interface reduced cognitive load during complex ideation',
+      '"Chaos provides, order sustains" philosophy validated through user feedback',
+      'Dynamic SME agent creation adapted effectively to diverse project domains',
+      'Conversational AI reduced friction in transitioning from inspiration to action'
+    ],
+    implications: [
+      'New paradigms for human-AI creative collaboration tools',
+      'Framework for orchestrated multi-agent ideation systems',
+      'Design patterns for maintaining human agency in AI-assisted creativity',
+      'Applications in R&D, innovation management, and creative industries',
+      'Potential for scaling creative processes in organizational contexts'
+    ],
+    futureWork: [
+      'Large-scale validation across diverse creative domains',
+      'Integration with enterprise innovation pipelines',
+      'Advanced agent personality development and specialization',
+      'Real-time collaboration features for distributed creative teams',
+      'Investigation of AI-assisted creative breakthrough patterns'
+    ]
   }
 };
 
@@ -160,7 +205,7 @@ export default function ProjectDetail() {
   // Determine type from current location
   const location = window.location.pathname;
   const isPortfolio = location.includes('/portfolio/');
-  const isResearch = location.includes('/miskatonics/');
+  const isResearch = location.includes('/miskatonics/') || location.includes('/research/');
 
   const project = allProjects[id];
 
@@ -183,7 +228,7 @@ export default function ProjectDetail() {
       }}>
         <div style={{ textAlign: 'center' }}>
           <h1 style={{ fontSize: '2rem', marginBottom: '1rem' }}>Project Not Found</h1>
-          <Link to={isPortfolio ? '/portfolio' : '/miskatonics'} style={{ color: '#aaa' }}>
+          <Link to={isPortfolio ? '/portfolio' : '/research'} style={{ color: '#aaa' }}>
             ← Back to {isPortfolio ? 'Portfolio' : 'Research'}
           </Link>
         </div>
@@ -238,15 +283,15 @@ export default function ProjectDetail() {
             onMouseLeave={(e) => !isPortfolio && (e.target.style.color = '#6b7280')}>
               Portfolio
             </Link>
-            <Link to="/miskatonics" style={{ 
-              color: isResearch ? 'white' : '#6b7280', 
+            <Link to="/research" style={{
+              color: isResearch ? 'white' : '#6b7280',
               textDecoration: 'none',
               fontWeight: isResearch ? '600' : 'normal',
               transition: 'color 0.3s'
             }}
             onMouseEnter={(e) => !isResearch && (e.target.style.color = 'white')}
             onMouseLeave={(e) => !isResearch && (e.target.style.color = '#6b7280')}>
-              Miskatonics
+              Research
             </Link>
           </nav>
         </header>

@@ -16,7 +16,7 @@
     "mermaid": "^11.10.1",
     "nunjucks": "^3.2.4",
     "pdf-lib": "^1.17.1",
-    "playwright": "^1.53.2",
+    "playwright": "^1.55.1",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "react-helmet": "^6.1.0",
@@ -49,9 +49,10 @@
     "profile:disable": "node scripts/profile-manager.js disable",
     "profile:token": "node scripts/profile-manager.js token",
     "profile:cleanup": "node scripts/profile-manager.js cleanup",
-    "pdf:generate:all": "node scripts/generate-merged-pdfs.js",
+    "pdf:generate:all": "node scripts/generate-merged-pdfs.js && node scripts/generate-cover-letter-pdfs.js",
     "pdf:generate:merged": "node scripts/generate-merged-pdfs.js",
-    "pdf:generate:resume": "node scripts/generate-pdfs.js"
+    "pdf:generate:resume": "node scripts/generate-pdfs.js",
+    "pdf:generate:cover-letters": "node scripts/generate-cover-letter-pdfs.js"
   },
   "eslintConfig": {
     "extends": [

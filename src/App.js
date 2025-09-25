@@ -3,15 +3,17 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import ScrollToTop from './components/ScrollToTop';
 import LandingPage from './LandingPage';
 import Portfolio from './Portfolio';
-import Miskatonics from './Miskatonics';
+import Research from './Research';
 import RainedCloudDetail from './RainedCloudDetail';
 import MapgyverDetail from './MapgyverDetail';
 import ProphetDetail from './ProphetDetail';
 import KareerDetail from './KareerDetail';
 import PrinchesterDetail from './PrinchesterDetail';
+import ProjectDetail from './ProjectDetail';
 import CollaboratorIndex from './CollaboratorIndex';
 import BlakeCollaborator from './BlakeCollaborator';
 import BlakeCoverPage from './BlakeCoverPage';
+import BlakeCoverLetterPage from './BlakeCoverLetterPage';
 import CandidateApplication from './CandidateApplication';
 import ShortUrlResolver from './ShortUrlResolver';
 
@@ -25,18 +27,21 @@ function App() {
         <Route path="/portfolio" element={<Portfolio />} />
         <Route path="/portfolio/rained-cloud" element={<RainedCloudDetail />} />
         <Route path="/portfolio/kareer" element={<KareerDetail />} />
-        <Route path="/research" element={<Miskatonics />} />
-        <Route path="/miskatonics" element={<Miskatonics />} />
+        <Route path="/research" element={<Research />} />
+        <Route path="/miskatonics" element={<Research />} />
         <Route path="/research/mapgyver-lost-person-modeling" element={<MapgyverDetail />} />
         <Route path="/research/prophet-experiment" element={<ProphetDetail />} />
         <Route path="/research/princhester-associates" element={<PrinchesterDetail />} />
+        <Route path="/research/sideplot-ai-ideation" element={<ProjectDetail />} />
         <Route path="/miskatonics/mapgyver-lost-person-modeling" element={<MapgyverDetail />} />
         <Route path="/miskatonics/prophet-experiment" element={<ProphetDetail />} />
         <Route path="/miskatonics/princhester-associates" element={<PrinchesterDetail />} />
+        <Route path="/miskatonics/sideplot-ai-ideation" element={<ProjectDetail />} />
         {/* Short URL patterns */}
         <Route path="/c" element={<CollaboratorIndex />} />
         <Route path="/c/blake" element={<BlakeCollaborator />} />
         <Route path="/c/blake/cover" element={<BlakeCoverPage />} />
+        <Route path="/c/blake/letter/:letterName" element={<BlakeCoverLetterPage />} />
         <Route path="/j/:shortId" element={<CandidateApplication />} />
         <Route path="/candidate/:candidate/:jobSlug" element={<CandidateApplication />} />
         

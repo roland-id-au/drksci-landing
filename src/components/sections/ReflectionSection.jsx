@@ -13,7 +13,7 @@ const ReflectionSection = ({ setFullscreenImage }) => {
             I owe much of my professional development to these abandoned places that first fascinated me as a child. Their industrial histories and human stories have been a constant source of learning throughout my career, providing unique insights that continue to inform my approach to complex transformation challenges.
           </p>
         </div>
-        <div className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-2 mb-12">
+        <div className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-1 mb-12">
           {[
             { thumb: '/assets/personnel/application-gallery/thumbs/calgoa-qld.jpg', full: '/assets/personnel/application-gallery/calgoa-qld.jpg', name: 'Calgoa, QLD' },
             { thumb: '/assets/personnel/application-gallery/thumbs/carbonate-hill-nm-1.jpg', full: '/assets/personnel/application-gallery/carbonate-hill-nm-1.jpg', name: 'Carbonate Hill, NM' },
@@ -84,7 +84,7 @@ const ReflectionSection = ({ setFullscreenImage }) => {
         </div>
         
         {/* Grandfathers Photos */}
-        <div className="flex gap-4 mt-8 justify-start flex-wrap">
+        <div className="flex gap-2 mt-8 justify-start flex-wrap">
           {[
             { thumb: '/assets/personnel/application-gallery/thumbs/oliver.jpg?v=2', full: '/assets/personnel/application-gallery/oliver.jpg?v=2', name: 'Oliver Carter, Searching for Lasseter\'s Reef c.a. 1970s' },
             { thumb: '/assets/personnel/application-gallery/thumbs/oliver-tanami.jpg?v=1', full: '/assets/personnel/application-gallery/oliver-tanami.jpg?v=1', name: 'Oliver Carter, Tanami Desert' },
