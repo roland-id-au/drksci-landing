@@ -217,7 +217,7 @@ function ResearchCard({ research, index }) {
   );
 }
 
-export default function Miskatonics() {
+export default function Research() {
 
 
   return (

@@ -73,7 +73,7 @@ async function generateSinglePagePDF(url, description) {
     });
 
     // Wait for the main content to load
-    await page.waitForSelector('body', { timeout: 30000 });
+    await page.waitForSelector('body', { timeout: 60000 });
 
     // Apply correct mode - force dark mode for cover letters
     await page.evaluate(() => {
