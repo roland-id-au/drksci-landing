@@ -48,6 +48,23 @@ const researchProjects = [
       skills: 'FrameCAD, Surpac, Revit, Mastercam, Relativity',
       model: 'Privacy-First'
     }
+  },
+  {
+    id: 'sideplot-ai-ideation',
+    title: 'Sideplot: Multi-Agent AI Ideation Systems',
+    category: 'Human-AI Collaboration',
+    description: 'Investigating orchestrated AI agent systems for creative ideation. How "chaos provides, order sustains" when humans and AI collaborate on transforming scattered inspiration into structured innovation.',
+    status: 'Prototype Validated',
+    published: '2024',
+    authors: ['Blake', 'Sophia (AI Co-researcher)'],
+    tags: ['Multi-Agent Systems', 'Human-AI Collaboration', 'Creative AI', 'Ideation Tools', 'Orchestration Systems'],
+    abstract: 'A multi-agent AI system that orchestrates creative ideation by balancing chaotic human inspiration with intelligent structural guidance, validated through interactive prototype development.',
+    metrics: {
+      philosophy: 'Chaos → Order',
+      agents: 'Sophia + SMEs',
+      interface: 'Node Graphs',
+      validation: 'User Testing'
+    }
   }
 ];
 
