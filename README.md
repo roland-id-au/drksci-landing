@@ -143,6 +143,24 @@ drksci-landing/
 2. `npm run deploy` - Deploy to Cloudflare Pages
 3. Monitor GitHub Actions for build status
 
+## 📊 Analytics & Tracking
+
+### Microsoft Clarity Integration
+The application uses Microsoft Clarity for comprehensive user behavior analytics:
+
+- **Implementation**: Dual tracking setup with both script tag and programmatic initialization
+- **Tracking ID**: `tgciazxl85`
+- **Features**: Session recordings, heatmaps, user interaction tracking
+- **Location**:
+  - Script tag in `public/index.html`
+  - Programmatic init in `src/App.js`
+
+### Configuration
+```javascript
+// Automatic initialization in App.js
+clarity.init('tgciazxl85');
+```
+
 ## 🔐 Authentication & Security
 
 - JWT-based magic links for secure access
@@ -168,6 +186,9 @@ drksci-landing/
 - Tailwind CSS + DaisyUI
 - Material-UI (MUI)
 - Emotion for CSS-in-JS
+
+### Analytics & Tracking
+- Microsoft Clarity for user behavior analytics
 
 ### PDF & Document Generation
 - jsPDF for PDF creation
