@@ -418,7 +418,7 @@ const BlakeCollaborator = () => {
           <section id="profile" className="mb-40">
             {/* Profile Header - HARMONIZED: Using consistent display typography */}
             <div className="mb-20">
-              <h1 className="blake-title text-4xl sm:text-5xl md:text-7xl tracking-tight mb-8 text-black dark:text-white" style={{fontFamily: 'Manrope, system-ui, sans-serif', fontWeight: 500}}>Blake Carter</h1>
+              <h1 id="blake-carter" className="blake-title text-4xl sm:text-5xl md:text-7xl tracking-tight mb-8 text-black dark:text-white" style={{fontFamily: 'Manrope, system-ui, sans-serif', fontWeight: 500}}>Blake Carter</h1>
             </div>
 
             {/* Executive Summary */}
@@ -428,12 +428,10 @@ const BlakeCollaborator = () => {
               <div className="max-w-4xl">
                 {/* HARMONIZED: Body text with consistent styling */}
                 <p className="text-lg font-light leading-relaxed mb-8 text-gray-800 dark:text-gray-300">
-                  Hands-on technical leader with organic experience spanning product development, operational excellence,
-                  and strategic transformation. Passionate about tackling complex challenges that require deep understanding
-                  and versatile execution.
+                  Hands-on technical leader with experience in product development, operations, and strategic transformation. I'm passionate about tackling complex challenges that require a deep understanding and versatile execution.
                 </p>
                 <p className="text-lg font-light leading-relaxed text-gray-800 dark:text-gray-300">
-                  Currently exploring opportunities naturally aligned with my professional experience, tenacity, and disposition to look beyond the status-quo. I am pursuing hands-on learning and the ability to make an impact in new domains above role seniority, as this has always been the source of my professional growth and cross-pollinated experience throughout my career.
+                  I'm currently exploring opportunities to apply my tenacity and hands-on skills to new domains. For me, the ability to make a direct impact is my key motivator, which I value over a role's level of seniority as the primary source of my professional growth.
                 </p>
               </div>
             </div>
@@ -661,13 +659,13 @@ const BlakeCollaborator = () => {
           {/* Resume Section */}
           <section id="resume" className="mb-40">
             {/* HARMONIZED: Section heading */}
-            <h2 className="text-4xl md:text-5xl tracking-tight mb-20 text-black dark:text-white" style={{fontFamily: 'Manrope, system-ui, sans-serif', fontWeight: 500}}>Professional Experience</h2>
+            <h2 id="professional-experience" className="text-4xl md:text-5xl tracking-tight mb-20 text-black dark:text-white" style={{fontFamily: 'Manrope, system-ui, sans-serif', fontWeight: 500}}>Professional Experience</h2>
             
             {/* Drksci */}
             <div className="mb-20   experience-item">
               <div className="mb-8 experience-header">
                 {/* HARMONIZED: Job title */}
-                <h3 className="text-2xl mb-3 tracking-wide text-black dark:text-white experience-title" style={{fontFamily: 'Manrope, system-ui, sans-serif', fontWeight: 700}}>Founder</h3>
+                <h3 id="founder" className="text-2xl mb-3 tracking-wide text-black dark:text-white experience-title" style={{fontFamily: 'Manrope, system-ui, sans-serif', fontWeight: 700}}>Founder</h3>
                 <div className="flex items-center gap-3 mb-2">
                   {getFavicon('d/rksci') && (
                     <img
@@ -689,7 +687,7 @@ const BlakeCollaborator = () => {
               <div className="space-y-10">
                 <div>
                   {/* HARMONIZED: Subsection label */}
-                  <h4 className="text-sm font-light mb-8 text-black dark:text-white tracking-[0.3em] uppercase">Key Projects & Research</h4>
+                  <h4 id="key-projects-research" className="text-sm font-light mb-8 text-black dark:text-white tracking-[0.3em] uppercase">Key Projects & Research</h4>
                   <div className="space-y-2 max-w-4xl">
                     <div className="flex items-baseline">
                       <span className="text-purple-400 mr-4 font-light flex-shrink-0">/</span>
@@ -755,7 +753,7 @@ const BlakeCollaborator = () => {
             <div className="mb-20  ">
               <div className="mb-8">
                 {/* HARMONIZED: Job title */}
-                <h3 className="text-2xl mb-3 tracking-wide text-black dark:text-white" style={{fontFamily: 'Manrope, system-ui, sans-serif', fontWeight: 700}}>Chief Executive Officer</h3>
+                <h3 id="ceo" className="text-2xl mb-3 tracking-wide text-black dark:text-white" style={{fontFamily: 'Manrope, system-ui, sans-serif', fontWeight: 700}}>Chief Executive Officer</h3>
                 <div className="flex items-center gap-3 mb-2">
                   {getFavicon('ValuePRO Software') && (
                     <img
@@ -777,7 +775,7 @@ const BlakeCollaborator = () => {
                 </p>
               </div>
               <div className="mt-8">
-                <h4 className="text-sm font-light text-black dark:text-white mb-4 tracking-[0.3em] uppercase">Key Accomplishments</h4>
+                <h4 id="ceo-accomplishments" className="text-sm font-light text-black dark:text-white mb-4 tracking-[0.3em] uppercase">Key Accomplishments</h4>
                 <div className="space-y-2 max-w-4xl">
                   <div className="flex items-baseline">
                     <span className="text-gray-800 dark:text-gray-300 mr-4 font-light flex-shrink-0">/</span>
@@ -799,7 +797,7 @@ const BlakeCollaborator = () => {
             <div className="mb-20  ">
               <div className="mb-8">
                 {/* HARMONIZED: Job title */}
-                <h3 className="text-2xl mb-3 tracking-wide text-black dark:text-white" style={{fontFamily: 'Manrope, system-ui, sans-serif', fontWeight: 700}}>Operations Manager</h3>
+                <h3 id="operations-manager" className="text-2xl mb-3 tracking-wide text-black dark:text-white" style={{fontFamily: 'Manrope, system-ui, sans-serif', fontWeight: 700}}>Operations Manager</h3>
                 <div className="flex items-center gap-3 mb-2">
                   {getFavicon('ValuePRO Software') && (
                     <img
@@ -819,7 +817,7 @@ const BlakeCollaborator = () => {
                 Directed company-wide technical operations, focusing on security, compliance, and professional services. I led technical teams, managed critical infrastructure, and ensured the company consistently met ISO 27001/9001 certification standards.
               </p>
               <div className="mt-8">
-                <h4 className="text-sm font-light text-black dark:text-white mb-4 tracking-[0.3em] uppercase">Key Accomplishments</h4>
+                <h4 id="operations-accomplishments" className="text-sm font-light text-black dark:text-white mb-4 tracking-[0.3em] uppercase">Key Accomplishments</h4>
                 <div className="space-y-2 max-w-4xl">
                 <div className="flex items-baseline">
                   <span className="text-gray-800 dark:text-gray-300 mr-4 font-light flex-shrink-0">/</span>
@@ -849,7 +847,7 @@ const BlakeCollaborator = () => {
             <div className="mb-20  ">
               <div className="mb-8">
                 {/* HARMONIZED: Job title */}
-                <h3 className="text-2xl mb-3 tracking-wide text-black dark:text-white" style={{fontFamily: 'Manrope, system-ui, sans-serif', fontWeight: 700}}>Senior Developer / Software Architect</h3>
+                <h3 id="senior-developer" className="text-2xl mb-3 tracking-wide text-black dark:text-white" style={{fontFamily: 'Manrope, system-ui, sans-serif', fontWeight: 700}}>Senior Developer / Software Architect</h3>
                 <div className="flex items-center gap-3 mb-2">
                   {getFavicon('ValuePRO Software') && (
                     <img
@@ -869,7 +867,7 @@ const BlakeCollaborator = () => {
                 Led hands-on development for projects on .NET and Objective-C stacks while providing technical leadership. I introduced modern DevOps practices to the company and also managed the Customer Support function, using direct client feedback to improve the development process and product quality.
               </p>
               <div className="mt-8">
-                <h4 className="text-sm font-light text-black dark:text-white mb-4 tracking-[0.3em] uppercase">Key Accomplishments</h4>
+                <h4 id="developer-accomplishments" className="text-sm font-light text-black dark:text-white mb-4 tracking-[0.3em] uppercase">Key Accomplishments</h4>
                 <div className="space-y-2 max-w-4xl">
                 <div className="flex items-baseline">
                   <span className="text-gray-800 dark:text-gray-300 mr-4 font-light flex-shrink-0">/</span>
@@ -1019,7 +1017,7 @@ const BlakeCollaborator = () => {
 
           {/* Contact Section */}
           <section id="contact" className="mb-40 -mt-8">
-            <h2 className="text-4xl md:text-5xl tracking-tight mb-10 text-black dark:text-white" style={{fontFamily: 'Manrope, system-ui, sans-serif', fontWeight: 500}}>Phone lines are open</h2>
+            <h2 id="phone-lines-are-open" className="text-4xl md:text-5xl tracking-tight mb-10 text-black dark:text-white" style={{fontFamily: 'Manrope, system-ui, sans-serif', fontWeight: 500}}>Phone lines are open</h2>
 
             <div className="max-w-4xl mb-12">
               <p className="text-lg font-light leading-relaxed text-gray-800 dark:text-gray-300">
@@ -1067,7 +1065,7 @@ const BlakeCollaborator = () => {
 
           {/* Biography Section */}
           <section className="mb-20">
-            <h2 className="text-4xl md:text-5xl tracking-tight mb-20 text-black dark:text-white mt-48" style={{fontFamily: 'Manrope, system-ui, sans-serif', fontWeight: 500}}>Biography</h2>
+            <h2 id="biography" className="text-4xl md:text-5xl tracking-tight mb-20 text-black dark:text-white mt-48" style={{fontFamily: 'Manrope, system-ui, sans-serif', fontWeight: 500}}>Biography</h2>
 
             <div className="max-w-4xl mb-16">
               <p className="text-lg font-light leading-relaxed text-gray-800 dark:text-gray-300 mb-6">
@@ -1235,7 +1233,7 @@ const BlakeCollaborator = () => {
                   return (
                     <div key={num} className="rounded-2xl p-2 subtle-noise" style={{backgroundColor: isDarkMode ? 'transparent' : '#faf9f7'}}>
                       <div className="aspect-square rounded-lg overflow-hidden mb-2 cursor-pointer" onClick={() => {
-                        // Swap modal images for positions that had their content swapped
+                        // Swap modal images for Wifetime galleries
                         let modalSrc = `/assets/hobbies/hobby-${num}.jpg`;
                         if (num === 7) modalSrc = `/assets/hobbies/hobby-8.jpg`;
                         if (num === 8) modalSrc = `/assets/hobbies/hobby-7.jpg`;
