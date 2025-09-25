@@ -130,6 +130,11 @@ async function generateSinglePagePDF(url, description) {
           visibility: visible !important;
           height: 80px !important;
         }
+        /* Apply pretty text breaking to cover letter content */
+        .cover-letter-content p {
+          text-wrap: pretty !important;
+          hyphens: auto !important;
+        }
       `
     });
 

@@ -39,6 +39,11 @@ async function generateSinglePagePDF(url, description) {
     // Wait for the main content to load
     await page.waitForSelector('body', { timeout: 30000 });
 
+    // Set browser zoom to 85% for content page
+    await page.evaluate(() => {
+      document.body.style.zoom = '0.85';
+    });
+
     // Apply correct mode based on URL hash
     await page.evaluate(() => {
       const isLightMode = window.location.hash === '#light';
@@ -99,6 +104,21 @@ async function generateSinglePagePDF(url, description) {
         .modal, .modal-overlay, .fixed.inset-0 {
           display: none !important;
         }
+        /* Position footer at bottom of page for cover page */
+        .container.mx-auto {
+          min-height: 100vh !important;
+          display: flex !important;
+          flex-direction: column !important;
+        }
+        #contact {
+          margin-top: auto !important;
+          margin-bottom: 0 !important;
+        }
+        .mb-20.text-center {
+          margin-top: 0 !important;
+          margin-bottom: 0 !important;
+          padding-bottom: 0 !important;
+        }
         /* Ensure links are clickable and visible */
         a {
           color: inherit !important;
@@ -109,10 +129,80 @@ async function generateSinglePagePDF(url, description) {
         a:hover {
           opacity: 0.8 !important;
         }
+        /* Remove underlines from specific links */
+        a[href*="whiteribbon.org.au"],
+        a[href*="kareer.app"],
+        a[href*="mapgyver.com"],
+        a[href*="princhester.com"],
+        a[href*="prophet.app"],
+        a[href*="rained.cloud"] {
+          text-decoration: none !important;
+        }
+        /* Force visibility of attribution section and tech icons */
+        .mb-20.text-center {
+          display: block !important;
+          visibility: visible !important;
+          opacity: 1 !important;
+          position: static !important;
+          overflow: visible !important;
+        }
+        .flex.justify-center.flex-wrap.items-center.gap-5.grayscale.opacity-60 {
+          display: flex !important;
+          visibility: visible !important;
+          opacity: 0.6 !important;
+          position: static !important;
+          overflow: visible !important;
+        }
+        /* Ensure all SVG icons are visible */
+        svg {
+          display: inline-block !important;
+          visibility: visible !important;
+          opacity: inherit !important;
+        }
+        /* Pretty typography for executive summary and biography */
+        .text-lg.font-light.leading-relaxed {
+          text-align: justify !important;
+          text-wrap: pretty !important;
+          hyphens: auto !important;
+        }
+        /* Apply pretty text wrapping to all text */
+        p, span, div {
+          text-wrap: pretty !important;
+        }
+        /* Aggressively remove excess vertical space */
+        body {
+          margin-bottom: 0 !important;
+          padding-bottom: 0 !important;
+          overflow-y: hidden !important;
+        }
+        html {
+          margin-bottom: 0 !important;
+          padding-bottom: 0 !important;
+          overflow-y: hidden !important;
+        }
+        /* Force last content to be flush with bottom */
+        .mb-20.text-center:last-of-type,
+        .mb-20:last-child,
+        section:last-child {
+          margin-bottom: 0 !important;
+          padding-bottom: 0 !important;
+        }
       `
     });
 
     // Wait for styles to apply
+    await new Promise(resolve => setTimeout(resolve, 1000));
+
+    // Force scroll to bottom to ensure all content is loaded and visible
+    await page.evaluate(() => {
+      window.scrollTo(0, document.body.scrollHeight);
+    });
+    await new Promise(resolve => setTimeout(resolve, 1000));
+
+    // Scroll back to top for PDF capture
+    await page.evaluate(() => {
+      window.scrollTo(0, 0);
+    });
     await new Promise(resolve => setTimeout(resolve, 1000));
 
     // Get the precise content height by finding the attribution badge (last content)
@@ -121,25 +211,45 @@ async function generateSinglePagePDF(url, description) {
       let targetElement = null;
       let maxBottom = 0;
 
-      // 1. Look for the attribution section with copyright text
-      const copyrightElement = Array.from(document.querySelectorAll('*')).find(el =>
-        el.textContent && el.textContent.includes('Web and print media authored by and copyright of Blake Carter')
-      );
+      // 1. Look for the complete attribution section that includes both copyright text and tech icons
+      const attributionSection = document.querySelector('.mb-20.text-center');
 
-      if (copyrightElement) {
-        const container = copyrightElement.closest('.mb-20, .text-center') || copyrightElement;
-        targetElement = container;
-        const rect = targetElement.getBoundingClientRect();
-        maxBottom = rect.bottom + window.scrollY;
-        console.log('Found copyright text, using it as last element');
-      } else {
-        // 2. Look for attribution section by class
-        const attributionSection = document.querySelector('.mb-20.text-center');
-        if (attributionSection) {
+      if (attributionSection) {
+        // Check if this section contains the copyright text to confirm it's the right one
+        const containsCopyright = attributionSection.textContent &&
+          attributionSection.textContent.includes('Web and print media authored by and copyright of Blake Carter');
+
+        if (containsCopyright) {
           targetElement = attributionSection;
           const rect = targetElement.getBoundingClientRect();
           maxBottom = rect.bottom + window.scrollY;
-          console.log('Found attribution section, using it as last element');
+          console.log('Found complete attribution section with copyright and icons, using entire section as last element');
+        } else {
+          // Look for copyright text element specifically
+          const copyrightElement = Array.from(document.querySelectorAll('*')).find(el =>
+            el.textContent && el.textContent.includes('Web and print media authored by and copyright of Blake Carter')
+          );
+
+          if (copyrightElement) {
+            const parentSection = copyrightElement.closest('.mb-20') || copyrightElement.parentElement;
+            targetElement = parentSection || copyrightElement;
+            const rect = targetElement.getBoundingClientRect();
+            maxBottom = rect.bottom + window.scrollY;
+            console.log('Found copyright text element, using its container as last element');
+          }
+        }
+      } else {
+        // Fallback: Look for copyright text element specifically
+        const copyrightElement = Array.from(document.querySelectorAll('*')).find(el =>
+          el.textContent && el.textContent.includes('Web and print media authored by and copyright of Blake Carter')
+        );
+
+        if (copyrightElement) {
+          const parentSection = copyrightElement.closest('.mb-20') || copyrightElement.parentElement;
+          targetElement = parentSection || copyrightElement;
+          const rect = targetElement.getBoundingClientRect();
+          maxBottom = rect.bottom + window.scrollY;
+          console.log('Fallback: Found copyright text, using it as last element');
         }
       }
 
@@ -164,8 +274,50 @@ async function generateSinglePagePDF(url, description) {
       console.log('Last content element:', targetElement?.tagName, targetElement?.className);
       console.log('Content bottom:', maxBottom);
 
-      // Add minimal buffer but don't cap height - let it capture the full content plus user requested 100px
-      const finalHeight = Math.ceil(maxBottom) + 140;
+      // Debug: More detailed logging
+      const copyrightDebug = Array.from(document.querySelectorAll('*')).find(el =>
+        el.textContent && el.textContent.includes('Web and print media authored by and copyright of Blake Carter')
+      );
+      if (copyrightDebug) {
+        const copyrightRect = copyrightDebug.getBoundingClientRect();
+        const copyrightStyle = window.getComputedStyle(copyrightDebug);
+        console.log('Copyright text position:', copyrightRect.top + window.scrollY, 'to', copyrightRect.bottom + window.scrollY);
+        console.log('Copyright text visibility:', copyrightStyle.display, copyrightStyle.visibility, copyrightStyle.opacity);
+      }
+
+      // Also check tech icons
+      const techIcons = document.querySelector('.flex.justify-center.flex-wrap.items-center.gap-5.grayscale.opacity-60');
+      if (techIcons) {
+        const techRect = techIcons.getBoundingClientRect();
+        const techStyle = window.getComputedStyle(techIcons);
+        console.log('Tech icons position:', techRect.top + window.scrollY, 'to', techRect.bottom + window.scrollY);
+        console.log('Tech icons visibility:', techStyle.display, techStyle.visibility, techStyle.opacity);
+      }
+
+      // Check page scroll and viewport
+      console.log('Page scroll position:', window.scrollY);
+      console.log('Viewport height:', window.innerHeight);
+      console.log('Document height:', document.documentElement.scrollHeight);
+
+      // Also try using document height as an alternative measurement
+      const documentHeight = Math.max(
+        document.body.scrollHeight,
+        document.body.offsetHeight,
+        document.documentElement.clientHeight,
+        document.documentElement.scrollHeight,
+        document.documentElement.offsetHeight
+      );
+
+      console.log('Document height methods:', {
+        scrollHeight: document.body.scrollHeight,
+        offsetHeight: document.body.offsetHeight,
+        docScrollHeight: document.documentElement.scrollHeight,
+        maxBottom: maxBottom,
+        documentHeight: documentHeight
+      });
+
+      // Use maxBottom with sufficient buffer to capture tech icons
+      const finalHeight = Math.ceil(maxBottom) + 100;
 
       return {
         contentHeight: finalHeight,
@@ -193,7 +345,7 @@ async function generateSinglePagePDF(url, description) {
         left: '0mm',
         right: '0mm'
       },
-      scale: 1.0, // Full scale to maintain quality - links are preserved by tagged PDF option
+      scale: 1.0, // Use full PDF scale, browser zoom handles sizing
       displayHeaderFooter: false,
       preferCSSPageSize: false,
       pageRanges: '1', // Force single page only
@@ -238,6 +390,7 @@ async function generatePDF(url, description) {
 
     // Wait for the main content to load
     await page.waitForSelector('body', { timeout: 30000 });
+
 
     // Apply correct mode based on URL hash
     await page.evaluate(() => {
@@ -287,29 +440,61 @@ async function generatePDF(url, description) {
     // Force screen media for all pages to preserve layout
     await page.emulateMediaType('screen');
 
-    // Generate PDF using A4 width (210mm) but dynamic height
+    // Hide header elements for cover page
+    await page.addStyleTag({
+      content: `
+        header, .sticky, nav, .mobile-nav, .desktop-nav {
+          display: none !important;
+        }
+      `
+    });
+
+    // Generate PDF using full A4 dimensions for cover page
     const dimensions = await page.evaluate(() => {
-      const body = document.body;
-      const html = document.documentElement;
+      // Debug cover page layout
+      const coverPage = document.querySelector('.pdf-cover-page');
+      const coverFooter = document.querySelector('.cover-footer');
+
+      if (coverPage) {
+        const coverRect = coverPage.getBoundingClientRect();
+        console.log('Cover page dimensions:', {
+          top: coverRect.top,
+          bottom: coverRect.bottom,
+          height: coverRect.height
+        });
+      }
+
+      if (coverFooter) {
+        const footerRect = coverFooter.getBoundingClientRect();
+        console.log('Cover footer dimensions:', {
+          top: footerRect.top,
+          bottom: footerRect.bottom,
+          height: footerRect.height
+        });
+
+        // Check what's below the footer
+        const elementsBelow = document.elementsFromPoint(footerRect.left + footerRect.width/2, footerRect.bottom + 10);
+        console.log('Elements below footer:', elementsBelow.map(el => el.tagName + '.' + el.className).join(', '));
+      }
+
+      console.log('Body scroll height:', document.body.scrollHeight);
+      console.log('Document element scroll height:', document.documentElement.scrollHeight);
+      console.log('Window inner height:', window.innerHeight);
 
       return {
-        contentHeight: Math.max(
-          body.scrollHeight,
-          body.offsetHeight,
-          html.clientHeight,
-          html.scrollHeight,
-          html.offsetHeight
-        ),
+        contentHeight: Math.max(document.body.scrollHeight, window.innerHeight),
         viewportWidth: window.innerWidth,
-        viewportHeight: window.innerHeight
+        viewportHeight: window.innerHeight,
+        coverPageHeight: coverPage ? coverPage.getBoundingClientRect().height : 0,
+        footerBottom: coverFooter ? coverFooter.getBoundingClientRect().bottom : 0
       };
     });
 
     const pdfWidth = '210mm';  // A4 width
-    const pdfHeight = '297mm';  // Full A4 height
+    const pdfHeight = '297mm';  // Full A4 height like yesterday
     console.log(`PDF page size: ${pdfWidth} x ${pdfHeight}`);
 
-    // Generate PDF with full A4 dimensions
+    // Generate PDF with dynamic dimensions
     const pdfBuffer = await page.pdf({
       width: pdfWidth,
       height: pdfHeight,
@@ -321,7 +506,9 @@ async function generatePDF(url, description) {
         right: '0mm'
       },
       preferCSSPageSize: false,
-      scale: 1.0
+      scale: 1.0,
+      pageRanges: '1', // Force single page only
+      tagged: true // Enable tagged PDFs for clickable links
     });
     console.log(`  ✓ Generated ${description} (${(pdfBuffer.length / 1024).toFixed(2)} KB)`);
 
@@ -427,6 +614,13 @@ async function generateCollaboratorPDF(collaborator) {
   // Generate cover with standard A4 and content with single page approach
   const coverBuffer = await generatePDF(collaborator.coverUrl, 'cover page');
   const contentBuffer = await generateSinglePagePDF(collaborator.contentUrl, 'content page (single page)');
+
+  // Save individual cover page for debugging
+  if (coverBuffer) {
+    const coverPath = path.join(__dirname, '..', 'public', 'pdfs', `${collaborator.name.toLowerCase().replace(' ', '-')}-cover-only.pdf`);
+    fs.writeFileSync(coverPath, coverBuffer);
+    console.log(`  ✓ Individual cover page saved: ${coverPath}`);
+  }
 
   // Generate light mode content
   const contentBufferLight = await generateSinglePagePDF(collaborator.contentUrlLight, 'content page (light mode)');

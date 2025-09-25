@@ -706,7 +706,7 @@ const BlakeCollaborator = () => {
                     <div className="flex items-baseline">
                       <span className="text-green-400 mr-4 font-light flex-shrink-0">/</span>
                       <div className="text-sm font-light text-gray-800 dark:text-gray-300">
-                        <a href="https://mapgyver.com" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 hover:text-green-300 transition-colors">
+                        <a href="https://drksci.com/research/mapgyver-lost-person-modeling" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 hover:text-green-300 transition-colors">
                           <strong>MapGyver</strong>
                           <svg className="w-3 h-3 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
@@ -717,7 +717,7 @@ const BlakeCollaborator = () => {
                     <div className="flex items-baseline">
                       <span className="text-pink-400 mr-4 font-light flex-shrink-0">/</span>
                       <div className="text-sm font-light text-gray-800 dark:text-gray-300">
-                        <a href="https://princhester.com" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 hover:text-pink-300 transition-colors">
+                        <a href="https://princhester.pages.dev/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 hover:text-pink-300 transition-colors">
                           <strong>Princhester Associates</strong>
                           <svg className="w-3 h-3 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
@@ -728,7 +728,7 @@ const BlakeCollaborator = () => {
                     <div className="flex items-baseline">
                       <span className="text-orange-400 mr-4 font-light flex-shrink-0">/</span>
                       <div className="text-sm font-light text-gray-800 dark:text-gray-300">
-                        <a href="https://prophet.app" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 hover:text-orange-300 transition-colors">
+                        <a href="https://drksci.com/research/prophet-experiment" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 hover:text-orange-300 transition-colors">
                           <strong>Prophet</strong>
                           <svg className="w-3 h-3 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />

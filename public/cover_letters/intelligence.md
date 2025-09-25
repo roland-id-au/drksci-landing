@@ -2,7 +2,7 @@
 
 To whom it may concern,
 
-Writing to express my strong interest in the advertised intelligence role. My professional experience has been defined by a relentless drive to understand, analyse, and subvert complex digital systems, a skill set I believe is intimately applicable to this role.
+I am writing to express my strong interest in the advertised intelligence role. My professional experience has been defined by a relentless drive to understand, analyse, and subvert complex digital systems, a skill set I believe is intimately applicable to this role.
 
 A career built on a deep, hands-on understanding of how systems function and, more importantly, how they can be exploited. My work has included:
 <br>
