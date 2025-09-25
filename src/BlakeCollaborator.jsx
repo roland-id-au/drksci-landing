@@ -1065,7 +1065,7 @@ const BlakeCollaborator = () => {
 
           {/* Biography Section */}
           <section className="mb-20">
-            <h2 id="biography" className="text-4xl md:text-5xl tracking-tight mb-20 text-black dark:text-white mt-48" style={{fontFamily: 'Manrope, system-ui, sans-serif', fontWeight: 500}}>Biography</h2>
+            <h2 id="biography" className="text-4xl md:text-5xl tracking-tight mb-20 text-black dark:text-white mt-48" style={{fontFamily: 'Manrope, system-ui, sans-serif', fontWeight: 500}}>Bio</h2>
 
             <div className="max-w-4xl mb-16">
               <p className="text-lg font-light leading-relaxed text-gray-800 dark:text-gray-300 mb-6">
