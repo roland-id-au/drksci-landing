@@ -108,6 +108,7 @@ const CoverLetterRenderer = ({ letterName }) => {
           margin-bottom: 1.25rem;
           color: #d1d5db;
           font-family: 'Source Serif 4', serif;
+          font-weight: 400;
         }
         .cover-letter-content hr {
           border-top: 1px solid #374151;

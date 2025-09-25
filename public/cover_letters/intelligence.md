@@ -1,5 +1,7 @@
 **RE: Intelligence Role**
-
+<br>
+<br>
+<br>
 To whom it may concern,
 
 I am writing to express my strong interest in the advertised intelligence role. My professional experience has been defined by a relentless drive to understand, analyse, and subvert complex digital systems, a skill set I believe is intimately applicable to this role.
@@ -20,11 +22,11 @@ I have a strong interest in digital reconnaissance methods and geospatial intell
 
 ## Relentless Investigation
 
-My approach to problem-solving is relentless, one example of which is the successful decade-long search for a lost underground science lab, lost for 59 years. [https://photos.app.goo.gl/mnj5ZMd6QYviYoNX8](https://photos.app.goo.gl/mnj5ZMd6QYviYoNX8).
+My approach to problem-solving is relentless, one example of which is the successful decade-long search for a lost underground science lab, lost for 59 years — [Upper Cooney Tunnel Rediscovery](https://photos.app.goo.gl/mnj5ZMd6QYviYoNX8).
 
 ## Ground Truth Perspective
 
-I have extensive ground truth perspective on digital reconnaissance analysis versus actuals, painstakingly validated as below. [https://www.youtube.com/watch?v=-jVrsfhZahM](https://www.youtube.com/watch?v=-jVrsfhZahM).
+I have extensive ground truth perspective on digital reconnaissance analysis versus actuals, repeatedly and painstakingly validated e.g. [Carbonate Hill, NM](https://www.youtube.com/watch?v=-jVrsfhZahM).
 
 ## SecOps
 
@@ -32,23 +34,23 @@ I have executive, operational, and subject matter expert experience directing an
 
 ---
 
-# Current Research & Outlook
+# Current Interests
 
 ## Predictive AI Behavior Modeling
 
-I am researching human, animal, and logistics behavioral modeling, including traversal strategy and terrain defensibility/insurgence prediction. My recent work includes AI / SAR human movement behavioral prediction and analysis, such as the Mapgyver lost person modeling documented here: [https://drksci.com/research/mapgyver-lost-person-modeling](https://drksci.com/research/mapgyver-lost-person-modeling).
+Researching human, animal, and logistics behavioral modeling, including traversal strategy and terrain defensibility/insurgence prediction. My recent work includes AI / SAR human movement behavioral prediction and analysis, such as the Mapgyver lost person modeling documented here: [https://drksci.com/research/mapgyver-lost-person-modeling](https://drksci.com/research/mapgyver-lost-person-modeling).
 
 ## Digital Audio & Covert Sensing
 
-I am exploring how to use optics and binary interference patterns (rather than DSP) for scalable audio surveillance. This interest extends to covert sensing through miniaturised discrete audiosondes with LoRa or drone/BT uplink.
+Exploring how to use optics and binary interference patterns (rather than DSP) for scalable audio surveillance. This interest extends to covert sensing through miniaturised discrete audiosondes with LoRa or drone/BT uplink.
 
 ## Corporate OSINT
 
-I am developing automated methods for insider trading intelligence through the relationship analysis of hidden 'arms-length' parties, such as evaluating situations where a site contractor coincidentally invests in a mining concern after performing work — ostensibly for proprietary automated trading purposes.
+Developing automated methods for insider trading intelligence through the relationship analysis of hidden 'arms-length' parties, such as evaluating situations where a site contractor coincidentally invests in a mining concern after performing work — ostensibly for proprietary automated trading purposes.
 
 ---
 
-In my view, "side channel" intelligence acquisition and automated analysis will be of increasing significance for situational awareness. My unique background and hands-on expertise are perfectly suited to tackle these complex challenges.
+In my view, "side channel" sensing and intelligence acquisition and automated analysis will be of increasing significance for situational awareness. My unique background and hands-on expertise are perfectly suited to tackle these complex challenges.
 
 Thank you for your time and consideration.
 <br>

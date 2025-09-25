@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-const puppeteer = require('puppeteer');
+const { chromium } = require('playwright');
 const fs = require('fs');
 const path = require('path');
 const { PDFDocument } = require('pdf-lib');
@@ -19,7 +19,7 @@ const collaborators = [
 async function generateSinglePagePDF(url, description) {
   console.log(`Generating ${description}...`);
 
-  const browser = await puppeteer.launch({
+  const browser = await chromium.launch({
     headless: true,
     args: ['--no-sandbox', '--disable-setuid-sandbox']
   });
@@ -27,12 +27,12 @@ async function generateSinglePagePDF(url, description) {
   const page = await browser.newPage();
 
   // Set smaller viewport for better compression
-  await page.setViewport({ width: 1024, height: 768 });
+  await page.setViewportSize({ width: 1024, height: 768 });
 
   try {
     // Navigate to the page
     await page.goto(url, {
-      waitUntil: 'networkidle0',
+      waitUntil: 'networkidle',
       timeout: 60000
     });
 
@@ -90,7 +90,7 @@ async function generateSinglePagePDF(url, description) {
     await new Promise(resolve => setTimeout(resolve, 3000));
 
     // Force screen media and minimal styling - only hide header
-    await page.emulateMediaType('screen');
+    await page.emulateMedia({ media: 'screen' });
     await page.addStyleTag({
       content: `
         header, .sticky, nav, .mobile-nav, .desktop-nav {
@@ -348,9 +348,12 @@ async function generateSinglePagePDF(url, description) {
       scale: 1.0, // Use full PDF scale, browser zoom handles sizing
       displayHeaderFooter: false,
       preferCSSPageSize: false,
-      pageRanges: '1', // Force single page only
-      // Enable tagged PDFs for better link preservation
-      tagged: true
+      // Enable tagged PDFs for better text structure and accessibility
+      tagged: true,
+      // Optimize for text structure preservation
+      format: undefined, // Use explicit width/height instead of format
+      // Force single page by setting page ranges
+      pageRanges: '1'
     });
 
     console.log(`  ✓ Generated ${description} (${(pdfBuffer.length / 1024).toFixed(2)} KB)`);
@@ -371,7 +374,7 @@ async function generateSinglePagePDF(url, description) {
 async function generatePDF(url, description) {
   console.log(`Generating ${description}...`);
 
-  const browser = await puppeteer.launch({
+  const browser = await chromium.launch({
     headless: true,
     args: ['--no-sandbox', '--disable-setuid-sandbox']
   });
@@ -379,12 +382,12 @@ async function generatePDF(url, description) {
   const page = await browser.newPage();
 
   // Set smaller viewport for better compression
-  await page.setViewport({ width: 1024, height: 768 });
+  await page.setViewportSize({ width: 1024, height: 768 });
 
   try {
     // Navigate to the page
     await page.goto(url, {
-      waitUntil: 'networkidle0',
+      waitUntil: 'networkidle',
       timeout: 60000
     });
 
@@ -438,7 +441,7 @@ async function generatePDF(url, description) {
     await new Promise(resolve => setTimeout(resolve, 3000));
 
     // Force screen media for all pages to preserve layout
-    await page.emulateMediaType('screen');
+    await page.emulateMedia({ media: 'screen' });
 
     // Hide header elements for cover page
     await page.addStyleTag({
@@ -507,8 +510,12 @@ async function generatePDF(url, description) {
       },
       preferCSSPageSize: false,
       scale: 1.0,
-      pageRanges: '1', // Force single page only
-      tagged: true // Enable tagged PDFs for clickable links
+      // Enable tagged PDFs for better text structure and accessibility
+      tagged: true,
+      // Optimize for text structure preservation
+      format: undefined, // Use explicit width/height instead of format
+      // Force single page by setting page ranges
+      pageRanges: '1'
     });
     console.log(`  ✓ Generated ${description} (${(pdfBuffer.length / 1024).toFixed(2)} KB)`);
 
@@ -627,7 +634,7 @@ async function generateCollaboratorPDF(collaborator) {
 
   if (!coverBuffer && !contentBuffer && !contentBufferLight) {
     console.error(`Failed to generate any PDFs for ${collaborator.name}`);
-    return { success: false, filename: collaborator.filename, error: 'Failed to generate PDFs' };
+    return [{ success: false, filename: collaborator.filename, error: 'Failed to generate PDFs' }];
   }
 
   // Ensure output directory exists
