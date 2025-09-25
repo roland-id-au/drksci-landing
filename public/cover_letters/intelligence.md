@@ -3,11 +3,10 @@
 <br>
 <br>
 To whom it may concern,
-
+<br>
+<br>
 I am writing to express my strong interest in the advertised intelligence role. My professional experience has been defined by a relentless drive to understand, analyse, and subvert complex digital systems, a skill set I believe is intimately applicable to this role.
 
-A career built on a deep, hands-on understanding of how systems function and, more importantly, how they can be exploited. My work has included:
-<br>
 <br>
 
 # Background
@@ -22,11 +21,15 @@ I have a strong interest in digital reconnaissance methods and geospatial intell
 
 ## Relentless Investigation
 
-My approach to problem-solving is relentless, one example of which is the successful decade-long search for a lost underground science lab, lost for 59 years — [Upper Cooney Tunnel Rediscovery](https://photos.app.goo.gl/mnj5ZMd6QYviYoNX8).
+My approach to problem-solving is relentless, one example of which is the successful decade-long search for a lost underground science lab, lost for 59 years —
+
+[Upper Cooney Tunnel Rediscovery (Google Photos)](https://photos.app.goo.gl/mnj5ZMd6QYviYoNX8).
 
 ## Ground Truth Perspective
 
-I have extensive ground truth perspective on digital reconnaissance analysis versus actuals, repeatedly and painstakingly validated e.g. [Carbonate Hill, NM](https://www.youtube.com/watch?v=-jVrsfhZahM).
+I have extensive ground truth perspective on digital reconnaissance analysis versus actuals, repeatedly and painstakingly validated e.g.
+
+[Carbonate Hill, NM (YouTube)](https://www.youtube.com/watch?v=-jVrsfhZahM).
 
 ## SecOps
 
@@ -38,7 +41,9 @@ I have executive, operational, and subject matter expert experience directing an
 
 ## Predictive AI Behavior Modeling
 
-Researching human, animal, and logistics behavioral modeling, including traversal strategy and terrain defensibility/insurgence prediction. My recent work includes AI / SAR human movement behavioral prediction and analysis, such as the Mapgyver lost person modeling documented here: [https://drksci.com/research/mapgyver-lost-person-modeling](https://drksci.com/research/mapgyver-lost-person-modeling).
+Researching human, animal, and logistics behavioral modeling, including traversal strategy and terrain defensibility/insurgence prediction. My recent work includes AI / SAR human movement behavioral prediction and analysis, such as the Mapgyver lost person modeling documented below.
+
+[MapGyver (drksci.com)](https://drksci.com/research/mapgyver-lost-person-modeling).
 
 ## Digital Audio & Covert Sensing
 
