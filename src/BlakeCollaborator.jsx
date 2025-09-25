@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Helmet } from 'react-helmet';
 import { Link } from 'react-router-dom';
-import './styles/print.css';
 
 // Company favicons mapping
 const companyFavicons = {

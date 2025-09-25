@@ -85,9 +85,21 @@ async function generateSinglePagePDF(url, description) {
       `
     });
 
-    // Wait for fonts to load
+    // Wait for fonts to load and ensure text rendering is complete
     await page.evaluate(() => document.fonts.ready);
     await new Promise(resolve => setTimeout(resolve, 3000));
+
+    // Ensure text is properly rendered and selectable
+    await page.evaluate(() => {
+      // Force font rendering completion
+      const allElements = document.querySelectorAll('*');
+      allElements.forEach(el => {
+        const style = window.getComputedStyle(el);
+        if (style.fontFamily) {
+          el.style.fontDisplay = 'block';
+        }
+      });
+    });
 
     // Force screen media and minimal styling - only hide header
     await page.emulateMedia({ media: 'screen' });
@@ -348,12 +360,14 @@ async function generateSinglePagePDF(url, description) {
       scale: 1.0, // Use full PDF scale, browser zoom handles sizing
       displayHeaderFooter: false,
       preferCSSPageSize: false,
-      // Enable tagged PDFs for better text structure and accessibility
-      tagged: true,
-      // Optimize for text structure preservation
-      format: undefined, // Use explicit width/height instead of format
+      // Enhanced text structure preservation options
+      tagged: true, // Enable tagged PDFs for accessibility
+      outline: true, // Generate PDF outline/bookmarks
+      printBackground: true, // Preserve all visual elements
       // Force single page by setting page ranges
-      pageRanges: '1'
+      pageRanges: '1',
+      // Optimize for text layer preservation
+      format: undefined // Use explicit width/height for precision
     });
 
     console.log(`  ✓ Generated ${description} (${(pdfBuffer.length / 1024).toFixed(2)} KB)`);
@@ -436,9 +450,21 @@ async function generatePDF(url, description) {
       `
     });
 
-    // Wait for fonts to load
+    // Wait for fonts to load and ensure text rendering is complete
     await page.evaluate(() => document.fonts.ready);
     await new Promise(resolve => setTimeout(resolve, 3000));
+
+    // Ensure text is properly rendered and selectable
+    await page.evaluate(() => {
+      // Force font rendering completion
+      const allElements = document.querySelectorAll('*');
+      allElements.forEach(el => {
+        const style = window.getComputedStyle(el);
+        if (style.fontFamily) {
+          el.style.fontDisplay = 'block';
+        }
+      });
+    });
 
     // Force screen media for all pages to preserve layout
     await page.emulateMedia({ media: 'screen' });
@@ -510,12 +536,14 @@ async function generatePDF(url, description) {
       },
       preferCSSPageSize: false,
       scale: 1.0,
-      // Enable tagged PDFs for better text structure and accessibility
-      tagged: true,
-      // Optimize for text structure preservation
-      format: undefined, // Use explicit width/height instead of format
+      // Enhanced text structure preservation options
+      tagged: true, // Enable tagged PDFs for accessibility
+      outline: true, // Generate PDF outline/bookmarks
+      printBackground: true, // Preserve all visual elements
       // Force single page by setting page ranges
-      pageRanges: '1'
+      pageRanges: '1',
+      // Optimize for text layer preservation
+      format: undefined // Use explicit width/height for precision
     });
     console.log(`  ✓ Generated ${description} (${(pdfBuffer.length / 1024).toFixed(2)} KB)`);
 
