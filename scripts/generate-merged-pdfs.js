@@ -406,10 +406,7 @@ async function generateSinglePagePDF(url, description, pdfFileName = null, pdfDa
 
     console.log(`  ✓ Generated ${description} (${(pdfBuffer.length / 1024).toFixed(2)} KB)`);
 
-    // Compress the PDF to optimize images
-    const compressedBuffer = await compressPDF(pdfBuffer);
-
-    return compressedBuffer;
+    return pdfBuffer;
 
   } catch (error) {
     console.error(`  ✗ Failed to generate ${description}:`, error.message);
@@ -661,33 +658,6 @@ async function mergePDFs(coverBuffer, contentBuffer, outputPath, returnBuffer = 
   }
 }
 
-async function compressPDF(inputBuffer, targetSizeKB = 2048) {
-  console.log('Compressing PDF to reduce file size...');
-
-  try {
-    const pdfDoc = await PDFDocument.load(inputBuffer);
-
-    // Ultra aggressive compression settings for font and object optimization
-    const compressedBytes = await pdfDoc.save({
-      useObjectStreams: true,
-      addDefaultPage: false,
-      objectsPerTick: 25, // Smaller chunks for better compression
-      updateFieldAppearances: false,
-      compress: true
-    });
-
-    const originalSizeKB = inputBuffer.length / 1024;
-    const compressedSizeKB = compressedBytes.length / 1024;
-
-    console.log(`  ✓ Compressed from ${originalSizeKB.toFixed(2)} KB to ${compressedSizeKB.toFixed(2)} KB`);
-
-    return compressedBytes;
-  } catch (error) {
-    console.error(`  ✗ Failed to compress PDF:`, error.message);
-    return inputBuffer; // Return original if compression fails
-  }
-}
-
 async function generateCollaboratorPDF(collaborator) {
   console.log(`\nGenerating PDF for ${collaborator.name}...`);
 
@@ -727,10 +697,7 @@ async function generateCollaboratorPDF(collaborator) {
     let mergedBuffer = await mergePDFs(coverBuffer, contentBuffer, darkOutputPath, true); // Return buffer instead of writing
 
     if (mergedBuffer) {
-      // Always compress to reduce file size
-      mergedBuffer = await compressPDF(mergedBuffer);
-
-      // Write compressed version
+      // Write merged PDF
       fs.writeFileSync(darkOutputPath, mergedBuffer);
 
       results.push({
@@ -750,10 +717,7 @@ async function generateCollaboratorPDF(collaborator) {
     let mergedBuffer = await mergePDFs(coverBuffer, contentBufferLight, lightOutputPath, true); // Return buffer instead of writing
 
     if (mergedBuffer) {
-      // Always compress to reduce file size
-      mergedBuffer = await compressPDF(mergedBuffer);
-
-      // Write compressed version
+      // Write merged PDF
       fs.writeFileSync(lightOutputPath, mergedBuffer);
 
       results.push({

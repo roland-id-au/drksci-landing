@@ -60,11 +60,11 @@ const CoverLetterRenderer = ({ letterName }) => {
               '<svg class="external-link-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="width: 0.9em; height: 0.9em; margin-left: 0.15em; opacity: 0.7; vertical-align: middle; display: inline;"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>'
               : '';
 
-            return `<a href="${url}"${attributes}${externalAttrs} style="display: inline; color: white; text-decoration: underline;"><!--
+            return `<a href="${url}"${attributes}${externalAttrs} style="display: inline; color: white; text-decoration: none;"><!--
               --><img src="${faviconUrl}" alt="" style="width: 16px; height: 16px; opacity: 1; vertical-align: middle; margin-right: 0.35em; display: inline;" /><!--
               -->${linkText}<!--
               -->${externalIcon}<!--
-            --></a>${viaText ? `<span style="color: white; text-decoration: none;">${viaText}</span>` : ''}`;
+            --></a>${viaText ? `<span style="color: #9ca3af; text-decoration: none;">${viaText}</span>` : ''}`;
           } catch (e) {
             // If URL parsing fails, return original link with target="_blank" for http links
             const externalAttrs = url.startsWith('http') ? ' target="_blank" rel="noopener noreferrer"' : '';
@@ -176,10 +176,11 @@ const CoverLetterRenderer = ({ letterName }) => {
         }
         .cover-letter-content a {
           color: white !important;
-          text-decoration: underline !important;
+          text-decoration: none !important;
           transition: opacity 0.2s;
           white-space: nowrap !important;
           display: inline-block !important;
+          font-family: system-ui, -apple-system, sans-serif !important;
         }
         .cover-letter-content a:hover {
           opacity: 0.8;

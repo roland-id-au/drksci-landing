@@ -268,6 +268,17 @@ const BlakeCollaborator = () => {
           html.dark body {
             background-color: #000000 !important;
           }
+
+          /* Remove link underlines for web and print */
+          a, a:link, a:visited, a:hover {
+            text-decoration: none !important;
+            border-bottom: none !important;
+          }
+          @media print {
+            a, a:link, a:visited, a:hover {
+              color: inherit !important;
+            }
+          }
         `}</style>
       </Helmet>
       
@@ -646,7 +657,7 @@ const BlakeCollaborator = () => {
                     </svg>
                   </div>
                   <span className="text-gray-900 dark:text-gray-200 font-light whitespace-nowrap">
-                    <a href="https://whiteribbon.org.au" className="hover:underline">
+                    <a href="https://whiteribbon.org.au">
                       Advocate: White Ribbon Australia / Stop Violence Against Women
                     </a>
                   </span>
@@ -1099,7 +1110,7 @@ const BlakeCollaborator = () => {
           <section className="mb-20">
             <div className="mb-20">
               <h2 className="text-sm font-light mb-8 text-black dark:text-white tracking-[0.3em] uppercase">Seeing is believing</h2>
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl">
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-3 max-w-4xl">
                 <div className="rounded-2xl p-2 subtle-noise" style={{backgroundColor: isDarkMode ? 'transparent' : '#faf9f7'}}>
                   <div
                     className="aspect-square rounded-lg overflow-hidden mb-2 cursor-pointer"
