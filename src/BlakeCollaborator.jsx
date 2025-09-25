@@ -418,7 +418,7 @@ const BlakeCollaborator = () => {
           <section id="profile" className="mb-40">
             {/* Profile Header - HARMONIZED: Using consistent display typography */}
             <div className="mb-20">
-              <h1 className="blake-title text-4xl sm:text-5xl md:text-7xl tracking-tight mb-8 text-black dark:text-white" style={{fontFamily: 'Manrope, system-ui, sans-serif', fontWeight: 500}}>Blake Carter</h1>
+              <h1 id="blake-carter" className="blake-title text-4xl sm:text-5xl md:text-7xl tracking-tight mb-8 text-black dark:text-white" style={{fontFamily: 'Manrope, system-ui, sans-serif', fontWeight: 500}}>Blake Carter</h1>
             </div>
 
             {/* Executive Summary */}
@@ -428,12 +428,10 @@ const BlakeCollaborator = () => {
               <div className="max-w-4xl">
                 {/* HARMONIZED: Body text with consistent styling */}
                 <p className="text-lg font-light leading-relaxed mb-8 text-gray-800 dark:text-gray-300">
-                  Hands-on technical leader with organic experience spanning product development, operational excellence,
-                  and strategic transformation. Passionate about tackling complex challenges that require deep understanding
-                  and versatile execution.
+                  Hands-on technical leader with experience in product development, operations, and strategic transformation. I'm passionate about tackling complex challenges that require a deep understanding and versatile execution.
                 </p>
                 <p className="text-lg font-light leading-relaxed text-gray-800 dark:text-gray-300">
-                  Currently exploring opportunities naturally aligned with my professional experience, tenacity, and disposition to look beyond the status-quo. I am pursuing hands-on learning and the ability to make an impact in new domains above role seniority, as this has always been the source of my professional growth and cross-pollinated experience throughout my career.
+                  I'm currently exploring opportunities to apply my tenacity and hands-on skills to new domains. For me, the ability to make a direct impact is my key motivator, which I value over a role's level of seniority as the primary source of my professional growth.
                 </p>
               </div>
             </div>
@@ -581,42 +579,42 @@ const BlakeCollaborator = () => {
               <div className="blake-grid grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-x-12 gap-y-2 max-w-4xl text-xs">
                 <div className="flex justify-between py-2">
                   <span className="font-light text-black dark:text-gray-400">Location</span>
-                  <span className="text-gray-700 mx-1 flex-1 border-b border-dotted border-gray-200 text-2xs" style={{backgroundImage: 'radial-gradient(circle, rgb(156, 163, 175) 0.5px, transparent 0.5px)', backgroundSize: '3px 1px', backgroundPosition: 'bottom', backgroundRepeat: 'repeat-x', height: '1em', borderBottom: 'none', alignSelf: 'flex-end', marginBottom: '2px'}}></span>
+                  <span className="text-gray-700 mx-1 flex-1 border-b border-dotted border-gray-200 text-2xs" style={{backgroundImage: 'radial-gradient(circle, currentColor 0.5px, transparent 0.5px)', backgroundSize: '3px 1px', backgroundPosition: 'bottom', backgroundRepeat: 'repeat-x', height: '1em', borderBottom: 'none', alignSelf: 'flex-end', marginBottom: '2px', color: 'rgb(156, 163, 175)'}}></span>
                   <span className="font-light text-black dark:text-gray-200">Brisbane</span>
                 </div>
                 <div className="flex justify-between py-2">
                   <span className="font-light text-black dark:text-gray-400">Travel / Relocate</span>
-                  <span className="text-gray-700 mx-1 flex-1 border-b border-dotted border-gray-200 text-2xs" style={{backgroundImage: 'radial-gradient(circle, rgb(156, 163, 175) 0.5px, transparent 0.5px)', backgroundSize: '3px 1px', backgroundPosition: 'bottom', backgroundRepeat: 'repeat-x', height: '1em', borderBottom: 'none', alignSelf: 'flex-end', marginBottom: '2px'}}></span>
+                  <span className="text-gray-700 mx-1 flex-1 border-b border-dotted border-gray-200 text-2xs" style={{backgroundImage: 'radial-gradient(circle, currentColor 0.5px, transparent 0.5px)', backgroundSize: '3px 1px', backgroundPosition: 'bottom', backgroundRepeat: 'repeat-x', height: '1em', borderBottom: 'none', alignSelf: 'flex-end', marginBottom: '2px', color: 'rgb(156, 163, 175)'}}></span>
                   <span className="font-light text-black dark:text-gray-200">Yes</span>
                 </div>
                 <div className="flex justify-between py-2">
                   <span className="font-light text-black dark:text-gray-400">Married</span>
-                  <span className="text-gray-700 mx-1 flex-1 border-b border-dotted border-gray-200 text-2xs" style={{backgroundImage: 'radial-gradient(circle, rgb(156, 163, 175) 0.5px, transparent 0.5px)', backgroundSize: '3px 1px', backgroundPosition: 'bottom', backgroundRepeat: 'repeat-x', height: '1em', borderBottom: 'none', alignSelf: 'flex-end', marginBottom: '2px'}}></span>
+                  <span className="text-gray-700 mx-1 flex-1 border-b border-dotted border-gray-200 text-2xs" style={{backgroundImage: 'radial-gradient(circle, currentColor 0.5px, transparent 0.5px)', backgroundSize: '3px 1px', backgroundPosition: 'bottom', backgroundRepeat: 'repeat-x', height: '1em', borderBottom: 'none', alignSelf: 'flex-end', marginBottom: '2px', color: 'rgb(156, 163, 175)'}}></span>
                   <span className="font-light text-black dark:text-gray-200">Las Vegas</span>
                 </div>
                 <div className="flex justify-between py-2">
                   <span className="font-light text-black dark:text-gray-400">Hobby</span>
-                  <span className="text-gray-700 mx-1 flex-1 border-b border-dotted border-gray-200 text-2xs" style={{backgroundImage: 'radial-gradient(circle, rgb(156, 163, 175) 0.5px, transparent 0.5px)', backgroundSize: '3px 1px', backgroundPosition: 'bottom', backgroundRepeat: 'repeat-x', height: '1em', borderBottom: 'none', alignSelf: 'flex-end', marginBottom: '2px'}}></span>
+                  <span className="text-gray-700 mx-1 flex-1 border-b border-dotted border-gray-200 text-2xs" style={{backgroundImage: 'radial-gradient(circle, currentColor 0.5px, transparent 0.5px)', backgroundSize: '3px 1px', backgroundPosition: 'bottom', backgroundRepeat: 'repeat-x', height: '1em', borderBottom: 'none', alignSelf: 'flex-end', marginBottom: '2px', color: 'rgb(156, 163, 175)'}}></span>
                   <span className="font-light text-black dark:text-gray-200">Spelunking</span>
                 </div>
                 <div className="flex justify-between py-2">
                   <span className="font-light text-black dark:text-gray-400">First Car</span>
-                  <span className="text-gray-700 mx-1 flex-1 border-b border-dotted border-gray-200 text-2xs" style={{backgroundImage: 'radial-gradient(circle, rgb(156, 163, 175) 0.5px, transparent 0.5px)', backgroundSize: '3px 1px', backgroundPosition: 'bottom', backgroundRepeat: 'repeat-x', height: '1em', borderBottom: 'none', alignSelf: 'flex-end', marginBottom: '2px'}}></span>
+                  <span className="text-gray-700 mx-1 flex-1 border-b border-dotted border-gray-200 text-2xs" style={{backgroundImage: 'radial-gradient(circle, currentColor 0.5px, transparent 0.5px)', backgroundSize: '3px 1px', backgroundPosition: 'bottom', backgroundRepeat: 'repeat-x', height: '1em', borderBottom: 'none', alignSelf: 'flex-end', marginBottom: '2px', color: 'rgb(156, 163, 175)'}}></span>
                   <span className="font-light text-black dark:text-gray-200">'91 Prelude</span>
                 </div>
                 <div className="flex justify-between py-2">
                   <span className="font-light text-black dark:text-gray-400">First PC</span>
-                  <span className="text-gray-700 mx-1 flex-1 border-b border-dotted border-gray-200 text-2xs" style={{backgroundImage: 'radial-gradient(circle, rgb(156, 163, 175) 0.5px, transparent 0.5px)', backgroundSize: '3px 1px', backgroundPosition: 'bottom', backgroundRepeat: 'repeat-x', height: '1em', borderBottom: 'none', alignSelf: 'flex-end', marginBottom: '2px'}}></span>
+                  <span className="text-gray-700 mx-1 flex-1 border-b border-dotted border-gray-200 text-2xs" style={{backgroundImage: 'radial-gradient(circle, currentColor 0.5px, transparent 0.5px)', backgroundSize: '3px 1px', backgroundPosition: 'bottom', backgroundRepeat: 'repeat-x', height: '1em', borderBottom: 'none', alignSelf: 'flex-end', marginBottom: '2px', color: 'rgb(156, 163, 175)'}}></span>
                   <span className="font-light text-black dark:text-gray-200">Osbourne 1</span>
                 </div>
                 <div className="flex justify-between py-2">
                   <span className="font-light text-black dark:text-gray-400">Holidays</span>
-                  <span className="text-gray-700 mx-1 flex-1 border-b border-dotted border-gray-200 text-2xs" style={{backgroundImage: 'radial-gradient(circle, rgb(156, 163, 175) 0.5px, transparent 0.5px)', backgroundSize: '3px 1px', backgroundPosition: 'bottom', backgroundRepeat: 'repeat-x', height: '1em', borderBottom: 'none', alignSelf: 'flex-end', marginBottom: '2px'}}></span>
+                  <span className="text-gray-700 mx-1 flex-1 border-b border-dotted border-gray-200 text-2xs" style={{backgroundImage: 'radial-gradient(circle, currentColor 0.5px, transparent 0.5px)', backgroundSize: '3px 1px', backgroundPosition: 'bottom', backgroundRepeat: 'repeat-x', height: '1em', borderBottom: 'none', alignSelf: 'flex-end', marginBottom: '2px', color: 'rgb(156, 163, 175)'}}></span>
                   <span className="font-light text-black dark:text-gray-200">Waratah, TAS</span>
                 </div>
                 <div className="flex justify-between py-2">
                   <span className="font-light text-black dark:text-gray-400">Weakness</span>
-                  <span className="text-gray-700 mx-1 flex-1 border-b border-dotted border-gray-200 text-2xs" style={{backgroundImage: 'radial-gradient(circle, rgb(156, 163, 175) 0.5px, transparent 0.5px)', backgroundSize: '3px 1px', backgroundPosition: 'bottom', backgroundRepeat: 'repeat-x', height: '1em', borderBottom: 'none', alignSelf: 'flex-end', marginBottom: '2px'}}></span>
+                  <span className="text-gray-700 mx-1 flex-1 border-b border-dotted border-gray-200 text-2xs" style={{backgroundImage: 'radial-gradient(circle, currentColor 0.5px, transparent 0.5px)', backgroundSize: '3px 1px', backgroundPosition: 'bottom', backgroundRepeat: 'repeat-x', height: '1em', borderBottom: 'none', alignSelf: 'flex-end', marginBottom: '2px', color: 'rgb(156, 163, 175)'}}></span>
                   <span className="font-light text-black dark:text-gray-200">Challenges</span>
                 </div>
               </div>
@@ -661,13 +659,13 @@ const BlakeCollaborator = () => {
           {/* Resume Section */}
           <section id="resume" className="mb-40">
             {/* HARMONIZED: Section heading */}
-            <h2 className="text-4xl md:text-5xl tracking-tight mb-20 text-black dark:text-white" style={{fontFamily: 'Manrope, system-ui, sans-serif', fontWeight: 500}}>Professional Experience</h2>
+            <h2 id="professional-experience" className="text-4xl md:text-5xl tracking-tight mb-20 text-black dark:text-white" style={{fontFamily: 'Manrope, system-ui, sans-serif', fontWeight: 500}}>Professional Experience</h2>
             
             {/* Drksci */}
             <div className="mb-20   experience-item">
               <div className="mb-8 experience-header">
                 {/* HARMONIZED: Job title */}
-                <h3 className="text-2xl mb-3 tracking-wide text-black dark:text-white experience-title" style={{fontFamily: 'Manrope, system-ui, sans-serif', fontWeight: 700}}>Founder</h3>
+                <h3 id="founder-drksci" className="text-2xl mb-3 tracking-wide text-black dark:text-white experience-title" style={{fontFamily: 'Manrope, system-ui, sans-serif', fontWeight: 700}}>Founder</h3>
                 <div className="flex items-center gap-3 mb-2">
                   {getFavicon('d/rksci') && (
                     <img
@@ -689,7 +687,7 @@ const BlakeCollaborator = () => {
               <div className="space-y-10">
                 <div>
                   {/* HARMONIZED: Subsection label */}
-                  <h4 className="text-sm font-light mb-8 text-black dark:text-white tracking-[0.3em] uppercase">Key Projects & Research</h4>
+                  <h4 id="key-projects-research" className="text-sm font-light mb-8 text-black dark:text-white tracking-[0.3em] uppercase">Key Projects & Research</h4>
                   <div className="space-y-2 max-w-4xl">
                     <div className="flex items-baseline">
                       <span className="text-purple-400 mr-4 font-light flex-shrink-0">/</span>
@@ -706,6 +704,14 @@ const BlakeCollaborator = () => {
                       <span className="text-green-400 mr-4 font-light flex-shrink-0">/</span>
                       <div className="text-sm font-light text-gray-800 dark:text-gray-300">
                         <a href="https://drksci.com/research/mapgyver-lost-person-modeling" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 hover:text-green-300 transition-colors">
+                          {getFavicon('d/rksci') && (
+                            <img
+                              src={getFavicon('d/rksci')}
+                              alt=""
+                              className="w-4 h-4 opacity-80"
+                              style={{filter: 'brightness(1.2)'}}
+                            />
+                          )}
                           <strong>MapGyver</strong>
                           <svg className="w-3 h-3 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
@@ -728,6 +734,14 @@ const BlakeCollaborator = () => {
                       <span className="text-orange-400 mr-4 font-light flex-shrink-0">/</span>
                       <div className="text-sm font-light text-gray-800 dark:text-gray-300">
                         <a href="https://drksci.com/research/prophet-experiment" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 hover:text-orange-300 transition-colors">
+                          {getFavicon('d/rksci') && (
+                            <img
+                              src={getFavicon('d/rksci')}
+                              alt=""
+                              className="w-4 h-4 opacity-80"
+                              style={{filter: 'brightness(1.2)'}}
+                            />
+                          )}
                           <strong>Prophet</strong>
                           <svg className="w-3 h-3 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
@@ -755,7 +769,7 @@ const BlakeCollaborator = () => {
             <div className="mb-20  ">
               <div className="mb-8">
                 {/* HARMONIZED: Job title */}
-                <h3 className="text-2xl mb-3 tracking-wide text-black dark:text-white" style={{fontFamily: 'Manrope, system-ui, sans-serif', fontWeight: 700}}>Chief Executive Officer</h3>
+                <h3 id="ceo-leanrada" className="text-2xl mb-3 tracking-wide text-black dark:text-white" style={{fontFamily: 'Manrope, system-ui, sans-serif', fontWeight: 700}}>Chief Executive Officer</h3>
                 <div className="flex items-center gap-3 mb-2">
                   {getFavicon('ValuePRO Software') && (
                     <img
@@ -777,7 +791,7 @@ const BlakeCollaborator = () => {
                 </p>
               </div>
               <div className="mt-8">
-                <h4 className="text-sm font-light text-black dark:text-white mb-4 tracking-[0.3em] uppercase">Key Accomplishments</h4>
+                <h4 id="key-accomplishments-ceo" className="text-sm font-light text-black dark:text-white mb-4 tracking-[0.3em] uppercase">Key Accomplishments</h4>
                 <div className="space-y-2 max-w-4xl">
                   <div className="flex items-baseline">
                     <span className="text-gray-800 dark:text-gray-300 mr-4 font-light flex-shrink-0">/</span>
@@ -799,7 +813,7 @@ const BlakeCollaborator = () => {
             <div className="mb-20  ">
               <div className="mb-8">
                 {/* HARMONIZED: Job title */}
-                <h3 className="text-2xl mb-3 tracking-wide text-black dark:text-white" style={{fontFamily: 'Manrope, system-ui, sans-serif', fontWeight: 700}}>Operations Manager</h3>
+                <h3 id="operations-manager-leanrada" className="text-2xl mb-3 tracking-wide text-black dark:text-white" style={{fontFamily: 'Manrope, system-ui, sans-serif', fontWeight: 700}}>Operations Manager</h3>
                 <div className="flex items-center gap-3 mb-2">
                   {getFavicon('ValuePRO Software') && (
                     <img
@@ -819,7 +833,7 @@ const BlakeCollaborator = () => {
                 Directed company-wide technical operations, focusing on security, compliance, and professional services. I led technical teams, managed critical infrastructure, and ensured the company consistently met ISO 27001/9001 certification standards.
               </p>
               <div className="mt-8">
-                <h4 className="text-sm font-light text-black dark:text-white mb-4 tracking-[0.3em] uppercase">Key Accomplishments</h4>
+                <h4 id="key-accomplishments-operations" className="text-sm font-light text-black dark:text-white mb-4 tracking-[0.3em] uppercase">Key Accomplishments</h4>
                 <div className="space-y-2 max-w-4xl">
                 <div className="flex items-baseline">
                   <span className="text-gray-800 dark:text-gray-300 mr-4 font-light flex-shrink-0">/</span>
@@ -849,7 +863,7 @@ const BlakeCollaborator = () => {
             <div className="mb-20  ">
               <div className="mb-8">
                 {/* HARMONIZED: Job title */}
-                <h3 className="text-2xl mb-3 tracking-wide text-black dark:text-white" style={{fontFamily: 'Manrope, system-ui, sans-serif', fontWeight: 700}}>Senior Developer / Software Architect</h3>
+                <h3 id="senior-developer-leanrada" className="text-2xl mb-3 tracking-wide text-black dark:text-white" style={{fontFamily: 'Manrope, system-ui, sans-serif', fontWeight: 700}}>Senior Developer / Software Architect</h3>
                 <div className="flex items-center gap-3 mb-2">
                   {getFavicon('ValuePRO Software') && (
                     <img
@@ -869,7 +883,7 @@ const BlakeCollaborator = () => {
                 Led hands-on development for projects on .NET and Objective-C stacks while providing technical leadership. I introduced modern DevOps practices to the company and also managed the Customer Support function, using direct client feedback to improve the development process and product quality.
               </p>
               <div className="mt-8">
-                <h4 className="text-sm font-light text-black dark:text-white mb-4 tracking-[0.3em] uppercase">Key Accomplishments</h4>
+                <h4 id="key-accomplishments-developer" className="text-sm font-light text-black dark:text-white mb-4 tracking-[0.3em] uppercase">Key Accomplishments</h4>
                 <div className="space-y-2 max-w-4xl">
                 <div className="flex items-baseline">
                   <span className="text-gray-800 dark:text-gray-300 mr-4 font-light flex-shrink-0">/</span>
@@ -890,7 +904,7 @@ const BlakeCollaborator = () => {
             {/* Earlier Career */}
             <div className="mb-20  ">
               <div className="mb-8">
-                <h3 className="text-2xl mb-3 tracking-wide text-black dark:text-white" style={{fontFamily: 'Manrope, system-ui, sans-serif', fontWeight: 700}}>Earlier Career</h3>
+                <h3 id="earlier-career" className="text-2xl mb-3 tracking-wide text-black dark:text-white" style={{fontFamily: 'Manrope, system-ui, sans-serif', fontWeight: 700}}>Earlier Career</h3>
                 <p className="text-black dark:text-white mb-1 font-light text-sm tracking-wider">2003 - 2019</p>
                 <p className="text-xs text-gray-600 dark:text-gray-400 font-light tracking-wider uppercase">
                   Entrepreneurial Ventures • Technology Innovation • Platform Development
@@ -1019,7 +1033,7 @@ const BlakeCollaborator = () => {
 
           {/* Contact Section */}
           <section id="contact" className="mb-40 -mt-8">
-            <h2 className="text-4xl md:text-5xl tracking-tight mb-10 text-black dark:text-white" style={{fontFamily: 'Manrope, system-ui, sans-serif', fontWeight: 500}}>Phone lines are open</h2>
+            <h2 id="phone-lines-are-open" className="text-4xl md:text-5xl tracking-tight mb-10 text-black dark:text-white" style={{fontFamily: 'Manrope, system-ui, sans-serif', fontWeight: 500}}>Phone lines are open</h2>
 
             <div className="max-w-4xl mb-12">
               <p className="text-lg font-light leading-relaxed text-gray-800 dark:text-gray-300">
@@ -1067,7 +1081,7 @@ const BlakeCollaborator = () => {
 
           {/* Biography Section */}
           <section className="mb-20">
-            <h2 className="text-4xl md:text-5xl tracking-tight mb-20 text-black dark:text-white mt-48" style={{fontFamily: 'Manrope, system-ui, sans-serif', fontWeight: 500}}>Biography</h2>
+            <h2 id="biography" className="text-4xl md:text-5xl tracking-tight mb-20 text-black dark:text-white mt-48" style={{fontFamily: 'Manrope, system-ui, sans-serif', fontWeight: 500}}>Biography</h2>
 
             <div className="max-w-4xl mb-16">
               <p className="text-lg font-light leading-relaxed text-gray-800 dark:text-gray-300 mb-6">

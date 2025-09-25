@@ -16,6 +16,7 @@ import BlakeCoverPage from './BlakeCoverPage';
 import BlakeCoverLetterPage from './BlakeCoverLetterPage';
 import CandidateApplication from './CandidateApplication';
 import ShortUrlResolver from './ShortUrlResolver';
+import LinkTracker from './LinkTracker';
 
 function App() {
   return (
@@ -52,6 +53,7 @@ function App() {
         <Route path="/c/:collaborator/j/*" element={<CandidateApplication />} />
         <Route path="/collaborator/:collaborator/job/*" element={<CandidateApplication />} />
         <Route path="/a/:shortCode" element={<ShortUrlResolver />} />
+        <Route path="/go" element={<LinkTracker />} />
       </Routes>
     </Router>
   );

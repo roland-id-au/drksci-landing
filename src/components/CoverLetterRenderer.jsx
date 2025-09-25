@@ -15,7 +15,44 @@ const CoverLetterRenderer = ({ letterName }) => {
           throw new Error(`Cover letter not found: ${letterName}`);
         }
         const markdown = await response.text();
-        const html = marked(markdown);
+        let html = marked(markdown);
+
+        // Enhance links with favicons and external link icons
+        html = html.replace(/<a href="([^"]*)"([^>]*)>([^<]*)<\/a>/g, (match, url, attributes, text) => {
+          try {
+            const urlObj = new URL(url);
+            const domain = urlObj.hostname;
+
+            // Use drksci favicon for drksci URLs, otherwise use Google's favicon service
+            let faviconUrl;
+            if (domain === 'drksci.com') {
+              faviconUrl = '/assets/drksci-favicon.svg';
+            } else if (domain === 'photos.google.com') {
+              // Use Google Photos icon
+              faviconUrl = 'https://www.google.com/s2/favicons?domain=photos.google.com&sz=16';
+            } else {
+              faviconUrl = `https://www.google.com/s2/favicons?domain=${domain}&sz=16`;
+            }
+
+            // Add target="_blank" and rel attributes for external links
+            const externalAttrs = url.startsWith('http') ? ' target="_blank" rel="noopener noreferrer"' : '';
+
+            // External link icon SVG with proper alignment
+            const externalIcon = url.startsWith('http') ?
+              '<svg class="external-link-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="width: 12px; height: 12px; margin-left: 2px; opacity: 0.7; vertical-align: baseline;"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>'
+              : '';
+
+            return `<a href="${url}"${attributes}${externalAttrs} style="display: inline-flex; align-items: center; gap: 0.25rem; line-height: inherit;">
+              <img src="${faviconUrl}" alt="" style="width: 16px; height: 16px; opacity: 0.8; filter: brightness(1.2); vertical-align: baseline; flex-shrink: 0;" />
+              ${text}${externalIcon}
+            </a>`;
+          } catch (e) {
+            // If URL parsing fails, return original link with target="_blank" for http links
+            const externalAttrs = url.startsWith('http') ? ' target="_blank" rel="noopener noreferrer"' : '';
+            return `<a href="${url}"${attributes}${externalAttrs}>${text}</a>`;
+          }
+        });
+
         setContent(html);
         setError(null);
       } catch (err) {
