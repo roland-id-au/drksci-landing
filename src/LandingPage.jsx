@@ -457,10 +457,10 @@ export default function LandingPage({ showEmilyModal: initialShowModal = false }
         <div className="fixed inset-0 bg-black bg-opacity-90 flex items-center justify-center z-50 p-4">
           <div className="bg-gray-900 rounded-lg p-8 max-w-md w-full">
             <div className="text-center">
-              <img 
-                src="/media/team/team-emily_still.png" 
+              <img
+                src="/media/team/team-emily_still.png"
                 alt="Emily"
-                className="w-32 h-32 rounded-full mx-auto mb-6"
+                className="w-32 h-32 rounded-full mx-auto mb-6 grayscale"
               />
               
               {/* HARMONIZED: Content heading */}

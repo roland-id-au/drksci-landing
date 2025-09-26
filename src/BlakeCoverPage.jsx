@@ -134,9 +134,9 @@ const BlakeCoverPage = () => {
                 {/* PDF clickable overlay */}
                 <div className="absolute inset-0 bg-transparent z-10" style={{content: '""'}}></div>
               </a>
-              <a href="https://drksci.com/projects"
+              <a href="https://drksci.com/portfolio"
                  className="cover-link text-sm text-gray-400 hover:text-white transition-colors duration-300 font-light tracking-wide relative">
-                <span className="text-gray-400">drksci.com/</span><span className="text-white">projects</span>
+                <span className="text-gray-400">drksci.com/</span><span className="text-white">portfolio</span>
                 {/* PDF clickable overlay */}
                 <div className="absolute inset-0 bg-transparent z-10" style={{content: '""'}}></div>
               </a>
