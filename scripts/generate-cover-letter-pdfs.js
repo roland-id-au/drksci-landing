@@ -4,6 +4,7 @@ const { chromium } = require('playwright');
 const fs = require('fs');
 const path = require('path');
 const { PDFDocument } = require('pdf-lib');
+const { optimizePDF } = require('./pdf-optimizer');
 
 
 // Function to get all cover letters from the directory
@@ -273,6 +274,14 @@ async function generateCoverLetterPDFs() {
       const darkFilename = `blake-carter-cover-${letterName}.pdf`;
       const darkPath = path.join(__dirname, '..', 'public', 'pdfs', darkFilename);
       fs.writeFileSync(darkPath, darkPdf);
+
+      // Create optimized version
+      try {
+        await optimizePDF(darkPath);
+        console.log(`  ✓ Created prepress optimized version: ${darkFilename.replace('.pdf', '-prepress.pdf')}`);
+      } catch (error) {
+        console.log(`  ⚠️  Failed to optimize ${darkFilename}: ${error.message}`);
+      }
 
       const darkSizeKB = Math.round(darkPdf.length / 1024 * 100) / 100;
 

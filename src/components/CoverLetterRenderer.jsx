@@ -28,6 +28,15 @@ const CoverLetterRenderer = ({ letterName }) => {
 
         // Enhance links with favicons and external link icons
         html = html.replace(/<a href="([^"]*)"([^>]*)>([^<]*)<\/a>/g, (match, url, attributes, text) => {
+          // Wrap external links with tracking
+          let finalUrl = url;
+          if (url.startsWith('http') || url.startsWith('mailto:')) {
+            const today = new Date().toISOString().split('T')[0];
+            const encodedUrl = encodeURIComponent(url);
+            const encodedFrom = encodeURIComponent(`blake-carter-cover-${letterName}.pdf`);
+            const encodedDate = encodeURIComponent(today);
+            finalUrl = `/go?to=${encodedUrl}&from=${encodedFrom}&v=${encodedDate}`;
+          }
           // Check if text contains "(via xxx)" pattern
           const viaMatch = text.match(/^(.+?)(\s*\(via [^)]+\))$/);
           let linkText = text;
@@ -38,7 +47,7 @@ const CoverLetterRenderer = ({ letterName }) => {
             viaText = viaMatch[2];
           }
           try {
-            const urlObj = new URL(url);
+            const urlObj = new URL(url.startsWith('http') ? url : `https://${url}`);
             const domain = urlObj.hostname;
 
             // Use drksci favicon for drksci URLs, Google Photos icon for Google Photos URLs, otherwise use Google's favicon service
@@ -60,7 +69,7 @@ const CoverLetterRenderer = ({ letterName }) => {
               '<svg class="external-link-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="width: 0.9em; height: 0.9em; margin-left: 0.15em; opacity: 0.7; vertical-align: middle; display: inline;"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>'
               : '';
 
-            return `<a href="${url}"${attributes}${externalAttrs} style="display: inline; color: white; text-decoration: none;"><!--
+            return `<a href="${finalUrl}"${attributes}${externalAttrs} style="display: inline; color: white; text-decoration: none;"><!--
               --><img src="${faviconUrl}" alt="" style="width: 16px; height: 16px; opacity: 1; vertical-align: middle; margin-right: 0.35em; display: inline;" /><!--
               -->${linkText}<!--
               -->${externalIcon}<!--
@@ -68,7 +77,7 @@ const CoverLetterRenderer = ({ letterName }) => {
           } catch (e) {
             // If URL parsing fails, return original link with target="_blank" for http links
             const externalAttrs = url.startsWith('http') ? ' target="_blank" rel="noopener noreferrer"' : '';
-            return `<a href="${url}"${attributes}${externalAttrs}>${text}</a>`;
+            return `<a href="${finalUrl}"${attributes}${externalAttrs}>${text}</a>`;
           }
         });
 

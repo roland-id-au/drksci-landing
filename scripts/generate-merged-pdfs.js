@@ -4,6 +4,7 @@ const { chromium } = require('playwright');
 const fs = require('fs');
 const path = require('path');
 const { PDFDocument } = require('pdf-lib');
+const { optimizePDF } = require('./pdf-optimizer');
 
 const collaborators = [
   {
@@ -700,6 +701,14 @@ async function generateCollaboratorPDF(collaborator) {
       // Write merged PDF
       fs.writeFileSync(darkOutputPath, mergedBuffer);
 
+      // Create optimized version
+      try {
+        await optimizePDF(darkOutputPath);
+        console.log(`  ✓ Created prepress optimized version: ${collaborator.filename.replace('.pdf', '-prepress.pdf')}`);
+      } catch (error) {
+        console.log(`  ⚠️  Failed to optimize ${collaborator.filename}: ${error.message}`);
+      }
+
       results.push({
         success: true,
         filename: collaborator.filename,
@@ -719,6 +728,14 @@ async function generateCollaboratorPDF(collaborator) {
     if (mergedBuffer) {
       // Write merged PDF
       fs.writeFileSync(lightOutputPath, mergedBuffer);
+
+      // Create optimized version
+      try {
+        await optimizePDF(lightOutputPath);
+        console.log(`  ✓ Created prepress optimized version: ${collaborator.filenameLight.replace('.pdf', '-prepress.pdf')}`);
+      } catch (error) {
+        console.log(`  ⚠️  Failed to optimize ${collaborator.filenameLight}: ${error.message}`);
+      }
 
       results.push({
         success: true,

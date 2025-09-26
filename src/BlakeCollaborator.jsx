@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Helmet } from 'react-helmet';
 import { Link } from 'react-router-dom';
+import { wrapWithTracking } from './utils/linkTracker';
 
 // Company favicons mapping
 const companyFavicons = {
@@ -368,7 +369,7 @@ const BlakeCollaborator = () => {
                 <div className="flex items-center space-x-2">
                   {/* LinkedIn Button */}
                   <a
-                    href="https://www.linkedin.com/in/blake-carter-5995ab5a/"
+                    href={wrapWithTracking("https://www.linkedin.com/in/blake-carter-5995ab5a/")}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center justify-center w-8 h-8 sm:w-10 sm:h-10 transition-colors text-black hover:text-gray-900 dark:text-gray-300 dark:hover:text-white"
@@ -521,7 +522,7 @@ const BlakeCollaborator = () => {
               <div className="mb-8">
                 <h2 className="text-sm font-light tracking-[0.3em] uppercase text-black dark:text-white inline-flex items-center gap-2">
                   Working Genius
-                  <a href="https://www.workinggenius.com/" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 transition-colors">
+                  <a href={wrapWithTracking("https://www.workinggenius.com/")} target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 transition-colors">
                     <span className="material-symbols-outlined" style={{fontSize: '16px', fontVariationSettings: "'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 16"}}>open_in_new</span>
                   </a>
                 </h2>
@@ -657,7 +658,7 @@ const BlakeCollaborator = () => {
                     </svg>
                   </div>
                   <span className="text-gray-900 dark:text-gray-200 font-light whitespace-nowrap">
-                    <a href="https://whiteribbon.org.au">
+                    <a href={wrapWithTracking("https://whiteribbon.org.au")}>
                       Advocate: White Ribbon Australia / Stop Violence Against Women
                     </a>
                   </span>
@@ -703,7 +704,7 @@ const BlakeCollaborator = () => {
                     <div className="flex items-baseline">
                       <span className="text-purple-400 mr-4 font-light flex-shrink-0">/</span>
                       <div className="text-sm font-light text-gray-800 dark:text-gray-300">
-                        <a href="https://kareer.app" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 hover:text-purple-300 transition-colors">
+                        <a href={wrapWithTracking("https://kareer.app")} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 hover:text-purple-300 transition-colors">
                           <strong>Kareer.app</strong>
                           <svg className="w-3 h-3 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
@@ -714,7 +715,7 @@ const BlakeCollaborator = () => {
                     <div className="flex items-baseline">
                       <span className="text-green-400 mr-4 font-light flex-shrink-0">/</span>
                       <div className="text-sm font-light text-gray-800 dark:text-gray-300">
-                        <a href="https://drksci.com/research/mapgyver-lost-person-modeling" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 hover:text-green-300 transition-colors">
+                        <a href={wrapWithTracking("https://drksci.com/research/mapgyver-lost-person-modeling")} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 hover:text-green-300 transition-colors">
                           <strong>MapGyver</strong>
                           <svg className="w-3 h-3 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
@@ -725,7 +726,7 @@ const BlakeCollaborator = () => {
                     <div className="flex items-baseline">
                       <span className="text-pink-400 mr-4 font-light flex-shrink-0">/</span>
                       <div className="text-sm font-light text-gray-800 dark:text-gray-300">
-                        <a href="https://princhester.pages.dev/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 hover:text-pink-300 transition-colors">
+                        <a href={wrapWithTracking("https://princhester.pages.dev/")} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 hover:text-pink-300 transition-colors">
                           <strong>Princhester Associates</strong>
                           <svg className="w-3 h-3 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
@@ -736,7 +737,7 @@ const BlakeCollaborator = () => {
                     <div className="flex items-baseline">
                       <span className="text-orange-400 mr-4 font-light flex-shrink-0">/</span>
                       <div className="text-sm font-light text-gray-800 dark:text-gray-300">
-                        <a href="https://drksci.com/research/prophet-experiment" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 hover:text-orange-300 transition-colors">
+                        <a href={wrapWithTracking("https://drksci.com/research/prophet-experiment")} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 hover:text-orange-300 transition-colors">
                           <strong>Prophet</strong>
                           <svg className="w-3 h-3 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
@@ -747,7 +748,7 @@ const BlakeCollaborator = () => {
                     <div className="flex items-baseline">
                       <span className="text-cyan-400 mr-4 font-light flex-shrink-0">/</span>
                       <div className="text-sm font-light text-gray-800 dark:text-gray-300">
-                        <a href="https://rained.cloud" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 hover:text-cyan-300 transition-colors">
+                        <a href={wrapWithTracking("https://rained.cloud")} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 hover:text-cyan-300 transition-colors">
                           <strong>rained.cloud</strong>
                           <svg className="w-3 h-3 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
@@ -1047,7 +1048,7 @@ const BlakeCollaborator = () => {
                 </div>
                 {/* Transparent overlay link */}
                 <a
-                  href="mailto:blake@drksci.com"
+                  href={wrapWithTracking("mailto:blake@drksci.com")}
                   className="absolute inset-0 z-0"
                   aria-label="Email blake@drksci.com"
                 ></a>
@@ -1063,7 +1064,7 @@ const BlakeCollaborator = () => {
                 </div>
                 {/* Transparent overlay link */}
                 <a
-                  href="https://calendly.com/blake-roland/30min"
+                  href={wrapWithTracking("https://calendly.com/blake-roland/30min")}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="absolute inset-0 z-0"
@@ -1312,7 +1313,7 @@ const BlakeCollaborator = () => {
               </svg>
 
               {/* YouTube */}
-              <a href="https://www.youtube.com/@qldabandonedmines" target="_blank" rel="noopener noreferrer" title="YouTube Channel">
+              <a href={wrapWithTracking("https://www.youtube.com/@qldabandonedmines")} target="_blank" rel="noopener noreferrer" title="YouTube Channel">
                 <svg className="w-5 h-5" viewBox="0 0 24 24">
                   <path fill="currentColor" d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
                 </svg>
