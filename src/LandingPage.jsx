@@ -99,7 +99,7 @@ function TeamAvatar({ name, video, still, onEmilyClick, onBlakeClick }) {
             muted
             loop
             playsInline
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover grayscale"
           >
             <source src={video} type="video/webm" />
           </video>
@@ -107,7 +107,7 @@ function TeamAvatar({ name, video, still, onEmilyClick, onBlakeClick }) {
           <img
             src={still || "/media/team/team-emily_still-black.png"}
             alt={name}
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover grayscale"
           />
         )}
       </div>
