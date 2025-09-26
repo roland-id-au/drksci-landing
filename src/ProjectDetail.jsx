@@ -207,7 +207,16 @@ export default function ProjectDetail() {
   const isPortfolio = location.includes('/portfolio/');
   const isResearch = location.includes('/miskatonics/') || location.includes('/research/');
 
-  const project = allProjects[id];
+  // Get project ID from params or extract from pathname for hardcoded routes
+  let projectId = id;
+  if (!projectId) {
+    // Extract project ID from pathname for specific routes
+    if (location.includes('/sideplot-ai-ideation')) {
+      projectId = 'sideplot-ai-ideation';
+    }
+  }
+
+  const project = allProjects[projectId];
 
   useEffect(() => {
     // Simulate loading delay for smooth transition

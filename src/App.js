@@ -34,10 +34,12 @@ function App() {
         <Route path="/research/prophet-experiment" element={<ProphetDetail />} />
         <Route path="/research/princhester-associates" element={<PrinchesterDetail />} />
         <Route path="/research/sideplot-ai-ideation" element={<ProjectDetail />} />
+        <Route path="/research/:id" element={<ProjectDetail />} />
         <Route path="/miskatonics/mapgyver-lost-person-modeling" element={<MapgyverDetail />} />
         <Route path="/miskatonics/prophet-experiment" element={<ProphetDetail />} />
         <Route path="/miskatonics/princhester-associates" element={<PrinchesterDetail />} />
         <Route path="/miskatonics/sideplot-ai-ideation" element={<ProjectDetail />} />
+        <Route path="/miskatonics/:id" element={<ProjectDetail />} />
         {/* Short URL patterns */}
         <Route path="/c" element={<CollaboratorIndex />} />
         <Route path="/c/blake" element={<BlakeCollaborator />} />
