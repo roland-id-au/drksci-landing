@@ -4,7 +4,7 @@
  * @param {string} source - Source identifier (e.g., PDF filename)
  * @returns {string} - Wrapped tracking URL or original URL if internal
  */
-export function wrapWithTracking(url, source = 'blake-carter-resume.pdf') {
+export function wrapWithTracking(url, source = 'blake-carter-complete-ats.pdf') {
   if (!url || (!url.startsWith('http') && !url.startsWith('mailto:'))) {
     return url;
   }

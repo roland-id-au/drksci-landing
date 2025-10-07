@@ -124,10 +124,10 @@ const BlakeCollaborator = () => {
   }, [modalImage]);
 
   const generatePDF = () => {
-    // Use the pre-generated static PDF - switch between dark/light mode variants
+    // Use the complete ATS PDF with cover + resume + ATS transcript + diagnostics
     const link = document.createElement('a');
-    link.href = isDarkMode ? '/pdfs/blake-carter-resume.pdf' : '/pdfs/blake-carter-resume-light.pdf';
-    link.download = isDarkMode ? 'Blake_Carter_Resume.pdf' : 'Blake_Carter_Resume_Light.pdf';
+    link.href = '/pdfs/blake-carter-complete-ats.pdf';
+    link.download = 'Blake_Carter_Complete_Resume.pdf';
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
