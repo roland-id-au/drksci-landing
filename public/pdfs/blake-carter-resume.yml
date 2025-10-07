@@ -13,7 +13,7 @@ content:
       • Thrives on novel challenges, hands-on learning, jumping in the deep end
       • Pursues meaningful work with passion for ground-up understanding, rather than position descriptions
       • Values meaningful stakeholder relationships and dependability as essential foundations
-    url: https://drksci.com
+    url: 'https://drksci.com'
   location:
     city: Brisbane
     region: Queensland
@@ -22,12 +22,12 @@ content:
   profiles:
     - network: LinkedIn
       username: blake-carter-5995ab5a
-      url: https://www.linkedin.com/in/blake-carter-5995ab5a/
+      url: 'https://www.linkedin.com/in/blake-carter-5995ab5a/'
   education:
     - institution: University of Queensland
       area: Information Technology / Arts
       degree: Bachelor
-      startDate: "2006"
+      startDate: '2006'
       endDate: null
       summary: |-
         Self-directed learning approach with focus on practical application
@@ -38,7 +38,7 @@ content:
   work:
     - name: Drksci
       position: Founder
-      startDate: "2024-08-01"
+      startDate: '2024-08-01'
       endDate: null
       summary: |-
         Founded d/rksci as an innovation laboratory exploring the intersection of AI, data science, and practical business applications. Specialised in rapidly prototyping novel solutions and transforming ambitious concepts into market-ready realities.
@@ -64,8 +64,8 @@ content:
         - Technology Strategy
     - name: ValuePRO Software
       position: Chief Executive Officer
-      startDate: "2022-01-01"
-      endDate: "2024-08-01"
+      startDate: '2022-01-01'
+      endDate: '2024-08-01'
       summary: |-
         Revitalised ValuePRO's product portfolio and positioned the company as the premier PropTech solutions partner for the valuation industry following acquisition by Constellation Software. Led modernisation of highly customised product portfolio including 40+ customised (250k+ LOC) forks of mission-critical software in complex private cloud environment.
 
@@ -90,8 +90,8 @@ content:
         - Agile Management
     - name: ValuePRO Software
       position: Operations Manager
-      startDate: "2017-01-01"
-      endDate: "2022-01-01"
+      startDate: '2017-01-01'
+      endDate: '2022-01-01'
       summary: |-
         Led development teams in building scalable web applications while maintaining corporate governance and compliance standards across ISO27001 and 9001 certifications.
 
@@ -114,8 +114,8 @@ content:
         - Quality Assurance
     - name: ValuePRO Software
       position: Senior Software Architect
-      startDate: "2016-04-01"
-      endDate: "2017-01-01"
+      startDate: '2016-04-01'
+      endDate: '2017-01-01'
       summary: |-
         Joined ValuePRO to spearhead platform modernisation and establish foundational systems including CRM, SOPs, source control, and DevOps practices. Evolved role to encompass BAU operations, systems management, offshore team leadership, and key account stewardship.
 
@@ -138,8 +138,8 @@ content:
         - Technical Leadership
     - name: Various Ventures
       position: Earlier Career
-      startDate: "2003"
-      endDate: "2019"
+      startDate: '2003'
+      endDate: '2019'
       summary: |-
 
 
@@ -221,19 +221,19 @@ content:
   interests:
     - name: Professional Philosophy
       keywords:
-        - "Envision: the extraordinary"
-        - "Collaborate: with charisma"
-        - "Persevere: to achieve"
+        - 'Envision: the extraordinary'
+        - 'Collaborate: with charisma'
+        - 'Persevere: to achieve'
     - name: Personal Insights
       keywords:
-        - "Location: Brisbane"
-        - "Travel: Willing"
-        - "Married: Las Vegas"
-        - "Hobby: Spelunking"
-        - "First car: '91 Prelude"
-        - "First PC: Osbourne 1"
-        - "Holiday: Waratah, TAS"
-        - "Weakness: Challenges"
+        - 'Location: Brisbane'
+        - 'Travel: Willing'
+        - 'Married: Las Vegas'
+        - 'Hobby: Spelunking'
+        - 'First car: ''91 Prelude'
+        - 'First PC: Osbourne 1'
+        - 'Holiday: Waratah, TAS'
+        - 'Weakness: Challenges'
 layout:
   locale:
     language: en
