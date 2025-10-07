@@ -17,19 +17,11 @@ My professional background has been defined by responding to critical situations
 
 My passion for remote places and underground exploration has given me extensive hands-on experience in risk assessment, behavioral modeling, and working in unpredictable environments:
 
-**MapGyver SAR Research (2024)**: Developed AI-powered lost person behavioral prediction system, demonstrated through analysis of real missing person case (Celine Cremer, Queensland). This research project involved:
-- Building predictive models for human movement in wilderness environments
-- Analyzing terrain features and environmental factors affecting search probability
-- Developing systematic approaches to high-probability search area identification
-- Applying behavioral prediction modeling to optimize search strategies
+**MapGyver SAR Research (2024)**: Developed AI-powered lost person behavioral prediction system, demonstrated through analysis of real missing person case (Celine Cremer, Tasmania). This research project involved building predictive models for human movement in wilderness environments, analyzing terrain features and environmental factors affecting search probability, developing systematic approaches to high-probability search area identification, and applying behavioral prediction modeling to optimize search strategies.
 
 [MapGyver Lost Person Modeling (drksci.com)](https://drksci.com/research/mapgyver-lost-person-modeling)
 
-**Decade-Long Underground Investigation**: Successfully completed a 10-year search for a lost underground science lab, missing for 59 years ([Upper Cooney Tunnel Rediscovery](https://photos.app.goo.gl/mnj5ZMd6QYviYoNX8)):
-- Relentless investigation combining historical research and field reconnaissance
-- Ground truth validation of digital reconnaissance versus actual field conditions
-- Conducting thorough risk assessments before entering unknown underground environments
-- Maintaining composure and making sound decisions in isolated, high-risk situations
+**Remote Site Investigation & Endurance**: Successfully located and accessed a lost underground science lab after 10-year investigation, missing for 59 years ([Upper Cooney Tunnel Rediscovery](https://photos.app.goo.gl/mnj5ZMd6QYviYoNX8)). My passion for accessing remote sites extends to locations like Carbonate Hill, NM ([documented here](https://www.youtube.com/watch?v=-jVrsfhZahM)), demonstrating sustained endurance in challenging environments, relentless investigation combining historical research and field reconnaissance, ground truth validation of digital reconnaissance versus actual field conditions, conducting thorough risk assessments before entering unknown underground environments, and maintaining composure and making sound decisions in isolated, high-risk situations.
 
 This research and field experience directly translates to the Sonder Responder role's requirement for calm decision-making, situational assessment, and supporting people in challenging circumstances.
 
