@@ -125,9 +125,10 @@ const BlakeCollaborator = () => {
 
   const generatePDF = () => {
     // Use the complete ATS prepress PDF with cover + resume + ATS transcript + diagnostics
+    const today = new Date().toISOString().split('T')[0];
     const link = document.createElement('a');
     link.href = '/pdfs/blake-carter-complete-ats-prepress.pdf';
-    link.download = 'Blake_Carter_Complete_Resume.pdf';
+    link.download = `blake-carter-resume-${today}.pdf`;
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
