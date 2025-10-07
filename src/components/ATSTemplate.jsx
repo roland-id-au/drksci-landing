@@ -1,5 +1,4 @@
 import React from 'react';
-import ATSAnalysis from './ATSAnalysis';
 import './ATSFonts.css';
 
 const ATSTemplate = ({ yamlData }) => {
@@ -453,9 +452,6 @@ const ATSTemplate = ({ yamlData }) => {
 
       <br />
       <br />
-
-      {/* ATS Compatibility Analysis */}
-      <ATSAnalysis yamlData={yamlData} />
 
       {/* ATS Footer */}
       <div style={{...styles.section, marginTop: '15px', fontSize: '8px', textAlign: 'left', color: '#000'}}>
