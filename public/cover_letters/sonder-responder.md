@@ -17,7 +17,7 @@ My professional background has been defined by responding to critical situations
 
 My passion for remote places and underground exploration has given me extensive hands-on experience in risk assessment, behavioral modeling, and working in unpredictable environments:
 
-**MapGyver SAR Research (2024)**: Developed AI-powered lost person behavioral prediction system, demonstrated through analysis of real missing person case (Celiune Yates, Queensland). This research project involved:
+**MapGyver SAR Research (2024)**: Developed AI-powered lost person behavioral prediction system, demonstrated through analysis of real missing person case (Celine Cremer, Queensland). This research project involved:
 - Building predictive models for human movement in wilderness environments
 - Analyzing terrain features and environmental factors affecting search probability
 - Developing systematic approaches to high-probability search area identification
