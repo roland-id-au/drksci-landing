@@ -771,6 +771,38 @@ async function generateAllPDFs() {
     console.log(''); // Empty line between collaborators
   }
 
+  // Generate complete ATS PDF (only for Blake Carter)
+  try {
+    console.log('Generating complete ATS PDF...');
+    const { generateATSResumePDF } = require('./generate-ats-resume-pdf');
+    const { combineAllPDFs } = require('./generate-complete-ats-pdf');
+
+    // Generate ATS resume first
+    await generateATSResumePDF();
+    console.log('  ✓ ATS transcript generated');
+
+    // Generate complete ATS package
+    const atsResult = await combineAllPDFs();
+    if (atsResult.success) {
+      console.log(`  ✓ blake-carter-complete-ats.pdf (${(atsResult.size / 1024).toFixed(2)} KB) - cover + resume + ATS transcript + diagnostics`);
+      allResults.push({
+        success: true,
+        filename: 'blake-carter-complete-ats.pdf',
+        size: atsResult.size,
+        mode: 'complete',
+        hasCover: true,
+        hasContent: true
+      });
+    }
+  } catch (error) {
+    console.error('  ✗ Failed to generate complete ATS PDF:', error.message);
+    allResults.push({
+      success: false,
+      filename: 'blake-carter-complete-ats.pdf',
+      error: error.message
+    });
+  }
+
   console.log('Enhanced PDF generation complete!');
   console.log('\nGenerated files:');
 
