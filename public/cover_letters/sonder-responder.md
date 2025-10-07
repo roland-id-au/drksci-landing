@@ -5,44 +5,40 @@
 To the Sonder Team,
 <br>
 <br>
-I am writing to express my strong interest in the Sonder Responder position in Queensland. My background combining emergency response experience, behavioral modeling research, and relentless problem-solving makes me uniquely suited to this role.
+I am writing to express my strong interest in the Sonder Responder position in Queensland. My unique combination of technical leadership, emergency response mindset, and genuine commitment to supporting others makes me an ideal fit for this role.
 
 <br>
 
-# Background
+# Relevant Experience
 
-## Emergency Response & Crisis Management
+My professional background has been defined by responding to critical situations under pressure. As CEO of ValuePRO Software, I regularly managed high-stakes incidents affecting mission-critical systems serving the valuation industry. This required rapid assessment, clear decision-making, and calm communication during emergencies — skills directly transferable to the Sonder Responder role.
 
-My professional background has been defined by responding to critical situations under pressure. As CEO of ValuePRO Software, I regularly managed high-stakes incidents affecting mission-critical systems serving the valuation industry. This required rapid assessment, clear decision-making, and calm communication during emergencies — precisely the skillset Sonder Responders employ daily.
+## Field Work & Search and Rescue Experience
 
-## Geospatial Intelligence & Ground Truth Perspective
+My passion for remote places and underground exploration has given me extensive hands-on experience in search and rescue, risk assessment, and working in unpredictable environments:
 
-I have extensive ground truth perspective on digital reconnaissance analysis versus actuals, repeatedly and painstakingly validated through spelunking and underground exploration. This includes successful completion of a decade-long search for a lost underground science lab, lost for 59 years —
+**Search for Celiune (2024)**: Participated in coordinated search efforts for missing person Celiune Yates in remote Queensland bushland. This involved:
+- Coordinating with Queensland Police and volunteer search teams
+- Conducting systematic grid searches in challenging terrain
+- Applying behavioral prediction modeling to identify high-probability search areas
+- Maintaining discipline and focus during extended search operations in harsh conditions
 
-[Upper Cooney Tunnel Rediscovery (Google Photos)](https://photos.app.goo.gl/mnj5ZMd6QYviYoNX8).
-
-This work demonstrates my relentless approach to investigation and required:
-- Conducting thorough risk assessments before entering unknown environments
+**Decade-Long SAR Investigation**: Successfully completed a 10-year search for a lost underground science lab, missing for 59 years ([Upper Cooney Tunnel Rediscovery](https://photos.app.goo.gl/mnj5ZMd6QYviYoNX8)):
+- Relentless investigation combining historical research and field reconnaissance
+- Ground truth validation of digital reconnaissance versus actual field conditions
+- Conducting thorough risk assessments before entering unknown underground environments
 - Maintaining composure and making sound decisions in isolated, high-risk situations
-- Ground truth validation of digital reconnaissance versus actual field conditions ([Carbonate Hill, NM](https://www.youtube.com/watch?v=-jVrsfhZahM))
 
-My recent work includes AI / SAR human movement behavioral prediction and analysis, such as the MapGyver lost person modeling —
+This experience directly translates to the Sonder Responder role's requirement for calm decision-making, field assessment, and supporting people in challenging circumstances.
 
-[MapGyver (drksci.com)](https://drksci.com/research/mapgyver-lost-person-modeling).
+## Technical & Operational Background
 
-This research directly complements Sonder's mission to anticipate and respond to member needs effectively.
+My background includes:
 
-## Strategic Network Building
-
-Throughout my career, I've built and maintained extensive professional networks across Queensland and Australia. As a founder and executive, I've developed strong relationships with stakeholders across government, private sector, and community organisations. This network, combined with my natural ability to build rapport quickly, would be invaluable in fulfilling Sonder's partnership and stakeholder engagement responsibilities.
-
-## SecOps & Operational Excellence
-
-I have executive, operational, and subject matter expert experience directing and analyzing security programs, including:
-
-- Maintained ISO27001 & ISO9001 certification with zero audit findings
-- Managed 24/7 operations and on-call responsibilities throughout my career
-- Developed and refined operational procedures across complex organisations
+- **Security Operations**: Executive leadership in vulnerability assessment, penetration testing, and security incident response
+- **ISO Compliance**: Maintained ISO27001 & ISO9001 certification with zero audit findings
+- **Operational Procedures**: Developed and refined operational procedures across complex organisations
+- **24/7 Operations**: Managed round-the-clock operations and on-call responsibilities throughout my career
 
 ---
 
@@ -55,11 +51,11 @@ Sonder's mission resonates deeply with me. The opportunity to provide direct, me
 - Contributing operational insights to improve support procedures
 - Working with a technology-driven care platform
 
-I bring high self-awareness, strong interpersonal sensitivity, and the ability to prioritise effectively under pressure. My unique background combining emergency response experience, behavioral modeling research, and genuine empathy positions me uniquely to excel in this role.
+I bring high self-awareness, strong interpersonal sensitivity, and the ability to prioritise effectively under pressure. My tenacy, combined with genuine empathy and technical problem-solving skills, and passion for tackling unexpected situations, make me a solid fit for this role.
 
 ---
 
-I am ready to complete all required checks (National Police Check, WWCC) and am excited about the opportunity to make a meaningful difference as a Sonder Responder.
+I am ready to complete all required checks and am excited about the opportunity to make a meaningful difference as a Sonder Responder.
 
 Available for discussion at your convenience.
 <br>
