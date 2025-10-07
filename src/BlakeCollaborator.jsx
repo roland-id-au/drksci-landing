@@ -124,9 +124,9 @@ const BlakeCollaborator = () => {
   }, [modalImage]);
 
   const generatePDF = () => {
-    // Use the complete ATS PDF with cover + resume + ATS transcript + diagnostics
+    // Use the complete ATS prepress PDF with cover + resume + ATS transcript + diagnostics
     const link = document.createElement('a');
-    link.href = '/pdfs/blake-carter-complete-ats.pdf';
+    link.href = '/pdfs/blake-carter-complete-ats-prepress.pdf';
     link.download = 'Blake_Carter_Complete_Resume.pdf';
     document.body.appendChild(link);
     link.click();
