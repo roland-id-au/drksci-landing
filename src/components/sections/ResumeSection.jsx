@@ -1,7 +1,21 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { ExecutiveSummary, ProfessionalExperience, CoreCompetencies, Education } from '../ProfileComponents';
+import YAMLExporter from '../YAMLExporter';
 
 const ResumeSection = ({ blakeProfileData }) => {
+  const [yamlData, setYamlData] = useState(null);
+  const [yamlString, setYamlString] = useState('');
+
+  const handleYAMLGenerated = (data, str) => {
+    setYamlData(data);
+    setYamlString(str);
+
+    // Store in window for access by PDF generation pipeline
+    window.blakeResumeYAML = {
+      data: data,
+      string: str
+    };
+  };
   return (
     <section id="resume" className="relative min-h-screen flex flex-col justify-center py-20">
       <div className="mb-8">
@@ -24,6 +38,12 @@ const ResumeSection = ({ blakeProfileData }) => {
 
         {/* Education */}
         <Education education={blakeProfileData.education} />
+
+        {/* YAML Exporter - Hidden component for generating YAML */}
+        <YAMLExporter
+          profileData={blakeProfileData}
+          onYAMLGenerated={handleYAMLGenerated}
+        />
       </div>
     </section>
   );

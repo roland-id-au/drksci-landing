@@ -54,7 +54,7 @@ export const blakeProfileData = {
       title: "Founder",
       company: "Drksci",
       period: "Aug 2024 - Present",
-      tags: "Innovation Lab • AI Integration • Data Visualisation • Rapid Prototyping",
+      tags: "Innovation Lab • AI Integration • Data Visualisation • Rapid Prototyping • Machine Learning • Artificial Intelligence • Business Intelligence • Product Development • Startup Founder • Technology Strategy",
       description: "Founded d/rksci as an innovation laboratory exploring the intersection of AI, data science, and practical business applications. Specialised in rapidly prototyping novel solutions and transforming ambitious concepts into market-ready realities.",
       projects: [
         {
@@ -95,7 +95,7 @@ export const blakeProfileData = {
       title: "Chief Executive Officer",
       company: "ValuePRO Software",
       period: "Jan 2022 - Aug 2024 (2 yrs 8 mos)", 
-      tags: "Constellation Software Portfolio • PropTech • Platform Modernisation",
+      tags: "Constellation Software Portfolio • PropTech • Platform Modernisation • Executive Leadership • CEO • Software Engineering • Product Strategy • Digital Transformation • Team Management • P&L Management • EBITA • eNPS • Agile Management",
       description: "Revitalised ValuePRO's product portfolio and positioned the company as the premier PropTech solutions partner for the valuation industry following acquisition by Constellation Software. Led modernisation of highly customised product portfolio including 40+ customised (250k+ LOC) forks of mission-critical software in complex private cloud environment.",
       accomplishments: [
         "Replatformed and launched alpha successor to legacy (450k+ LOC) core product in under 1 year",
@@ -107,7 +107,7 @@ export const blakeProfileData = {
       title: "Operations Manager", 
       company: "ValuePRO Software",
       period: "Jan 2017 - Jan 2022 (5 yrs 1 mo)",
-      tags: "Team Leadership • Compliance • Security • Professional Services",
+      tags: "Team Leadership • Compliance • Security • Professional Services • ISO27001 • ISO9001 • Operations Management • SIEM • EDR • Information Security • Risk Management • Quality Assurance",
       description: "Led development teams in building scalable web applications while maintaining corporate governance and compliance standards across ISO27001 and 9001 certifications.",
       accomplishments: [
         "Maintained ISO27001 & 9001 certification with zero audit findings",
@@ -118,7 +118,7 @@ export const blakeProfileData = {
       title: "Senior Software Architect",
       company: "ValuePRO Software", 
       period: "Apr 2016 - Jan 2017 (10 mos)",
-      tags: "Legacy Modernisation • DevOps • Source Control • Platform Architecture",
+      tags: "Legacy Modernisation • DevOps • Source Control • Platform Architecture • CI/CD • Git • Software Architecture • System Integration • Change Management • Enterprise Software • Technical Leadership",
       description: "Joined ValuePRO to spearhead platform modernisation and establish foundational systems including CRM, SOPs, source control, and DevOps practices. Evolved role to encompass BAU operations, systems management, offshore team leadership, and key account stewardship.",
       accomplishments: [
         "Implemented CI/CD pipelines and change management procedures",
@@ -130,7 +130,7 @@ export const blakeProfileData = {
       title: "Earlier Career",
       company: "Various Ventures", 
       period: "2003 - 2019",
-      tags: "Entrepreneurial Ventures • Technology Innovation • Platform Development",
+      tags: "Entrepreneurial Ventures • Technology Innovation • Platform Development • Azure • SaaS Architecture • GIS • AgTech • Blockchain • Bitcoin • Fintech • VPS Hosting • Cloud Computing • Software Engineering",
       description: "",
       accomplishments: [
         "Lead Software Engineer, Jetval (2018-19) — Azure SaaS architecture",
@@ -146,10 +146,10 @@ export const blakeProfileData = {
   ],
   
   skills: {
-    "LEADERSHIP": "P&L • Strategy • Talent",
-    "TECHNICAL": "DevOps • Cloud • Security", 
-    "OPERATIONS": "Process • Compliance • Scale",
-    "INNOVATION": "AI • Research • Prototyping"
+    "LEADERSHIP": "P&L • Strategy • Talent • Executive Management • Team Building • Change Management",
+    "TECHNICAL": "DevOps • Cloud • Security • Software Architecture • CI/CD • Git • Azure • AWS • Docker • Kubernetes • Python • JavaScript • React • Node.js • Database Design • API Development",
+    "OPERATIONS": "Process • Compliance • Scale • ISO27001 • ISO9001 • SIEM • EDR • Risk Management • Quality Assurance • Vendor Management",
+    "INNOVATION": "AI • Research • Prototyping • Machine Learning • Data Science • Product Development • Digital Transformation • Startup Operations"
   },
   
   education: {

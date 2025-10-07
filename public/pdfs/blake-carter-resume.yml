@@ -1,0 +1,249 @@
+content:
+  basics:
+    name: Blake Carter
+    headline: Technical Leader
+    email: blake@drksci.com
+    phone: Available on request
+    summary: |-
+      Hands-on technical leader with organic experience spanning product development, operational excellence, and strategic transformation. Passionate about tackling complex challenges that require deep understanding and versatile execution.
+
+      Focused on opportunities with natural fit to experience, tenacity, and disposition to look beyond the status-quo. Thrives on novel challenges, hands-on learning, jumping in the deep end.
+
+      Core Characteristics:
+      • Thrives on novel challenges, hands-on learning, jumping in the deep end
+      • Pursues meaningful work with passion for ground-up understanding, rather than position descriptions
+      • Values meaningful stakeholder relationships and dependability as essential foundations
+    url: https://drksci.com
+  location:
+    city: Brisbane
+    region: Queensland
+    country: Australia
+    postalCode: null
+  profiles:
+    - network: LinkedIn
+      username: blake-carter-5995ab5a
+      url: https://www.linkedin.com/in/blake-carter-5995ab5a/
+  education:
+    - institution: University of Queensland
+      area: Information Technology / Arts
+      degree: Bachelor
+      startDate: "2006"
+      endDate: null
+      summary: |-
+        Self-directed learning approach with focus on practical application
+        APPROACH: Self-directed • Reverse engineering
+        METHODOLOGY: Scaling Up • Peer learning
+        FORMAL: B.A. / B.IT. - UQ (skipped)
+        PROGRAMMING: Self-taught (2006 - present)
+  work:
+    - name: Drksci
+      position: Founder
+      startDate: "2024-08-01"
+      endDate: null
+      summary: |-
+        Founded d/rksci as an innovation laboratory exploring the intersection of AI, data science, and practical business applications. Specialised in rapidly prototyping novel solutions and transforming ambitious concepts into market-ready realities.
+
+        Key Projects:
+        • [LINK:rained.cloud:https://drksci.com/portfolio/rained-cloud]: Historical rainfall data preservation platform (100+ years of weather data)
+        • [LINK:Kareer.app:https://drksci.com/portfolio/kareer]: Career development platform with AI-driven insights and personalised guidance
+
+        Research Projects:
+        • [LINK:MapGyver:https://drksci.com/research/mapgyver-lost-person-modeling]: AI-powered lost person modelling using terrain analysis and behavioural prediction
+        • [LINK:Prophet:https://drksci.com/research/prophet-experiment]: Experimental AI consciousness exploration and pattern recognition
+        • [LINK:Princhester Associates:https://drksci.com/research/princhester-associates]: AI-powered consulting and strategic advisory platform
+      keywords:
+        - Innovation Lab
+        - AI Integration
+        - Data Visualisation
+        - Rapid Prototyping
+        - Machine Learning
+        - Artificial Intelligence
+        - Business Intelligence
+        - Product Development
+        - Startup Founder
+        - Technology Strategy
+    - name: ValuePRO Software
+      position: Chief Executive Officer
+      startDate: "2022-01-01"
+      endDate: "2024-08-01"
+      summary: |-
+        Revitalised ValuePRO's product portfolio and positioned the company as the premier PropTech solutions partner for the valuation industry following acquisition by Constellation Software. Led modernisation of highly customised product portfolio including 40+ customised (250k+ LOC) forks of mission-critical software in complex private cloud environment.
+
+
+        Key Accomplishments:
+        • Replatformed and launched alpha successor to legacy (450k+ LOC) core product in under 1 year
+        • Achieved eNPS of 8.5–9.5 by shifting team culture to embrace meaningful impacts
+        • Consistent 40-50% EBITA margin and eNPS of 8.5-9.5/10
+      keywords:
+        - Constellation Software Portfolio
+        - PropTech
+        - Platform Modernisation
+        - Executive Leadership
+        - CEO
+        - Software Engineering
+        - Product Strategy
+        - Digital Transformation
+        - Team Management
+        - P&L Management
+        - EBITA
+        - eNPS
+        - Agile Management
+    - name: ValuePRO Software
+      position: Operations Manager
+      startDate: "2017-01-01"
+      endDate: "2022-01-01"
+      summary: |-
+        Led development teams in building scalable web applications while maintaining corporate governance and compliance standards across ISO27001 and 9001 certifications.
+
+
+        Key Accomplishments:
+        • Maintained ISO27001 & 9001 certification with zero audit findings
+        • Implemented SIEM and EDR security solutions across enterprise infrastructure
+      keywords:
+        - Team Leadership
+        - Compliance
+        - Security
+        - Professional Services
+        - ISO27001
+        - ISO9001
+        - Operations Management
+        - SIEM
+        - EDR
+        - Information Security
+        - Risk Management
+        - Quality Assurance
+    - name: ValuePRO Software
+      position: Senior Software Architect
+      startDate: "2016-04-01"
+      endDate: "2017-01-01"
+      summary: |-
+        Joined ValuePRO to spearhead platform modernisation and establish foundational systems including CRM, SOPs, source control, and DevOps practices. Evolved role to encompass BAU operations, systems management, offshore team leadership, and key account stewardship.
+
+
+        Key Accomplishments:
+        • Implemented CI/CD pipelines and change management procedures
+        • Managed 100:2 consolidation of divergent internal dependency codebases
+        • Introduced source control for 150+ legacy codebases
+      keywords:
+        - Legacy Modernisation
+        - DevOps
+        - Source Control
+        - Platform Architecture
+        - CI/CD
+        - Git
+        - Software Architecture
+        - System Integration
+        - Change Management
+        - Enterprise Software
+        - Technical Leadership
+    - name: Various Ventures
+      position: Earlier Career
+      startDate: "2003"
+      endDate: "2019"
+      summary: |-
+
+
+        • Lead Software Engineer, Jetval (2018-19) — Azure SaaS architecture
+        • GIS Consultant, Proprietor (2016) — AgTech data analysis
+        • Co-Founder, Hashfund Limited (2013-15) — Bitcoin exchange platform
+        • Director, Maintainable Pty Ltd (2011-12) — Property services integration
+        • Operations Manager, P2P Advertising Network (2008-11) — Distributed advertising
+        • Co-Founder, Alpha BHO (2008-09) — Browser advertising network
+        • Co-Founder, Auxhosting (2006-07) — VPS hosting provider
+        • Software Engineer, Proprietor (2003-05) — Freelance development
+      keywords:
+        - Entrepreneurial Ventures
+        - Technology Innovation
+        - Platform Development
+        - Azure
+        - SaaS Architecture
+        - GIS
+        - AgTech
+        - Blockchain
+        - Bitcoin
+        - Fintech
+        - VPS Hosting
+        - Cloud Computing
+        - Software Engineering
+  skills:
+    - name: LEADERSHIP
+      level: Expert
+      keywords:
+        - P&L
+        - Strategy
+        - Talent
+        - Executive Management
+        - Team Building
+        - Change Management
+    - name: TECHNICAL
+      level: Expert
+      keywords:
+        - DevOps
+        - Cloud
+        - Security
+        - Software Architecture
+        - CI/CD
+        - Git
+        - Azure
+        - AWS
+        - Docker
+        - Kubernetes
+        - Python
+        - JavaScript
+        - React
+        - Node.js
+        - Database Design
+        - API Development
+    - name: OPERATIONS
+      level: Expert
+      keywords:
+        - Process
+        - Compliance
+        - Scale
+        - ISO27001
+        - ISO9001
+        - SIEM
+        - EDR
+        - Risk Management
+        - Quality Assurance
+        - Vendor Management
+    - name: INNOVATION
+      level: Expert
+      keywords:
+        - AI
+        - Research
+        - Prototyping
+        - Machine Learning
+        - Data Science
+        - Product Development
+        - Digital Transformation
+        - Startup Operations
+  interests:
+    - name: Professional Philosophy
+      keywords:
+        - "Envision: the extraordinary"
+        - "Collaborate: with charisma"
+        - "Persevere: to achieve"
+    - name: Personal Insights
+      keywords:
+        - "Location: Brisbane"
+        - "Travel: Willing"
+        - "Married: Las Vegas"
+        - "Hobby: Spelunking"
+        - "First car: '91 Prelude"
+        - "First PC: Osbourne 1"
+        - "Holiday: Waratah, TAS"
+        - "Weakness: Challenges"
+layout:
+  locale:
+    language: en
+  template: moderncv-banking
+  typography:
+    fontSize: 11pt
+  page:
+    margins:
+      top: 2.5cm
+      left: 1.5cm
+      right: 1.5cm
+      bottom: 2.5cm
+    showPageNumbers: true

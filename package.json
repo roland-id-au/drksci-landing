@@ -11,6 +11,7 @@
     "daisyui": "^4.12.10",
     "favicons": "^7.2.0",
     "html2canvas": "^1.4.1",
+    "js-yaml": "^4.1.0",
     "jspdf": "^3.0.1",
     "marked": "^16.0.0",
     "mermaid": "^11.10.1",
@@ -50,10 +51,12 @@
     "profile:disable": "node scripts/profile-manager.js disable",
     "profile:token": "node scripts/profile-manager.js token",
     "profile:cleanup": "node scripts/profile-manager.js cleanup",
-    "pdf:generate:all": "node scripts/generate-merged-pdfs.js && node scripts/generate-cover-letter-pdfs.js",
+    "pdf:generate:all": "node scripts/generate-merged-pdfs.js && node scripts/generate-cover-letter-pdfs.js && node scripts/generate-ats-resume-pdf.js && node scripts/merge-ats-to-resume.js all",
     "pdf:generate:merged": "node scripts/generate-merged-pdfs.js",
     "pdf:generate:resume": "node scripts/generate-pdfs.js",
-    "pdf:generate:cover-letters": "node scripts/generate-cover-letter-pdfs.js"
+    "pdf:generate:cover-letters": "node scripts/generate-cover-letter-pdfs.js",
+    "pdf:generate:ats": "node scripts/generate-ats-resume-pdf.js",
+    "pdf:merge:ats": "node scripts/merge-ats-to-resume.js"
   },
   "eslintConfig": {
     "extends": [
