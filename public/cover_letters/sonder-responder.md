@@ -45,7 +45,7 @@ Sonder's mission resonates deeply with me. The opportunity to provide direct, me
 - Contributing operational insights to improve support procedures
 - Working with a technology-driven care platform
 
-I bring high self-awareness, strong interpersonal sensitivity, and the ability to prioritise effectively under pressure. My tenacy, combined with genuine empathy and technical problem-solving skills, and passion for tackling unexpected situations, make me a solid fit for this role.
+I bring high self-awareness, strong interpersonal sensitivity, and the ability to prioritise effectively under pressure. My tenacity, combined with genuine empathy and technical problem-solving skills, and passion for tackling unexpected situations, make me a solid fit for this role.
 
 ---
 

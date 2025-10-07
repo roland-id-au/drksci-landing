@@ -14,5 +14,6 @@ export function wrapWithTracking(url, source = 'blake-carter-complete-ats-prepre
   const encodedFrom = encodeURIComponent(source);
   const encodedDate = encodeURIComponent(today);
 
-  return `/go?to=${encodedUrl}&from=${encodedFrom}&v=${encodedDate}`;
+  // Use production domain for PDF tracking URLs
+  return `https://drksci.com/go?to=${encodedUrl}&from=${encodedFrom}&v=${encodedDate}`;
 }
