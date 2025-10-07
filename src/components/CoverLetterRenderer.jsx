@@ -35,7 +35,8 @@ const CoverLetterRenderer = ({ letterName }) => {
             const encodedUrl = encodeURIComponent(url);
             const encodedFrom = encodeURIComponent(`blake-carter-cover-${letterName}.pdf`);
             const encodedDate = encodeURIComponent(today);
-            finalUrl = `/go?to=${encodedUrl}&from=${encodedFrom}&v=${encodedDate}`;
+            // Use production domain for PDF tracking URLs
+            finalUrl = `https://drksci.com/go?to=${encodedUrl}&from=${encodedFrom}&v=${encodedDate}`;
           }
           // Check if text contains "(via xxx)" pattern
           const viaMatch = text.match(/^(.+?)(\s*\(via [^)]+\))$/);
