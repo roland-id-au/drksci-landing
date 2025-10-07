@@ -13,23 +13,25 @@ I am writing to express my strong interest in the Sonder Responder position in Q
 
 My professional background has been defined by responding to critical situations under pressure. As CEO of ValuePRO Software, I regularly managed high-stakes incidents affecting mission-critical systems serving the valuation industry. This required rapid assessment, clear decision-making, and calm communication during emergencies — skills directly transferable to the Sonder Responder role.
 
-## Field Work & Search and Rescue Experience
+## Field Work & Search and Rescue Research
 
-My passion for remote places and underground exploration has given me extensive hands-on experience in search and rescue, risk assessment, and working in unpredictable environments:
+My passion for remote places and underground exploration has given me extensive hands-on experience in risk assessment, behavioral modeling, and working in unpredictable environments:
 
-**Search for Celiune (2024)**: Participated in coordinated search efforts for missing person Celiune Yates in remote Queensland bushland. This involved:
-- Coordinating with Queensland Police and volunteer search teams
-- Conducting systematic grid searches in challenging terrain
-- Applying behavioral prediction modeling to identify high-probability search areas
-- Maintaining discipline and focus during extended search operations in harsh conditions
+**MapGyver SAR Research (2024)**: Developed AI-powered lost person behavioral prediction system, demonstrated through analysis of real missing person case (Celiune Yates, Queensland). This research project involved:
+- Building predictive models for human movement in wilderness environments
+- Analyzing terrain features and environmental factors affecting search probability
+- Developing systematic approaches to high-probability search area identification
+- Applying behavioral prediction modeling to optimize search strategies
 
-**Decade-Long SAR Investigation**: Successfully completed a 10-year search for a lost underground science lab, missing for 59 years ([Upper Cooney Tunnel Rediscovery](https://photos.app.goo.gl/mnj5ZMd6QYviYoNX8)):
+[MapGyver Lost Person Modeling (drksci.com)](https://drksci.com/research/mapgyver-lost-person-modeling)
+
+**Decade-Long Underground Investigation**: Successfully completed a 10-year search for a lost underground science lab, missing for 59 years ([Upper Cooney Tunnel Rediscovery](https://photos.app.goo.gl/mnj5ZMd6QYviYoNX8)):
 - Relentless investigation combining historical research and field reconnaissance
 - Ground truth validation of digital reconnaissance versus actual field conditions
 - Conducting thorough risk assessments before entering unknown underground environments
 - Maintaining composure and making sound decisions in isolated, high-risk situations
 
-This experience directly translates to the Sonder Responder role's requirement for calm decision-making, field assessment, and supporting people in challenging circumstances.
+This research and field experience directly translates to the Sonder Responder role's requirement for calm decision-making, situational assessment, and supporting people in challenging circumstances.
 
 ## Technical & Operational Background
 
