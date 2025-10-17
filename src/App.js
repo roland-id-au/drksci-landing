@@ -71,8 +71,4 @@ function App() {
   );
 }
 
-export default App;er>
-  );
-}
-
 export default App;

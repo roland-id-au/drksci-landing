@@ -14,7 +14,7 @@
     "js-yaml": "^4.1.0",
     "jspdf": "^3.0.1",
     "marked": "^16.0.0",
-    "mermaid": "^11.10.1",
+    "mermaid": "^11.12.0",
     "node-gs": "^0.1.1",
     "nunjucks": "^3.2.4",
     "pdf-lib": "^1.17.1",
@@ -55,6 +55,7 @@
     "pdf:generate:merged": "node scripts/generate-merged-pdfs.js",
     "pdf:generate:resume": "node scripts/generate-pdfs.js",
     "pdf:generate:cover-letters": "node scripts/generate-cover-letter-pdfs.js",
+    "pdf:generate:proposals": "node scripts/generate-proposal-pdfs.js",
     "pdf:generate:ats": "node scripts/generate-ats-resume-pdf.js",
     "pdf:merge:ats": "node scripts/merge-ats-to-resume.js"
   },

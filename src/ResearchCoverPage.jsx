@@ -7,16 +7,26 @@ const ResearchCoverPage = () => {
 
   // Define research-specific metadata
   const researchMetadata = {
-    'Stakeholder Profile_ Sonya Comiskey': {
-      title: 'Stakeholder Profile',
+    'Comiskey, S': {
+      title: 'Comiskey, S',
       subtitle: 'Market Research',
-      preparedFor: 'Sonya Comiskey'
+      preparedFor: 'Internal'
     }
+  };
+
+  // Convert filename to title case for fallback
+  const filenameToTitle = (name) => {
+    if (!name) return 'Document';
+    return name
+      .replace(/[_-]/g, ' ')  // Replace underscores and hyphens with spaces
+      .split(' ')
+      .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
+      .join(' ');
   };
 
   const metadata = researchMetadata[docName] || {
     title: 'Market Research',
-    subtitle: 'Document',
+    subtitle: filenameToTitle(docName),
     preparedFor: '[Client Name]'
   };
   const [isDarkMode, setIsDarkMode] = useState(true);

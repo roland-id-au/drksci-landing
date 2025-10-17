@@ -142,6 +142,27 @@ async function generateSinglePagePDF(url, description) {
     // Wait for dynamic content and theme application
     await new Promise(resolve => setTimeout(resolve, 5000));
 
+    // Wait specifically for mermaid diagrams to render
+    await page.evaluate(() => {
+      return new Promise((resolve) => {
+        const checkMermaid = setInterval(() => {
+          const mermaidElements = document.querySelectorAll('.mermaid');
+          const allRendered = Array.from(mermaidElements).every(el => {
+            return el.querySelector('svg') !== null;
+          });
+          if (allRendered || mermaidElements.length === 0) {
+            clearInterval(checkMermaid);
+            resolve();
+          }
+        }, 100);
+        // Timeout after 10 seconds
+        setTimeout(() => {
+          clearInterval(checkMermaid);
+          resolve();
+        }, 10000);
+      });
+    });
+
     // Wait for images to load completely and debug signature
     await page.evaluate(() => {
       const signatureImg = document.querySelector('img[alt="Blake Carter Signature"]');
