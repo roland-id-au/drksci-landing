@@ -14,6 +14,10 @@ import CollaboratorIndex from './CollaboratorIndex';
 import BlakeCollaborator from './BlakeCollaborator';
 import BlakeCoverPage from './BlakeCoverPage';
 import BlakeCoverLetterPage from './BlakeCoverLetterPage';
+import BlakeProposalPage from './BlakeProposalPage';
+import BlakeResearchPage from './BlakeResearchPage';
+import ProposalCoverPage from './ProposalCoverPage';
+import ResearchCoverPage from './ResearchCoverPage';
 import CandidateApplication from './CandidateApplication';
 import ShortUrlResolver from './ShortUrlResolver';
 import LinkTracker from './LinkTracker';
@@ -46,6 +50,10 @@ function App() {
         <Route path="/c/blake" element={<BlakeCollaborator />} />
         <Route path="/c/blake/cover" element={<BlakeCoverPage />} />
         <Route path="/c/blake/letter/:letterName" element={<BlakeCoverLetterPage />} />
+        <Route path="/c/blake/proposal/:proposalName" element={<BlakeProposalPage />} />
+        <Route path="/c/blake/proposal/:proposalName/cover" element={<ProposalCoverPage />} />
+        <Route path="/c/blake/research/:docName" element={<BlakeResearchPage />} />
+        <Route path="/c/blake/research/:docName/cover" element={<ResearchCoverPage />} />
         <Route path="/ats-resume" element={<ATSResumePage />} />
         <Route path="/j/:shortId" element={<CandidateApplication />} />
         <Route path="/candidate/:candidate/:jobSlug" element={<CandidateApplication />} />
@@ -60,6 +68,10 @@ function App() {
         <Route path="/go" element={<LinkTracker />} />
       </Routes>
     </Router>
+  );
+}
+
+export default App;er>
   );
 }
 
